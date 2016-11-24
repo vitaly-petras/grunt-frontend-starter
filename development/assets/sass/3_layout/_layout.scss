@@ -1,0 +1,32 @@
+body {
+	background-color: $bg;
+
+	&.overflow{
+		height: 100%;
+		overflow: hidden;
+		position: fixed;
+		top: 0;
+	}
+}
+
+%clearfix{
+	*zoom:1;
+    &:after {
+        content:"";
+        display:table;
+        clear:both;
+    }
+}
+
+.container {
+	@include cfx;
+	margin: 0 auto;
+	position: relative;
+
+	width: $width-layout;
+
+	@include query( $query-last ){
+		width: auto;
+		padding: 0 $padding-layout;
+	}
+}

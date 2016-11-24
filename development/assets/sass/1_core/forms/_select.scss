@@ -1,0 +1,92 @@
+
+/*************************************************************************************
+*  STYLED SELECT
+**************************************************************************************/
+$selectLiLineHeight:			30px;
+
+.select {
+	position: relative;
+	margin-bottom: $input-bottom-margin;
+
+	ul {
+		cursor: pointer;
+		@include reset-ul();
+		position: relative;
+		height: $input-height;
+
+		@include border-radius(22px);
+		border: $input-border-width solid $input-border;
+		background: $input-bg;
+
+		li {
+			padding: ($input-height - ($input-border-width*2 + $selectLiLineHeight))/2 15px;
+			line-height: selectLiLineHeight;
+
+			font-size: $font-size;
+			@include font();
+			color: $color-base;
+
+			&:first-child{
+				padding-right:35px;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				padding-top: 0;
+				padding-bottom: 0;
+				line-height: $input-height - ($input-border-width*2);
+			}
+		}
+
+		&:before{
+			display: block;
+			content: "";
+
+			position: absolute;
+			right: 15px;
+			top: ($input-height - 6) /2;
+			@include animate(transform);
+
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 6px 5px 0 5px;
+			border-color: $input-border transparent transparent transparent;
+		}
+	}
+
+	&.open {
+		height: $input-height;
+		z-index: 300 !important;
+		
+		ul {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			min-width: 100%;
+
+			height: auto;
+			overflow: auto;
+
+			li {
+				border-top: $input-border-width solid $input-border;
+				background: #fff;
+				@include animate(background);
+
+				&:hover,&.selected {
+					background: darken($input-bg, 5%);
+				}
+
+				&:first-child {
+					border: 0;
+					white-space: normal;
+					text-overflow: normal;
+				}
+			}
+
+			&:before{
+				@include rotate(180);
+			}
+		}
+	}
+}

@@ -1,0 +1,43 @@
+/*-----------------------------------------------------------------------------------*/
+/*  FORMS BASIC SETTINGS
+/*-----------------------------------------------------------------------------------*/
+
+input, select, textarea {
+	vertical-align:middle;
+
+	&:focus {
+		outline: none;
+
+		&:-moz-placeholder {
+		  	color:transparent; 
+		}
+
+		&::-moz-placeholder {
+		  	color:transparent; 
+		}
+
+		&::-webkit-input-placeholder {
+		  	color:transparent; 
+		}
+
+		&:-ms-input-placeholder {  
+		  	color:transparent; 
+		}
+	}
+
+	&:-moz-placeholder {
+	   opacity: 1; 
+	}
+
+	&::-moz-placeholder {
+	  	opacity: 1; 
+	}
+
+	&::-webkit-input-placeholder {
+	   opacity: 1; 
+	}
+
+	&:-ms-input-placeholder {  
+	   opacity: 1; 
+	}
+}

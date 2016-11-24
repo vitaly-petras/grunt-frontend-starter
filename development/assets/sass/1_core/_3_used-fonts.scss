@@ -1,0 +1,82 @@
+// ************************************************************************************
+// Used fonts mixins
+// ************************************************************************************
+
+// pouzit definovaneho mixinu v 2_mixins.scss
+// font-face($font-name, $font-file)
+
+// ************************************************************************************
+
+// pouziti fontu v sass
+//.cokoliv{ @include font(); }
+//
+// vysledek v css:
+//.cokoliv { font-family: "Open Sans Regular", Arial, Helvetica, sans-serif; }
+
+// ************************************************************************************
+
+
+// fonts mixin example
+//@include    font-face( 'pebbleregular', pebble/pebble_rg_beta2 );
+
+
+//fonts mixin
+@mixin font($font-family:sans, $font-variant:regular){
+
+	@if $font-family == roman{
+		font-family: "Roman", $font-base;
+
+		@if $font-variant == regular{
+			font-weight: 400;
+		} 
+
+		@else if $font-variant == bold{
+			font-weight: 600;
+		} 
+
+		@else{
+			@warn "No such font-VARIANT specified";
+		}
+	} 
+
+	@else if $font-family == sans{
+		font-family: "Open sans", $font-base;
+
+		@if $font-variant == regular{
+			font-weight: 400;
+		} 
+
+		@else if $font-variant == bold{
+			font-weight: 600;
+		} 
+
+		@else{
+			@warn "No such font-VARIANT specified";
+		}
+	} 
+
+	@else{
+		@warn "No such font-FAMILY specified";
+	}
+}
+//volani je potom nasledujici @include font(roman/sans, regular/bold/semibold);
+
+/*
+pokud je na webu pouze jeden font zjednodusit funkci takto
+@mixin font($font-variant:regular){
+	font-family: "Roman", $font-base;
+
+	@if $font-variant == regular{
+		font-weight: 400;
+	} 
+
+	@else if $font-variant == bold{
+		font-weight: 600;
+	} 
+
+	@else{
+		@warn "No such font-VARIANT specified";
+	}
+}
+volani je potom nasledujici @include font(regular/bold/semibold);
+*/

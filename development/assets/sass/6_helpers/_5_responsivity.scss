@@ -1,0 +1,35 @@
+@include query( $mobile, min ) {
+
+	.h-mobile-only {
+		display: none;
+	}
+}
+
+@include query( $tablet, min ) {
+
+	.h-mobile-tablet-only {
+		display: none;
+	}
+
+	.h-tablet-only {
+		display: none;
+	}
+}
+
+@include query( $mobile ) {
+
+	.h-tablet-desktop-only {
+		display: none;
+	}
+
+	.h-tablet-only {
+		display: none;
+	}
+}
+
+@include query( $tablet ) {
+
+	.h-desktop-only {
+		display: none;
+	}
+}

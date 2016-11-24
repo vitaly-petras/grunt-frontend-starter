@@ -1,0 +1,28 @@
+.table-main {
+	width: 100%;
+
+	thead {
+		td, th {
+			padding: 10px;
+
+			font-weight: bold;
+			text-align: left;
+			font-size: 16px;
+			font-weight: bold;
+			background: $cl-light;
+			color: @cl-black;
+		}
+	}
+
+	tbody {
+		td, th {
+			padding: 10px;
+
+			text-align: left;
+		}
+
+		tr:nth-child(2n) {
+			background: $cl-white;
+		}
+	}
+}

@@ -1,0 +1,125 @@
+/*************************************************************************************
+*  Grid system 
+**************************************************************************************/
+
+.grid{
+	@include cfx();
+	margin: 0 -$column-gap/2;
+
+	&__item {
+		float: left;
+		padding: 0 $column-gap/2;
+
+		&--right{
+			float: right;
+		}
+
+		&--center{
+			float:none;
+			clear:both;
+			margin: 0 auto;
+		}
+
+
+		// grid default 				(grid__item-1)
+		// ------------------------------------------------
+		@for $i from 1 through $columns-count {
+			&--#{$i}{ width: percentage($i  / $columns-count); }
+		}
+
+		@for $i from 1 through $columns-count {
+			&--offset-#{$i}{ margin-left: percentage($i  / $columns-count); }
+		}
+
+		// grid-last 						(grid__item-last-1)
+		// ------------------------------------------------
+		@include query( $query-last ){
+
+			@for $i from 1 through $columns-count {
+				&--last-#{$i}{ width: percentage($i  / $columns-count); }
+			}
+
+			&--offset-last-0{ margin-left:0; }
+			@for $i from 1 through $columns-count {
+				&--offset-last-#{$i}{ margin-left: percentage($i  / $columns-count); }
+			}
+
+		}
+
+		// grid-xl 						(grid__item-xl-1)
+		// ------------------------------------------------
+		@include query( $query-xl ){
+
+			@for $i from 1 through $columns-count {
+				&--xl-#{$i}{ width: percentage($i  / $columns-count); }
+			}
+
+			&--offset-xl-0{ margin-left:0; }
+			@for $i from 1 through $columns-count {
+				&--offset-xl-#{$i}{ margin-left: percentage($i  / $columns-count); }
+			}
+
+		}
+
+		// grid-l 						(grid__item-l-1)
+		// ------------------------------------------------
+		@include query( $query-l ){
+
+			@for $i from 1 through $columns-count {
+				&--l-#{$i}{ width: percentage($i  / $columns-count); }
+			}
+
+			&--offset-l-0{ margin-left:0; }
+			@for $i from 1 through $columns-count {
+				&--offset-l-#{$i}{ margin-left: percentage($i  / $columns-count); }
+			}
+
+		}
+
+		// grid-m 						(grid__item-m-1)
+		// ------------------------------------------------
+		@include query( $query-m ){
+
+			@for $i from 1 through $columns-count {
+				&--m-#{$i}{ width: percentage($i  / $columns-count); }
+			}
+
+			&--offset-m-0{ margin-left:0; }
+			@for $i from 1 through $columns-count {
+				&--offset-m-#{$i}{ margin-left: percentage($i  / $columns-count); }
+			}
+
+		}
+
+		// grid-s 						(grid__item-s-1)
+		// ------------------------------------------------
+		@include query( $query-s ){
+
+			@for $i from 1 through $columns-count {
+				&--s-#{$i}{ width: percentage($i  / $columns-count); }
+			}
+
+			&--offset-s-0{ margin-left:0; }
+			@for $i from 1 through $columns-count {
+				&--offset-s-#{$i}{ margin-left: percentage($i  / $columns-count); }
+			}
+
+		}
+
+		// grid-xs 						(grid__item-xs-1)
+		// ------------------------------------------------
+		@include query( $query-xs ){
+
+			@for $i from 1 through $columns-count {
+				&--xs-#{$i}{ width: percentage($i  / $columns-count); }
+			}
+
+			&--offset-xs-0{ margin-left:0; }
+			@for $i from 1 through $columns-count {
+				&--offset-xs-#{$i}{ margin-left: percentage($i  / $columns-count); }
+			}
+
+		}
+
+	}//--item
+}//--columns

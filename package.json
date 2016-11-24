@@ -1,0 +1,32 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "no desc",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vitalij",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^0.4.4",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-compress": "^0.13.0",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-contrib-cssmin": "^0.12.3",
+    "grunt-contrib-rename": "0.0.3",
+    "grunt-contrib-sass": "^0.9.2",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-ftp-deploy": "^0.1.10",
+    "grunt-grunticon": "~2.3.0",
+    "grunt-px-to-rem": "^0.4.0",
+    "grunt-spritesmith": "^4.7.1",
+    "grunt-svg-sprite": "^1.2.3",
+    "grunt-svg2png": "^0.2.7",
+    "grunt-svgmin": "^3.3.0",
+    "jit-grunt": "^0.9.1",
+    "time-grunt": "^1.2.1"
+  }
+}

@@ -1,0 +1,28 @@
+%preloader{
+	@include background("preloader.gif", center center);
+
+	.page-loaded &{
+		background-image: none;
+	}
+}
+
+.lazyload{
+
+	.no-js &{
+		display: none;
+	}
+}
+
+.js .js-animate{
+	visibility: hidden;
+
+	&.animated{
+		visibility: visible;
+	}
+}
+
+img[data-src], img[data-lazy]{
+	visibility: hidden;
+	min-width: 5px;
+	min-height: 5px;
+}

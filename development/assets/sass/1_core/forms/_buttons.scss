@@ -1,0 +1,28 @@
+/*-----------------------------------------------------------------------------------*/
+/*  BUTTONS
+/*-----------------------------------------------------------------------------------*/
+
+.button {
+	width: auto;
+	padding: 0 28px;
+	height: $btn-height;
+	line-height: $btn-height - ($btn-border-width*2);
+	vertical-align:middle;
+	display: inline-block;
+
+	border: $btn-border-width solid $btn-border;
+	color: $btn-color;
+	background: $btn-bg;
+	cursor: pointer;
+	text-decoration: none;
+	outline: none;
+
+	@include border-radius($radius);
+	@include animate();
+
+	&:hover {
+		border-color: $btn-border-hover;
+		color: $btn-color;
+		background: $btn-bg-hover;
+	}
+}

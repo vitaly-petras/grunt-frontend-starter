@@ -1,0 +1,130 @@
+// ************************************************ //
+// VARIABLES 
+// ************************************************ //
+
+
+// ************ Paths ***************** //
+$path-font:						"../fonts";
+$path-css-images: 				"../images/backgrounds";
+
+
+
+// ************ Layout ***************** //
+$box-sizing:					border-box;
+$width-layout: 					940px;
+$padding-layout:				20px;
+
+
+// ************ Grid system ***************** //
+$column-gap: 					20px;
+$columns-count: 				12;			
+
+
+
+// ************ Fonts ***************** //
+// import z google fonts
+//@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=latin,latin-ext);
+
+// import font-face - mozno zapsat i sirku a italic jako dalsi parametry - default je 400, normal
+//@include font-face('nazev');
+
+$font-base: 					Arial, Helvetica, sans-serif;
+
+$font-size-small: 				12px;
+$font-size: 					16px;
+$font-size-big: 				18px;
+$font-size-huge: 				22px;
+
+$line-height:					1.25; //spocitat z defaultniho pisma
+
+
+// ************ Colors - black-white (první dva bloky statické) ***************** //
+$color-black: 					#000;
+$color-white: 					#fff;
+
+
+
+// ************ Colors - colored (používané i níže)  ***************** //
+$color-red: 					#d63636;
+$color-blue: 					#365fd6;
+$color-green: 					#30a24e;
+
+
+
+// ************ Colors - main (barvy používané v templatech na více místech - logicky nazvány) ***************** //
+// zakladni barva pisma
+$color-base: 					#000;
+
+// základní barva odkazů
+$color-link: 					$color-blue;
+$color-link-hover: 				$color-green;
+
+// ostatní barvy
+$color-border:					#cccccc;
+$color-inactive:				#f0f0f0;
+$color-shadow:					fade(#000, 30%);
+
+
+
+// ************ Backgrounds ***************** //
+$bg: 							$color-white;
+
+
+
+// ************ Radius ***************** //
+$radius: 						5px;
+$radius-big: 					$radius * 2;
+
+
+
+// ************ Buttons ***************** //
+// základní button
+$btn-bg:						$color-white;
+$btn-border: 					$color-border;
+$btn-color: 					$color-black;
+
+$btn-bg-hover: 					darken($btn-bg,15%);
+$btn-border-hover: 				darken($btn-border,10%);
+
+$btn-height: 					30px; // bez borderu
+$btn-border-width: 				1px;
+
+
+
+// ************ Inputs ***************** //
+$input-bg: 						$color-white;
+$input-height: 					$btn-height; // vetisnou input je velky jako button
+$input-bottom-margin: 			20px;
+
+$input-border: 					$color-border;
+$input-border-width: 			$btn-border-width;
+
+
+// nevalidní input
+$input-err-border: 				$color-red;
+$input-err-bg:					lighten($input-err-border, 30%);
+
+
+
+// ************ Transitions & animations ***************** //
+$transition-function:			ease;
+$transition-duration: 			250ms;
+
+
+
+// ************ Responsive points ***************** //
+// zakladni velikosti řešené u rozlišení u responsivniho designu - NEMENIT!!
+$query-xs:						360 - 1;
+$query-s:						480 - 1;
+$query-m:						640 - 1;
+$query-l:						800 - 1;
+$query-xl:						960 - 1;
+$query-last:					$width-layout + $padding-layout*2 - 1;
+
+
+// ************ Devices ***************** //
+$tablet:						$query-l;
+$mobile:						$query-s;
+
+
+

@@ -1,0 +1,74 @@
+/*-----------------------------------------------------------------------------------*/
+/*  TYPOGRAPHY
+/*-----------------------------------------------------------------------------------*/
+body{
+    //font-size na body elementu MUSI byt 16px !!!!!
+    color:          $color-base;
+    line-height:    $line-height;
+    @include        font();
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, .h1, 
+h2, .h2, 
+h3, .h3, 
+h4, .h4, 
+h5, .h5, 
+h6, .h6 {
+    text-rendering: optimizelegibility; // Fix the character spacing for headings
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6{
+    display: block;
+}
+
+h1,.h1 {}
+
+h2,.h2 {}
+
+h3,.h3 {}
+
+h4,.h4 {}
+
+h5,.h5 {}
+
+h6,.h6 {}
+
+
+strong,.bold,b{}
+.semibold{}
+.italic,em{}
+
+address,.address{
+
+}
+
+p{}
+ul{}
+ol{}
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  LINKS
+/*-----------------------------------------------------------------------------------*/
+a {
+    text-decoration: underline;
+    color: $color-link;
+    cursor: pointer;
+    outline: none;
+
+    @include animate(color);
+
+    &:hover {
+        text-decoration: none;
+        color: $color-link-hover;
+    }
+}
+
+
+.no-link-styles{
+    color: inherit;
+    text-decoration: none;
+}
