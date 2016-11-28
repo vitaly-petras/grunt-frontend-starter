@@ -8,6 +8,11 @@ $selectLiLineHeight:			30px;
 	position: relative;
 	margin-bottom: $input-bottom-margin;
 
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
 	ul {
 		cursor: pointer;
 		@include reset-ul();
