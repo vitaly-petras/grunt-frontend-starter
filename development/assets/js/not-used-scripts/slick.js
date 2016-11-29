@@ -2731,4 +2731,11 @@ $(document).ready(function(){
             // instead of a settings object
         ]*/
     });
+    
+    /*
+    prolinani
+    $carousel.on('beforeChange', function(event, slick, currentSlide, nextSlide){
+        $carousel.find('[data-slick-index="' + currentSlide + '"]').fadeTo('fast',0);
+    });
+    */
 });
