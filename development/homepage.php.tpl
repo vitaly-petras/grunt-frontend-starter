@@ -13,7 +13,7 @@
 		<meta name="Author" content="www.html-factory.cz" />
 		
 		<?php //tento skript je urcen pro praci s projektem (muze se uplne smazat a vlozit URL do base napevno)
-			if (strpos($_SERVER['SERVER_NAME'], '.') !== false) {
+			if (strpos($_SERVER['SERVER_NAME'], 'html-factory.cz') !== false) {
 		    	$path = "/<%= project.project.name %>/";//url link na serveru
 			}else{
 				$path = "/<%= project.project.name %>/development/";//url link na lokalhostu
