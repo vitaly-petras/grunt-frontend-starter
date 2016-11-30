@@ -5,15 +5,20 @@ function clouseOnBlur(el, target){
     if( el.hasClass("js-toggle-activated") ){
         setTimeout(function(){
             $body.one("click", function(event){
-                if(!$(event.target).closest(el).length && !$(event.target).closest(target).length) {
-                    el.click();
+                if(!$(event.target).closest(el).length && !$(event.target).closest(target).length) {//kliknuti mimo elementy
+                    el.click();//zavre cilovy blok
                     //console.log("clicked out");
-                }else{
-                    clouseOnBlur(el, target);
+                }else{//kliknuti uvnitr elementu nebo cile
                     //console.log("clicked in");
+                    var attr = $(event.target).attr("data-close-onblur");
+                    if (typeof attr !== typeof undefined && attr !== false) {//pokud je to novy odkaz pro otevreni
+                        el.click();//zavre cilovy blok
+                    }else{//pokud je to proste kliknuti nekde uvnitr
+                        clouseOnBlur(el, target);//nastav nove hlidani na body
+                    }
                 }
             });
-        }, 1);
+        }, 5);
     }
 }
 
