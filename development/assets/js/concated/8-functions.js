@@ -10,15 +10,17 @@ function clouseOnBlur(el, target){
                     //console.log("clicked out");
                 }else{//kliknuti uvnitr elementu nebo cile
                     //console.log("clicked in");
-                    var attr = $(event.target).attr("data-close-onblur");
-                    if (typeof attr !== typeof undefined && attr !== false) {//pokud je to novy odkaz pro otevreni
+                    var $clickedElement = $(event.target),
+                        attr = $clickedElement.attr("data-close-onblur");
+
+                    if (typeof attr !== typeof undefined && attr !== false && !$clickedElement.is(el)) {//pokud je to novy odkaz pro otevreni
                         el.click();//zavre cilovy blok
                     }else{//pokud je to proste kliknuti nekde uvnitr
                         clouseOnBlur(el, target);//nastav nove hlidani na body
                     }
                 }
             });
-        }, 5);
+        }, 1);
     }
 }
 
