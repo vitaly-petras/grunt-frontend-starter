@@ -1,25 +1,23 @@
+@charset "UTF-8";
 /*! 
 ==============================================================
-  ___     _             ___         
- / / |__ | |_ _ __ ___ | \ \        
-/ /| '_ \| __| '_ ` _ \| |\ \       
-\ \| | | | |_| | | | | | |/ /       
- \_\_| |_|\__|_| |_| |_|_/_/        
-    _____          _                      
-   |  ___|_ _  ___| |_ ___  _ __ _   _ 
-   | |_ / _` |/ __|  _/ _ \| '__| | | |
-   |  _| (_| | (__| |_ (_) | |  | |_| |
-   |_|  \__,_|\___|\__\___/|_|   \__, |
-                                  __/ |
-                                 |___/
 
 Project  	: <%= project.project.name %>
 Author  	: <%= project.project.author %>
 Author URI	: www.html-factory.cz
 Created 	: <%= grunt.template.today("dd.mm.yyyy") %>
 
+----------------------------------------
+---------------- POZOR! ----------------
+----------------------------------------
+
+Stylopis byl vygenerovan pomoci CSS preprocesoru.
+Nikdy needitujte primo .css soubor!
+Viz readme.txt
+
 ============================================================== 
 */
+
 
 // ************************************************ //
 // 1. Core  
@@ -29,7 +27,6 @@ Created 	: <%= grunt.template.today("dd.mm.yyyy") %>
 @import 						"1_core/3_used-fonts";
 @import 						"1_core/4_reset";
 @import 						"1_core/5_typography";
-//@import 						"1_core/6_grid-system"; 
 @import 						"1_core/other-important";
 
 // core sprites png and svg
