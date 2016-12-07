@@ -1,5 +1,5 @@
 // tento kod detekuje podporu REM jednotek
-// css styly najdete na teto URL adrese: /styles/css/global.css
+// css styly najdete na teto URL adrese: /assets/css/global.css
 
 //Author      : <%= project.project.author %>
 //Author URI  : www.html-factory.cz
