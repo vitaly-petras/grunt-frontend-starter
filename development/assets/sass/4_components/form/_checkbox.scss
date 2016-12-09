@@ -1,0 +1,64 @@
+.form-checkbox{
+	display: table;
+	cursor: pointer;
+	padding: 11px 0;
+
+	&:first-child{
+		margin-top:0;
+	}
+
+	&__input{
+		display: none;
+	}
+
+	&__text{
+		display: block;
+		position: relative;
+		padding-left: 35px;
+
+		font-size: 16px;
+		line-height: 17px;
+		color: $color-base;
+		@include animate(font-weight);
+
+		&:before{
+			display:block;
+			content: "";
+			@include size(17);
+			position: absolute;
+			left: 0;
+			top: 0;
+
+			border: 1px solid #B5B5B5;
+		}
+
+		&:after{
+			display: block;
+			content: "";
+			position: absolute;
+			top: 4px;
+			left: 3px;
+
+			@include sprite(checked);
+			@include animate("opacity, visibility");
+			@include opacity(0);
+			visibility: hidden;
+		}
+
+		.form-checkbox__input:checked + &{
+			@include font(semibold);
+
+			&:after{
+				@include opacity(1);
+				visibility: visible;
+			}
+		}
+	}
+
+	@include query( $query-s ){
+
+		&__text{
+			font-size: 14px;
+		}
+	}
+}

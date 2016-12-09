@@ -11,10 +11,24 @@
 
 		<div class="wrap" style="max-width:960px;margin:0 auto;padding-top:50px;line-height:2.5;">
 
-				<h1>Přehled stránek</h1>
-				<ul>
-					<li><a target="_blank" href="homepage.php">Homepage</a></li>	
-				</ul>
+			<h1>Přehled stránek</h1>
+			<ul>
+				<li>
+					<a target="_blank" href="homepage.php">
+						Homepage
+					</a>
+				</li>
+				<li>
+					<a target="_blank" href="vypis.php">
+						Výpis
+					</a>
+				</li>
+				<li>
+					<a target="_blank" href="typograficka.php">
+						Typograficka
+					</a>
+				</li>		
+			</ul>
 		</div>
 
 	</body>

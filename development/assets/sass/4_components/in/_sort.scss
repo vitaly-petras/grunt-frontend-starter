@@ -1,0 +1,23 @@
+.in-sort{
+	@include cfx();
+	max-width: 320px;
+	margin-top: 30px;
+
+	dt{
+		float: left;
+		clear: left;
+		width: 60px;
+
+		line-height: $input-height;
+		color: #231f20;
+		font-size: 14px;
+	}
+
+	dd{
+		margin-left: 65px;
+	}
+
+	select,input, .select, .select ul{
+		margin: 0;
+	}
+}

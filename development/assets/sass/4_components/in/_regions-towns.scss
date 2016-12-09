@@ -1,0 +1,44 @@
+.in-regions-towns{
+	&__title{
+		margin-bottom: 25px;
+		color: $color-primary;
+		@include font(bold);
+	}
+
+	ul{
+		@include reset-ul();
+		font-size: 0;
+
+		column-count: 2;
+	    -webkit-column-count: 2;
+	    -moz-column-count: 2;
+	    column-gap:20px;
+	    -webkit-column-gap:20px;
+	    -moz-column-gap:20px;
+
+	    .no-columns &{
+	        column-count: 1;
+	        -webkit-column-count:1;
+	        -moz-column-count:1;
+	        column-gap:0;
+	        -webkit-column-gap:0;
+	        -moz-column-gap:0;
+	    }
+
+		li{
+			font-size: 16px;
+			line-height: 24px;
+
+			a{
+				display: block;
+				text-decoration: none;
+				padding: 3px 0;
+				color: $color-base;
+
+				&:hover{
+					color: $color-link-hover;
+				}
+			}
+		}
+	}
+}

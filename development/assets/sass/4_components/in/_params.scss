@@ -1,0 +1,19 @@
+.in-params{
+	font-size: 14px;
+	line-height: 24px;
+	float: left;
+	width: 100%;
+	margin-bottom: 2px;
+
+	dt{
+		float: left;
+		width: auto;
+		clear: left;
+		margin-right: 5px;
+		@include font(semibold);
+	}
+
+	@include query(1023){
+		font-size: 13px;
+	}
+}

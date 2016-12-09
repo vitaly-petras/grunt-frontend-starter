@@ -1,0 +1,113 @@
+.list-intro{
+	padding-top: 50px;
+	@include reset-ul();
+	position: relative;
+	height: 100%;
+	overflow: hidden;
+
+	.slick-list, .slick-track, .slick-slide, .slick-slide > div{
+		height: 100%;
+	}
+
+	&__item{
+		display: table !important;
+		height: 100%;
+		width: 100%;
+
+		&__in{
+			display: table-cell;
+			vertical-align: middle;
+			position: relative;
+
+			background-repeat: no-repeat;
+			background-position: center center;
+			@include cover();
+		}
+
+		&__title{
+			margin-bottom: 20px;
+			font-size: 80px;
+			line-height: 90px;
+			color: $color-white;
+			max-width: 650px;
+			position: relative;
+
+			&:before{
+				display: block;
+				content: "";
+				width: 53px;
+				height: 5px;
+				background: $color-primary;
+				margin-bottom: 10px;
+			}
+		}
+
+		&__content{
+			margin: auto;
+			font-size: 28px;
+			line-height: 35px;
+			padding-right: 35px;
+			color: $color-white;
+		}
+	}
+
+	.slick-dots{
+		position: absolute;
+		left: 0;
+		right: 0;
+
+		bottom: 150px;
+		text-align: center;
+
+		li{
+			display: inline-block;
+			vertical-align: middle;
+			margin: 0 3px;
+			position: relative;
+
+			width: 14px;
+			height: 14px;
+			cursor: pointer;
+
+			background: transparent;
+			border: 3px solid #FFFFFE;
+            @include border-radius(25px);
+            @include animate("background, border-color, transform");
+
+			&:hover{
+          	  @include scale(1.2);
+            }
+
+			button{
+				display: block;
+				@include size(20);
+				@include align(both, -3px);
+
+				text-indent: -99999px;
+				background: transparent;
+				border: 0;
+			}
+
+			&.slick-active{
+				@include box-shadow(0 0 8px rgba(159, 14, 20, 0.5));
+				background: $color-primary;
+				border-color: $color-primary;
+
+				&:hover{
+          	 		@include scale(1);
+          		}
+			}
+		}
+	}
+
+	&:after{
+		display: block;
+		content: "";
+		height: 508px;
+		@include align(horizontal);
+		bottom: 0;
+
+		@include background("shadow.png", center bottom);
+		background-repeat: repeat-x;
+	}
+}

@@ -29,4 +29,8 @@ body {
 		width: auto;
 		padding: 0 $padding-layout;
 	}
+
+	@include query( $query-m ){
+		padding: 0 $padding-layout-small;
+	}
 }

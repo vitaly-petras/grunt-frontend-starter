@@ -12,17 +12,23 @@
 
 	font-size: $font-size;
 	line-height: $input-height - ($input-border-width*2);
-	@include font();
+	@include font(regular);
 	color: $color-base;
 
 	background: $input-bg;
 	border: $input-border-width solid $input-border;
-	@include border-radius();
 	@include animate();
+	@include border-radius(25px);
 
 	&:focus {
 		background: darken($input-bg, 5%);
 		border-color: darken($input-border, 5%);
+	}
+
+	&--secondary{
+		font-size: 16px;
+		height: 50px;
+		line-height: 48px;
 	}
 }
 
@@ -36,13 +42,13 @@ textarea {
 
 	font-size: $font-size;
 	line-height: $input-height/3*2;
-	@include font();
+	@include font(regular);
 	color: $color-base;
 
 	background: $input-bg;
 	border: $input-border-width solid $input-border;
-	@include border-radius();
 	@include animate();
+	@include border-radius(25px);
 
 	&:focus {
 		background: darken($input-bg, 5%);
@@ -60,12 +66,11 @@ select {
 
 	font-size: $font-size;
 	line-height: $input-height - ($input-border-width*2);
-	@include font();
+	@include font(regular);
 	color: $color-base;
 
 	background: $input-bg;
 	border: $input-border-width solid $input-border;
-	@include border-radius();
 	@include animate();
 }
 

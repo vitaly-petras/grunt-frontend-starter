@@ -1,39 +1,85 @@
-$list-gap: $column-gap;
+.list-items{
+	@include reset-ul();
+	font-size: 0;
+	margin: -10px -5px 60px;
 
-.list-items {
-	@include cfx();
-	margin: 0 -$list-gap/2 -$list-gap/2;
-	display: block;
+	&__item{
+		display: inline-block;
+		vertical-align: top;
+		width: percentage(1/3);
+		padding: 10px 5px 0;
+		position: relative;
 
-	&__item {
-		float: left;
-		padding: 0 $list-gap/2 $list-gap/2 $list-gap/2;
-		width: percentage(1/4);
+		&__in{
+			display: table;
+			width: 100%;
+			height: 409px;
 
-		font-size: $font-size;
-		text-align: center;
-
-		&__in {
-			display: block;
-			padding: 10px;
-			position: relative;
-
-			text-decoration: none;
+			padding: 0 25px;
+			color: $color-white;
 		}
 
-		&__title {
-			font-size: 16px;
-			font-weight: normal;
-			color: $color-link;
-			text-decoration: underline;
+		&__cell{
+			display: table-cell;
+			vertical-align: bottom;
+			position: relative;
+			z-index: 2;
 
-			.list-items__item__in:hover & {
+			background: transparent;
+			@include animate(background);
+
+			ul{
+				@include reset-ul();
+				margin-bottom: 5px;
+
+				li{
+					display: inline-block;
+					vertical-align: top;
+					font-size: 14px;
+					line-height: 16px;
+					padding: 0 10px;
+					border-left: 1px solid $color-white;
+
+					&:first-child{
+						padding-left: 0;
+						border-left: 0;
+					}
+				}
+			}
+
+			.hovered &{
+				background: $color-primary;
+			}
+		}
+
+		&__title{
+			@extend .h3;
+			@include font(bold);
+
+			a{
+				display: block;
+				color: $color-white;
 				text-decoration: none;
 			}
 		}
 
-		&__price {
-			color: $color-base;
+		&__price{
+			font-size: 16px;
+		}
+
+		&__info{
+			display: none;
+			padding: 35px 0;
+			font-size: 14px;
+			line-height: 24px;
+
+			p{
+				padding-bottom: 30px;
+			}
+		}
+
+		&__image{
+			@include align();
 		}
 	}
 }

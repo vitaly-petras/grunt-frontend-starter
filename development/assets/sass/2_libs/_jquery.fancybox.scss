@@ -86,13 +86,13 @@
 #fancybox-loading div {
 	width: 44px;
 	height: 44px;
-	background: url('../images/fancybox/fancybox_loading.gif') center center no-repeat;
+	background: url('../img/fancybox/fancybox_loading.gif') center center no-repeat;
 }
 
 .fancybox-close {
 	position: absolute;
-	top: 0px;
-	right: 0px;
+	top: -18px;
+	right: -18px;
 	width: 36px;
 	height: 36px;
 	cursor: pointer;
@@ -101,16 +101,13 @@
 	background: $color-white;
 	color: $color-black;
 	text-align: center;
-	line-height: 35px;
+	line-height: 37px;
 	text-decoration: none;
 	@include font(bold);
 	font-size: 36px;
 	padding-left: 2px;
-	font-family: Arial, Helvetica, serif;
-	text-decoration: none;
 
 	border: 1px solid $color-black;
-	@include text-shadow(0 0 5px #000);
 	@include animate("background, color, border-color");
 
 	&:before{
@@ -121,7 +118,6 @@
 	&:hover{
 		background: $color-black;
 		color: $color-white;
-		text-decoration: none;
 	}
 }
 
@@ -132,27 +128,9 @@
 	height: 100%;
 	cursor: pointer;
 	text-decoration: none;
-	background: transparent url('../images/fancybox/blank.gif'); /* helps IE */
+	background: transparent url('../img/fancybox/blank.gif'); /* helps IE */
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	z-index: 8040;
-
-	font-size: 100px;
-	line-height: 1;
-	color: $color-black;
-	font-family: Arial, Helvetica, serif;
-	@include text-shadow(0 0 5px #000);
-
-	&:before{
-		display:block;
-		height: 100px;
-		width: 100%;
-		padding: 0 10%;
-		position: absolute;
-		top: -60px;
-		bottom: -50px;
-		margin: auto;
-		left: 0;
-	}
 }
 
 .fancybox-prev {
@@ -170,28 +148,14 @@
 	visibility: hidden;
 }
 
-.fancybox-prev{
-	span{
-		left: 10px;
-		//@include sprite(prev);
-	}
-
-	&:before{
-		text-align: left;
-		content:"‹";
-	}
+.fancybox-prev span {
+	left: 10px;
+	//@include sprite(prev);
 }
 
-.fancybox-next{
-	span{
-		right: 10px;
-		//@include sprite(next);
-	}
-
-	&:before{
-		text-align: right;
-		content:"›";
-	}
+.fancybox-next span {
+	right: 10px;
+	//@include sprite(next);
 }
 
 .fancybox-nav:hover span {
@@ -229,7 +193,7 @@
 	overflow: hidden;
 	display: none;
 	z-index: 8010;
-	background: url('../images/fancybox/fancybox_overlay.png');
+	background: url('../img/fancybox/fancybox_overlay.png');
 }
 
 .fancybox-overlay-fixed {

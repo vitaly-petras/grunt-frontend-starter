@@ -21,62 +21,27 @@
 
 
 //fonts mixin
-@mixin font($font-family:sans, $font-variant:regular){
 
-	@if $font-family == roman{
-		font-family: "Roman", $font-base;
-
-		@if $font-variant == regular{
-			font-weight: 400;
-		} 
-
-		@else if $font-variant == bold{
-			font-weight: 600;
-		} 
-
-		@else{
-			@warn "No such font-VARIANT specified";
-		}
-	} 
-
-	@else if $font-family == sans{
-		font-family: "Open sans", $font-base;
-
-		@if $font-variant == regular{
-			font-weight: 400;
-		} 
-
-		@else if $font-variant == bold{
-			font-weight: 600;
-		} 
-
-		@else{
-			@warn "No such font-VARIANT specified";
-		}
-	} 
-
-	@else{
-		@warn "No such font-FAMILY specified";
-	}
-}
-//volani je potom nasledujici @include font(roman/sans, regular/bold/semibold);
-
-/*
-pokud je na webu pouze jeden font zjednodusit funkci takto
 @mixin font($font-variant:regular){
-	font-family: "Roman", $font-base;
+	font-family: "Open Sans", $font-base;
 
-	@if $font-variant == regular{
+	@if $font-variant == light{
+		font-weight: 300;
+	} 
+
+	@else if $font-variant == regular{
 		font-weight: 400;
 	} 
 
-	@else if $font-variant == bold{
+	@else if $font-variant == semibold{
 		font-weight: 600;
+	} 
+
+	@else if $font-variant == bold{
+		font-weight: 700;
 	} 
 
 	@else{
 		@warn "No such font-VARIANT specified";
 	}
 }
-volani je potom nasledujici @include font(regular/bold/semibold);
-*/

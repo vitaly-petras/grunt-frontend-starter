@@ -3,14 +3,14 @@ google.maps.event.addDomListener(window, 'load', init);
 
 function init() {
 
-    var position = {lat: 50.083765, lng: 14.419469},
+    var position = {lat: 49.938434, lng: 14.265488},
         mapElement = document.getElementById('js-map');
 
     // Basic options for a simple Google Map
     // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
     var mapOptions = {
         // How zoomed in you want the map to start at (always required)
-        zoom: 15,
+        zoom: 17,
         scrollwheel: false,
         // The latitude and longitude to center the map (always required)
         center: position,
@@ -25,18 +25,19 @@ function init() {
           position: google.maps.ControlPosition.RIGHT_TOP
         },*/
         //styly mapy (sazzymaps)
-        styles:
-        [{"featureType":"water","elementType":"geometry","stylers":[{"color":"#e9e9e9"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#ffffff"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":21}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#dedede"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#333333"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#fefefe"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#fefefe"},{"lightness":17},{"weight":1.2}]}]
     };
 
-    //obsah okna
+   //obsah okna
     var contentString = '<div class="window-map">'+
-        '<strong class="window-map__title">Rakovnické Reality</strong>'+
-        '<p>Husovo náměstí 2347, budova České spořitelny <br>269 01 Rakovník</p>'+
-        '<ul>'+
-            '<li><a href="tel:+420739166755"><i class="icon icon__map-tel"></i> +420 739 166 755</a></li>'+
-            '<li><a href="mailto:info@rakovnickereality.cz"><i class="icon icon__map-mail"></i> info@rakovnickereality.cz</a></li>'+
-        '</ul>'
+        '<p><strong>D&D reality - Petr Dvořák</strong></p>'+
+        '<p>ul. K Třešňovce 1091 Karlík 252 29</p>'+
+        '<p>IČ: 74842439</p><br>'+
+
+        '<p><strong>Telefon:</strong></p>'+
+        '<p><a href="tel:+420724036677"class="no-link-styles">+420 724 036 677</a></p>'+
+        '<p><a href="tel:+420602266783"class="no-link-styles">+420 602 266 783</a></p><br>'+
+        '<p><strong>Email:</strong></p>'+
+        '<p><a href="mailto:dvorak-real@volny.cz" class="no-link-styles">dvorak-real@volny.cz</a></p>'+
     '</div>';
 
     //obrazek
@@ -64,8 +65,8 @@ function init() {
     var marker = new google.maps.Marker({
         position: position, 
         map: map,
-        icon: image,
-        title: 'Skořepka 8 - Fashion Boutique'
+        //icon: image,
+        title: 'dd-reality'
     });
 
     //infowindow
@@ -76,11 +77,11 @@ function init() {
 
     //otevri infowindow po kliku
     marker.addListener('click', function() {
-        //infowindow.open(map, marker);
+        infowindow.open(map, marker);
     });
 
     //otevri infowindow automaticky po nacteni
-    //infowindow.open(map, marker);
+    infowindow.open(map, marker);
 }
 
 /*setTimeout(function(){//opravi chzbu v safari (nenacita mapa pres celu blok)

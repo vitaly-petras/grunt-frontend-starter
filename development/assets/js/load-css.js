@@ -1,9 +1,9 @@
 // tento kod detekuje podporu REM jednotek
 // css styly najdete na teto URL adrese: /styles/css/global.css
 
-//Author      : <%= project.project.author %>
+//Author      : Vitalij Petras
 //Author URI  : www.html-factory.cz
-//Created     : <%= grunt.template.today("dd.mm.yyyy") %>
+//Created     : 07.12.2016
 
 var cssPath = "assets/css/global";
 if( typeof version === 'undefined' || version === null ) version = "1.0";

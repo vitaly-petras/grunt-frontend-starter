@@ -1,0 +1,18 @@
+.box-contact{
+	padding: 75px 0 65px;
+	background: $color-primary;
+	text-align: center;
+	color: $color-white;
+	font-size: 18px;
+	line-height: 24px;
+
+	&__desc{
+		max-width: 820px;
+		margin: 0 auto 20px;
+	}
+
+	&__title{
+		@extend .h1;
+		@include font(light);
+	}
+}

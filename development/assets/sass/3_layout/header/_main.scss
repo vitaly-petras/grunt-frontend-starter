@@ -1,6 +1,42 @@
 .header{
-	
-	&__navigation{
-		
+	@include cfx();
+	padding: 0 20px;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 501;
+	background: $color-primary;
+
+	&__logo{
+		display: block;
+		float: left;
+		padding: 15px 0;
+		@include animate(padding);
+
+		img{
+			max-width: 100%;
+		}
+	}
+
+	&--secondary{
+		background: transparent;
+
+		.header{
+			&__logo{
+				padding: 32px 0;
+			}
+		}
+
+		&.fixed{
+			background: $color-primary;
+
+			.header{
+				&__logo{
+					padding: 15px 0;
+				}
+			}
+		}
 	}
 }

@@ -1,0 +1,82 @@
+.list-type{
+	@include reset-ul();
+	max-width: $width-layout;
+	margin: 0 auto;
+	font-size: 0;
+
+	&__item{
+		display: inline-table;
+		vertical-align: middle;
+		position: relative;
+		width: percentage(1/6);
+		height: 160px;
+
+		font-size: 18px;
+		line-height: 20px;
+		text-align: center;
+		color: $color-grey;
+		@include animate(color);
+
+		&__name{
+			display: block;
+			padding: 0 20px;
+			@include animate(color);
+
+			input:checked + &{
+				color: $color-base;
+
+				&:before{
+					border-color: $color-primary;
+				}
+
+				&+i{
+
+					&.icon__flats{@include sprite(flats-hover)}
+					&.icon__houses{@include sprite(houses-hover)}
+					&.icon__recreational-objects{@include sprite(recreational-objects-hover)}
+					&.icon__commercial-property{@include sprite(commercial-property-hover)}
+					&.icon__lands{@include sprite(lands-hover)}
+					&.icon__others{@include sprite(others-hover)}
+
+					@include scale(1.1);
+				}
+			}
+
+			&:before{
+				display: block;
+				content: "";
+
+				@include align();
+				@include size(160);
+				@include animate(border-color);
+				border: 3px solid transparent;
+				@include border-radius(200px);
+			}
+		}
+
+		&__in{
+			@include align();
+			cursor: pointer;
+			padding-top: 100px;
+
+			input{
+				display: none;
+			}
+
+			i{
+				@include align();
+				top: 0;
+				bottom: 35%;
+				margin: auto;
+				bottom: 0;
+				@include animate(transform);
+			}
+
+			&:hover{
+				i{
+					@include scale(1.1);
+				}
+			}
+		}
+	}
+}

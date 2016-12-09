@@ -1,0 +1,73 @@
+$form-range-gap:		20px;
+
+.form-range{
+	font-size: 0;
+	margin: 0 (-$form-range-gap/2) 44px;
+
+	&__in{
+		display: inline-block;
+		vertical-align: bottom;
+		width: 44.5%;
+		padding: 0 $form-range-gap/2;
+		position: relative;
+
+		font-size: 14px;
+		color: $color-base;
+
+		&:first-child{
+			width:11%;
+		}
+	}
+
+	&__unit{
+		display: block;
+		line-height: 50px;
+		position: absolute;
+		bottom: 0;
+		right: $form-range-gap/2;
+		padding: 0 18px 0 0;
+		
+		@include font(semibold);
+	}
+
+	.input{
+		margin-bottom: 0;
+		padding-right: 40px;
+
+		color: $color-base;
+	}
+
+	&__text{
+		display: block;
+		@include font(regular);
+		margin-bottom: 5px;
+	}
+
+	&__icon{
+		position: relative;
+		height: 50px;
+
+		i{
+			@include align(vertical);
+			left: 0;
+		}
+	}
+
+	@include query( $query-s ){
+		margin-left: -5px;
+		margin-right: -5px;
+
+		&__in{
+			width: 50%;
+			padding: 0 5px;
+
+			&:first-child{
+				display:none;
+			}
+		}
+
+		.input{
+			font-size: 14px;
+		}
+	}
+}
