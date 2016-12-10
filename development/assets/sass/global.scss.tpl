@@ -1,152 +1,3 @@
-<<<<<<< HEAD:development/assets/sass/global.scss
-<<<<<<< HEAD:development/assets/sass/global.scss
-/*! 
-==============================================================
-
-Project  	: dd-reality
-Author  	: Vitalij Petras
-Author URI	: www.html-factory.cz
-Created 	: 07.12.2016
-
-============================================================== 
-*/
-
-// ************************************************ //
-// 1. Core  
-// ************************************************ //
-@import 						"1_core/1_variables";
-@import 						"1_core/2_mixins"; 
-@import 						"1_core/3_used-fonts";
-@import 						"1_core/4_reset";
-@import 						"1_core/5_typography";
-//@import 						"1_core/6_grid-system"; 
-@import 						"1_core/other-important";
-
-// core sprites png and svg
-// ------------------------------------------------ 
-@import 						"1_core/sprites/sprites";
-
-// core forms
-// ------------------------------------------------ 
-@import 						"1_core/forms/buttons";
-@import 						"1_core/forms/inputs";
-@import 						"1_core/forms/labels";
-@import 						"1_core/forms/main";
-@import 						"1_core/forms/select";
-//@import 						"1_core/forms/validation";
-
-
-
-
-// ************************************************ //
-// 2. Libs  
-// ************************************************ //
-//@import 						"2_libs/animate";
-@import 						"2_libs/slick";
-@import 						"2_libs/jquery.fancybox";
-@import 						"2_libs/jquery.fancybox-thumbs";
-
-
-
-
-// ************************************************ //
-// 3. Layout  
-// ************************************************ //
-// sem patri prvky kostry pr.: hlavicka, paticka, obal webu
-// ------------------------------------------------ 
-@import 						"3_layout/layout";
-
-
-// header
-// ------------------------------------------------ 
-@import 						"3_layout/header/main";
-@import 						"3_layout/header/menu";
-//@import 						"3_layout/header/navigation";
-
-
-
-// footer
-// ------------------------------------------------ 
-@import 						"3_layout/footer/main";
-
-
-
-// ************************************************ //
-// 4. Components  
-// ************************************************ //
-// box
-// ------------------------------------------------ 
-@import 						"4_components/box/intro"; 
-@import 						"4_components/box/map"; 
-@import 						"4_components/box/contact"; 
-@import 						"4_components/box/filter"; 
-@import 						"4_components/box/desc"; 
-@import 						"4_components/box/broker"; 
-@import 						"4_components/box/header"; 
-@import 						"4_components/box/image"; 
-
-// list
-// ------------------------------------------------ 
-@import 						"4_components/list/intro"; 
-@import 						"4_components/list/advantages"; 
-@import 						"4_components/list/type"; 
-@import 						"4_components/list/types";
-@import 						"4_components/list/items"; 
-@import 						"4_components/list/gallery"; 
-@import 						"4_components/list/breadcrumb"; 
-@import 						"4_components/list/pagination"; 
-
-// table
-// ------------------------------------------------ 
-
-
-// window
-// ------------------------------------------------ 
-@import 						"4_components/window/map"; 
-@import 						"4_components/window/popup"; 
-@import 						"4_components/window/detail";
-
-// form
-// ------------------------------------------------ 
-@import 						"4_components/form/filter"; 
-@import 						"4_components/form/checkbox"; 
-@import 						"4_components/form/range";
-@import 						"4_components/form/contact"; 
-
-// wrap
-// ------------------------------------------------ 
-@import 						"4_components/wrap/section"; 
-@import 						"4_components/wrap/page"; 
-
-
-// in
-// ------------------------------------------------ 
-@import 						"4_components/in/regions-towns"; 
-@import 						"4_components/in/params"; 
-@import 						"4_components/in/sort"; 
-
-
-// ************************************************ //
-// 5. Single  
-// ************************************************ //
-// samostatne stranky (radeji nepouzivat)
-// ------------------------------------------------ 
-
-
-// ************************************************ //
-// 6 .Helpers  
-// ************************************************ //
-// pomocne tridy ve vsech velikostech
-// ------------------------------------------------ 
-// pridat xl-xs helpery + responsivity !!
-@import 						"6_helpers/0_columns";
-@import 						"6_helpers/1_helpers";
-
-=======
-@charset "UTF-8";
-/*! 
-==============================================================
-=======
 /*! 
 ==============================================================
   ___     _             ___         
@@ -161,31 +12,15 @@ Created 	: 07.12.2016
    |_|  \__,_|\___|\__\___/|_|   \__, |
                                   __/ |
                                  |___/
->>>>>>> parent of 1c68369... no message:development/assets/sass/global.scss.tpl
 
 Project  	: <%= project.project.name %>
 Author  	: <%= project.project.author %>
 Author URI	: www.html-factory.cz
 Created 	: <%= grunt.template.today("dd.mm.yyyy") %>
 
-<<<<<<< HEAD:development/assets/sass/global.scss
-----------------------------------------
----------------- POZOR! ----------------
-----------------------------------------
-
-Stylopis byl vygenerovan pomoci CSS preprocesoru.
-Nikdy needitujte primo .css soubor!
-Viz readme.txt
-
 ============================================================== 
 */
 
-
-=======
-============================================================== 
-*/
-
->>>>>>> parent of 1c68369... no message:development/assets/sass/global.scss.tpl
 // ************************************************ //
 // 1. Core  
 // ************************************************ //
@@ -194,10 +29,7 @@ Viz readme.txt
 @import 						"1_core/3_used-fonts";
 @import 						"1_core/4_reset";
 @import 						"1_core/5_typography";
-<<<<<<< HEAD:development/assets/sass/global.scss
-=======
 //@import 						"1_core/6_grid-system"; 
->>>>>>> parent of 1c68369... no message:development/assets/sass/global.scss.tpl
 @import 						"1_core/other-important";
 
 // core sprites png and svg
@@ -294,7 +126,3 @@ Viz readme.txt
 @import 						"6_helpers/0_columns";
 @import 						"6_helpers/1_helpers";
 
-<<<<<<< HEAD:development/assets/sass/global.scss
->>>>>>> bfe9e8a5895155f3faadca99f9e662ae8a47dc5e:development/assets/sass/global.scss.tpl
-=======
->>>>>>> parent of 1c68369... no message:development/assets/sass/global.scss.tpl
