@@ -235,5 +235,4 @@ sup{vertical-align: super;}
 *{
     @include box-sizing($box-sizing);
     &:before,&:after{@include box-sizing($box-sizing);}
-    @include ie7{behavior: url(./js/ie-fallbacks/boxsizing.htc);}
 }

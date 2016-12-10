@@ -70,10 +70,6 @@
 @mixin oldie{ 
     .oldie & { @content }
 }
-// conditions for IE8 + IE7 and below 
-@mixin ie7{ 
-    .oldie.ie7 & { @content }
-}
 
 @mixin align($direction:both, $position:0){
     position: absolute;
