@@ -97,7 +97,7 @@ module.exports = function(grunt) {
       //styles
       css: {
         files: '<%= project.path.scss %>**/*.scss',
-        tasks: ['sass', 'cssmin'],//, 'rem'
+        tasks: ['sass', 'autoprefixer', 'cssmin'],//, 'rem'
         // pro nativni prevod do rem jednotek vymenit 'cssmin' za 'rem'
       },
       //png sprite
@@ -355,6 +355,17 @@ module.exports = function(grunt) {
       }
     },
 
+    autoprefixer: {
+      options: {
+        browsers: ['last 2 versions', 'ie >= 8', '> 1%']
+      },
+      dev: {  
+        // expand:true,
+        src: '<%= project.path.css %>uncompressed/global.css',
+        dest: '<%= project.path.css %>uncompressed/global.css'
+      }
+    },
+
     'ftp-deploy': {
       htmlfactory: {
         auth: {
@@ -405,6 +416,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-rename');
   grunt.loadNpmTasks('grunt-px-to-rem');
   grunt.loadNpmTasks('grunt-grunticon');
+  grunt.loadNpmTasks('grunt-autoprefixer');
 
   grunt.registerTask('svg', ['clean:grunticonSVG', 'clean:grunticonPNG', 'svgmin', 'grunticon']);
 
