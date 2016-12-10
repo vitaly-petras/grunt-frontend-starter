@@ -36,20 +36,6 @@ function simulateLink(e, element){
     }
 }
 
-//najeti na produkty
-function hoverItem(element){
-    var $this = $(element),
-        $toggleTarget = $this.find(".js-toggle-me");
-
-    $toggleTarget.stop().slideDown(250);
-    $this.addClass("hovered");
-
-    $this.one("mouseleave", function(){
-        $toggleTarget.stop().slideUp(250);
-        $this.removeClass("hovered");
-    });
-}
-
 //zobrazit / schovat (pouziti onclick="toggle(event, this)")
 function toggle(e, element){
     e.preventDefault();
@@ -158,12 +144,12 @@ function imageToParentsBackground(image, className){
 }
 
 
-
 function fixedTopBar(){
 
     var $window = $(window);
 
-    var pageHeader = $("#js-header");
+    var pageHeader = $("#pageHeader"),
+        topBar = $("topBar");
     var windowTimeout;
 
     /* scrolling and fixin navigation on top */
@@ -183,16 +169,22 @@ function fixedTopBar(){
 
 
 
-                if ( windowScrollTop > 0 ) {                   
+                if ( windowScrollTop > (topBar.outerHeight()) ) {                   
+                    setTimeout(function() {
                         
-                    pageHeader.addClass('fixed');
+                        pageHeader.addClass('fixed');
                     
+                    }, 1);
                 }
                 else{
                     
                     pageHeader.removeClass('fixed');                    
                         
-                }   
+                }
+
+            
+
+                
             
         }, 50);
     });

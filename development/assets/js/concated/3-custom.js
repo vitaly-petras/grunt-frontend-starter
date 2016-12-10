@@ -9,7 +9,5 @@ $( document ).ready(function() {
         else $this.prop( "checked", true );
     });
 
-    fixedTopBar();
-
     
 });

@@ -1,4 +1,5 @@
 <<<<<<< HEAD:development/assets/sass/global.scss
+<<<<<<< HEAD:development/assets/sass/global.scss
 /*! 
 ==============================================================
 
@@ -145,12 +146,29 @@ Created 	: 07.12.2016
 @charset "UTF-8";
 /*! 
 ==============================================================
+=======
+/*! 
+==============================================================
+  ___     _             ___         
+ / / |__ | |_ _ __ ___ | \ \        
+/ /| '_ \| __| '_ ` _ \| |\ \       
+\ \| | | | |_| | | | | | |/ /       
+ \_\_| |_|\__|_| |_| |_|_/_/        
+    _____          _                      
+   |  ___|_ _  ___| |_ ___  _ __ _   _ 
+   | |_ / _` |/ __|  _/ _ \| '__| | | |
+   |  _| (_| | (__| |_ (_) | |  | |_| |
+   |_|  \__,_|\___|\__\___/|_|   \__, |
+                                  __/ |
+                                 |___/
+>>>>>>> parent of 1c68369... no message:development/assets/sass/global.scss.tpl
 
 Project  	: <%= project.project.name %>
 Author  	: <%= project.project.author %>
 Author URI	: www.html-factory.cz
 Created 	: <%= grunt.template.today("dd.mm.yyyy") %>
 
+<<<<<<< HEAD:development/assets/sass/global.scss
 ----------------------------------------
 ---------------- POZOR! ----------------
 ----------------------------------------
@@ -163,6 +181,11 @@ Viz readme.txt
 */
 
 
+=======
+============================================================== 
+*/
+
+>>>>>>> parent of 1c68369... no message:development/assets/sass/global.scss.tpl
 // ************************************************ //
 // 1. Core  
 // ************************************************ //
@@ -171,6 +194,10 @@ Viz readme.txt
 @import 						"1_core/3_used-fonts";
 @import 						"1_core/4_reset";
 @import 						"1_core/5_typography";
+<<<<<<< HEAD:development/assets/sass/global.scss
+=======
+//@import 						"1_core/6_grid-system"; 
+>>>>>>> parent of 1c68369... no message:development/assets/sass/global.scss.tpl
 @import 						"1_core/other-important";
 
 // core sprites png and svg
@@ -267,4 +294,7 @@ Viz readme.txt
 @import 						"6_helpers/0_columns";
 @import 						"6_helpers/1_helpers";
 
+<<<<<<< HEAD:development/assets/sass/global.scss
 >>>>>>> bfe9e8a5895155f3faadca99f9e662ae8a47dc5e:development/assets/sass/global.scss.tpl
+=======
+>>>>>>> parent of 1c68369... no message:development/assets/sass/global.scss.tpl

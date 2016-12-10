@@ -10,9 +10,9 @@ module.exports = function(grunt) {
   var config = {};
 
   config['project'] ={
-    'name'    : 'dd-reality',//toto jmeno/nazev bude i na ftp  //BEZ DIAKRITIKY A MEZER!!!!! + VŠECHNO MALÝMI
-    'keyword' : 'dd-reality',//klicove slovo ktere se propise vsude (css, js, sprity atd) //obvykle name = keyword //BEZ DIAKRITIKY A MEZER!!!!! + VŠECHNO MALÝMI
-    'title'   : 'dd-reality',//titulek v html sablonach
+    'name'    : 'test',//toto jmeno/nazev bude i na ftp  //BEZ DIAKRITIKY A MEZER!!!!! + VŠECHNO MALÝMI
+    'keyword' : 'test',//klicove slovo ktere se propise vsude (css, js, sprity atd) //obvykle name = keyword //BEZ DIAKRITIKY A MEZER!!!!! + VŠECHNO MALÝMI
+    'title'   : 'test',//titulek v html sablonach
     'for'     : 'htmlfactory',
     'author'  : 'Vitalij Petras'
   };

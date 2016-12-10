@@ -2,9 +2,9 @@
 /*  BUTTONS
 /*-----------------------------------------------------------------------------------*/
 
-.button{
+.button {
 	width: auto;
-	padding: 0 32px;
+	padding: 0 28px;
 	height: $btn-height;
 	line-height: $btn-height - ($btn-border-width*2);
 	vertical-align:middle;
@@ -15,24 +15,14 @@
 	background: $btn-bg;
 	cursor: pointer;
 	text-decoration: none;
-	font-size: 18px;
 	outline: none;
 
-	@include border-radius(28px);
-	@include animate("background, color");
+	@include border-radius($radius);
+	@include animate();
 
-	&:hover{
+	&:hover {
 		border-color: $btn-border-hover;
 		color: $btn-color;
 		background: $btn-bg-hover;
-	}
-
-	&--dark{
-		background: #141312;
-
-		&:hover{
-			color: $color-primary;
-			background: $color-white;
-		}
 	}
 }

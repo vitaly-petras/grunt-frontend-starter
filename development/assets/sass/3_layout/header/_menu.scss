@@ -1,91 +1,12 @@
 .menu{
 	@include reset-ul();
 	@include cfx();
-	float: right;
-	font-size: 0;
-	@include animate(padding-top);
 
 	&__item{
-		position: relative;
 		float: left;
 
 		&__in{
 			display: block;
-			padding: 26px 18px;
-			
-			font-size: 16px;
-			line-height: 20px;
-			color: $color-white;
-			text-decoration: none;
-			@include animate("background, color, padding");
-			@include border-radius(19px);
-
-			.menu__item:hover &{
-				background: $color-primary;
-				color: $color-white
-			}
-
-			.menu__item--has-submenu &{
-				@include border-radius(19px 19px 0 0);
-			}
-		}
-	}
-
-	&--secondary{
-		padding-top: 42px;
-
-		.menu__item__in{
-			padding: 15px 18px;
-		}
-
-		.fixed &{
-			padding-top: 0;
-
-			.menu__item__in{
-				padding: 26px 18px;
-			}
-		}
-	}
-
-	&__submenu{
-		@include reset-ul();
-		position: absolute;
-		top: 100%;
-		left: 0;
-		width: auto;
-		padding: 20px 0;
-		min-width: 190px;
-
-		@include opacity(0);
-		visibility: hidden;
-		@include animate("opacity, visibility");
-
-		font-size: 0;
-		z-index: 5;
-		@include border-radius(0 19px 19px 19px);
-		background: $color-primary;
-
-		.menu__item:hover &{
-			@include opacity(1);
-			visibility: visible;
-		}
-
-		&__item{
-			display: block;
-			font-size: 16px;
-			line-height: 20px;
-
-			&__in{
-				display: block;
-				color: $color-white;
-				text-decoration: none;
-				padding: 7px 18px;
-
-				&:hover{
-					color: $color-white;
-					text-decoration: underline;
-				}
-			}
 		}
 	}
 }

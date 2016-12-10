@@ -1,3 +1,14 @@
 .wrap-page{
-	padding-top: 72px;
+	height: 100%;
+	@include animate(filter);
+	@include transition-delay(0.6s);
+
+	.overflow &, .fancybox-lock &{
+		filter:blur(3px);
+		-webkit-filter:blur(3px);
+		-moz-filter:blur(3px);
+		-o-filter:blur(3px);
+		-ms-filter:blur(3px);
+		@include transition-delay(0s);
+	}
 }

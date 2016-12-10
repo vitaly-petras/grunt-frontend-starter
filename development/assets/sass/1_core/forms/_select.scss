@@ -19,13 +19,16 @@ $selectLiLineHeight:			30px;
 		position: relative;
 		height: $input-height;
 
-		@include border-radius(28px);
-		border: 1px solid $color-border;
+		@include border-radius(22px);
+		border: $input-border-width solid $input-border;
+		background: $input-bg;
 
 		li {
-			padding: 10px 27px;
-			line-height: 22px;
-			font-size: 18px;
+			padding: ($input-height - ($input-border-width*2 + $selectLiLineHeight))/2 15px;
+			line-height: selectLiLineHeight;
+
+			font-size: $font-size;
+			@include font();
 			color: $color-base;
 
 			&:first-child{
@@ -33,7 +36,9 @@ $selectLiLineHeight:			30px;
 				white-space: nowrap;
 				text-overflow: ellipsis;
 				overflow: hidden;
-				padding: 15px 27px;
+				padding-top: 0;
+				padding-bottom: 0;
+				line-height: $input-height - ($input-border-width*2);
 			}
 		}
 
@@ -42,10 +47,15 @@ $selectLiLineHeight:			30px;
 			content: "";
 
 			position: absolute;
-			right: 22px;
-			top: 22px;
+			right: 15px;
+			top: ($input-height - 6) /2;
 			@include animate(transform);
-			@include sprite(arrow-top);
+
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 6px 5px 0 5px;
+			border-color: $input-border transparent transparent transparent;
 		}
 	}
 
@@ -62,24 +72,14 @@ $selectLiLineHeight:			30px;
 
 			height: auto;
 			overflow: auto;
-			@include box-shadow(0 3px 16px rgba(0, 0, 0, 0.15));
 
 			li {
 				border-top: $input-border-width solid $input-border;
-				background: $color-white;
-				color: $color-base;
-				@include animate(font-weight);
+				background: #fff;
+				@include animate(background);
 
-				&:hover{
-					color: $color-primary;
-				}
-
-				&.selected {
-					color: #c5c5c5;
-
-					&:hover{
-						color: #c5c5c5;
-					}
+				&:hover,&.selected {
+					background: darken($input-bg, 5%);
 				}
 
 				&:first-child {
@@ -91,29 +91,6 @@ $selectLiLineHeight:			30px;
 
 			&:before{
 				@include rotate(180);
-				@include sprite(arrow-top);
-			}
-		}
-	}
-
-	&--secondary{
-		margin-bottom: 0;
-		
-		ul{
-			border: 2px solid $color-white;
-
-			li{
-				color: $color-white;
-			}
-
-			&:before{
-				@include sprite(arrow-down);
-			}
-		}
-
-		&.open {
-			ul li{
-				border-top: 0;
 			}
 		}
 	}
