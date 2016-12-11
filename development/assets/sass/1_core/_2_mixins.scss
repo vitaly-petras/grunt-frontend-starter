@@ -434,6 +434,13 @@
     overflow: hidden;
 }
 
+//omezit na jeden radek
+@mixin text-overflow(){
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 
 // Nastavuje elementu stejnou výšku a stejnou výšku řádku
 @mixin h-lh($height) {
