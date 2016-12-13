@@ -141,36 +141,40 @@
   }
 }));
 
-$( document ).ready(function() {
-  //lazy load images
-  $('[data-src]').one('inview', function(event, isInView) {
+
+
+//nacist data-src obrazky (da se volat uvnitr elementu napr: lazyLoadImages('#element')) => nacte obrazky pouze v nem
+function lazyLoadImages(el){
+  //data-imgToBG -> pro nacteni jako pozadi
+  //data-callback="funkce()" -> zavolat tuto funkci po nacteni
+  $(el + ' [data-src]').one('inview', function(event, isInView) {
     if (!isInView) { return; }
       
     var img = $(this),
-        src = img.attr("data-src");
+        src = img.attr("data-src"),
+        callback = img.attr("data-onload-callback"),
+        imgBg = img.attr("data-imgToBG");
 
-    //if is onloaded escape function
-    if (typeof src == typeof undefined || src == false) return;
-      
-    // Show a smooth animation
-    img.css('opacity', 0);
+    img.css('opacity', 0);//schovej
+
     img.load(function() { 
-      img.animate({ opacity: 1 }, 200); 
-      img.parent().addClass("loaded");
+      if (typeof imgBg !== "undefined" && imgBg !== false && imgBg !== null){//pokud obr ma nacist jako pozadi
+        imgToBg(img);
+      }else if(typeof callback !== "undefined" && callback !== false && callback !== null){//pokud existuje callback
+        eval(callback);
+      }else{//pokud nema zadne atributy proste nacti a zobraz
+        img.animate({ opacity: 1 }, 200); 
+        img.parent().addClass("loaded");
+      }
     });
     // Change src
     img.attr('src', src);
     // Remove it from live event selector
     img.removeAttr('data-src');
   });
+}   
 
-
-  //animovat elementy
-  $('.js-animate').one('inview', function(event, isInView) {
-      if(isInView) {
-        var $this = $(this),
-            animationClass = "fadeIn";//$this.attr("data-animation");
-        $this.addClass("animated").addClass(animationClass);
-      }
-  });
+$( document ).ready(function() {
+    //nacist data-src obrazky po celem dokumente
+    lazyLoadImages('');
 });

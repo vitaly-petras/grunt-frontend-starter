@@ -133,14 +133,16 @@ $(window).resize(function () {
 */
 
 
-//po nacteni obrazku v carouselu
-function imageToParentsBackground(image, className){
-    var $img = $(image),
-        $parent = $img.parents(className).first();
+//nacist obrazek jako pozadi (kvuli skvele css cover funkci, a animovat fadeIn)
+function imgToBg(el){
+    var $this = $(el),
+        src = $this.attr("src");
 
-    $parent.css("background-image", "url("+$img.attr("src")+")").addClass("imageLoaded");
-    $img.hide();
-    //pouziti <img data-lazy="" onload="imageToParentsBackground(this, '.list-intro__item')">
+    if (typeof src == typeof undefined || src == false) src = $this.attr("data-lazy");//pro slick carousel
+
+    $this.after('<div class="imgToBg" style="opacity:0;background-image:url('+src+');"></div>');
+    $this.next().animate({ opacity: 1 }, 200); //animovat zobrazeni
+    $this.remove();//odstranit puvodni img
 }
 
 

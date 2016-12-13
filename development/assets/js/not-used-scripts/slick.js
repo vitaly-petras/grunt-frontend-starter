@@ -1336,23 +1336,27 @@
 
                 var image = $(this),
                     imageSource = $(this).attr('data-lazy'),
-                    imageToLoad = document.createElement('img');
+                    imageToLoad = document.createElement('img'),
+                    imgBg = $(this).attr("data-imgToBG");
 
-                imageToLoad.onload = function() {
-                    image
-                        .animate({ opacity: 0 }, 100, function() {
-                            image
-                                .attr('src', imageSource)
-                                .animate({ opacity: 1 }, 200, function() {
-                                    image
-                                        .removeAttr('data-lazy')
-                                        .removeClass('slick-loading');
-                                });
-                        });
-                };
+                if (typeof imgBg !== "undefined" && imgBg !== false && imgBg !== null){//pokud callback NEexistuje
+                    imageToLoad.onload = function() {
+                        image
+                            .animate({ opacity: 0 }, 100, function() {
+                                image
+                                    .attr('src', imageSource)
+                                    .animate({ opacity: 1 }, 200, function() {
+                                        image
+                                            .removeAttr('data-lazy')
+                                            .removeClass('slick-loading');
+                                    });
+                            });
+                    };
 
-                imageToLoad.src = imageSource;
-
+                    imageToLoad.src = imageSource;
+                }else{//pokud existuje callback
+                    imgToBg(image);
+                }
             });
         }
 
@@ -2644,6 +2648,11 @@
 
 
 $(document).ready(function(){
+
+    //pro pouziti obrazku do pozadi pridat na img atribut "data-imgToBG"
+    //priklad: <img src="assets/images/preloader.svg" data-lazy="obrazek" data-imgToBG>
+
+    
     //vetsina karouselu
     $(".js-carousel").each(function(){
         var $this = $(this),

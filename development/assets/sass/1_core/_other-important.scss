@@ -22,7 +22,18 @@
 }
 
 img[data-src], img[data-lazy]{
-	visibility: hidden;
-	min-width: 5px;
-	min-height: 5px;
+	&:not([src]){
+		visibility: hidden;
+		min-width: 5px;
+		min-height: 5px;
+	}
+}
+
+
+.imgToBg{
+	@include align();
+
+	background-position: center center;
+	background-repeat: no-repeat;
+	@include cover();
 }
