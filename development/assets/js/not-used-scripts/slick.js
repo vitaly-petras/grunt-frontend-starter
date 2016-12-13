@@ -1340,6 +1340,9 @@
                     imgBg = $(this).attr("data-imgToBG");
 
                 if (typeof imgBg !== "undefined" && imgBg !== false && imgBg !== null){//pokud callback NEexistuje
+                    $(this).attr("src", imageSource).css("opacity", 0);
+                    imgToBg($(this));
+                }else{//pokud existuje callback
                     imageToLoad.onload = function() {
                         image
                             .animate({ opacity: 0 }, 100, function() {
@@ -1354,8 +1357,6 @@
                     };
 
                     imageToLoad.src = imageSource;
-                }else{//pokud existuje callback
-                    imgToBg(image);
                 }
             });
         }
