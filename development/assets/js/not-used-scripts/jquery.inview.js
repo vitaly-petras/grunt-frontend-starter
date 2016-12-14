@@ -117,9 +117,7 @@
       }
 
       if (elementOffset.top + elementSize.height > viewportOffset.top &&
-          elementOffset.top < viewportOffset.top + viewportSize.height &&
-          elementOffset.left + elementSize.width > viewportOffset.left &&
-          elementOffset.left < viewportOffset.left + viewportSize.width) {
+          elementOffset.top < viewportOffset.top + viewportSize.height) {
         if (!inView) {
           $element.data('inview', true).trigger('inview', [true]);
         }
