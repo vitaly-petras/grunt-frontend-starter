@@ -32,7 +32,15 @@ function simulateLink(e, element){
     if( !target.is("a") && !target.parent().is("a") ){
         e.preventDefault();
         var $link = $this.find(".js-simulate-link-target").first();
-        if( $link.length>0 ) window.location = $link.attr("href");
+        if( $link.length>0 ){//pokud odkaz existuje
+            var blank = $link.attr('target'),
+                url = $link.attr("href");
+
+            if( typeof blank !== typeof undefined && blank !== false)//pokud otevrit v novem okne
+                window.open(url, '_blank');
+            else //prejit normalne po odkazu
+                window.location = url;    
+        }
     }
 }
 
