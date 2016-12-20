@@ -33,11 +33,11 @@ function simulateLink(e, element){
         e.preventDefault();
         var $link = $this.find(".js-simulate-link-target").first();
         if( $link.length>0 ){//pokud odkaz existuje
-            var blank = $link.attr('target'),
+            var target = $link.attr('target'),
                 url = $link.attr("href");
 
-            if( typeof blank !== typeof undefined && blank !== false)//pokud otevrit v novem okne
-                window.open(url, '_blank');
+            if( typeof target !== typeof undefined && target !== false)//pokud otevrit v novem okne
+                window.open(url, target);
             else //prejit normalne po odkazu
                 window.location = url;    
         }
