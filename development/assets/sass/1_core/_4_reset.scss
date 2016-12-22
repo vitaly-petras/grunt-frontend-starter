@@ -25,6 +25,9 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section, main, time {
 	display: block;
 }
+html{
+    -ms-overflow-style: -ms-autohiding-scrollbar;//fix skoku pri otevreni okna
+}
 body {
 	line-height: 1;
 }
