@@ -133,6 +133,7 @@
     $gap:remove-units($gap) * 1px;
     margin: -$gap (-$gap/2) 0;
     font-size: 0;
+    clear: both;
 
     &__item{
         display: inline-block;
