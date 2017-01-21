@@ -1,11 +1,9 @@
 body {
 	background-color: $bg;
 
-	&.overflow{
+	&.overflow, &.test-overflow{
 		height: 100%;
 		overflow: hidden;
-		position: fixed;
-		top: 0;
 	}
 }
 
