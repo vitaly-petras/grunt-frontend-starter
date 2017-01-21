@@ -3,6 +3,7 @@ $( document ).ready(function() {
    $html.addClass("page-ready");
 
    if( !$html.hasClass("oldie") ){//pokud se nejedna o IE8
+      document.addEventListener("touchstart", function() {},false);//hover event pro dotykova zarizeni
 
       var supports = (function() {
          var div = document.createElement('div'),

@@ -4,7 +4,7 @@
 function clouseOnBlur(el, target){
     if( el.hasClass("js-toggle-activated") ){
         setTimeout(function(){
-            $body.one("click touchstart", function(event){
+            $body.one("click", function(event){
                 if(!$(event.target).closest(el).length && !$(event.target).closest(target).length) {//kliknuti mimo elementy
                     el.click();//zavre cilovy blok
                     //console.log("clicked out");
