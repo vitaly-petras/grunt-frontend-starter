@@ -1,6 +1,6 @@
 {{#each customselectors}}{{this}},{{/each}}
 {{prefix}}{{name}} {
 	background-image: url('{{datauri}}');
-	width: {{this}};{{/width}}{{#height}}
-	height: {{this}};{{/height}}
+	{{#width}}width: {{this}};{{/width}}
+	{{#height}}height: {{this}};{{/height}}
 }
