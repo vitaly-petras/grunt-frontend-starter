@@ -31,6 +31,8 @@ Viz readme.txt
 // core sprites png and svg
 // ------------------------------------------------ 
 @import 						"1_core/sprites/sprites";
+@import 						"1_core/sprites/grunticon-dimensions";
+
 
 // core forms
 // ------------------------------------------------ 
