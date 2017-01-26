@@ -108,7 +108,7 @@ module.exports = function(grunt) {
       //svg sprite
       svgSprite: {
         files: ['<%= project.path.sprites %>svg-sprite/*.{svg,png}'],
-        tasks: ['clean:grunticonSVG', 'clean:grunticonPNG', 'svgmin', 'grunticon'],
+        tasks: ['clean:grunticonSVG', 'clean:grunticonPNG', 'svgmin', 'grunticon', "html_factory_grunticon_finisher"],
         
         //tasks: ['svg_sprite', 'svg2png'],
       },
@@ -366,6 +366,20 @@ module.exports = function(grunt) {
       }
     },
 
+    html_factory_grunticon_finisher: {
+        options: {
+            pathToPngFile:          config['path']["sprites"] + "grunticon/icons.data.png.css",
+            pathToSvgFile:          config['path']["sprites"] + "grunticon/icons.data.svg.css",
+            pathToFallbackFile:     config['path']["sprites"] + "grunticon/icons.fallback.css",
+            targetPngFile:          config['path']["sprites"] + "grunticon/icons.data.png.css",
+            targetSvgFile:          config['path']["sprites"] + "grunticon/icons.data.svg.css",
+            targetFallbackFile:     config['path']["sprites"] + "grunticon/icons.fallback.css",
+            targetDimensionsFile:   config['path']["scss"] + "1_core/sprites/_grunticon-dimensions.scss"
+        },
+        html_factory_grunticon_finisher: {
+        }
+    },
+
     'ftp-deploy': {
       htmlfactory: {
         auth: {
@@ -417,8 +431,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-px-to-rem');
   grunt.loadNpmTasks('grunt-grunticon');
   grunt.loadNpmTasks('grunt-autoprefixer');
+  grunt.loadNpmTasks('grunt-html-factory-grunticon-finisher');
 
-  grunt.registerTask('svg', ['clean:grunticonSVG', 'clean:grunticonPNG', 'svgmin', 'grunticon']);
+  grunt.registerTask('svg', ['clean:grunticonSVG', 'clean:grunticonPNG', 'svgmin', 'grunticon', "html_factory_grunticon_finisher:html_factory_grunticon_finisher"]);
 
   grunt.registerTask('default', ['watch']);
 
