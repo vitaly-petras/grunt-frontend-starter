@@ -25,4 +25,4 @@ function checkRem(attribute, test){
 if(!checkRem("fontSize", "1rem")){
   cssPath += "-rem-fallback";//nacti PX fallback
 }
-document.write('<link rel="stylesheet" type="text/css" media="screen" href="'+cssPath+'.css?v='+version+'">');
+document.write('<link rel="stylesheet" media="screen" href="'+cssPath+'.css?v='+version+'">');
