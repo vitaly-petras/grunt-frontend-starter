@@ -229,7 +229,7 @@
 	overflow: hidden;
 	display: none;
 	z-index: 8010;
-	background: url('../images/fancybox/fancybox_overlay.png');
+	@include rgba($color-black, 0.75);
 }
 
 .fancybox-overlay-fixed {
