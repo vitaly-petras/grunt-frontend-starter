@@ -428,11 +428,20 @@
 
 
 // Nastavuje výšku řádku a počet řádků, kolik si element bude udržovat a kde text usekne
-@mixin eliminate-lines($height-line, $count-line) {
+//prvni hodnota = pocet radku
+//druha hodnota = line-height v px
+//treti hodnota = font-size, pokud je jiny nez ktery je globalni
+@mixin eliminate-lines($count-line, $height-line:default, $font-size:$font-size) {
     display: block;
-    height: remove-units($height-line) * remove-units($count-line) +px;
-    line-height: remove-units($height-line) +px;
     overflow: hidden;
+
+    @if $height-line == default{//pokud je to defaultni
+        height: remove-units($line-height) * remove-units($count-line) +em;
+        line-height: remove-units($line-height) +em;
+    }@else{//pokud ne pocitej
+        height: remove-units($height-line/$font-size) * remove-units($count-line) +em;
+        line-height: remove-units($height-line/$font-size) +em;
+    }
 }
 
 //omezit na jeden radek
