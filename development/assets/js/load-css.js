@@ -5,7 +5,7 @@
 //Author URI  : www.html-factory.cz
 //Created     : <%= grunt.template.today("dd.mm.yyyy") %>
 
-var cssPath = "assets/css/global";
+var cssPath = "/assets/css/global";
 if( typeof version === 'undefined' || version === null ) version = "1.0";
 
 function checkRem(attribute, test){
