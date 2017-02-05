@@ -9,6 +9,7 @@
 
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<meta name="Author" content="www.html-factory.cz" />
 		
@@ -21,9 +22,6 @@
 		?>
 		<base href="<?php echo $path; ?>"><!--toto zmenit dle aktualniho serveru !!!! -->
 
-		<meta content="noindex,nofollow" name="robots">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui"> 
-
 		<!--[if lt IE 9]><script src="assets/js/ie-fallbacks/html5.js"></script><![endif]-->
 		<script>
 			var version = <?php echo $version ?>;
@@ -34,7 +32,13 @@
 			<link rel="stylesheet" media="screen" href="assets/css/global-rem-fallback.css?v=<?php echo $version ?>">
 		</noscript>
 
-		<title><%= project.project.title %></title>
+		
+		<!-- !!! vyplnit dulezite SEO metatagy !!! -->
+			<title><%= project.project.title %></title>
+			<meta content="noindex,nofollow" name="robots"><!-- nezapomenout zde umazat "NO"index, "NO"follow -->
+			<meta name="description" content="popis vaseho webu">
+			<meta name="keywords" content="klíčová slova webu">
+		<!-- //vyplnit dulezite SEO metatagy -->
 	</head>
 	<body>
 
