@@ -22,7 +22,7 @@
 		<base href="<?php echo $path; ?>"><!--toto zmenit dle aktualniho serveru !!!! -->
 
 		<meta content="noindex,nofollow" name="robots">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui"> 
 
 		<!--[if lt IE 9]><script src="assets/js/ie-fallbacks/html5.js"></script><![endif]-->
 		<script>
