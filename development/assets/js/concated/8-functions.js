@@ -135,15 +135,15 @@ $(window).resize(function () {
 */
 
 
+
 //nacist obrazek jako pozadi (kvuli skvele css cover funkci, a animovat fadeIn)
 function imgToBg(el){
     var $this = $(el),
-        src = $this.attr("src");
+        src = $this.attr("data-src");
 
     if (typeof src == typeof undefined || src == false) src = $this.attr("data-lazy");//pro slick carousel
 
-    $this.after('<div class="imgToBg" style="opacity:0;background-image:url('+src+');"></div>');
-    $this.next().animate({ opacity: 1 }, 200); //animovat zobrazeni
+    $this.after('<div class="imgToBg" style="background-image:url('+src+');"></div>');
     $this.remove();//odstranit puvodni img
 }
 

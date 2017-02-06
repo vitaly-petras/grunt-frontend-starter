@@ -151,18 +151,24 @@ function lazyLoadImages(el){
     var img = $(this),
         src = img.attr("data-src"),
         callback = img.attr("data-onload-callback"),
-        imgBg = img.attr("data-imgToBG");
+        imgBg = img.attr("data-imgToBG"),
+        imageToLoad = document.createElement('img');
 
-    // Change src
-    img.attr('src', src);
+    imageToLoad.src = src;
 
-    if (typeof imgBg !== "undefined" && imgBg !== false && imgBg !== null){//pokud obr ma nacist jako pozadi
-      imgToBg(img);
-    }else if(typeof callback !== "undefined" && callback !== false && callback !== null){//pokud existuje callback
-      eval(callback);
-    }
-    // Remove it from live event selector
-    img.removeAttr('data-src');
+    imageToLoad.onload = function() {//image loaded
+
+        if (typeof imgBg !== "undefined" && imgBg !== false && imgBg !== null){//pokud obr ma nacist jako pozadi
+          imgToBg(img);
+        }else{//pokud neni imgtobg
+          // Change src
+          img.attr('src', src).removeAttr('data-src');
+
+          if(typeof callback !== "undefined" && callback !== false && callback !== null){//pokud existuje callback
+            eval(callback);
+          }
+        }
+    };
   });
 }   
 
