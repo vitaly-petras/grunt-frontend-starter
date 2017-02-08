@@ -6,22 +6,27 @@
 <!--[if IE 9 ]><html lang="cs" class="no-js ie9"><![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--><html lang="cs" class="no-js"><!--<![endif]-->
 	<head>
+		<!-- ostatni -->
+			<meta charset="UTF-8">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+			<meta name="Author" content="www.html-factory.cz" />
+		<!-- //ostatni -->
 
-		<meta name="Author" content="www.html-factory.cz" />
 
-		<!--[if lt IE 9]><script src="/assets/js/ie-fallbacks/html5.js"></script><![endif]-->
-		<script>
-			var version = <?php echo $version ?>;
-			document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');//nastav tridu js pokud je javascript povoleny
-		</script>
-		<script src="/assets/js/load-css.js?v=<?php echo $version ?>"></script>
-		<noscript>
-			<link rel="stylesheet" media="screen" href="/assets/css/global-rem-fallback.css?v=<?php echo $version ?>">
-		</noscript>
+		<!-- scripty a styly -->
+			<!--[if lt IE 9]><script src="/assets/js/ie-fallbacks/html5.js"></script><![endif]-->
+			<script>
+				var version = <?php echo $version ?>;
+				document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');//nastav tridu js pokud je javascript povoleny
+			</script>
+			<script src="/assets/js/load-css.js?v=<?php echo $version ?>"></script>
+			<noscript>
+				<link rel="stylesheet" media="screen" href="/assets/css/global-rem-fallback.css?v=<?php echo $version ?>">
+				<link rel="stylesheet" type="text/css" media="screen" href="/assets/images/sprites/grunticon/icons.fallback.css?v=<?php echo $version ?>">
+			</noscript>
+		<!-- scripty a styly -->
 
 		
 		<!-- !!! vyplnit dulezite SEO metatagy !!! -->
