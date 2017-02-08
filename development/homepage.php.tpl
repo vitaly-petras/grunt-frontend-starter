@@ -40,6 +40,11 @@
 
 
 
+	
+
+		<!-- local fotns --><!-- pokud se fonty nenacitaji lokalne smazat !!! -->
+			<link rel="stylesheet" type="text/css" media="screen" href="assets/css/local-fonts-loader.css?v=<?php echo $version ?>">
+		<!-- //local fotns -->
 
 		<!-- skript pro vlozeni svg ikonek (pokud se nepouziva odstranit!!!) -->
 		<!-- pro vlozeni inline-svg je potreba atribut "data-grunticon-embed" -->
