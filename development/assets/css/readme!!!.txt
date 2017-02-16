@@ -2,7 +2,7 @@
 	Upozornění - velmi důležité!
 -------------------------------------------------- */
 
-V žádném případě zasahujte do hlavních CSS stylů, důvod?
+V žádném případě nezasahujte do hlavních CSS stylů, důvod?
 
 1) CSS styly se generuji automaticky pomoci nastroje GRUNT.
 
