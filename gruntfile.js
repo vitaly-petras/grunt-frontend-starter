@@ -108,7 +108,7 @@ module.exports = function(grunt) {
       //svg sprite
       svgSprite: {
         files: ['<%= project.path.sprites %>svg-sprite/*.{svg,png}'],
-        tasks: ['clean:grunticonSVG', 'clean:grunticonPNG', 'svgmin', 'grunticon', "html_factory_grunticon_finisher"],
+        tasks: ['clean:grunticonSVG', 'clean:grunticonPNG', 'svgmin', 'grunticon', "html_factory_grunticon_finisher", 'sass', 'autoprefixer', 'cssmin'],
         
         //tasks: ['svg_sprite', 'svg2png'],
       },
@@ -433,7 +433,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-html-factory-grunticon-finisher');
 
-  grunt.registerTask('svg', ['clean:grunticonSVG', 'clean:grunticonPNG', 'svgmin', 'grunticon', "html_factory_grunticon_finisher:html_factory_grunticon_finisher"]);
+  grunt.registerTask('svg', ['clean:grunticonSVG', 'clean:grunticonPNG', 'svgmin', 'grunticon', "html_factory_grunticon_finisher:html_factory_grunticon_finisher", 'sass', 'autoprefixer', 'cssmin']);
 
   grunt.registerTask('default', ['watch']);
 
