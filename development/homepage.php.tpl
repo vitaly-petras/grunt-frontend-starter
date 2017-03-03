@@ -16,7 +16,7 @@
 		<!-- scripty a styly -->
 			<!--[if lt IE 9]><script src="/assets/js/ie-fallbacks/html5.js"></script><![endif]-->
 			<script>
-				var version = <?php echo $version ?>;
+				var version = "<?php echo $version ?>";
 				document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');//nastav tridu js pokud je javascript povoleny
 			</script>
 			<script src="/assets/js/load-css.js?v=<?php echo $version ?>"></script>
