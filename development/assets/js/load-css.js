@@ -1,7 +1,7 @@
 // tento kod detekuje podporu REM jednotek
 // css styly najdete na teto URL adrese: /assets/css/global.css
 
-var cssPath = "/assets/css/global";
+var cssPath = "assets/css/global";
 if( typeof version === 'undefined' || version === null ) version = "1.0";
 
 function checkRem(attribute, test){
