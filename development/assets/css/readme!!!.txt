@@ -4,6 +4,8 @@
 
 V žádném případě nezasahujte do hlavních CSS stylů, důvod?
 
+-------------------------------------------------- */
+
 1) CSS styly se generuji automaticky pomoci nastroje GRUNT.
 
 2) CSS styly jsou napsane pomoci preprocessoru SASS.
