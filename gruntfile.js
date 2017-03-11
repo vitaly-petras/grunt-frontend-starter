@@ -23,6 +23,7 @@ module.exports = function(grunt) {
     'css'     : 'development/assets/css/',
     'js'      : 'development/assets/js/',
     'sprites' : 'development/assets/images/sprites/',
+    'icons'   : 'development/assets/icons/',
     'send_folder' : 'send-project/',
   };
 
@@ -248,7 +249,7 @@ module.exports = function(grunt) {
               expand: true,
               cwd: '<%= project.path.sprites %>svg-sprite/',
               src: ['*.svg', '*.png'],
-              dest: "<%= project.path.sprites %>/grunticon/svg"
+              dest: "<%= project.path.icons %>svg"
           }]
       }
     },
@@ -257,9 +258,9 @@ module.exports = function(grunt) {
       myIcons: {
         files: [{
             expand: true,
-            cwd: '<%= project.path.sprites %>grunticon/svg',
+            cwd: '<%= project.path.icons %>svg',
             src: ['*.svg', '*.png'],
-            dest: "<%= project.path.sprites %>/grunticon"
+            dest: "<%= project.path.icons %>"
         }],
         options: {
           enhanceSVG: true,
@@ -331,10 +332,10 @@ module.exports = function(grunt) {
         '<%= project.path.scss %>global.scss.tpl'
       ],
       grunticonSVG: [
-        '<%= project.path.sprites %>/grunticon/svg'
+        '<%= project.path.icons %>svg'
       ],
       grunticonPNG: [
-        '<%= project.path.sprites %>/grunticon/png'
+        '<%= project.path.icons %>png'
       ],
       sass: [
         '<%= project.path.send_folder %>assets/sass'
@@ -368,12 +369,12 @@ module.exports = function(grunt) {
 
     html_factory_grunticon_finisher: {
         options: {
-            pathToPngFile:          config['path']["sprites"] + "grunticon/icons.data.png.css",
-            pathToSvgFile:          config['path']["sprites"] + "grunticon/icons.data.svg.css",
-            pathToFallbackFile:     config['path']["sprites"] + "grunticon/icons.fallback.css",
-            targetPngFile:          config['path']["sprites"] + "grunticon/icons.data.png.css",
-            targetSvgFile:          config['path']["sprites"] + "grunticon/icons.data.svg.css",
-            targetFallbackFile:     config['path']["sprites"] + "grunticon/icons.fallback.css",
+            pathToPngFile:          config['path']["icons"] + "icons.data.png.css",
+            pathToSvgFile:          config['path']["icons"] + "icons.data.svg.css",
+            pathToFallbackFile:     config['path']["icons"] + "icons.fallback.css",
+            targetPngFile:          config['path']["icons"] + "icons.data.png.css",
+            targetSvgFile:          config['path']["icons"] + "icons.data.svg.css",
+            targetFallbackFile:     config['path']["icons"] + "icons.fallback.css",
             targetDimensionsFile:   config['path']["scss"] + "1_core/sprites/_grunticon-dimensions.scss"
         },
         html_factory_grunticon_finisher: {
