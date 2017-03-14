@@ -149,14 +149,19 @@
 }
 
 // justify elements
-@mixin justify($width:174, $vertical-align:top){
+@mixin justify($width:auto, $vertical-align:top){
     text-align: justify;
     line-height: 1;
 
     &__item{
         display: inline-block;
-        width: remove-units($width)+px;
-        vertical-align: $vertical-align;    
+        vertical-align: $vertical-align;  
+
+        @if $width == "auto"{
+            width:auto;
+        }@else{
+            width:remove-units($width)+px;
+        }  
 
         position: relative;
         top: 1em; // your line-height
