@@ -1,10 +1,7 @@
 <?php $version = "1.0" //verze stylu, scriptu = proti cachovani ?>
 
 <!DOCTYPE html>
-<!--[if lt IE 8 ]><html lang="cs" class="no-js oldie ie7 no-svg no-transform no-columns no-boxshadow no-css-animations"><![endif]-->
-<!--[if IE 8 ]><html lang="cs" class="no-js oldie no-svg no-transform no-columns no-boxshadow no-css-animations"><![endif]-->
-<!--[if IE 9 ]><html lang="cs" class="no-js ie9"><![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--><html lang="cs" class="no-js"><!--<![endif]-->
+<html lang="cs" class="no-js">
 	<head>
 		<!-- ostatni -->
 			<meta charset="UTF-8">

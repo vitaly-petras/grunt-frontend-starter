@@ -1,41 +1,62 @@
 $( document ).ready(function() {
+   //IE detection
+   var ie = (function(){
+      var undef,
+         v = 3,
+         div = document.createElement('div'),
+         all = div.getElementsByTagName('i');
 
-   $html.addClass("page-ready");
+      while (
+         div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i><![endif]-->',
+         all[0]
+      );
 
-   if( !$html.hasClass("oldie") ){//pokud se nejedna o IE8
+      return v > 4 ? v : undef;
+   }());
+
+
+   //other properties support detection
+   var supports = (function() {
+      var div = document.createElement('div'),
+         vendors = 'ms O Moz Webkit'.split(' '),
+         len = vendors.length;
+    
+      return function(prop) {
+         if ( prop in div.style ) return true;
+    
+         prop = prop.replace(/^[a-z]/, function(val) {
+            return val.toUpperCase();
+         });
+    
+         while(len--) {
+            if ( vendors[len] + prop in div.style ) {
+               // browser supports box-shadow. Do what you need.
+               // Or use a bang (!) to test if the browser doesn't.
+               return true;
+            } 
+         }
+         return false;
+      };
+   })();
+
+
+   var   pns = "",//properties not supported
+         ptt = ["transform", "columnCount", "textShadow", "boxShadow"];//properties to test
+
+   if( ie == 9 ) pns += " ie9";//Internet Explorer 9
+   if( ie < 9 ) //Internet Explorer 8 and older
+      pns += " oldie";
+   else{
       document.addEventListener("touchstart", function() {},false);//hover event pro dotykova zarizeni
 
-      var supports = (function() {
-         var div = document.createElement('div'),
-            vendors = 'Khtml ms O Moz Webkit'.split(' '),
-            len = vendors.length;
-       
-         return function(prop) {
-            if ( prop in div.style ) return true;
-       
-            prop = prop.replace(/^[a-z]/, function(val) {
-               return val.toUpperCase();
-            });
-       
-            while(len--) {
-               if ( vendors[len] + prop in div.style ) {
-                  // browser supports box-shadow. Do what you need.
-                  // Or use a bang (!) to test if the browser doesn't.
-                  return true;
-               } 
-            }
-            return false;
-         };
-      })();
-
-      if ( !supports('transform') ) {
-         document.documentElement.className += ' no-transform';
-      }
-
-      if ( !supports('columnCount') ) {
-         document.documentElement.className += ' no-columns';
+      for (i = 0; i < ptt.length; i++) {//test properties
+         //if( !supports(ptt[i]) ) pns += ' no-'+ptt[i];
       }
    }
+      
+   
+
+      
    /* -- another properties -- */
    //textShadow
    //boxShadow
@@ -44,34 +65,16 @@ $( document ).ready(function() {
    // no-css-animations (animation)
    // no-columns-count (columnCount)
 
-   //svg support
-   if (typeof SVGRect == "undefined"){
-      $html.addClass("no-svg");
-
-      $("img.png-fall-back").each(function(){
-         var $this = $(this),
-            src = $this.attr("src"),
-            attr = "src";
-
-         if (typeof src == typeof undefined || src == false){
-            src = $this.attr("data-src");
-            attr = "data-src";
-         }
-            
-         var newSrc = src.replace(".svg", ".png");
-         $this.attr(attr, newSrc);
-      });
-   }
+   
+   if (typeof SVGRect == "undefined")//svg support
+      pns += " no-svg";
 
 
    //detect touch devices (tablets/mobile)
    var isTouch = (('ontouchstart' in window) || (navigator.msMaxTouchPoints > 0));
-   if( isTouch == true && $window.width() < 1024 ) $html.addClass("touch-device");
+   if( isTouch == true && $window.width() < 1024 ) pns +=" touch-device";
 
-
-   $window.on("load", function(){
-      $body.addClass("page-loaded");
-   });
+   $html.addClass(pns);
 });
 
 
