@@ -143,18 +143,21 @@
 //nacist data-src obrazky (da se volat uvnitr elementu napr: lazyLoadImages('#element')) => nacte obrazky pouze v nem
 function lazyLoadImages(el){
   //data-imgToBG -> pro nacteni jako pozadi
-  //data-callback="funkce(this)" -> zavolat tuto funkci po nacteni
+  //data-callback="funkce()" -> zavolat tuto funkci po nacteni
   $(el + ' [data-src]').one('inview', function(event, isInView) {
     if (!isInView) { return; }
       
     var img = $(this),
         src = img.attr("data-src"),
         callback = img.attr("data-onload-callback"),
-        imgBg = img.attr("data-imgToBG");
+        imgBg = img.attr("data-imgToBG"),
+        imageToLoad = document.createElement('img');
 
-    img.load(function() { 
+    imageToLoad.src = src;
+
+    imageToLoad.onload = function() {//image loaded
       img.attr('src', src).removeAttr('data-src');
-    });
+    }
     if (typeof imgBg !== "undefined" && imgBg !== false && imgBg !== null){//pokud obr ma nacist jako pozadi
       imgToBg(img);
     }else if(typeof callback !== "undefined" && callback !== false && callback !== null){//pokud existuje callback
