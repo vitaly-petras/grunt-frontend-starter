@@ -395,7 +395,12 @@
 
 // Clearfix
 @mixin cfx() {
-    @extend %clearfix;
+    *zoom:1;
+    &:after {
+        content:"";
+        display:table;
+        clear:both;
+    }
 }
 
 // Preloader
