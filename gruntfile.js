@@ -327,6 +327,9 @@ module.exports = function(grunt) {
       project: [
         '<%= project.path.send_folder %>**'
       ],
+      gruntIconLoader: [
+        '<%= project.path.icons %>grunticon.loader.js'
+      ],
     },
 
     compress: {
@@ -363,6 +366,18 @@ module.exports = function(grunt) {
         },
         html_factory_grunticon_finisher: {
         }
+    },
+
+    file_append: {
+      gruntIcon: {
+        files: [
+          {
+            append: 'grunticon(["assets/icons/icons.data.svg.css", "assets/icons/icons.data.png.css", "assets/icons/icons.fallback.css"], grunticon.svgLoadedCallback );',
+            input: '<%= project.path.icons %>grunticon.loader.js',
+            output: '<%= project.path.js %>concated/00-grunticon.loader.js'
+          }
+        ]
+      }
     },
 
     'ftp-deploy': {
@@ -417,8 +432,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-grunticon');
   grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-html-factory-grunticon-finisher');
+  grunt.loadNpmTasks('grunt-file-append');
 
-  grunt.registerTask('svg', ['clean:grunticonSVG', 'clean:grunticonPNG', 'svgmin', 'grunticon', "html_factory_grunticon_finisher:html_factory_grunticon_finisher", 'sass', 'autoprefixer', 'cssmin']);
+  grunt.registerTask('svg', ['clean:grunticonSVG', 'clean:grunticonPNG', 'svgmin', 'grunticon', 'file_append', 'clean:gruntIconLoader', 'html_factory_grunticon_finisher:html_factory_grunticon_finisher', 'sass', 'autoprefixer', 'cssmin']);
 
   grunt.registerTask('default', ['watch']);
 

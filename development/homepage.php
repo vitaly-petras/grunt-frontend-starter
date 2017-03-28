@@ -41,23 +41,10 @@
 			<link rel="stylesheet" type="text/css" media="screen" href="assets/css/local-fonts-loader.css?v=<?php echo $version ?>">
 		<!-- //local fotns -->
 
-		<!-- skript pro vlozeni svg ikonek (pokud se nepouziva odstranit!!!) -->
-		<!-- pro vlozeni inline-svg je potreba atribut "data-grunticon-embed" -->
-			<script src="assets/icons/grunticon.loader.js"></script>
-			<script>
-				grunticon(["assets/icons/icons.data.svg.css", "assets/icons/icons.data.png.css", "assets/icons/icons.fallback.css"], grunticon.svgLoadedCallback );
-			</script>
-		<!-- //script ikonek -->
-
-		<!-- nacitani jQuery knihovny -->
-			<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-			<script>window.jQuery || document.write('<script src="assets/js/libs/jquery-1.11.3.min.js"><\/script>')</script>
-		<!-- //nacitani jQuery knihovny -->
-
 		<!-- nacitani vsech scripu a funkci -->
 			<script src="assets/js/all.min.js?v=<?php echo $version ?>"></script>
 		<!-- //nacitani vsech scripu a funkci -->
-
+		
 		<!-- nacitani fallbacku pro starsi prohlizece -->
 			<!--[if lt IE 9]><script src="assets/js/ie-fallbacks/respond.min.js"></script><![endif]-->
 			<!--[if lte IE 9]><script src="assets/js/ie-fallbacks/placeholders.js"></script><![endif]-->
