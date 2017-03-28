@@ -6,26 +6,23 @@
 		<!-- ostatni -->
 			<meta charset="UTF-8">
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimal-ui">
+			<link rel="stylesheet" media="screen" href="assets/css/global.css?v=<?php echo $version ?>" id="global-styles">
 		<!-- //ostatni -->
 
-		<link rel="stylesheet" media="screen" href="assets/css/global.css?v=<?php echo $version ?>" id="global-styles">
-
-		<!-- critical js (nezbytne skripty ktere detekuji podporu css a jinych vlastnosti) -->
+		<!-- critical js (nezbytne skripty ktere detekuji podporu css a jinych dulezitych vlastnosti) -->
 			<script>
-				document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');//nastav tridu js pokud je javascript povoleny
+				function checkRem(a,b){var c=!1;try{var d=document.createElement("div");d.style[a]=b,d.style[a]===b&&(c=!0)}catch(e){}return c}if(document.documentElement.className=document.documentElement.className.replace(/\bno-js\b/,"js"),!checkRem("fontSize","1rem")){var gs=document.getElementById("global-styles");gs.href=gs.href.replace(".css","-rem-fallback.css")}var pns="",ptt=["transform","columnCount","textShadow","boxShadow"];"undefined"==typeof SVGRect&&(pns+=" no-svg"),1==("ontouchstart"in window||navigator.msMaxTouchPoints>0)&&document.body.clientWidth<1024&&(pns+=" touch-device"),document.documentElement.className+=pns;
 			</script>
 		<!-- //critical js -->
 
-		<!-- scripty a styly -->
+		<!-- Fallback pro 'IE8' a 'bez javascriptu' -->
 			<!--[if lt IE 9]><script src="assets/js/ie-fallbacks/html5.js"></script><![endif]-->
-			
 			<noscript>
 				<link rel="stylesheet" media="screen" href="assets/css/global-rem-fallback.css?v=<?php echo $version ?>">
 				<link rel="stylesheet" type="text/css" media="screen" href="assets/images/icons/icons.fallback.css?v=<?php echo $version ?>">
 			</noscript>
-		<!-- scripty a styly -->
-
+		<!-- Fallback pro 'IE8' a 'bez javascriptu' -->
 		
 		<!-- !!! vyplnit dulezite SEO metatagy !!! -->
 			<title>test</title>

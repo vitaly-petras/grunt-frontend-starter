@@ -113,15 +113,15 @@ module.exports = function(grunt) {
         
         //tasks: ['svg_sprite', 'svg2png'],
       },
-      //basic web scripts
-      basicScripts: {
+      //concated js
+      concatedScripts: {
         files: ['<%= project.path.js %>concated/*.js'],
-        tasks: ['concat:basic', 'uglify:basic'],
+        tasks: ['concat:basic', 'uglify:all'],
       },
-      //basic web scripts
-      ieFixScripts: {
-        files: ['<%= project.path.js %>iefix/*.js'],
-        tasks: ['concat:ieFix', 'uglify:ieFix'],
+      //all scripts
+      allScripts: {
+        files: ['<%= project.path.js %>*.js'],
+        tasks: ['uglify:all'],
       },
       //html and php 
       htmlFiles:{
@@ -139,15 +139,7 @@ module.exports = function(grunt) {
 
     /* minifikace javascriptu */
     uglify: {
-      //my_target: {
-      //  files: [{
-      //      expand: true,
-      //      cwd: 'src',
-      //      src: '**/*.js',
-      //      dest: 'dest'
-       // }]
-      //}
-      basic: {
+      /*basic: {
         files: [{
           //  config['project']['name']'/js/all.min.js': ['<%= config.project.name %>/js/all.js']
           expand: true,   
@@ -156,13 +148,12 @@ module.exports = function(grunt) {
           dest: '<%= project.path.js %>',
           ext: '.min.js'
         }]
-      },
-      ieFix: {
+      },*/
+      all: {
         files: [{
-          //  'development/js/iefix.min.js': ['<%= config.project.name %>/js/iefix.js']
-          expand: true,   
+          expand: true,
           cwd: '<%= project.path.js %>',
-          src: ['iefix.js'],                  // Dictionary of files
+          src: ['*.js', '!*.min.js'],
           dest: '<%= project.path.js %>',
           ext: '.min.js'
         }]
@@ -175,13 +166,6 @@ module.exports = function(grunt) {
         src: '<%= project.path.js %>concated/*.js', //vstupni slozka
         dest: '<%= project.path.js %>all.js',  //vystupni slozka
       },
-      ieFix: {
-        src: [
-            '<%= project.path.js %>iefix/html5.js', 
-            '<%= project.path.js %>iefix/respond.js',
-          ], //vstupni slozka
-        dest: '<%= project.path.js %>iefix.js',  //vystupni slozka
-      }
     },
 
     /* svg sprite */

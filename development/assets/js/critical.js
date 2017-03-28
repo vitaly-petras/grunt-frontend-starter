@@ -8,7 +8,7 @@
 * 7. Detect touch devices (tablets/mobile)
 * 
 * Ve vychozim stavu potrebujeme body: 1,2,6,7 zbytek pouze dle nutnosti 
-*
+* na stranku vkladame do hlavicky do "critical js" v minifikovanem stavu!
 */
 
 
