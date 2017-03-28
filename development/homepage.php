@@ -9,14 +9,17 @@
 			<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
 		<!-- //ostatni -->
 
+		<link rel="stylesheet" media="screen" href="assets/css/global.css?v=<?php echo $version ?>" id="global-styles">
+
+		<!-- critical js (nezbytne skripty ktere detekuji podporu css a jinych vlastnosti) -->
+			<script>
+				document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');//nastav tridu js pokud je javascript povoleny
+			</script>
+		<!-- //critical js -->
 
 		<!-- scripty a styly -->
 			<!--[if lt IE 9]><script src="assets/js/ie-fallbacks/html5.js"></script><![endif]-->
-			<script>
-				var version = "<?php echo $version ?>";
-				document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');//nastav tridu js pokud je javascript povoleny
-			</script>
-			<script src="assets/js/load-css.js?v=<?php echo $version ?>"></script>
+			
 			<noscript>
 				<link rel="stylesheet" media="screen" href="assets/css/global-rem-fallback.css?v=<?php echo $version ?>">
 				<link rel="stylesheet" type="text/css" media="screen" href="assets/images/icons/icons.fallback.css?v=<?php echo $version ?>">
