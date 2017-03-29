@@ -30,21 +30,21 @@
 
 ---
 
---- Jedná se o třídu, která pouze tvoří obal pro nějakou část webu? (např bg + border + padding)__
------- ano - WRAP__
------- ne - Jedná se o plovoucí okno?__
---------- ano - WINDOW__
---------- ne - Jedná se věc ohledně formulářů? (prvek obalující inputy, validace..)__
------------- ano - FORM__
------------- ne - Jedná se o seznam? (výpis parametrů, výpis produktů, galerie obrázků..)__
---------------- ano - html struktura je tvořená přes TABLE?__
------------------- ano - TABLE__
------------------- ne - LIST__
---------------- ne - jedná se o blok informací jako celek? (např informace o produktu, položka panelu, drobečkovka..)__
------------------- ano - BOX__
------------------- ne - je struktura html tvořená přes TABLE, či jejich vnitřních elementů?__
---------------------- ano - TABLE__
---------------------- ne - IN__
+--- Jedná se o třídu, která pouze tvoří obal pro nějakou část webu? (např bg + border + padding)  
+------ ano - WRAP  
+------ ne - Jedná se o plovoucí okno?  
+--------- ano - WINDOW  
+--------- ne - Jedná se věc ohledně formulářů? (prvek obalující inputy, validace..)  
+------------ ano - FORM  
+------------ ne - Jedná se o seznam? (výpis parametrů, výpis produktů, galerie obrázků..)  
+--------------- ano - html struktura je tvořená přes TABLE?  
+------------------ ano - TABLE  
+------------------ ne - LIST  
+--------------- ne - jedná se o blok informací jako celek? (např informace o produktu, položka panelu, drobečkovka..)  
+------------------ ano - BOX  
+------------------ ne - je struktura html tvořená přes TABLE, či jejich vnitřních elementů?  
+--------------------- ano - TABLE  
+--------------------- ne - IN  
 
 ## Jednoduše:
 
