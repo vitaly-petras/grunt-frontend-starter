@@ -29,7 +29,7 @@
 		<!-- !!! vyplnit dulezite SEO metatagy !!! -->
 			<title>test</title>
 			<meta content="noindex,nofollow" name="robots"><!-- nezapomenout zde umazat "NO"index, "NO"follow -->
-			<meta name="dsescription" content="popis vaseho webu">
+			<meta name="description" content="popis vaseho webu">
 			<meta name="keywords" content="klíčová slova webu">
 		<!-- //vyplnit dulezite SEO metatagy -->
 	</head>
