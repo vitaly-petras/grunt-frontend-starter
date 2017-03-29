@@ -8,6 +8,8 @@
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimal-ui">
 			<link rel="stylesheet" media="screen" href="assets/css/global.css?v=<?php echo $version ?>" id="global-styles">
+
+			<!-- <base href="/"> toto odkomentovat pro nastaveni vsech cest do korenoveho adresare -->
 		<!-- //ostatni -->
 
 		<!-- critical js (nezbytne skripty ktere detekuji podporu css a jinych dulezitych vlastnosti) -->
@@ -44,7 +46,7 @@
 		<!-- nacitani vsech scripu a funkci -->
 			<script src="assets/js/all.min.js?v=<?php echo $version ?>"></script>
 		<!-- //nacitani vsech scripu a funkci -->
-		
+
 		<!-- nacitani fallbacku pro starsi prohlizece -->
 			<!--[if lt IE 9]><script src="assets/js/ie-fallbacks/respond.min.js"></script><![endif]-->
 			<!--[if lte IE 9]><script src="assets/js/ie-fallbacks/placeholders.js"></script><![endif]-->
