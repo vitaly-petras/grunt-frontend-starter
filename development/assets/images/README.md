@@ -1,0 +1,1 @@
+Zde patří odbrázky, které se vkládají přes css background-image:url('')
