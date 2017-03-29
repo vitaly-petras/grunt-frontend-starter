@@ -58,9 +58,3 @@
 
 ## Grunt.js
 - grunt je javascriptový server jedoucí na npm
-- pokud chceš, aby se ti při změně ve složkách scripts, templates, styles refreshnul sám prohlížeč, nainstaluj si ho (wiki - http://wiki/index.php/N%C3%A1stroj_Grunt_SS6 )
-- jako druhou věc si přenastav baťáky resp. cesty v nich (lze tak jednoduše spouštět watch, generování spritů, či dokumentace)
-- pokud nikdo nenastavil popis projektu do package.json, udělej tak
-- pro sprite vkládej ikonky do složky img/design/sprite/src, po spustěni baťáku na sprite ti to vyplivne výsledný sprite do složky výše + vygeneruje less soubor do styles/0_core/sprite.less, toto se hodí hlavně a jen na ikonky, které zapisuješ čistě do html jako class="icon icon-nazevsouboru", ne na bg v css - přegenerování může změnit pozici
-- dokumentace se generuje ze souborů ve složkách styles/components/.. + 0_core/forms/buttons.less, ta se po spuštění baťáku vygeneruje do složky docs v rootu, NECOMMITOVAT!
-- dokumentace se píše do less souboru na začátek do komentáře viz https://www.npmjs.org/package/styledocco
