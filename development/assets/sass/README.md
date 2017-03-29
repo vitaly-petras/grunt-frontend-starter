@@ -1,49 +1,34 @@
-Globalní styly se jmenují tak, jak je to nastavené v gruntfile.js "keyword" na řádku 14.
+# Použitá logika a tehnologie na projektu:
 
+## Načítání:
+- CORE
+- LAYOUT
+- LIBS
+- COMPONENTS ===> WRAP, FORM, LIST, IN, TABLE, WINDOW, BOX
+- SINGLE
+- HELPERS
 
-
-
-Použitá logika a tehnologie na projektu:
-
-0. Less css
-=============
-- http://www.lesscss.cz/
-- zde osekaná funkčnost o include souborů
-- include je nahrazen skládáním souborů za sebe (není třeba linkovat)
-- POZOR!!!!! linkování souborů je určeno v rootu souborem style.php, resp složky a soubory se řadí abecedně
-
-Načítání:
-CORE
-LAYOUT
-LIBS
-COMPONENTS ===> WRAP, FORM, LIST, IN, TABLE, WINDOW, BOX
-SINGLE
-LAST
-GENEROVANÉ SOUBORY z adminu (flags, adverts, ...)
-
-1. nepoužíváme ID a co nejméně important!
-=============
+## nepoužíváme ID a co nejméně important!
 - ID přebíjí nastavení class
 - important pouze na neřešitelné situace, či přebití inline stylu z html či js
 
-2. komponentní kódování (BEM)
-=============
+## komponentní kódování (BEM)
 - http://www.vzhurudolu.cz/prirucka/bem
 - http://www.smashingmagazine.com/2014/07/17/bem-methodology-for-small-projects/
 
-3. Zápis css vlastností podle priorit
-=============
+## Zápis css vlastností podle priorit
 - první píšeme zásadní vlastnosti (display, position, z-index, width, height apod), případně mixiny se zásadními vlastnostmi (.cfx(), .eliminate-lines(), box-sizing().. )
 - jako druhé se píší stylistické věci jako font, color, background..
 - jako třetí se píši css3 věci, bez zásadního vlivu (border-radius, box-shadow..)
 - oddíly od sebe odsazujeme prázdným řádkem
 
-4. Složka components
-=============
+## Složka components
 - podsložky rozdělují komponenty logicky od sebe
 - název podsložky se vkládá i do názvu komponenty pro lepší vyhledání
 - název souboru komponenty však obsahuje jen zbytek názvu třídy
 - do jaké podsložky patří komponenta? Rozhodovací strom:
+
+---
 
 --- Jedná se o třídu, která pouze tvoří obal pro nějakou část webu? (např bg + border + padding)
 ------ ano - WRAP
@@ -61,18 +46,17 @@ GENEROVANÉ SOUBORY z adminu (flags, adverts, ...)
 --------------------- ano - TABLE
 --------------------- ne - IN
 
-Jednoduše:
+## Jednoduše:
 
-IN - malé drbky (šipka u linku, hvěždičky hodnocení) věci co jsou často někde
-LIST - čistě DL nebo UL, OL
-TABLE - tabulky
-WINDOW - vyskakovací okna
-FORM - formularove prvky, obaly, struktury
-WRAP - jednoduché obaly, boxy, nezávislé na obsahu
-BOX - ucelené části stránek (např. detail produktu se dá rozdělit na několik boxů - cena, obrazky, galerie, info)
+- IN = malé drbky (šipka u linku, hvěždičky hodnocení) věci co jsou často někde
+- LIST = čistě DL nebo UL, OL
+- TABLE = tabulky
+- WINDOW -= vyskakovací okna
+- FORM = formularove prvky, obaly, struktury
+- WRAP = jednoduché obaly, boxy, nezávislé na obsahu
+- BOX = ucelené části stránek (např. detail produktu se dá rozdělit na několik boxů - cena, obrazky, galerie, info)
 
-5. Grunt.js
-=============
+## Grunt.js
 - grunt je javascriptový server jedoucí na npm
 - pokud chceš, aby se ti při změně ve složkách scripts, templates, styles refreshnul sám prohlížeč, nainstaluj si ho (wiki - http://wiki/index.php/N%C3%A1stroj_Grunt_SS6 )
 - jako druhou věc si přenastav baťáky resp. cesty v nich (lze tak jednoduše spouštět watch, generování spritů, či dokumentace)

@@ -5,6 +5,4 @@
 - fonty
 - a jiné
 
---
-
 # ve složce `images` jsou obrázky vkládáné přes html
