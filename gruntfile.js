@@ -213,7 +213,7 @@ module.exports = function(grunt) {
     sprite:{
       main: {
         src: '<%= project.path.sprites %>png-sprite/*.png',
-        dest: '<%= project.path.sprites %>png-sprite.png',
+        dest: '<%= project.path.icons %>png-sprite.png',
         destCss: '<%= project.path.scss %>1_core/sprites/png-sprite/_png-sprite.scss',
         /*algorithm: 'binary-tree',*/
         padding: 15,
@@ -435,6 +435,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-file-append');
 
   grunt.registerTask('svg', ['clean:grunticonSVG', 'clean:grunticonPNG', 'svgmin', 'grunticon', 'file_append', 'clean:gruntIconLoader', 'html_factory_grunticon_finisher:html_factory_grunticon_finisher', 'sass', 'autoprefixer', 'cssmin']);
+
+  grunt.registerTask('png', ['sprite', 'sass', 'cssmin']);
 
   grunt.registerTask('default', ['watch']);
 
