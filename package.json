@@ -32,6 +32,7 @@
     "grunt-svg-sprite": "^1.2.3",
     "grunt-svg2png": "^0.2.7",
     "grunt-svgmin": "^3.3.0",
+    "grunt-tinyimg": "^1.0.0",
     "jit-grunt": "^0.9.1",
     "time-grunt": "^1.2.1"
   }

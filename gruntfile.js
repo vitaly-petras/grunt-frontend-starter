@@ -409,6 +409,35 @@ module.exports = function(grunt) {
         }
     },
 
+    tinyimg: {
+      all: {
+        files: [{
+          expand: true,                  // Enable dynamic expansion
+          cwd: '<%= project.path.root %>',                   // Src matches are relative to this path
+          src: ['**/*.{png,jpg,svg}'],   // Actual patterns to match
+          dest: '<%= project.path.dist %>'                  // Destination path prefix
+        }]
+      },
+    },
+
+    php2html: {
+      default: {
+        options: {
+          processLinks: true,// relative links should be renamed from .php to .html 
+          htmlhint: false,
+        },
+        files: [
+          {
+            expand: true, 
+            cwd: '<%= project.path.root %>', 
+            src: ['*.php'], 
+            dest: '<%= project.path.dist %>', 
+            ext: '.html' 
+          }
+        ]
+      }
+    },
+
     'ftp-deploy': {
       htmlfactory: {
         auth: {
@@ -455,6 +484,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-browser-sync');
   grunt.loadNpmTasks('grunt-tinyimg');
   grunt.loadNpmTasks('grunt-php2html');
+  grunt.loadNpmTasks('grunt-tinypng');
 
   grunt.registerTask('svg', ['clean:grunticonSVG', 'clean:grunticonPNG', 'svgmin', 'grunticon', 'file_append', 'clean:gruntIconLoader', 'html_factory_grunticon_finisher:html_factory_grunticon_finisher', 'sass', 'autoprefixer', 'cssmin']);
 
@@ -464,7 +494,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('rem', ['rename:remFallback', 'px_to_rem']);
 
-  grunt.registerTask('images', ['tinyimg']);
+  grunt.registerTask('oimages', ['tinyimg']);
 
   grunt.registerTask('html', ['php2html']);
 
