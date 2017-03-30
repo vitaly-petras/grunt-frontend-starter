@@ -11,6 +11,7 @@
   "devDependencies": {
     "grunt": "^0.4.4",
     "grunt-autoprefixer": "^3.0.4",
+    "grunt-browser-sync": "^2.2.0",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-compress": "^0.13.0",
     "grunt-contrib-concat": "^0.5.1",
@@ -24,6 +25,7 @@
     "grunt-ftp-deploy": "^0.1.10",
     "grunt-grunticon": "~2.3.0",
     "grunt-html-factory-grunticon-finisher": "0.1.21",
+    "grunt-php": "^1.5.1",
     "grunt-px-to-rem": "^0.4.0",
     "grunt-spritesmith": "^4.7.1",
     "grunt-svg-sprite": "^1.2.3",

@@ -14,8 +14,10 @@ module.exports = function(grunt) {
     'keyword' : 'test',//klicove slovo ktere se propise vsude (css, js, sprity atd) //obvykle name = keyword //BEZ DIAKRITIKY A MEZER!!!!! + VŠECHNO MALÝMI
     'title'   : 'test',//titulek v html sablonach
     'for'     : 'htmlfactory',
-    'author'  : 'Vitalij Petras'
+    'author'  : 'Vitalij Petras',
   };
+
+  config['bs'] = /*'projekty/nove/'+*/config['project']['name'];//url pro browsersynch
 
   config['path'] ={
     'root'    : 'dev/',
@@ -380,6 +382,33 @@ module.exports = function(grunt) {
       }
     },
 
+    browserSync: {
+        dev: {
+            bsFiles: {
+                src : [
+                    '<%= project.path.css %>*.css',
+                    '<%= project.path.js %>*.js',
+                    '<%= project.path.root %>**/*.html',
+                    '<%= project.path.root %>**/*.php'
+                ]
+            },
+            options: {
+                proxy: '127.0.0.1:80/<%= project.bs %>/<%= project.path.root %>', //our PHP server
+                port: 8080, // our new port
+                open: true,
+                watchTask: true
+            }
+        }
+    },
+    php: {
+        dev: {
+            options: {
+                port: 80,
+                base: '<%= project.path.root %>'
+            }
+        }
+    },
+
     'ftp-deploy': {
       htmlfactory: {
         auth: {
@@ -423,12 +452,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-html-factory-grunticon-finisher');
   grunt.loadNpmTasks('grunt-file-append');
+  grunt.loadNpmTasks('grunt-browser-sync');
 
   grunt.registerTask('svg', ['clean:grunticonSVG', 'clean:grunticonPNG', 'svgmin', 'grunticon', 'file_append', 'clean:gruntIconLoader', 'html_factory_grunticon_finisher:html_factory_grunticon_finisher', 'sass', 'autoprefixer', 'cssmin']);
 
   grunt.registerTask('png', ['sprite', 'sass', 'cssmin']);
 
-  grunt.registerTask('default', ['watch']);
+  grunt.registerTask('default', ['php', 'browserSync', 'watch']);
 
   grunt.registerTask('rem', ['rename:remFallback', 'px_to_rem']);
 
