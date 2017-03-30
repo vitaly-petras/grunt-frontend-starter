@@ -26,7 +26,7 @@ module.exports = function(grunt) {
     'js'      : 'dev/assets/js/',
     'sprites' : 'dev/assets/images/sprites/',
     'icons'   : 'dev/assets/icons/',
-    'send_folder' : 'send-project/',
+    'dist'    : 'dist/',
   };
 
   require('time-grunt')(grunt);
@@ -453,6 +453,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-html-factory-grunticon-finisher');
   grunt.loadNpmTasks('grunt-file-append');
   grunt.loadNpmTasks('grunt-browser-sync');
+  grunt.loadNpmTasks('grunt-tinyimg');
+  grunt.loadNpmTasks('grunt-php2html');
 
   grunt.registerTask('svg', ['clean:grunticonSVG', 'clean:grunticonPNG', 'svgmin', 'grunticon', 'file_append', 'clean:gruntIconLoader', 'html_factory_grunticon_finisher:html_factory_grunticon_finisher', 'sass', 'autoprefixer', 'cssmin']);
 
@@ -461,6 +463,10 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['php', 'browserSync', 'watch']);
 
   grunt.registerTask('rem', ['rename:remFallback', 'px_to_rem']);
+
+  grunt.registerTask('images', ['tinyimg']);
+
+  grunt.registerTask('html', ['php2html']);
 
   grunt.registerTask('template', [
     'copy:templateREM',                            //css a rem fallback

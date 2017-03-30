@@ -1,5 +1,4 @@
 <?php $version = "1.0" //verze stylu, scriptu = proti cachovani ?>
-
 <!DOCTYPE html>
 <html lang="cs" class="no-js">
 	<head>
