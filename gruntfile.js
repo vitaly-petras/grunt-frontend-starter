@@ -18,12 +18,12 @@ module.exports = function(grunt) {
   };
 
   config['path'] ={
-    'root'    : 'development/',
-    'scss'    : 'development/assets/sass/',
-    'css'     : 'development/assets/css/',
-    'js'      : 'development/assets/js/',
-    'sprites' : 'development/assets/images/sprites/',
-    'icons'   : 'development/assets/icons/',
+    'root'    : 'dev/',
+    'scss'    : 'dev/assets/sass/',
+    'css'     : 'dev/assets/css/',
+    'js'      : 'dev/assets/js/',
+    'sprites' : 'dev/assets/images/sprites/',
+    'icons'   : 'dev/assets/icons/',
     'send_folder' : 'send-project/',
   };
 
@@ -389,16 +389,6 @@ module.exports = function(grunt) {
           password: 'E^7g48Jz%'
         },
         src: '<%= project.path.send_folder %>',         // local path
-        dest: '<%= project.project.name %>', //path on ftp
-      },
-      madeo: {
-        auth: {
-          host: 'ftp.madeo.cz',
-          port: 21,
-          username: 'vitalij',
-          password: 'bumpycart29'
-        },
-        src: './development',         // local path
         dest: '<%= project.project.name %>', //path on ftp
       },
       honza: {

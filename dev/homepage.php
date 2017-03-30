@@ -35,8 +35,6 @@
 	</head>
 	<body>
 
-		<i class="icon icon__logo"></i>
-
 	
 
 		<!-- local fotns --><!-- pokud se fonty nenacitaji lokalne smazat !!! -->
