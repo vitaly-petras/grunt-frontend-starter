@@ -324,7 +324,7 @@ module.exports = function(grunt) {
     },
 
     compress: {
-      project: {
+      dist: {
         options: {
           archive: '<%= project.path.dist %>data.zip'
         },
@@ -431,20 +431,18 @@ module.exports = function(grunt) {
     'ftp-deploy': {
       htmlfactory: {
         auth: {
-          host: '74506.w6.wedos.net',
-          port: 21,
-          username: 'w74506_htmlsablony2',
-          password: 'E^7g48Jz%'
+          host   : "74506.w6.wedos.net",
+          port   : "21",
+          authKey: '<%= project.project.for %>'
         },
         src: '<%= project.path.dist %>',         // local path
         dest: '<%= project.project.name %>', //path on ftp
       },
       honza: {
         auth: {
-          host: '127799.w99.wedos.net',
-          port: 21,
-          username: 'w127799_projects2',
-          password: 'lkD9220dk-pc'
+          host    : "127799.w99.wedos.net",
+          port    : 21,
+          authKey: '<%= project.project.for %>'
         },
         src: '<%= project.path.dist %>',         // local path
         dest: '<%= project.project.name %>', //path on ftp
@@ -493,8 +491,6 @@ module.exports = function(grunt) {
     'copy:templatePHP', 'clean:templatePHP',       //doplnit cesty na homepage a odstranit template
   ]);
 
-  //grunt.registerTask('ftp', ['ftp-deploy:'+config['project']['for']]);
-
   grunt.registerTask('update', ['concat:basic', 'uglify:all', /*'svg', 'png',*/ 'sass:dev']);
 
   grunt.registerTask('build', [
@@ -504,15 +500,11 @@ module.exports = function(grunt) {
     'clean:distFiles', 
     'autoprefixer:dist', 'cssmin:dist', 'rem',
     'oimages'
-  ]);//, 'compress:project', 'ftp-deploy:'+config['project']['for']
+  ]);// 'ftp-deploy:'+config['project']['for']
+
+
+  grunt.registerTask('send', ['build', 'compress', 'ftp-deploy:'+config['project']['for']]);
   
-
-  //grunt.registerTask('build', ['svg']);
-
-
-  //grunt.registerTask('convertSvg', ['svg2png:svgImages']);
-
-  //grunt.registerTask('js', ['concat', 'uglify']);
 
 
 };
