@@ -432,6 +432,29 @@ module.exports = function(grunt) {
       }
     },
 
+    pagespeed: {
+      options: {
+        nokey: true,
+        url: "http://htmlsablony.html-factory.cz/<%= project.project.name %>/",
+      },
+      desktop: {
+        options: {
+          paths: ["homepage.html", "index.html"],
+          locale: "cs_CZ",
+          strategy: "desktop",
+          threshold: 80
+        }
+      },
+      mobile: {
+        options: {
+          paths: ["homepage.html", "index.html"],
+          locale: "cs_CZ",
+          strategy: "mobile",
+          threshold: 65
+        }
+      }
+    },
+
     'ftp-deploy': {
       htmlfactory: {
         auth: {
@@ -476,6 +499,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-tinyimg');
   grunt.loadNpmTasks('grunt-php2html');
   grunt.loadNpmTasks('grunt-tinypng');
+  grunt.loadNpmTasks('grunt-pagespeed');
 
   grunt.registerTask('svg', ['clean:grunticonImages', 'svgmin', 'grunticon', "html_factory_grunticon_finisher", 'sass:dev']);
 
@@ -508,7 +532,10 @@ module.exports = function(grunt) {
 
 
   grunt.registerTask('send', ['build', 'compress', 'ftp-deploy:'+config['project']['for']]);
-  
+
+
+  grunt.registerTask('pagetest', ['pagespeed']);
+
 
 
 };
