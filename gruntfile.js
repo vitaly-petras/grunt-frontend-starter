@@ -284,6 +284,7 @@ module.exports = function(grunt) {
         options: {
           
         },
+        dot: true,
         expand: true,
         cwd: '<%= project.path.root %>',
         //src: '**',
@@ -462,6 +463,7 @@ module.exports = function(grunt) {
           port   : "21",
           authKey: '<%= project.project.for %>'
         },
+        dot: true,
         src: '<%= project.path.dist %>',         // local path
         dest: '<%= project.project.name %>', //path on ftp
       },
@@ -471,6 +473,7 @@ module.exports = function(grunt) {
           port    : 21,
           authKey: '<%= project.project.for %>'
         },
+        dot: true,
         src: '<%= project.path.dist %>',         // local path
         dest: '<%= project.project.name %>', //path on ftp
         //http://www.praguecoding.eu/projects2/
