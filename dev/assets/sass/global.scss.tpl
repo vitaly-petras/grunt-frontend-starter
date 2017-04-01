@@ -1,17 +1,18 @@
 /*! 
 ==============================================================
 
-Project  	: test
-Author  	: Vitalij Petras
+Project  	: <%= project.project.name %>
+Author  	: <%= project.project.author %>
 Author URI	: www.html-factory.cz
-Created 	: 11.03.2017
+Created 	: <%= grunt.template.today("dd.mm.yyyy") %>
 
 ----------------------------------------
 ---------------- POZOR! ----------------
 ----------------------------------------
 
 Stylopis byl vygenerovan pomoci CSS preprocesoru.
-Nikdy needitujte tento .css soubor!
+Nikdy needitujte primo .css soubor!
+Viz readme.txt
 
 ============================================================== 
 */
