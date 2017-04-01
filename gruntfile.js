@@ -14,16 +14,19 @@ module.exports = function(grunt) {
     'keyword' : 'test',//klicove slovo ktere se propise vsude (css, js, sprity atd) //obvykle name = keyword //BEZ DIAKRITIKY A MEZER!!!!! + VŠECHNO MALÝMI
     'title'   : 'test',//titulek v html sablonach
     'for'     : 'htmlfactory',
-    'author'  : 'Vitalij Petras'
+    'author'  : 'Vitalij Petras',
   };
 
+  config['bs'] = /*'projekty/nove/'+*/config['project']['name'];//url pro browsersynch
+
   config['path'] ={
-    'root'    : 'development/',
-    'scss'    : 'development/assets/sass/',
-    'css'     : 'development/assets/css/',
-    'js'      : 'development/assets/js/',
-    'sprites' : 'development/assets/images/sprites/',
-    'send_folder' : 'send-project/',
+    'root'    : 'dev/',
+    'scss'    : 'dev/assets/sass/',
+    'css'     : 'dev/assets/css/',
+    'js'      : 'dev/assets/js/',
+    'sprites' : 'dev/assets/images/sprites/',
+    'icons'   : 'dev/assets/icons/',
+    'dist'    : 'dist/',
   };
 
   require('time-grunt')(grunt);
@@ -35,40 +38,34 @@ module.exports = function(grunt) {
 
     /* sass */
     sass: {                              // Task
-      dist: {                            // Target
+      dev: {                            // Target
         options: {                       // Target options
           style: 'expanded',
           sourcemap:'none'
         },
-        /*files: {                         // Dictionary of files
-          'project/styles/css/global.css': 'project/styles/sass/global.scss', // 'destination': 'source'
-          'project/styles/css/print.css': 'project/styles/sass/print.scss', // 'destination': 'source'
-          'project/styles/css/noscript.css': 'project/styles/sass/noscript.scss',
-        }*/
         files:   [{  
           expand: true,   
           cwd: '<%= project.path.scss %>',
           src: ['*.scss', '!_*'],                  // Dictionary of files
-          dest: '<%= project.path.css %>uncompressed/',
+          dest: '<%= project.path.css %>',
           ext: '.css'
-          //['staves2/styles/sass/*.scss', 'staves2/styles/sass/!_*.scss']
         }]
       }
     },
 
     /* minifikace css souboru */
     cssmin: {
-      target: {
+      dist: {
         options: {
           compatibility: 'ie8',
           aggressiveMerging: false,
         },
         files: [{
           expand: true,
-          cwd: '<%= project.path.css %>uncompressed/',
-          src: ['*.css', '!*.min.css'],
-          dest: '<%= project.path.css %>',
-          ext: '.css'
+          cwd: '<%= project.path.dist %>',
+          src: ['**/*.css', '!*.min.css'],
+          dest: '<%= project.path.dist %>',
+          //ext: '.css'
         }]
       }
     },
@@ -83,7 +80,7 @@ module.exports = function(grunt) {
           map: false
         },
         files: {
-          '<%= project.path.css %>global.css': ['<%= project.path.css %>global-rem-fallback.css']
+          '<%= project.path.dist %>assets/css/global.css': ['<%= project.path.dist %>assets/css/global-rem-fallback.css']
         }
       }
     },
@@ -97,7 +94,7 @@ module.exports = function(grunt) {
       //styles
       css: {
         files: '<%= project.path.scss %>**/*.scss',
-        tasks: ['sass', 'autoprefixer', 'cssmin'],//, 'rem'
+        tasks: ['sass:dev'],
         // pro nativni prevod do rem jednotek vymenit 'cssmin' za 'rem'
       },
       //png sprite
@@ -108,19 +105,17 @@ module.exports = function(grunt) {
       //svg sprite
       svgSprite: {
         files: ['<%= project.path.sprites %>svg-sprite/*.{svg,png}'],
-        tasks: ['clean:grunticonSVG', 'clean:grunticonPNG', 'svgmin', 'grunticon', "html_factory_grunticon_finisher", 'sass', 'autoprefixer', 'cssmin'],
-        
-        //tasks: ['svg_sprite', 'svg2png'],
+        tasks: ['clean:grunticonImages', 'svgmin', 'grunticon', "html_factory_grunticon_finisher", 'sass:dev'],
       },
-      //basic web scripts
-      basicScripts: {
+      //concated js
+      concatedScripts: {
         files: ['<%= project.path.js %>concated/*.js'],
-        tasks: ['concat:basic', 'uglify:basic'],
+        tasks: ['concat:basic', 'uglify:all'],
       },
-      //basic web scripts
-      ieFixScripts: {
-        files: ['<%= project.path.js %>iefix/*.js'],
-        tasks: ['concat:ieFix', 'uglify:ieFix'],
+      //all scripts
+      allScripts: {
+        files: ['<%= project.path.js %>*.js'],
+        tasks: ['uglify:all'],
       },
       //html and php 
       htmlFiles:{
@@ -138,15 +133,7 @@ module.exports = function(grunt) {
 
     /* minifikace javascriptu */
     uglify: {
-      //my_target: {
-      //  files: [{
-      //      expand: true,
-      //      cwd: 'src',
-      //      src: '**/*.js',
-      //      dest: 'dest'
-       // }]
-      //}
-      basic: {
+      /*basic: {
         files: [{
           //  config['project']['name']'/js/all.min.js': ['<%= config.project.name %>/js/all.js']
           expand: true,   
@@ -155,13 +142,12 @@ module.exports = function(grunt) {
           dest: '<%= project.path.js %>',
           ext: '.min.js'
         }]
-      },
-      ieFix: {
+      },*/
+      all: {
         files: [{
-          //  'development/js/iefix.min.js': ['<%= config.project.name %>/js/iefix.js']
-          expand: true,   
+          expand: true,
           cwd: '<%= project.path.js %>',
-          src: ['iefix.js'],                  // Dictionary of files
+          src: ['*.js', '!*.min.js'],
           dest: '<%= project.path.js %>',
           ext: '.min.js'
         }]
@@ -174,13 +160,6 @@ module.exports = function(grunt) {
         src: '<%= project.path.js %>concated/*.js', //vstupni slozka
         dest: '<%= project.path.js %>all.js',  //vystupni slozka
       },
-      ieFix: {
-        src: [
-            '<%= project.path.js %>iefix/html5.js', 
-            '<%= project.path.js %>iefix/respond.js',
-          ], //vstupni slozka
-        dest: '<%= project.path.js %>iefix.js',  //vystupni slozka
-      }
     },
 
     /* svg sprite */
@@ -228,7 +207,7 @@ module.exports = function(grunt) {
     sprite:{
       main: {
         src: '<%= project.path.sprites %>png-sprite/*.png',
-        dest: '<%= project.path.sprites %>png-sprite.png',
+        dest: '<%= project.path.icons %>png-sprite.png',
         destCss: '<%= project.path.scss %>1_core/sprites/png-sprite/_png-sprite.scss',
         /*algorithm: 'binary-tree',*/
         padding: 15,
@@ -248,7 +227,7 @@ module.exports = function(grunt) {
               expand: true,
               cwd: '<%= project.path.sprites %>svg-sprite/',
               src: ['*.svg', '*.png'],
-              dest: "<%= project.path.sprites %>/grunticon/svg"
+              dest: "<%= project.path.icons %>svg"
           }]
       }
     },
@@ -257,9 +236,9 @@ module.exports = function(grunt) {
       myIcons: {
         files: [{
             expand: true,
-            cwd: '<%= project.path.sprites %>grunticon/svg',
+            cwd: '<%= project.path.icons %>svg',
             src: ['*.svg', '*.png'],
-            dest: "<%= project.path.sprites %>/grunticon"
+            dest: "<%= project.path.icons %>"
         }],
         options: {
           enhanceSVG: true,
@@ -271,17 +250,6 @@ module.exports = function(grunt) {
           },*/
         }
       }
-    },
-
-    rename: {
-      remFallback: {
-        files: [
-          {
-            src: ['<%= project.path.css %>global.css'], 
-            dest: '<%= project.path.css %>global-rem-fallback.css'
-          },
-        ]
-      },
     },
 
     copy: {
@@ -312,15 +280,21 @@ module.exports = function(grunt) {
         src: '<%= project.path.scss %>global.scss.tpl',
         dest: '<%= project.path.scss %>global.scss', 
       },
-      project: {
+      dev: {
         options: {
           
         },
+        dot: true,
         expand: true,
         cwd: '<%= project.path.root %>',
-        src: '**',
-        dest: '<%= project.path.send_folder %>', 
+        //src: '**',
+        src: ['**', '!**/*.php', '!page-components', '!page_components'],
+        dest: '<%= project.path.dist %>', 
       },
+      remFallback:{
+        src: ['<%= project.path.dist %>assets/css/global.css'], 
+        dest: '<%= project.path.dist %>assets/css/global-rem-fallback.css'
+      }
     },
 
     clean: {
@@ -330,85 +304,177 @@ module.exports = function(grunt) {
       templateCSS: [
         '<%= project.path.scss %>global.scss.tpl'
       ],
-      grunticonSVG: [
-        '<%= project.path.sprites %>/grunticon/svg'
+      grunticonImages: [
+        '<%= project.path.icons %>svg', 
+        '<%= project.path.icons %>png'
       ],
-      grunticonPNG: [
-        '<%= project.path.sprites %>/grunticon/png'
+      dist: [
+        '<%= project.path.dist %>**'
       ],
-      sass: [
-        '<%= project.path.send_folder %>assets/sass'
+      distFiles: [
+        '<%= project.path.dist %>assets/sass', 
+        '<%= project.path.dist %>assets/images/sprites',
+        '<%= project.path.dist %>assets/js/concated',
+        '<%= project.path.dist %>assets/js/critical.js',
+        '<%= project.path.dist %>assets/js/critical.min.js',
+        '<%= project.path.dist %>assets/js/not-used-scripts',
       ],
-      project: [
-        '<%= project.path.send_folder %>**'
+      gruntIconLoader: [
+        '<%= project.path.icons %>grunticon.loader.js'
       ],
     },
 
     compress: {
-      project: {
+      dist: {
         options: {
-          archive: '<%= project.path.send_folder %>data.zip'
+          archive: '<%= project.path.dist %>data.zip'
         },
         files: [
-          {expand: true, cwd: '<%= project.path.send_folder %>', src: ['**'], dest:'<%= project.project.name %>'}
+          {expand: true, cwd: '<%= project.path.dist %>', src: ['**'], dest:'<%= project.project.name %>'}
         ]
       }
     },
 
     autoprefixer: {
       options: {
-        browsers: ['last 2 versions', 'ie >= 8', '> 1%']
+        browsers: [
+          'last 3 versions', 
+          'ie >= 8', 
+          '> 1%'
+        ]
       },
-      dev: {  
+      dist: {  
         // expand:true,
-        src: '<%= project.path.css %>uncompressed/global.css',
-        dest: '<%= project.path.css %>uncompressed/global.css'
+        src: '<%= project.path.dist %>assets/css/global.css',
+        dest: '<%= project.path.dist %>assets/css/global.css'
       }
     },
 
     html_factory_grunticon_finisher: {
         options: {
-            pathToPngFile:          config['path']["sprites"] + "grunticon/icons.data.png.css",
-            pathToSvgFile:          config['path']["sprites"] + "grunticon/icons.data.svg.css",
-            pathToFallbackFile:     config['path']["sprites"] + "grunticon/icons.fallback.css",
-            targetPngFile:          config['path']["sprites"] + "grunticon/icons.data.png.css",
-            targetSvgFile:          config['path']["sprites"] + "grunticon/icons.data.svg.css",
-            targetFallbackFile:     config['path']["sprites"] + "grunticon/icons.fallback.css",
+            pathToPngFile:          config['path']["icons"] + "icons.data.png.css",
+            pathToSvgFile:          config['path']["icons"] + "icons.data.svg.css",
+            pathToFallbackFile:     config['path']["icons"] + "icons.fallback.css",
+            targetPngFile:          config['path']["icons"] + "icons.data.png.css",
+            targetSvgFile:          config['path']["icons"] + "icons.data.svg.css",
+            targetFallbackFile:     config['path']["icons"] + "icons.fallback.css",
             targetDimensionsFile:   config['path']["scss"] + "1_core/sprites/_grunticon-dimensions.scss"
         },
         html_factory_grunticon_finisher: {
         }
     },
 
+    file_append: {
+      gruntIcon: {
+        files: [
+          {
+            append: 'grunticon(["assets/icons/icons.data.svg.css", "assets/icons/icons.data.png.css", "assets/icons/icons.fallback.css"], grunticon.svgLoadedCallback );',
+            input: '<%= project.path.icons %>grunticon.loader.js',
+            output: '<%= project.path.js %>concated/00-grunticon.loader.js'
+          }
+        ]
+      }
+    },
+
+    browserSync: {
+        dev: {
+            bsFiles: {
+                src : [
+                    '<%= project.path.css %>*.css',
+                    '<%= project.path.js %>*.js',
+                    '<%= project.path.root %>**/*.html',
+                    '<%= project.path.root %>**/*.php'
+                ]
+            },
+            options: {
+                proxy: '127.0.0.1:80/<%= project.bs %>/<%= project.path.root %>', //our PHP server
+                port: 8080, // our new port
+                open: true,
+                watchTask: true
+            }
+        }
+    },
+
+    php: {
+        dev: {
+            options: {
+                port: 80,
+                base: '<%= project.path.root %>'
+            }
+        }
+    },
+
+    tinyimg: {
+      all: {
+        files: [{
+          expand: true,                  // Enable dynamic expansion
+          cwd: '<%= project.path.dist %>',                   // Src matches are relative to this path
+          src: ['**/*.{png,jpg,svg}'],   // Actual patterns to match
+          dest: '<%= project.path.dist %>'                  // Destination path prefix
+        }]
+      },
+    },
+
+    php2html: {
+      dist: {
+        options: {
+          processLinks: true,// relative links should be renamed from .php to .html 
+          htmlhint: false,
+        },
+        files: [
+          {
+            expand: true, 
+            cwd: '<%= project.path.root %>', 
+            src: ['*.php'], 
+            dest: '<%= project.path.dist %>', 
+            ext: '.html' 
+          }
+        ]
+      }
+    },
+
+    pagespeed: {
+      options: {
+        nokey: true,
+        url: "http://htmlsablony.html-factory.cz/<%= project.project.name %>/",
+      },
+      desktop: {
+        options: {
+          paths: ["homepage.html", "index.html"],
+          locale: "cs_CZ",
+          strategy: "desktop",
+          threshold: 80
+        }
+      },
+      mobile: {
+        options: {
+          paths: ["homepage.html", "index.html"],
+          locale: "cs_CZ",
+          strategy: "mobile",
+          threshold: 65
+        }
+      }
+    },
+
     'ftp-deploy': {
       htmlfactory: {
         auth: {
-          host: '74506.w6.wedos.net',
-          port: 21,
-          username: 'w74506_htmlsablony2',
-          password: 'E^7g48Jz%'
+          host   : "74506.w6.wedos.net",
+          port   : "21",
+          authKey: '<%= project.project.for %>'
         },
-        src: '<%= project.path.send_folder %>',         // local path
-        dest: '<%= project.project.name %>', //path on ftp
-      },
-      madeo: {
-        auth: {
-          host: 'ftp.madeo.cz',
-          port: 21,
-          username: 'vitalij',
-          password: 'bumpycart29'
-        },
-        src: './development',         // local path
+        dot: true,
+        src: '<%= project.path.dist %>',         // local path
         dest: '<%= project.project.name %>', //path on ftp
       },
       honza: {
         auth: {
-          host: '127799.w99.wedos.net',
-          port: 21,
-          username: 'w127799_projects2',
-          password: 'lkD9220dk-pc'
+          host    : "127799.w99.wedos.net",
+          port    : 21,
+          authKey: '<%= project.project.for %>'
         },
-        src: '<%= project.path.send_folder %>',         // local path
+        dot: true,
+        src: '<%= project.path.dist %>',         // local path
         dest: '<%= project.project.name %>', //path on ftp
         //http://www.praguecoding.eu/projects2/
       }
@@ -427,17 +493,28 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-ftp-deploy');
-  grunt.loadNpmTasks('grunt-contrib-rename');
   grunt.loadNpmTasks('grunt-px-to-rem');
   grunt.loadNpmTasks('grunt-grunticon');
   grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-html-factory-grunticon-finisher');
+  grunt.loadNpmTasks('grunt-file-append');
+  grunt.loadNpmTasks('grunt-browser-sync');
+  grunt.loadNpmTasks('grunt-tinyimg');
+  grunt.loadNpmTasks('grunt-php2html');
+  grunt.loadNpmTasks('grunt-tinypng');
+  grunt.loadNpmTasks('grunt-pagespeed');
 
-  grunt.registerTask('svg', ['clean:grunticonSVG', 'clean:grunticonPNG', 'svgmin', 'grunticon', "html_factory_grunticon_finisher:html_factory_grunticon_finisher", 'sass', 'autoprefixer', 'cssmin']);
+  grunt.registerTask('svg', ['clean:grunticonImages', 'svgmin', 'grunticon', "html_factory_grunticon_finisher", 'sass:dev']);
 
-  grunt.registerTask('default', ['watch']);
+  grunt.registerTask('png', ['sprite', 'sass:dev']);
 
-  grunt.registerTask('rem', ['rename:remFallback', 'px_to_rem']);
+  grunt.registerTask('default', ['php', 'browserSync', 'watch']);
+
+  grunt.registerTask('rem', ['copy:remFallback', 'px_to_rem']);
+
+  grunt.registerTask('oimages', ['tinyimg']);
+
+  grunt.registerTask('convert2html', ['php2html']);
 
   grunt.registerTask('template', [
     'copy:templateREM',                            //css a rem fallback
@@ -445,13 +522,23 @@ module.exports = function(grunt) {
     'copy:templatePHP', 'clean:templatePHP',       //doplnit cesty na homepage a odstranit template
   ]);
 
-  //grunt.registerTask('ftp', ['ftp-deploy:'+config['project']['for']]);
+  grunt.registerTask('update', ['concat:basic', 'uglify:all', /*'svg', 'png',*/ 'sass:dev']);
 
-  grunt.registerTask('send', ['clean:project', 'copy:project', 'clean:sass', 'compress:project', 'ftp-deploy:'+config['project']['for']]);
-  
-  //grunt.registerTask('convertSvg', ['svg2png:svgImages']);
+  grunt.registerTask('build', [
+    'update',
+    'clean:dist', 'copy:dev', 
+    'convert2html', 
+    'clean:distFiles', 
+    'autoprefixer:dist', 'cssmin:dist', 'rem',
+    'oimages'
+  ]);// 'ftp-deploy:'+config['project']['for']
 
-  //grunt.registerTask('js', ['concat', 'uglify']);
+
+  grunt.registerTask('send', ['build', 'compress', 'ftp-deploy:'+config['project']['for']]);
+
+
+  grunt.registerTask('pagetest', ['pagespeed']);
+
 
 
 };

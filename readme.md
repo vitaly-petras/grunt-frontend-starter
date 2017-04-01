@@ -4,8 +4,6 @@
 - cd cesta/do/slozky/s/projektem
 - npm install
 
----
-
 ## Práce s projektem
 - Otevřit přikazový řádek (CMD pro windows / Terminal pro OSX)
 - cd cesta/do/slozky/s/projektem

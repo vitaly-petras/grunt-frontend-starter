@@ -1,0 +1,73 @@
+{
+  // Default options
+  'functions': true,
+  'variableNameTransforms': ['dasherize']
+}
+
+/* <%= project.sprite.name %> sprite png icons */
+$icons: (
+  {{#block "spritesheet"}}
+    sprite: (
+      width: {{spritesheet.px.width}}, 
+      height: {{spritesheet.px.height}}, 
+      path: "../icons/png-sprite.png"
+    ),
+{{/block}}
+{{#block "sprites"}}  
+  {{#each sprites}}
+    {{name}}: (
+      width: {{px.width}}, 
+      height: {{px.height}}, 
+      backgroundX: {{px.offset_x}}, 
+      backgroundY: {{px.offset_y}}
+    ),
+  {{/each}}
+{{/block}}
+);
+{{#block "sprite-functions"}}
+{{#if options.functions}}
+
+$sprite: map-get($icons, sprite) !default;
+
+%sprite {
+  background-image: url(map-get($sprite, path));
+  background-size: map-get($sprite, width) map-get($sprite, height);
+}
+
+@mixin sprite($icon, $type: all) {
+
+  @if $type == all {
+    @extend %sprite;
+  }
+
+  $iconMap: icon-attr($icon, $icons);
+
+  @if $type == all or $type == size or $type == nobg {
+    width: map-get($iconMap, width);
+    height: map-get($iconMap, height);
+  }
+
+  @if $type == all or $type == bg or $type == nobg {
+    background-position: map-get($iconMap, x) map-get($iconMap, y);
+  }
+}
+
+@each $spriteImage in map-keys($icons){
+
+  @if $spriteImage != "sprite" {
+
+    $iconMap: icon-attr($spriteImage, $icons);
+
+    .icon__#{$spriteImage}{
+      @include sprite($spriteImage, nobg);
+    }
+      
+  }
+}
+
+.icon{
+  @extend %sprite;
+}
+
+{{/if}}
+{{/block}}
