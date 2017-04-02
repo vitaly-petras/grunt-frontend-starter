@@ -105,7 +105,7 @@ module.exports = function(grunt) {
       //svg sprite
       svgSprite: {
         files: ['<%= project.path.sprites %>svg-sprite/*.{svg,png}'],
-        tasks: ['clean:grunticonImages', 'svgmin', 'grunticon', "html_factory_grunticon_finisher", 'sass:dev'],
+        tasks: ['clean:grunticonImages', 'svgmin', 'grunticon', "html_factory_grunticon_finisher", 'sass:dev', 'file_append'],
       },
       //concated js
       concatedScripts: {
@@ -503,7 +503,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-php2html');
   grunt.loadNpmTasks('grunt-pagespeed');
 
-  grunt.registerTask('svg', ['clean:grunticonImages', 'svgmin', 'grunticon', "html_factory_grunticon_finisher", 'sass:dev']);
+  grunt.registerTask('svg', ['clean:grunticonImages', 'svgmin', 'grunticon', "html_factory_grunticon_finisher", 'sass:dev', 'file_append']);
 
   grunt.registerTask('png', ['sprite', 'sass:dev']);
 
