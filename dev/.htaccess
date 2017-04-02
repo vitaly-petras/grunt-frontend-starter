@@ -83,10 +83,10 @@
 <IfModule mod_rewrite.c>
 
     # (1)
-    RewriteEngine On
+    #RewriteEngine On
 
     # (2)
-    Options +FollowSymlinks
+    #Options +FollowSymlinks
 
     # (3)
     # Options +SymLinksIfOwnerMatch
@@ -98,10 +98,10 @@
     # RewriteOptions <options>
 
     # (6)
-    RewriteCond %{HTTPS} =on
-    RewriteRule ^ - [env=proto:https]
-    RewriteCond %{HTTPS} !=on
-    RewriteRule ^ - [env=proto:http]
+    #RewriteCond %{HTTPS} =on
+    #RewriteRule ^ - [env=proto:https]
+    #RewriteCond %{HTTPS} !=on
+    #RewriteRule ^ - [env=proto:http]
 
 </IfModule>
 
