@@ -387,7 +387,7 @@ module.exports = function(grunt) {
                 ]
             },
             options: {
-                proxy: '127.0.0.1:80/<%= project.bs %>/<%= project.path.root %>', //our PHP server
+                proxy: 'localhost:80/<%= project.bs %>/<%= project.path.root %>', //our PHP server
                 port: 8080, // our new port
                 open: true,
                 watchTask: true
