@@ -1,0 +1,7 @@
+# pro vyvojove ucely je obsah pro roboty blokovan
+# pro povoleni prochazeni a indexovani stranky odstrante "/"
+# spravne by to tedy melo vypadat takto "Disallow:"
+
+
+User-agent: *
+Disallow: /
