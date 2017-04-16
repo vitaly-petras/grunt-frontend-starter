@@ -40,8 +40,6 @@ function simulateLink(e, element){
 
 //zobrazit / schovat (pouziti onclick="toggle(event, this)")
 function toggle(e, element){
-    e.preventDefault();
-
     var $this = $(element),
         target = $this.attr("href"),
         toggleClass = $this.attr("data-toggle-class"),//pridava tridu na tlacitko a target v aktivnim stavu
@@ -53,14 +51,10 @@ function toggle(e, element){
 
     $this.toggleClass("js-toggle-activated");
 
-    if( $this.hasClass("form-checkbox") ){//pokud se jedna o chechbox
-        var $input = $this.find(".form-checkbox__input"),
-            showOn = $this.attr("data-showon");//provest na hodnotu true nebo false
-
-        if( $input.is(":checked") ){
-            if( $input.attr("type") != "radio" ) $input.prop("checked", false);//odfajfkni pouze pokud neni radio button
-        }
-        else                        $input.prop("checked", true);
+    if( $this.is("input[type=checkbox]") || $this.is("input[type=radio]") ){//pokud se jedna o chechbox/radiobox
+        var showOn = $this.attr("data-showon");//provest na hodnotu true nebo false
+    }else{
+        e.preventDefault();
     }
 
 
@@ -85,14 +79,34 @@ function toggle(e, element){
 
     if (!typeof closeOnBlur == typeof undefined || !closeOnBlur == false) clouseOnBlur($this, $target);
 
-    if( $this.hasClass("form-checkbox") ){//pokud se jedna o chechbox
-        if( $input.is(":checked") ){
-            if(showOn == "checked") $target.stop().slideDown(250);
-            else $target.stop().slideUp(250);
+    if( $this.is("input[type=checkbox]") || $this.is("input[type=radio]") ){//pokud se jedna o chechbox/radiobox
+        if( $this.is(":checked") ){
+            if(showOn == "checked"){
+                if (!typeof effect == typeof undefined || !effect == false)
+                    $target.stop().fadeIn(250);
+                else 
+                    $target.stop().slideDown(250);
+            }
+            else{
+                if (!typeof effect == typeof undefined || !effect == false)
+                    $target.stop().fadeOut(250);
+                else 
+                   $target.stop().slideUp(250); 
+            }
         } 
         else{
-            if(showOn == "checked") $target.stop().slideUp(250);
-            else $target.stop().slideDown(250);
+            if(showOn == "checked"){
+                if (!typeof effect == typeof undefined || !effect == false)
+                    $target.stop().fadeOut(250);
+                else 
+                   $target.stop().slideUp(250); 
+            }
+            else{
+                if (!typeof effect == typeof undefined || !effect == false)
+                    $target.stop().fadeIn(250);
+                else 
+                    $target.stop().slideDown(250);
+            }
         }
     }else{//neni to checkbox
         if (!typeof effect == typeof undefined || !effect == false) $target.stop().fadeToggle(250);//pokud to ma byt fade
