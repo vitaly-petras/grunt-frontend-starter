@@ -187,6 +187,7 @@
     position: absolute;
     @include align(both, -200%);
 
+    width: 100%;
     height: 100%;
     -o-object-fit: cover;
     object-fit: cover;
@@ -195,8 +196,6 @@
 // roztahnout video na celou vysku / sirku a vycentrovat
 @mixin cover-video(){
     @include cover-image();
-    -o-object-fit: cover;
-    object-fit: cover;
 
     @include cover();
     background-position: center center;
