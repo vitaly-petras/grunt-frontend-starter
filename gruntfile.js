@@ -368,7 +368,7 @@ module.exports = function(grunt) {
       gruntIcon: {
         files: [
           {
-            append: 'grunticon(["assets/icons/icons.data.svg.css", "assets/icons/icons.data.png.css", "assets/icons/icons.fallback.css"], grunticon.svgLoadedCallback );',
+            append: 'grunticon(["assets/icons/icons.data.svg.css?v="+version+"", "assets/icons/icons.data.png.css?v="+version+"", "assets/icons/icons.fallback.css?v="+version+""], grunticon.svgLoadedCallback );',
             input: '<%= project.path.icons %>grunticon.loader.js',
             output: '<%= project.path.js %>concated/00-grunticon.loader.js'
           }

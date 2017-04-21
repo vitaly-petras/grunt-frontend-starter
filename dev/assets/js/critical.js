@@ -12,7 +12,7 @@
 */
 
 
-
+var version = "<?php echo $version ?>";//version
 
 /* START 1 */
 //nastav tridu js pokud je javascript povoleny
