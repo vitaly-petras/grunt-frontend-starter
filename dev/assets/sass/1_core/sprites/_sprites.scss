@@ -1,7 +1,8 @@
 
-.icon{
+.icon, %icon{
 	display: inline-block;
 	vertical-align: middle;
+	line-height: 1;
 	text-indent: -99999px;
 
 	-webkit-background-size: contain;
@@ -12,12 +13,12 @@
 
 	background-position: center center;
 	background-repeat: no-repeat;
-	
-	svg {
-		display: block;
-	  	width: 100%;
-	  	height: 100%; 
-	}
+}
+
+.icon svg{
+	display: block;
+  	width: 100%;
+  	height: 100%; 
 }
 
 // ********************************
