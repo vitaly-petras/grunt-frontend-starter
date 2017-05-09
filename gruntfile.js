@@ -243,6 +243,7 @@ module.exports = function(grunt) {
         options: {
           enhanceSVG: true,
           cssprefix: ".icon__",
+          pngfolder: "../icons/png/",
           compressPNG: true,
           template: "<%= project.path.sprites %>grunticon/default-css.hbs",
           /*customselectors: {
@@ -370,7 +371,7 @@ module.exports = function(grunt) {
           {
             append: 'grunticon(["assets/icons/icons.data.svg.css?v="+version+"", "assets/icons/icons.data.png.css?v="+version+"", "assets/icons/icons.fallback.css?v="+version+""], grunticon.svgLoadedCallback );',
             input: '<%= project.path.icons %>grunticon.loader.js',
-            output: '<%= project.path.js %>concated/00-grunticon.loader.js'
+            output: '<%= project.path.js %>concated/z-grunticon.loader.js'
           }
         ]
       }
