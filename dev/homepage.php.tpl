@@ -21,7 +21,7 @@
 			<!--[if lt IE 9]><script src="assets/js/ie-fallbacks/html5.js"></script><![endif]-->
 			<noscript>
 				<link rel="stylesheet" media="screen" href="assets/css/global-rem-fallback.css?v=<?php echo $version ?>">
-				<link rel="stylesheet" type="text/css" media="screen" href="assets/images/icons/icons.fallback.css?v=<?php echo $version ?>">
+				<link rel="stylesheet" type="text/css" media="screen" href="assets/icons/icons.fallback.css?v=<?php echo $version ?>">
 			</noscript>
 		<!-- Fallback pro 'IE8' a 'bez javascriptu' -->
 		
