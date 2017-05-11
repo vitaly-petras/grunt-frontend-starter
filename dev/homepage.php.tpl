@@ -33,7 +33,16 @@
 		<!-- //vyplnit dulezite SEO metatagy -->
 	</head>
 	<body>
+		
+		<div class="layout">
+			<div class="layout__center"><!-- toto bych rad pouzival misto .container -->
+				
+			</div>
 
+			 <footer class="layout__footer">
+				footer
+			</footer>
+		</div>
 	
 
 		<!-- local fotns --><!-- pokud se fonty nenacitaji lokalne smazat !!! -->

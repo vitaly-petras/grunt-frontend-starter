@@ -7,15 +7,28 @@ body {
 	}
 }
 
-.container {
-	@include cfx;
-	margin: 0 auto;
-	position: relative;
+.layout{
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	
+	//font-size: 14px; muzeme nastavit font-size jiny nez 16px
 
-	width: $width-layout;
+	&__center{
+		@include cfx;
+		margin: 0 auto;
+		position: relative;
 
-	@include query( $query-last ){
-		width: auto;
-		padding: 0 $padding-layout;
+		width: $width-layout;
+
+		@include query( $query-last ){
+			width: auto;
+			padding: 0 $padding-layout;
+		}
+	}
+
+	&__footer{//toto muze byt i na .footer elementu, ale ten musi byt primym potomkem .layout
+		margin-top: auto;
+		font-size: 150px;
 	}
 }
