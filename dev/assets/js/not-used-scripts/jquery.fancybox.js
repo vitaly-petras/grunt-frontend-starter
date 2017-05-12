@@ -2018,3 +2018,26 @@
 	});
 
 }(window, document, jQuery));
+
+
+$(document).ready(function(){
+	$(".js-fancybox").fancybox({
+	  	prevEffect  : 'fade',
+	  	nextEffect  : 'fade',
+	  	openEffect  : 'elastic',
+	  	closeEffect : 'elastic',
+	  	padding 	: 0,
+	  	margin 		: 0,
+	  	width 		: 'auto',
+	  	height 		: 'auto',
+	  	scrolling 	: 'no',
+	  	loop 		: false,
+	  	autoResize 	: true,
+	  	autoCenter 	: true,
+	  	helpers : {
+	    	title : {
+	      	type: 'inside'
+	    },
+	  }
+	});
+});
