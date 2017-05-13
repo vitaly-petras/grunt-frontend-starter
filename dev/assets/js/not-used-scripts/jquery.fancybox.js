@@ -1761,6 +1761,7 @@
 
 			if (this.el.hasClass('fancybox-lock')) {
 				$('.fancybox-margin').removeClass('fancybox-margin');
+				$('.fancybox-fixed-fix').removeClass('fancybox-fixed-fix');
 
 				scrollV = W.scrollTop();
 				scrollH = W.scrollLeft();
@@ -1832,7 +1833,7 @@
 				if (this.margin !== false) {
 					$('*').filter(function(){
 						return ($(this).css('position') === 'fixed' && !$(this).hasClass("fancybox-overlay") && !$(this).hasClass("fancybox-wrap") );
-					}).addClass('fancybox-margin');
+					}).addClass('fancybox-fixed-fix');
 
 					this.el.addClass('fancybox-margin');
 				}
@@ -2014,10 +2015,11 @@
 
 		H.removeClass('fancybox-lock-test');
 
-		$("<style type='text/css'>.fancybox-margin{margin-right:" + (w2 - w1) + "px;}</style>").appendTo("head");
+		$("<style type='text/css'>.fancybox-margin{margin-right:" + (w2 - w1) + "px;}.fancybox-fixed-fix{right:" + (w2 - w1) + "px;max-width:calc(100% - "+(w2 - w1)+"px);}</style>").appendTo("head");
 	});
 
 }(window, document, jQuery));
+
 
 
 $(document).ready(function(){
