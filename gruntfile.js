@@ -416,6 +416,23 @@ module.exports = function(grunt) {
       },
     },
 
+    tinypng: {
+      options: {
+          apiKey: "",//DPvZBtX9zohy4Y7VcDS8r6ZpxBadpaDA
+          summarize: true,
+          showProgress: true,
+          stopOnImageError: true
+      },
+      compress: {
+          files: [{
+            expand: true,                  // Enable dynamic expansion
+            cwd: '<%= project.path.dist %>',                   // Src matches are relative to this path
+            src: ['**/*.{png,jpg}'],   // Actual patterns to match
+            dest: '<%= project.path.dist %>'                  // Destination path prefix
+          }]
+      },
+    },
+
     php2html: {
       dist: {
         options: {
@@ -503,6 +520,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-tinyimg');
   grunt.loadNpmTasks('grunt-php2html');
   grunt.loadNpmTasks('grunt-pagespeed');
+  grunt.loadNpmTasks('grunt-tinypng');
 
   grunt.registerTask('svg', ['clean:grunticonImages', 'svgmin', 'grunticon', "html_factory_grunticon_finisher", 'sass:dev', 'file_append']);
 
@@ -512,7 +530,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('rem', ['copy:remFallback', 'px_to_rem']);
 
-  grunt.registerTask('oimages', ['tinyimg']);
+  grunt.registerTask('oimages', ['tinyimg']);//, 'tinypng'
 
   grunt.registerTask('convert2html', ['php2html']);
 
