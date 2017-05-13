@@ -167,7 +167,6 @@
 	@include align(vertical);
 	cursor: pointer;
 	z-index: 8040;
-	visibility: hidden;
 }
 
 .fancybox-prev{
@@ -192,10 +191,6 @@
 		text-align: right;
 		content:"›";
 	}
-}
-
-.fancybox-nav:hover span {
-	visibility: visible;
 }
 
 .fancybox-tmp {
