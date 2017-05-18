@@ -4,6 +4,9 @@
 // Licensed GPLv3 for open source use
 // or fancyBox Commercial License for commercial use
 //
+// License Name: petras@html-factory.cz
+// License key: 4f2172f62783d1a7c8b32b8e21c2e0b6
+//
 // http://fancyapps.com/fancybox/
 // Copyright 2017 fancyApps
 //
