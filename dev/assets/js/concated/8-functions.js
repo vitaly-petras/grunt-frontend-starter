@@ -177,7 +177,7 @@ function imgToBg(el){
 
     if( !$this.hasClass("load-fired") ){
         $this.addClass("load-fired").load(function(){
-            imgToBgFallback($this);
+            imgToBg($this);
         });
     }
 }
