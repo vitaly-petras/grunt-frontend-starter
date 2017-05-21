@@ -4,7 +4,10 @@
 function clouseOnBlur(el, target){
     if( el.hasClass("js-toggle-activated") ){
         setTimeout(function(){
-            $body.one("click", function(event){
+            var customEvent;
+            if( iOS == true ) customEvent = "touchend";
+            else customEvent = "click";
+            $body.one(customEvent, function(event){
                 if(!$(event.target).closest(el).length && !$(event.target).closest(target).length) {//kliknuti mimo elementy
                     el.click();//zavre cilovy blok
                     //console.log("clicked out");
