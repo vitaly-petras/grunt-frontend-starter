@@ -418,7 +418,7 @@ module.exports = function(grunt) {
 
     tinypng: {
       options: {
-          apiKey: "",//DPvZBtX9zohy4Y7VcDS8r6ZpxBadpaDA
+          apiKey: "G6YNiVTmdOqImIT8wzpFlb1ZrDA5gtoS",
           summarize: true,
           showProgress: true,
           stopOnImageError: true
