@@ -41,7 +41,7 @@ if(!checkRem("fontSize", "1rem")){//pokud prohlizec nepodporuje REM jednotky
 /* END 2 */
 
 
-/* START 3 
+/* START 3 */
 var ie = (function(){
    var undef,
       v = 3,
@@ -58,10 +58,10 @@ var ie = (function(){
 /* END 3 */
 
 
-/* START 4 
+/* START 4 */
 var supports = (function() {
    var div = document.createElement('div'),
-      vendors = 'Moz Webkit'.split(' '),//ms O Moz Webkit
+      vendors = 'ms O Moz Webkit'.split(' '),//ms O Moz Webkit
       len = vendors.length;
  
    return function(prop) {
@@ -81,10 +81,9 @@ var supports = (function() {
       return false;
    };
 })();
-*/
 
 var   pns = "",//properties not supported
-      ptt = ["transform", "columnCount", "textShadow", "boxShadow"];//properties to test
+      ptt = ["transform", "objectFit"];//properties to test
 
 /* -- another properties to test -- */
 //textShadow
@@ -97,12 +96,10 @@ var   pns = "",//properties not supported
 
 
 
-/* START 5 
-if( ie == 9 ) pns += " ie9 no-animation";//Internet Explorer 9
-else if( ie < 9 ) pns += " oldie no-transform no-columnCount no-boxShadow no-animation";//Internet Explorer 8 and older
+/* START 5 */
+if( ie == 9 ) pns += " ie9 no-animation no-objectFit";//Internet Explorer 9
+else if( ie < 9 ) pns += " oldie no-transform no-columnCount no-boxShadow no-animation no-objectFit";//Internet Explorer 8 and older
 else{
-   document.addEventListener("touchstart", function() {},false);//hover event pro dotykova zarizeni (nesmi byt v ie8 protoze hodi chybu)
-
    for (i = 0; i < ptt.length; i++) {//test css properties
       if( !supports(ptt[i]) ) pns += ' no-'+ptt[i];//not supports
       else pns += ' '+ptt[i];//supports

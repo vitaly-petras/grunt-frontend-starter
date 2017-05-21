@@ -153,15 +153,33 @@ $(window).resize(function () {
 
 
 
-//nacist obrazek jako pozadi (kvuli skvele css cover funkci, a animovat fadeIn)
+//nacist obrazek jako pozadi 
 function imgToBg(el){
     var $this = $(el),
-        src = $this.attr("data-src");
+        src = $this.attr("src"),
+        currentSrc = $this[0].currentSrc,
+        $imgToBg = $this.next(".imgToBg");
 
-    if (typeof src == typeof undefined || src == false) src = $this.attr("data-lazy");//pro slick carousel
+    if( $imgToBg.length<1 ){//vytvorit div imgToBg pokud neexistuje
+        $this.after('<div class="imgToBg"></div>').hide();
 
-    $this.after('<div class="imgToBg" style="background-image:url('+src+');"></div>');
-    $this.remove();//odstranit puvodni img
+        $imgToBg = $this.next(".imgToBg").css({
+            "opacity"   : $this.css("opacity"),
+            "z-index"   : $this.css("z-index")
+        });
+    }
+
+    if ( typeof currentSrc === "undefined" ){//nepodporuje current src
+        $imgToBg.css("background-image", "url("+src+")");
+    }else{//moderni prohlizec podporujici srcset
+        $imgToBg.css("background-image", "url("+currentSrc+")");
+    }
+
+    if( !$this.hasClass("load-fired") ){
+        $this.addClass("load-fired").load(function(){
+            imgToBgFallback($this);
+        });
+    }
 }
 
 
