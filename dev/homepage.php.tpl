@@ -13,7 +13,7 @@
 
 		<!-- critical js (nezbytne skripty ktere detekuji podporu css a jinych dulezitych vlastnosti) -->
 			<script>
-				function checkRem(a,b){var c=!1;try{var d=document.createElement("div");d.style[a]=b,d.style[a]===b&&(c=!0)}catch(e){}return c}var version="<?php echo $version ?>";if(document.documentElement.className=document.documentElement.className.replace(/\bno-js\b/,"js"),!checkRem("fontSize","1rem")){var gs=document.getElementById("global-styles");gs.href=gs.href.replace(".css","-rem-fallback.css")}var pns="",ptt=["transform","columnCount","textShadow","boxShadow"];"undefined"==typeof SVGRect&&(pns+=" no-svg");var isTouch="ontouchstart"in window||navigator.msMaxTouchPoints>0;1==isTouch&&document.body.clientWidth<1024&&(pns+=" touch-device"),document.documentElement.className+=pns;
+				function checkRem(a,b){var c=!1;try{var d=document.createElement("div");d.style[a]=b,d.style[a]===b&&(c=!0)}catch(e){}return c}if(document.documentElement.className=document.documentElement.className.replace(/\bno-js\b/,"js"),!checkRem("fontSize","1rem")){var gs=document.getElementById("global-styles");gs.href=gs.href.replace(".css","-rem-fallback.css")}var pns="",ptt=["transform","columnCount","textShadow","boxShadow"];"undefined"==typeof SVGRect&&(pns+=" no-svg"),1==("ontouchstart"in window||navigator.msMaxTouchPoints>0)&&document.body.clientWidth<1024&&(pns+=" touch-device"),document.documentElement.className+=pns;
 			</script>
 		<!-- //critical js -->
 

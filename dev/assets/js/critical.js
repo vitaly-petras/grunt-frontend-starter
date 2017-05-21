@@ -114,9 +114,9 @@ if (typeof SVGRect == "undefined") pns += " no-svg";//no svg support
 /* END 6 */
 
 
-/* START 7 */
+/* START 7 
 var isTouch = (('ontouchstart' in window) || (navigator.msMaxTouchPoints > 0));
 if( isTouch == true && document.body.clientWidth < 1024 ) pns += " touch-device";
-/* END 7 */
+ END 7 */
 
 document.documentElement.className += pns;
