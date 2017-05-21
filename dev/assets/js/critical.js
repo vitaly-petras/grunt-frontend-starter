@@ -6,6 +6,7 @@
 * 5. Spusteni testu (body 3 a 4 dohromady)
 * 6. Podpora SVG
 * 7. Detect touch devices (tablets/mobile)
+* 8. Detect iOs devices
 * 
 * Ve vychozim stavu potrebujeme body: 1,2,6,7 zbytek pouze dle nutnosti 
 * na stranku vkladame do hlavicky do "critical js" v minifikovanem stavu!
@@ -118,5 +119,10 @@ if (typeof SVGRect == "undefined") pns += " no-svg";//no svg support
 var isTouch = (('ontouchstart' in window) || (navigator.msMaxTouchPoints > 0));
 if( isTouch == true && document.body.clientWidth < 1024 ) pns += " touch-device";
  END 7 */
+
+/* START 8 */
+var iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+if( iOS == true ) document.addEventListener("touchstart", function() {},false);//hover event pro dotykova zarizeni
+/* END 8 */
 
 document.documentElement.className += pns;
