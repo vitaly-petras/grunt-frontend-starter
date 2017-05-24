@@ -530,7 +530,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('rem', ['copy:remFallback', 'px_to_rem']);
 
-  grunt.registerTask('oimages', ['tinyimg']);//, 'tinypng'
+  grunt.registerTask('oimages', ['tinyimg', 'tinypng']);
 
   grunt.registerTask('convert2html', ['php2html']);
 
@@ -548,7 +548,7 @@ module.exports = function(grunt) {
     'convert2html', 
     'clean:distFiles', 
     'autoprefixer:dist', 'cssmin:dist', 'rem',
-    'oimages'
+    //'oimages'
   ]);// 'ftp-deploy:'+config['project']['for']
 
 
