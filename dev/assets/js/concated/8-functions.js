@@ -50,7 +50,8 @@ function toggle(e, element){
         toggleText = $this.attr("data-toggle-text"),//vymeni text v tlacitku
         closeOnBlur = $this.attr("data-close-onblur"),//zavira po kliku mimo target a otevirajici tlacitko
         bodyFreezing = $this.attr("data-body-freeze"),//pridava tridu na body (pro zamezeni skrolu)
-        effect = $this.attr("data-fadein");//vychozi je slide efekt, pro fade pouzit toto
+        effect = $this.attr("data-effect"),//vychozi je slide efekt
+        accessibility = $this.attr("data-accessibility");
 
     $this.toggleClass("js-toggle-activated");
 
@@ -60,9 +61,16 @@ function toggle(e, element){
         e.preventDefault();
     }
 
-
     if (typeof target == typeof undefined || target == false){//pokud target neni definovany v atributu "href"
         target = $this.attr("data-target");//pak musi byt definovany v atributu "data-darget"
+    }
+
+    if (typeof effect == typeof undefined || effect == false){//pokud neni nastaven efekt
+        effect = "slide";//vychozi je slide
+    }
+
+    if (typeof accessibility !== typeof undefined && typeof $this.attr("data-scrollhere") == typeof undefined){
+        $this.attr("data-scrollhere", $this.offset().top  + $this.outerHeight() - $window.height());
     }
 
     var $target = $(target);//definovani cile
@@ -85,37 +93,34 @@ function toggle(e, element){
     if( $this.is("input[type=checkbox]") || $this.is("input[type=radio]") ){//pokud se jedna o chechbox/radiobox
         if( $this.is(":checked") ){
             if(showOn == "checked"){
-                if (!typeof effect == typeof undefined || !effect == false)
-                    $target.stop().fadeIn(250);
-                else 
-                    $target.stop().slideDown(250);
+                showHide("show", effect, $target);
             }
             else{
-                if (!typeof effect == typeof undefined || !effect == false)
-                    $target.stop().fadeOut(250);
-                else 
-                   $target.stop().slideUp(250); 
+                showHide("hide", effect, $target);
             }
         } 
         else{
             if(showOn == "checked"){
-                if (!typeof effect == typeof undefined || !effect == false)
-                    $target.stop().fadeOut(250);
-                else 
-                   $target.stop().slideUp(250); 
+                showHide("hide", effect, $target);
             }
             else{
-                if (!typeof effect == typeof undefined || !effect == false)
-                    $target.stop().fadeIn(250);
-                else 
-                    $target.stop().slideDown(250);
+                showHide("show", effect, $target);
             }
         }
     }else{//neni to checkbox
-        if (!typeof effect == typeof undefined || !effect == false) $target.stop().fadeToggle(250);//pokud to ma byt fade
-        else $target.stop().slideToggle(250);//pokud to ma byt slide = defaultni
+        showHide("toggle", effect, $target);
     }
-};
+
+    if (typeof accessibility !== typeof undefined){
+        if( !$this.hasClass("js-toggle-activated") ){//pokud se element schovava
+            console.log(Number($this.attr("data-scrollhere")));
+            $("html, body").animate({
+                scrollTop: parseInt($this.attr("data-scrollhere")) + 10
+            }, 350);
+            $this.removeAttr("data-scrollhere");
+        }
+    }
+}
 
 //zamezeni skorolovani
 function bodyFreeze(){
