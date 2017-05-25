@@ -295,6 +295,10 @@ module.exports = function(grunt) {
       remFallback:{
         src: ['<%= project.path.dist %>assets/css/global.css'], 
         dest: '<%= project.path.dist %>assets/css/global-rem-fallback.css'
+      },
+      htaccess:{
+        src: ['<%= project.path.dist %>_htaccess'], 
+        dest: '<%= project.path.dist %>.htaccess'
       }
     },
 
@@ -322,6 +326,9 @@ module.exports = function(grunt) {
       ],
       gruntIconLoader: [
         '<%= project.path.icons %>grunticon.loader.js'
+      ],
+      htaccess: [
+        '<%= project.path.dist %>_htaccess'
       ],
     },
 
@@ -545,6 +552,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build', [
     'update',
     'clean:dist', 'copy:dev', 
+    'copy:htaccess', 'clean:htaccess',
     'convert2html', 
     'clean:distFiles', 
     'autoprefixer:dist', 'cssmin:dist', 'rem',
