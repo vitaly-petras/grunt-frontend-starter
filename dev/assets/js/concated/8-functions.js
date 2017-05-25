@@ -75,11 +75,6 @@ function toggle(e, element){
 
     var $target = $(target);//definovani cile
 
-    if (!typeof toggleClass == typeof undefined || !toggleClass == false){
-        $this.toggleClass(toggleClass);
-        $target.toggleClass(toggleClass);
-    }
-
     if (!typeof toggleThis == typeof undefined || toggleThis == true) $this.slideToggle(250);
 
     if (!typeof toggleText == typeof undefined || !toggleText == false){
@@ -109,6 +104,11 @@ function toggle(e, element){
         }
     }else{//neni to checkbox
         showHide("toggle", effect, $target);
+    }
+
+    if (!typeof toggleClass == typeof undefined || !toggleClass == false){
+        $this.toggleClass(toggleClass);
+        $target.toggleClass(toggleClass);
     }
 
     if (typeof accessibility !== typeof undefined){
