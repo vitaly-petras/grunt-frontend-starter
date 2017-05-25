@@ -107,8 +107,10 @@ function toggle(e, element){
     }
 
     if (!typeof toggleClass == typeof undefined || !toggleClass == false){
-        $this.toggleClass(toggleClass);
-        $target.toggleClass(toggleClass);
+        setTimeout(function(){//iOs bug fix
+            $this.toggleClass(toggleClass);
+            $target.toggleClass(toggleClass);
+        }, 10);
     }
 
     if (typeof accessibility !== typeof undefined){
