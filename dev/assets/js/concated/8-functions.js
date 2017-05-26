@@ -239,3 +239,23 @@ function fixedTopBar(){
 $(window).load(function(){
     
 });
+
+//progressive loading images
+function loadHiddenImages(el){
+    $(el).find("[data-src]")
+    .each(function(){
+        var $this = $(this),
+            src = $this.attr("data-src"),
+            sizes = $this.attr("data-sizes"),
+            srcset = $this.attr("data-srcset");
+
+        if (typeof sizes !== typeof undefined)
+            $this.attr("sizes", sizes).removeAttr("data-sizes");
+
+        if (typeof srcset !== typeof undefined)
+            $this.attr("srcset", srcset).removeAttr("data-srcset");
+
+        if (typeof src !== typeof undefined)
+            $this.attr("src", src).removeAttr("data-src");
+    });
+}
