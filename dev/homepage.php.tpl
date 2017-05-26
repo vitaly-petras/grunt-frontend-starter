@@ -45,10 +45,6 @@
 		</div>
 	
 
-		<!-- local fotns --><!-- pokud se fonty nenacitaji lokalne smazat !!! -->
-			<link rel="stylesheet" type="text/css" media="screen" href="assets/css/local-fonts-loader.css?v=<?php echo $version ?>">
-		<!-- //local fotns -->
-
 		<!-- nacitani vsech scripu a funkci -->
 			<script src="assets/js/all.min.js?v=<?php echo $version ?>"></script>
 		<!-- //nacitani vsech scripu a funkci -->
