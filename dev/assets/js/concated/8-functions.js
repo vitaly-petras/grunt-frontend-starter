@@ -45,7 +45,7 @@ function simulateLink(e, element){
 function toggle(e, element){
     var $this = $(element),
         target = $this.attr("href"),
-        toggleClass = $this.attr("data-toggle-class"),//pridava tridu na tlacitko a target v aktivnim stavu
+        toggleClass = $this.attr("data-class"),//pridava tridu na tlacitko a target v aktivnim stavu
         toggleThis = $this.attr("data-this-not-toggle"),//schova tlacitko
         toggleText = $this.attr("data-toggle-text"),//vymeni text v tlacitku
         closeOnBlur = $this.attr("data-close-onblur"),//zavira po kliku mimo target a otevirajici tlacitko
