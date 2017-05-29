@@ -1,76 +1,6 @@
 // ************************************************************************************
-// MIXINS - CLASSIC BASE
+// MIXINS 
 // ************************************************************************************
-
-// tady prijdou moje finkce
-
-// kulate rohy
-@mixin border-radius($radius:$radius){
-    border-radius: $radius;
-}
-
-@mixin perspective($value){
-    -webkit-perspective: $value;
-    -moz-perspective: $value;
-    -o-perspective: $value;
-    perspective: $value;
-}
-
-@mixin backface(){
-    -webkit-backface-visibility: hidden; 
-    -moz-backface-visibility: hidden;
-    -ms-backface-visibility: hidden;
-    -o-backface-visibility: hidden;
-    backface-visibility: hidden;
-}
-
-@mixin preserve(){
-    -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    -o-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-}
-
-// pruhlednost
-@mixin opacity($op){
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$op*100+")"; // IE 8 
-    filter: alpha(opacity=$op*100); // IE 5-7
-    -moz-opacity: $op; // Netscape
-    -khtml-opacity: $op;  // Safari 1.x
-    opacity: $op; // modern browsers 
-}
-
-//stin
-@mixin box-shadow($shadow){
-    box-shadow: $shadow;
-}
-
-@mixin box-double-shadow($shadow1,$shadow2){
-    box-shadow: $shadow1,$shadow2;
-}
-
-@mixin text-shadow($shadow){
-    text-shadow:$shadow;
-}
-
-@mixin rotatey($deg:180){
-    transform: rotateY($deg+deg);
-}
-
-@mixin rotate($deg:180){
-    transform: rotate($deg+deg);
-}
-
-// conditions for IE9
-@mixin ie9{  
-    .ie9 & { @content }
-}
-// conditions for IE8 and below 
-@mixin oldie{ 
-    .oldie & { @content }
-}
-
 @mixin align($direction:both, $position:0){
     position: absolute;
 
@@ -98,36 +28,6 @@
 }
 
 
-//columns
-@mixin columns($count, $gap:$column-gap){
-    column-count: $count;
-    column-gap:$gap;
-
-    margin-top: -$gap;
-
-    &__item{
-        padding-top: $gap;
-    }
-
-    .no-columns &{
-        column-count: 1;
-        column-gap:0;
-        
-        font-size: 0;
-        margin-top: -$gap;
-        margin-left: (-$gap/2);
-        margin-right: (-$gap/2);
-
-        &__item{
-            display: inline-block;
-            vertical-align: top;
-            width: percentage(1/$count);
-            padding: $gap $gap/2 0;
-            font-size: $font-size;
-        }
-    }
-}
-
 //grid
 @mixin grid($gap:$column-gap) {
     $gap:remove-units($gap) * 1px;
@@ -148,44 +48,11 @@
     width: percentage(remove-units($width)/remove-units($container-width));
 }
 
-// justify elements
-@mixin justify($width:auto, $vertical-align:top){
-    text-align: justify;
-    line-height: 1;
-
-    &__item{
-        display: inline-block;
-        vertical-align: $vertical-align;  
-
-        @if $width == "auto"{
-            width:auto;
-        }@else{
-            width:remove-units($width)+px;
-        }  
-
-        position: relative;
-        top: 1em; // your line-height
-    }
-    
-    &:before{
-        display:block;
-        content: "";
-        width: 100%;
-        margin-bottom: -1em; // your line-height
-    }
-
-    &:after{
-        display: inline-block;
-        content: "";
-        width: 100%;
-    }
-}
 
 // roztahnout obrazek na celou vysku / sirku a vycentrovat
 @mixin cover-image(){
     display: block;
-    position: absolute;
-    @include align(both, -200%);
+    @include align(both, -100%);
 
     width: 100%;
     height: 100%;
@@ -202,69 +69,6 @@
     background-repeat: no-repeat;
 }
 
-// parallax
-@mixin parallax($check:yes){
-    @if $check == "none"{
-        -webkit-background-attachment : initial;
-        -moz-background-attachment : initial;
-        -ms-background-attachment : initial;
-        -o-background-attachment : initial;
-        background-attachment : initial;
-    }
-    @else{
-        -webkit-background-attachment : fixed;
-        -moz-background-attachment : fixed;
-        -ms-background-attachment : fixed;
-        -o-background-attachment : fixed;
-        background-attachment : fixed;
-    }    
-
-    @include query($tablet){
-        -webkit-background-attachment : initial;
-        -moz-background-attachment : initial;
-        -ms-background-attachment : initial;
-        -o-background-attachment : initial;
-        background-attachment : initial;
-    }  
-}
-
-// css zvetseni objektu
-@mixin scale($value:1.5){
-    transform:scale($value);
-}
-
-// rgba pozadi
-@mixin rgba($color,$alpha) {
-    background-color:$color;
-    background-color: rgba(red($color), green($color), blue($color), $alpha);
-}
-
-// Gradient s nastavením procent
-@mixin gradient($start-color:#fff, $start-perc: 0%, $end-color:#000, $end-perc: 100%) {
-    background: $start-color;
-    background: -moz-linear-gradient(top, $start-color $start-perc, $end-color $end-perc);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop($start-perc,$start-color), color-stop($end-perc,$end-color));
-    background: -webkit-linear-gradient(top, $start-color $start-perc,$end-color $end-perc);
-    background: -o-linear-gradient(top, $start-color $start-perc,$end-color $end-perc);
-    background: -ms-linear-gradient(top, $start-color $start-perc,$end-color $end-perc);
-    background: linear-gradient(to bottom, $start-color $start-perc,$end-color $end-perc);
-    filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$start-color}', endColorstr='#{$end-color}', GradientType=0)";
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$start-color}', endColorstr='#{$end-color}', GradientType=0)";
-}
-
-// Gradient horizontální
-@mixin gradient-horizontal($start-color, $end-color) {
-    background: $start-color;
-    background: -moz-linear-gradient(left, $start-color 0%, $end-color 100%);
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%,$start-color), color-stop(100%,$end-color));
-    background: -webkit-linear-gradient(left, $start-color 0%,$end-color 100%);
-    background: -o-linear-gradient(left, $start-color 0%,$end-color 100%);
-    background: -ms-linear-gradient(left, $start-color 0%,$end-color 100%);
-    background: linear-gradient(to right, $start-color 0%,$end-color 100%);
-    filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$start-color}', endColorstr='#{$end-color}', GradientType=0)";
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$start-color}', endColorstr='#{$end-color}', GradientType=0)";
-}
-
 @mixin box-sizing($sizing) {
     -webkit-box-sizing: $sizing;
     -moz-box-sizing: $sizing;
@@ -278,44 +82,9 @@
     height: remove-units($height)+px;
 }
 
-@mixin transform($transform) {
-    transform: $transform;
-}
-
-@mixin transform-origin($origin) {
-    transform-origin: $origin;
-}
-
-@mixin translate($x, $y) {
-    transform: translate($x, $y);
-}
-
-@mixin skew($x, $y) {
-    transform: skew($x, $y);
-}
-
-@mixin translate3d($x, $y, $z) {
-    transform: translate3d($x, $y, $z);
-}
-
-
-// Background clip
-@mixin background-clip($clip) {
-    background-clip: $clip;
-}
-
-// ************************************************************************************
-//  MIXINS - vlastni
-// **************************************************************************************/
-
 //odstrani jednotky (px, rem atd) a necha pouze cislo
 @function remove-units($number) {
   @return $number / ($number * 0 + 1);
-}
-
-//rgba funkce
-@function frgba($color,$alpha){
-    @return rgba(red($color), green($color), blue($color), $alpha);
 }
 
 // styly pro webkit prohlizece
@@ -339,8 +108,18 @@
     @if $type == "min"{
         $value:$value+1;
     }
-    @media screen and (#{$type}-width: px-to-em-query($value) ){
-        @content
+    @if $value == $tablet{
+        @media screen and (#{$type}-width: px-to-em-query($value) ), (orientation:landscape) and (max-width:px-to-em-query($tablet)){
+            @content
+        }
+    }@else if $value == $mobile{
+        @media screen and (#{$type}-width: px-to-em-query($value) ) and (orientation:portrait){
+            @content
+        }
+    }@else{
+        @media screen and (#{$type}-width: px-to-em-query($value) ){
+            @content
+        }
     }
 }
 
@@ -351,60 +130,13 @@
     }
 }
 
-
-// Resetování ul nebo ol listu
-@mixin reset-ul() {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-
-// Nastavení centrování elementu, defaultně i horizontáně, parametrem lze horizontální změnit
-@mixin center-it($text-align: center) {
-    display: table-cell;
-    vertical-align: middle;
-    text-align: $text-align;
-}
-
-
-// css3 animace (vetsinou na odkazy)
-@mixin animate($anim:all, $duration:$transition-duration){
-    @include transition-property($anim);
-    @include transition-duration($duration);
-    @include transition-function($transition-function);
-}
-
-@mixin transition-property($property:none) {
-    transition-property: #{$property};
-}
-
-@mixin transition-duration($duration:$transition-duration) {
-    transition-duration: #{$duration};
-}
-
-@mixin transition-function($function:$transition-function) {
-    transition-timing-function: #{$function};
-}
-
-@mixin transition-delay($delay:0) {
-    transition-delay: #{$delay};
-}
-
-
 // Clearfix
 @mixin cfx() {
-    *zoom:1;
     &:after {
         content:"";
         display:table;
         clear:both;
     }
-}
-
-// Preloader
-@mixin preloader() {
-    @extend %preloader;
 }
 
 
@@ -415,14 +147,6 @@
     background-position: $background-position;
 }
 
-// vypln pozadi
-@mixin cover(){
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -ms-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
 
 // Skrytí scrollbaru ve všech prohlížečích
 @mixin scrollbar-hide() {
@@ -458,36 +182,5 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-
-// Nastavuje elementu stejnou výšku a stejnou výšku řádku
-@mixin h-lh($height) {
-    height: remove-units($height)+px;
-    line-height: remove-units($height)+px;
-}
-
-// Nastavení pro fontface, načte font, stačí mu dodat název a  název souboru, cesta je nastavena z variables
-@mixin font-face($font-name, $font-file, $font-weight: normal, $font-style: normal) {
-
-    @font-face {
-        font-family: '#{$font-name}';
-        src: url('#{$path-font}/#{$font-file}.eot');
-        src: url('#{$path-font}/#{$font-file}.eot?#iefix') format('embedded-opentype'),
-            url('#{$path-font}/#{$font-file}.woff2') format('woff2'),
-            url('#{$path-font}/#{$font-file}.woff') format('woff'),
-            url('#{$path-font}/#{$font-file}.ttf') format('truetype'),
-            url('#{$path-font}/#{$font-file}.svg##{$font-name}') format('svg');
-        font-weight: $font-weight;
-        font-style: $font-style;
-
-    }
-    @include webkit {
-        @font-face {
-            font-family: '#{$font-name}';
-            src: url('#{$path-font}/#{$font-file}.svg') format('svg');
-        }
-    }
-
 }
 

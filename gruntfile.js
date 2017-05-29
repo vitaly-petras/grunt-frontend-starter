@@ -347,6 +347,18 @@ module.exports = function(grunt) {
       ],
     },
 
+    csscomb: {
+        options: {
+            config: '.csscomb.json'
+        },
+        sass: {
+            expand: true,
+            cwd: '<%= project.path.scss %>',
+            src: ['**/*.scss', '!1_core/*.scss'],
+            dest: '<%= project.path.scss %>',
+        }
+    },
+
     compress: {
       dist: {
         options: {
@@ -521,6 +533,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-tinyimg');
   grunt.loadNpmTasks('grunt-php2html');
   grunt.loadNpmTasks('grunt-tinypng');
+  grunt.loadNpmTasks('grunt-csscomb');
   grunt.loadNpmTasks('grunt-sync');
 
   grunt.registerTask('svg', ['clean:grunticonImages', 'svgmin', 'grunticon', "html_factory_grunticon_finisher", 'sass:dev', 'file_append']);
