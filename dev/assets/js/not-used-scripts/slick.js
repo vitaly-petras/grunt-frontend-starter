@@ -516,7 +516,7 @@
             _.options.slidesToScroll = 1;
         }
 
-        $('img[data-lazy]', _.$slider).not('[src]').addClass('slick-loading');
+        $('img[data-src]', _.$slider).not('[src]').addClass('slick-loading');
 
         _.setupInfinite();
 
@@ -1332,32 +1332,27 @@
             loadRange, cloneRange, rangeStart, rangeEnd;
 
         function loadImages(imagesScope) {
-            $('img[data-lazy]', imagesScope).each(function() {
+            $('img[data-src]', imagesScope).each(function() {
 
                 var image = $(this),
-                    imageSource = $(this).attr('data-lazy'),
+                    imageSource = $(this).attr('data-src'),
                     imageToLoad = document.createElement('img'),
-                    imgBg = $(this).attr("data-imgToBG");
+                    imgBg = $(this).attr("data-imgToBG"),
+                    srcSet = $(this).attr("data-srcset");
+
+                if (typeof srcSet !== "undefined" && srcSet !== false && srcSet !== null){//pokud existuje srcset
+                    $(this).attr("srcset", srcSet).removeAttr("data-srcset");
+                    $(this).attr("sizes", $(this).attr("data-sizes")).removeAttr("data-sizes");
+                }
 
                 if (typeof imgBg !== "undefined" && imgBg !== false && imgBg !== null){//pokud callback NEexistuje
-                    $(this).attr("src", imageSource).css("opacity", 0);
-                    imgToBg($(this));
-                }else{//pokud existuje callback
-                    imageToLoad.onload = function() {
-                        image
-                            .animate({ opacity: 0 }, 100, function() {
-                                image
-                                    .attr('src', imageSource)
-                                    .animate({ opacity: 1 }, 200, function() {
-                                        image
-                                            .removeAttr('data-lazy')
-                                            .removeClass('slick-loading');
-                                    });
-                            });
-                    };
-
-                    imageToLoad.src = imageSource;
+                   imgToBg($(this));
                 }
+
+                image
+                    .attr('src', imageSource)
+                    .removeClass('slick-loading')
+                    .removeAttr("data-src");
             });
         }
 
@@ -1496,12 +1491,12 @@
         var _ = this,
             imgCount, targetImage;
 
-        imgCount = $('img[data-lazy]', _.$slider).length;
+        imgCount = $('img[data-src]', _.$slider).length;
 
         if (imgCount > 0) {
-            targetImage = $('img[data-lazy]', _.$slider).first();
-            targetImage.attr('src', targetImage.attr('data-lazy')).removeClass('slick-loading').load(function() {
-                    targetImage.removeAttr('data-lazy');
+            targetImage = $('img[data-src]', _.$slider).first();
+            targetImage.attr('src', targetImage.attr('data-src')).removeClass('slick-loading').load(function() {
+                    targetImage.removeAttr('data-src');
                     _.progressiveLazyLoad();
 
                     if (_.options.adaptiveHeight === true) {
@@ -1509,7 +1504,7 @@
                     }
                 })
                 .error(function() {
-                    targetImage.removeAttr('data-lazy');
+                    targetImage.removeAttr('data-src');
                     _.progressiveLazyLoad();
                 });
         }
@@ -2646,6 +2641,7 @@
     };
 
 }));
+
 
 
 $(document).ready(function(){
