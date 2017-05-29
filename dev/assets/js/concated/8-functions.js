@@ -45,7 +45,7 @@ function simulateLink(e, element){
 function toggle(e, element){
     var $this = $(element),
         target = $this.attr("href"),
-        toggleClass = $this.attr("data-toggle-class"),//pridava tridu na tlacitko a target v aktivnim stavu
+        toggleClass = $this.attr("data-class"),//pridava tridu na tlacitko a target v aktivnim stavu
         toggleThis = $this.attr("data-this-not-toggle"),//schova tlacitko
         toggleText = $this.attr("data-toggle-text"),//vymeni text v tlacitku
         closeOnBlur = $this.attr("data-close-onblur"),//zavira po kliku mimo target a otevirajici tlacitko
@@ -120,6 +120,31 @@ function toggle(e, element){
                 scrollTop: parseInt($this.attr("data-scrollhere")) + 10
             }, 350);
             $this.removeAttr("data-scrollhere");
+        }
+    }
+}
+
+//show or hide element
+function showHide(wtt, htd, target, speed){//what to do, how to do
+    var speed = speed || 250;
+
+    if( wtt == "hide" ){
+        if( htd == "slide" ){
+            $(target).stop().slideUp(speed);
+        }else if( htd == "fade" ){
+            $(target).stop().fadeOut(speed);
+        }
+    }else if(wtt == "show"){
+        if( htd == "slide" ){
+            $(target).stop().slideDown(speed);
+        }else if( htd == "fade" ){
+            $(target).stop().fadeIn(speed);
+        }
+    }else if( wtt == "toggle" ){
+        if( htd == "slide" ){
+            $(target).stop().slideToggle(speed);
+        }else if( htd == "fade" ){
+            $(target).stop().fadeToggle(speed);
         }
     }
 }
