@@ -244,7 +244,7 @@ module.exports = function(grunt) {
           enhanceSVG: true,
           cssprefix: ".icon__",
           pngfolder: "../icons/png/",
-          compressPNG: true,
+          compressPNG: false,
           template: "<%= project.path.sprites %>grunticon/default-css.hbs",
           /*customselectors: {
             "back": [".test:before"]
@@ -281,17 +281,6 @@ module.exports = function(grunt) {
         src: '<%= project.path.scss %>global.scss.tpl',
         dest: '<%= project.path.scss %>global.scss', 
       },
-      dev: {
-        options: {
-          
-        },
-        dot: true,
-        expand: true,
-        cwd: '<%= project.path.root %>',
-        //src: '**',
-        src: ['**', '!**/*.php', '!page-components', '!page_components'],
-        dest: '<%= project.path.dist %>', 
-      },
       remFallback:{
         src: ['<%= project.path.dist %>assets/css/global.css'], 
         dest: '<%= project.path.dist %>assets/css/global-rem-fallback.css'
@@ -299,6 +288,24 @@ module.exports = function(grunt) {
       htaccess:{
         src: ['<%= project.path.dist %>_htaccess'], 
         dest: '<%= project.path.dist %>.htaccess'
+      }
+    },
+
+    sync: {
+      dist: {
+        files: [
+          {
+            cwd: '<%= project.path.root %>', 
+            src: ['**', '!**/*.php', '!page-components', '!page_components'], 
+            dest: '<%= project.path.dist %>'
+          }, // makes all src relative to cwd 
+        ],
+        verbose: false, // Default: false 
+        pretend: false, // Don't do any disk operations - just write log. Default: false 
+        failOnError: false, // Fail the task when copying is not possible. Default: false 
+        ignoreInDest: ["data.zip", '**/*.php', 'page-components', 'page_components', '.htaccess'], // Never remove js files from destination. Default: none 
+        updateAndDelete: true, // Remove all files from dest that are not found in src. Default: false 
+        compareUsing: "mtime" // compares via md5 hash of file contents, instead of file modification time. Default: "mtime" 
       }
     },
 
@@ -314,16 +321,24 @@ module.exports = function(grunt) {
         '<%= project.path.icons %>png'
       ],
       dist: [
-        '<%= project.path.dist %>**'
+        '<%= project.path.dist %>data.zip', 
       ],
-      distFiles: [
-        '<%= project.path.dist %>assets/sass', 
-        '<%= project.path.dist %>assets/images/sprites',
-        '<%= project.path.dist %>assets/js/concated',
-        '<%= project.path.dist %>assets/js/critical.js',
-        '<%= project.path.dist %>assets/js/critical.min.js',
-        '<%= project.path.dist %>assets/js/not-used-scripts',
-      ],
+      distFiles: {
+        files:   [{  
+          expand: true,   
+          cwd: '<%= project.path.dist %>',
+          src: [
+                'assets/sass', 
+                'assets/images/sprites',
+                'assets/js/concated',
+                'assets/js/critical.js',
+                'assets/js/critical.min.js',
+                'assets/js/not-used-scripts',
+                'assets/js/*.js', '!assets/js/*.min.js',
+          ],                  // Dictionary of files
+          dest: '<%= project.path.dist %>',
+        }]
+      },
       gruntIconLoader: [
         '<%= project.path.icons %>grunticon.loader.js'
       ],
@@ -426,6 +441,8 @@ module.exports = function(grunt) {
     tinypng: {
       options: {
           apiKey: "G6YNiVTmdOqImIT8wzpFlb1ZrDA5gtoS",
+          sigFile: '.tinypng.json',
+          checkSigs: true,
           summarize: true,
           showProgress: true,
           stopOnImageError: true
@@ -455,29 +472,6 @@ module.exports = function(grunt) {
             ext: '.html' 
           }
         ]
-      }
-    },
-
-    pagespeed: {
-      options: {
-        nokey: true,
-        url: "http://htmlsablony.html-factory.cz/<%= project.project.name %>/",
-      },
-      desktop: {
-        options: {
-          paths: ["homepage.html", "index.html"],
-          locale: "cs_CZ",
-          strategy: "desktop",
-          threshold: 80
-        }
-      },
-      mobile: {
-        options: {
-          paths: ["homepage.html", "index.html"],
-          locale: "cs_CZ",
-          strategy: "mobile",
-          threshold: 65
-        }
       }
     },
 
@@ -526,8 +520,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-browser-sync');
   grunt.loadNpmTasks('grunt-tinyimg');
   grunt.loadNpmTasks('grunt-php2html');
-  grunt.loadNpmTasks('grunt-pagespeed');
   grunt.loadNpmTasks('grunt-tinypng');
+  grunt.loadNpmTasks('grunt-sync');
 
   grunt.registerTask('svg', ['clean:grunticonImages', 'svgmin', 'grunticon', "html_factory_grunticon_finisher", 'sass:dev', 'file_append']);
 
@@ -547,25 +541,23 @@ module.exports = function(grunt) {
     'copy:templatePHP', 'clean:templatePHP',       //doplnit cesty na homepage a odstranit template
   ]);
 
-  grunt.registerTask('update', ['concat:basic', 'uglify:all', /*'svg', 'png',*/ 'sass:dev']);
+  grunt.registerTask('update', ['concat:basic', 'uglify:all', 'sass:dev']);
 
   grunt.registerTask('build', [
-    'update',
-    'clean:dist', 'copy:dev', 
+    'codereview', 'update',
+    'clean:dist', 'sync:dist',  
     'copy:htaccess', 'clean:htaccess',
     'convert2html', 
     'clean:distFiles', 
     'autoprefixer:dist', 'cssmin:dist', 'rem',
-    //'oimages'
+    'oimages'
   ]);// 'ftp-deploy:'+config['project']['for']
 
 
   grunt.registerTask('send', ['build', 'compress', 'ftp-deploy:'+config['project']['for']]);
 
+  grunt.registerTask('ftp', ['compress', 'ftp-deploy:'+config['project']['for']]);
 
-  grunt.registerTask('pagetest', ['pagespeed']);
-
-
-
+  grunt.registerTask('codereview', ['csscomb']);
 };
 
