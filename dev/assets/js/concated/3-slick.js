@@ -1341,18 +1341,22 @@
                     srcSet = $(this).attr("data-srcset");
 
                 if (typeof srcSet !== "undefined" && srcSet !== false && srcSet !== null){//pokud existuje srcset
-                    $(this).attr("srcset", srcSet).removeAttr("data-srcset");
-                    $(this).attr("sizes", $(this).attr("data-sizes")).removeAttr("data-sizes");
-                }
-
-                if (typeof imgBg !== "undefined" && imgBg !== false && imgBg !== null){//pokud callback NEexistuje
-                   imgToBg($(this));
+                    image.attr("srcset", srcSet).removeAttr("data-srcset");
+                    image.attr("sizes", image.attr("data-sizes")).removeAttr("data-sizes");
                 }
 
                 image
                     .attr('src', imageSource)
                     .removeClass('slick-loading')
                     .removeAttr("data-src");
+
+                if (typeof imgBg !== "undefined" && imgBg !== false && imgBg !== null){//pokud callback NEexistuje
+                   imgToBg($(this));
+                }
+
+                if( image.hasClass("js-cover-fallback") && $html.hasClass("no-objectFit") )
+                    imgToBg(image);
+
             });
         }
 
