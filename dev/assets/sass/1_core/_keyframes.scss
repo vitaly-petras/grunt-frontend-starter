@@ -2,32 +2,11 @@
 /*  KEYFRAMES ANIMACE
 /*-----------------------------------------------------------------------------------*/
 
-@keyframes name /* Firefox */
-{
-    0% {
-        
-    }
-    100% {
-        
-    }
-}
-
-@-moz-keyframes name /* Firefox */
-{
-    0% {
-        
-    }
-    100% {
-        
-    }
-}
-
-@-webkit-keyframes name /* Safari and Chrome */
-{
-    0% {
-        
-    }
-    100% {
-    
-    }
+@keyframes loading {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

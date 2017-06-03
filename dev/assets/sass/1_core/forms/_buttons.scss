@@ -25,4 +25,26 @@
 		color: $btn-color;
 		background: $btn-bg-hover;
 	}
+
+	&--loading{
+		position: relative;
+		color: transparent !important;
+		cursor: wait;
+		pointer-events: none;
+
+		&:after{
+			display:block;
+			content: "";
+
+			@include align();
+			width: $btn-height - 10px;
+			height: $btn-height - 10px;
+
+			border-radius: 50%;
+			border: round($btn-height / 10) solid #000;
+			border-color: #ffffff transparent #ffffff transparent;
+
+			animation: loading 1.3s linear infinite;
+		}
+	}
 }
