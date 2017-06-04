@@ -23,25 +23,6 @@ $selectLiLineHeight:			30px;
 		border: $input-border-width solid $input-border;
 		background: $input-bg;
 
-		li {
-			padding: ($input-height - ($input-border-width*2 + $selectLiLineHeight))/2 15px;
-			line-height: selectLiLineHeight;
-
-			font-size: $font-size;
-			@include font();
-			color: $color-base;
-
-			&:first-child{
-				padding-right:35px;
-				white-space: nowrap;
-				text-overflow: ellipsis;
-				overflow: hidden;
-				padding-top: 0;
-				padding-bottom: 0;
-				line-height: $input-height - ($input-border-width*2);
-			}
-		}
-
 		&:before{
 			display: block;
 			content: "";
@@ -59,6 +40,25 @@ $selectLiLineHeight:			30px;
 		}
 	}
 
+	li {
+		padding: ($input-height - ($input-border-width*2 + $selectLiLineHeight))/2 15px;
+		line-height: selectLiLineHeight;
+
+		font-size: $font-size;
+		@include font();
+		color: $color-base;
+
+		&:first-child{
+			padding-right:35px;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			padding-top: 0;
+			padding-bottom: 0;
+			line-height: $input-height - ($input-border-width*2);
+		}
+	}
+
 	&.open {
 		height: $input-height;
 		z-index: 300 !important;
@@ -73,24 +73,24 @@ $selectLiLineHeight:			30px;
 			height: auto;
 			overflow: auto;
 
-			li {
-				border-top: $input-border-width solid $input-border;
-				background: #fff;
-				@include animate(background);
-
-				&:hover,&.selected {
-					background: darken($input-bg, 5%);
-				}
-
-				&:first-child {
-					border: 0;
-					white-space: normal;
-					text-overflow: normal;
-				}
-			}
-
 			&:before{
 				@include rotate(180);
+			}
+		}
+
+		li {
+			border-top: $input-border-width solid $input-border;
+			background: #fff;
+			@include animate(background);
+
+			&:hover,&.selected {
+				background: darken($input-bg, 5%);
+			}
+
+			&:first-child {
+				border: 0;
+				white-space: normal;
+				text-overflow: normal;
 			}
 		}
 	}
