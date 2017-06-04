@@ -11,14 +11,18 @@
 	margin-bottom: $input-bottom-margin;
 
 	font-size: $font-size;
+	font-family: inherit;
 	line-height: $input-height - ($input-border-width*2);
 	@include font();
 	color: $color-base;
 
 	background: $input-bg;
 	border: $input-border-width solid $input-border;
-	@include border-radius();
-	@include animate();
+	border-radius: $radius;
+
+	transition-duration: 200ms;
+	transition-property: background-color, color, border-color;
+	
 
 	&:focus {
 		background: darken($input-bg, 5%);
@@ -35,14 +39,17 @@ textarea {
 	margin-bottom: $input-bottom-margin;
 
 	font-size: $font-size;
+	font-family: inherit;
 	line-height: $input-height/3*2;
 	@include font();
 	color: $color-base;
 
 	background: $input-bg;
 	border: $input-border-width solid $input-border;
-	@include border-radius();
-	@include animate();
+	border-radius: $radius;
+
+	transition-duration: 200ms;
+	transition-property: background-color, color, border-color;
 
 	&:focus {
 		background: darken($input-bg, 5%);
@@ -55,18 +62,18 @@ select {
 	display: block;
 	height: $input-height;
 	width: 100%;
-	padding: 5px 15px;
+	padding: 0 15px;
 	margin-bottom: $input-bottom-margin;
 
 	font-size: $font-size;
+	font-family: inherit;
 	line-height: $input-height - ($input-border-width*2);
 	@include font();
 	color: $color-base;
 
 	background: $input-bg;
 	border: $input-border-width solid $input-border;
-	@include border-radius();
-	@include animate();
+	border-radius: $radius;
 }
 
 .input-radio {
