@@ -40,6 +40,7 @@
         ],
         [
             "display",
+            "line-height",
             "visibility",
             "float",
             "clear",
@@ -57,9 +58,6 @@
             "flex",
             "justify-content",
             "align-items",
-            "vertical-align"
-        ],
-        [
             "-webkit-box-sizing",
             "-moz-box-sizing",
             "box-sizing",
@@ -81,7 +79,6 @@
             "padding-left"
         ],
         [
-            "line-height",
             "font",
             "font-family",
             "font-size",
@@ -144,6 +141,7 @@
         ],
         [
             "content",
+            "vertical-align",
             "quotes",
             "counter-reset",
             "counter-increment",
