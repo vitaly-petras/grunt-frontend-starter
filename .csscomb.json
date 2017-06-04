@@ -28,9 +28,7 @@
     "sort-order": [
         [
             "$include",
-            "$extend"
-        ],
-        [
+            "$extend",
             "position",
             "z-index",
             "top",
@@ -56,6 +54,7 @@
             "flex-pack",
             "flex-align",
             "flex",
+            "flex-wrap",
             "justify-content",
             "align-items",
             "-webkit-box-sizing",
@@ -129,6 +128,9 @@
             "color"
         ],
         [
+            "pointer-events",
+            "content",
+            "vertical-align",
             "table-layout",
             "empty-cells",
             "caption-side",
@@ -137,11 +139,7 @@
             "list-style",
             "list-style-position",
             "list-style-type",
-            "list-style-image"
-        ],
-        [
-            "content",
-            "vertical-align",
+            "list-style-image",
             "quotes",
             "counter-reset",
             "counter-increment",
@@ -230,8 +228,7 @@
             "-moz-animation-direction",
             "-ms-animation-direction",
             "-o-animation-direction",
-            "animation-direction",
-            "pointer-events"
+            "animation-direction"
         ],
         [
             "opacity",
