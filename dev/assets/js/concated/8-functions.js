@@ -311,7 +311,7 @@ function showMoreInfo(event, element, target){
     }
 
     if (!typeof toggleText == typeof undefined || !toggleText == false){
-        $this.attr("data-toggle-text", $this.text()).text(toggleText);
+        $this.attr("data-toggle-text", $this.html()).html(toggleText);
     }
 
     oldHeight = $target.attr("data-height");
