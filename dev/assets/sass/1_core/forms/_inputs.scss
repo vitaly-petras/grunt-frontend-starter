@@ -74,6 +74,13 @@ select {
 	background: $input-bg;
 	border: $input-border-width solid $input-border;
 	border-radius: $radius;
+
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    text-overflow:'';
+    text-indent: 0.01px;
+    text-overflow: "";
 }
 
 .input-radio {
