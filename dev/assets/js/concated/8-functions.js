@@ -292,6 +292,7 @@ function showMoreInfo(event, element, target){
     event.preventDefault();
     var $this = $(element),
         toggleText = $this.attr("data-toggle-text"),
+        offset = $target.offset().top + $this.outerHeight() - $window.height(),
         $target,
         oldHeight;
 
@@ -321,22 +322,26 @@ function showMoreInfo(event, element, target){
     if (typeof oldHeight == typeof undefined || oldHeight == false){
         $target.attr("data-height", $target.outerHeight());
 
-        $target.animate({
+        $target.stop().animate({
             height: $target[0].scrollHeight
-        }, 350);
+        }, 200);
     }
     else{
         $target.removeAttr("data-height");
 
-        $target.animate({
+        $target.stop().animate({
             height: parseInt(oldHeight)
-        }, 350);
+        }, 200, function(){
+            $target.removeAttr("style");
+        });
     }
 
     if( !$target.hasClass("opened") ){
-        $("html,body").animate({
-            scrollTop: 0
-        }, 350);
+        //console.log(offset);
+
+        $("html,body").stop().animate({
+            scrollTop: offset
+        }, 200);
     }
 }//pouziti onclick="showMoreInfo(event, element, $(this).next('.className'))" - pricemz 3. parametr se nemusi uvadet a muze to byt href nebo data-target
 
