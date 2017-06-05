@@ -284,3 +284,59 @@ function loadHiddenImages(el){
             $this.attr("src", src).removeAttr("data-src");
     });
 }
+
+
+
+//rozbalit vice textu
+function showMoreInfo(event, element, target){
+    event.preventDefault();
+    var $this = $(element),
+        toggleText = $this.attr("data-toggle-text"),
+        $target,
+        oldHeight;
+
+    if (typeof target !== 'undefined')
+        $target = $(target);
+    else{
+        if (!typeof $this.attr("data-target") == typeof undefined || !$this.attr("data-target") == false)
+            $target = $($this.attr("data-target"));//"data-darget"
+
+        else if (!typeof $this.attr("href") == typeof undefined || !$this.attr("href") == false)
+            $target = $($this.attr("href"));//"href"
+
+        else{
+            console.log("target neni definovany ani ve funkci, ani v 'href' ani v 'data-target'");
+            return;
+        }
+    }
+
+    if (!typeof toggleText == typeof undefined || !toggleText == false){
+        $this.attr("data-toggle-text", $this.text()).text(toggleText);
+    }
+
+    oldHeight = $target.attr("data-height");
+
+    $target.toggleClass("opened");
+
+    if (typeof oldHeight == typeof undefined || oldHeight == false){
+        $target.attr("data-height", $target.outerHeight());
+
+        $target.animate({
+            height: $target[0].scrollHeight
+        }, 350);
+    }
+    else{
+        $target.removeAttr("data-height");
+
+        $target.animate({
+            height: parseInt(oldHeight)
+        }, 350);
+    }
+
+    if( !$target.hasClass("opened") ){
+        $("html,body").animate({
+            scrollTop: 0
+        }, 350);
+    }
+}//pouziti onclick="showMoreInfo(event, element, $(this).next('.className'))" - pricemz 3. parametr se nemusi uvadet a muze to byt href nebo data-target
+
