@@ -32,9 +32,9 @@ function simulateLink(e, element){
     var $this = $(element),
         target = $( e.target );
 
-    if( !target.is("a") && !target.parent().is("a") ){
+    if( !target.is("a") && !target.parent().is("a") && !target.is("button") && !target.parent().is("button") ){
         e.preventDefault();
-        var $link = $this.find(".js-simulate-link-target").first();
+        var $link = $this.find(".js-sl-target").first();
         if( $link.length>0 ){//pokud odkaz existuje
             $link[0].click();//klikni na nej
         }
