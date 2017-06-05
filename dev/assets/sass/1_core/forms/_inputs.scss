@@ -80,7 +80,10 @@ select {
     appearance: none;
     text-overflow:'';
     text-indent: 0.01px;
-    text-overflow: "";
+
+    &::-ms-expand {
+        display: none;
+    }
 }
 
 .input-radio {
