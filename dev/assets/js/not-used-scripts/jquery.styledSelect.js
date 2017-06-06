@@ -49,9 +49,11 @@ jQuery.fn.styledSelect = function(settings) {
 		if(settings.zIndexApply) { cs.css('z-index', currentZIndex-2); };
 		var csl = jQuery('<ul></li>');
 		if(settings.zIndexApply) { csl.css('z-index', currentZIndex-1); };
+		var variableWidth = s.outerWidth();
 		cs.append(csl);
 		s.hide(0).after(cs);
 		cs = s.next();
+		
 
 		jQuery('option', s).each(function() {
 			if(jQuery(this).attr('value')==undefined) {
@@ -60,10 +62,25 @@ jQuery.fn.styledSelect = function(settings) {
 		});
 
 		var closedSelect = function() {
+
 			jQuery('ul', cs).html('');
 			addOption(s.val(), jQuery(':selected', s).text(), clickSelect);
 			cs.removeClass(settings.openSelectClass);
 			jQuery('ul li', cs).removeClass(settings.selectedOptionClass).removeClass(settings.optionClass).addClass(settings.closedOptionClass);
+
+			//pokud je aktualne vybrany option s atributem disabled pridej tridu disabled na li 
+			var checkDisabled = jQuery(':selected', s).attr("disabled");
+			if (typeof checkDisabled !== typeof undefined && checkDisabled !== false) 
+				jQuery('ul li', cs).addClass("disabled");
+
+			//pokud existuje data-url atribut vloz obrazek do li
+			var optUrl = jQuery(':selected', s).attr("data-url");
+			if (typeof optUrl != typeof undefined || optUrl == true)
+				jQuery('ul li', cs).addClass("with-image").prepend("<div class='image'><img src='"+optUrl+"' ></div>");
+
+			$(cs).css("width", "");
+			
+
 			if(settings.deactiveOnBackgroundClick) {
 				$(document).unbind('mousedown', closedSelect);
 				cs.unbind('mousedown');
@@ -71,8 +88,18 @@ jQuery.fn.styledSelect = function(settings) {
 		};
 
 		var clickSelect = function() {
+			$(cs).css("width", variableWidth);
+
+			//pokud select ma disabled atribut neotevirej select
+			if (!typeof s.attr("disabled") == typeof undefined || !s.attr("disabled") == false) return;
+
 			jQuery('ul', cs).empty();
-			jQuery('option', s).each(function(i) { addOption(jQuery(this).val(), jQuery(this).text(), clickOption); });
+			jQuery('option', s).each(function(i) { 
+				var disabled = jQuery(this).attr("disabled");
+				//pokud tento option ma disabled pak ho nevypisuj v seznamu
+				if (typeof disabled !== typeof undefined && disabled !== false) return;
+				addOption(jQuery(this).val(), jQuery(this).text(), clickOption, jQuery(this).attr("data-url")); 
+			});
 			cs.addClass(settings.openSelectClass);
 			jQuery('ul li:first-child', cs).addClass(settings.firstOptionClass);
 			jQuery('ul li:last-child', cs).addClass(settings.lastOptionClass);
@@ -88,17 +115,22 @@ jQuery.fn.styledSelect = function(settings) {
 		  s.change(); // CHANGED LINE
 		};
 
-		var addOption = function(optVal, optName, callBack) {
+		var addOption = function(optVal, optName, callBack, optUrl) {
 			
-      var cso = jQuery('<li></li>').attr('rel', optVal).text(optName).click(callBack).addClass(settings.optionClass);
+      		var cso = jQuery('<li></li>').attr('rel', optVal).text(optName).click(callBack).addClass(settings.optionClass);
 			if(settings.zIndexApply) { cso.css('z-index', currentZIndex); };
+
+			//pokud existuje data-url atribut vloz obrazek do li
+			if (typeof optUrl != typeof undefined || optUrl == true)
+				cso.addClass("with-image").prepend("<div class='image'><img src='"+optUrl+"' ></div>");
+
 			// predani onchange, prepis this.value na realnou hodnotu
 			/*      if(s.val() != optVal && onchange_str != null) { 
           //alert(onchange_str);
           //cso.bind('onchange',onchange_str.replace('this.value',optVal));
           cso.attr('onclick', onchange_str.replace('this.value',optVal));
-       }*/
-      if(s.val()==optVal) {
+       		}*/
+      		if(s.val()==optVal) {
 				cso.addClass(settings.selectedOptionClass);
 			};
 			jQuery('ul', cs).append(cso);
@@ -111,3 +143,32 @@ jQuery.fn.styledSelect = function(settings) {
 
 	return this;
 };
+
+$( document ).ready(function() {
+
+	//styled select
+    $('select').each(function(event){
+		var $this = $(this),
+			className = $this.attr("class"),
+			attributes = $this.prop("attributes");
+
+		if( $this.find("[disabled]").length>0 )
+			$this[0].selectedIndex=$this.find("[disabled]").first().index();
+
+      	if (typeof className == typeof undefined || className == false) className = "select";
+
+		$this.styledSelect({
+	     	selectClass: className
+	    });
+
+		//kliknuti na select ale ne li select zavre nebo otevre (fixnuti kliknuti na sipku
+	    var $ul = $this.next();
+		// loop through <select> attributes and apply them on <div>
+		$.each(attributes, function() {
+		    $ul.attr(this.name, this.value);
+		});
+
+		$ul.show();
+	});
+});
+

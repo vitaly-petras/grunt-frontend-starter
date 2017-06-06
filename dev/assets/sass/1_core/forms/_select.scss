@@ -32,6 +32,8 @@ $selectLiLineHeight:			30px;
 			top: ($input-height - 6) /2;
 			@include animate(transform);
 
+			pointer-events: none;
+
 			width: 0;
 			height: 0;
 			border-style: solid;
