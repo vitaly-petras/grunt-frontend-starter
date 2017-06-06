@@ -345,3 +345,64 @@ function showMoreInfo(event, element, target){
     }
 }//pouziti onclick="showMoreInfo(event, element, $(this).next('.className'))" - pricemz 3. parametr se nemusi uvadet a muze to byt href nebo data-target
 
+
+
+//zobrazit dalsi produkty/kategorie
+function toggleChildren(element, target, event){
+    event.preventDefault();
+    
+    var $target = $(target),
+        $this = $(element),
+        toggleText = $this.attr("data-toggle-text"),
+        oldHeight = $target.attr("data-height"),
+        elementPosition = $target.attr("data-scrollhere");
+
+    if (typeof elementPosition == typeof undefined || elementPosition == false)
+       $target.attr("data-scrollhere", $this.offset().top  + $this.outerHeight() - $window.height());
+
+    //aktivni trida
+    $target.toggleClass("isOpened");
+    $this.toggleClass("isOpened");
+
+    //nastavit vysku
+    $target.height($target.outerHeight()).css("overflow", "hidden");
+
+    //zmen text zobrazit vice/mene
+    if (!typeof toggleText == typeof undefined || !toggleText == false){
+        $this.attr("data-toggle-text", $this.html()).html(toggleText);
+    }
+
+    //zobrazit/schovat polozky
+    var $items = $target.children(":hidden").addClass("hidden"),
+        boxModel = $target.children(":visible").first().css("display");
+
+    if( $items.length<1 )//schovej polozky
+        $target.children(".hidden").hide();
+    else//zobraz polozky
+        $items.css("display", boxModel);
+
+    //animuj vysku
+    if (typeof oldHeight == typeof undefined || oldHeight == false){
+        //new large height
+        $target.attr("data-height", $target.outerHeight());
+
+        $target.animate({
+            height: $target[0].scrollHeight
+        }, 350, function(){
+            $target.removeAttr("style");//odstranit vsechny inline styly
+        });
+    }else{//old small height
+        $target.removeAttr("data-height");
+
+        $("html, body").animate({
+            scrollTop: parseInt($target.attr("data-scrollhere")) + 10
+        }, 350);
+
+        $target.animate({
+            height: parseInt(oldHeight)
+        }, 350, function(){
+            $target.removeAttr("style").removeAttr("data-scrollhere");//odstranit vsechny inline styly
+        });
+    }
+}
+
