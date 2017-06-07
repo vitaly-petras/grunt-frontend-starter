@@ -49,7 +49,7 @@ jQuery.fn.styledSelect = function(settings) {
 		if(settings.zIndexApply) { cs.css('z-index', currentZIndex-2); };
 		var csl = jQuery('<ul></li>');
 		if(settings.zIndexApply) { csl.css('z-index', currentZIndex-1); };
-		var variableWidth = s.outerWidth();
+		//var variableWidth = s.outerWidth();
 		cs.append(csl);
 		s.hide(0).after(cs);
 		cs = s.next();
@@ -88,7 +88,7 @@ jQuery.fn.styledSelect = function(settings) {
 		};
 
 		var clickSelect = function() {
-			$(cs).css("width", variableWidth);
+			//$(cs).css("width", variableWidth);
 
 			//pokud select ma disabled atribut neotevirej select
 			if (!typeof s.attr("disabled") == typeof undefined || !s.attr("disabled") == false) return;
