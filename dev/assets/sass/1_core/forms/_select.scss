@@ -71,6 +71,7 @@ $selectLiLineHeight:			30px;
 			left: 0;
 			right: 0;
 			min-width: 100%;
+			max-height: $input-height * 5;
 
 			height: auto;
 			overflow: auto;
@@ -85,7 +86,7 @@ $selectLiLineHeight:			30px;
 			background: #fff;
 			@include animate(background);
 
-			&:hover,&.selected {
+			&:hover{
 				background: darken($input-bg, 5%);
 			}
 
@@ -94,6 +95,10 @@ $selectLiLineHeight:			30px;
 				white-space: normal;
 				text-overflow: normal;
 			}
+		}
+
+		.selected{
+			font-weight: 700;
 		}
 	}
 }
