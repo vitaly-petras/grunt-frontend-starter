@@ -244,7 +244,7 @@ module.exports = function(grunt) {
           enhanceSVG: true,
           cssprefix: ".icon__",
           pngfolder: "../icons/png/",
-          compressPNG: false,
+          compressPNG: true,
           template: "<%= project.path.sprites %>grunticon/default-css.hbs",
           /*customselectors: {
             "back": [".test:before"]
@@ -296,7 +296,7 @@ module.exports = function(grunt) {
         files: [
           {
             cwd: '<%= project.path.root %>', 
-            src: ['**', '!**/*.php', '!page-components', '!page_components'], 
+            src: ['**', '!**/*.php', '!page-components', '!page_components', '!assets/images/sprites/**'], 
             dest: '<%= project.path.dist %>'
           }, // makes all src relative to cwd 
         ],
@@ -463,7 +463,7 @@ module.exports = function(grunt) {
           files: [{
             expand: true,                  // Enable dynamic expansion
             cwd: '<%= project.path.dist %>',                   // Src matches are relative to this path
-            src: ['**/*.{png,jpg}'],   // Actual patterns to match
+            src: ['**/*.{png,jpg}', '!assets/icons/**', '!assets/favicons/**'],   // Actual patterns to match
             dest: '<%= project.path.dist %>'                  // Destination path prefix
           }]
       },
@@ -554,7 +554,7 @@ module.exports = function(grunt) {
     'copy:templatePHP', 'clean:templatePHP',       //doplnit cesty na homepage a odstranit template
   ]);
 
-  grunt.registerTask('update', ['concat:basic', 'uglify:all', 'sass:dev']);
+  grunt.registerTask('update', ['concat:basic', 'uglify:all', 'svg', 'sass:dev']);
 
   grunt.registerTask('build', [
     'codereview', 'update',
