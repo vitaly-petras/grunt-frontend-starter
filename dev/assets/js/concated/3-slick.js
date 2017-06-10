@@ -1335,10 +1335,10 @@
             $('img[data-src]', imagesScope).each(function() {
 
                 var image = $(this),
-                    imageSource = $(this).attr('data-src'),
+                    imageSource = image.attr('data-src'),
                     imageToLoad = document.createElement('img'),
-                    imgBg = $(this).attr("data-imgToBG"),
-                    srcSet = $(this).attr("data-srcset");
+                    imgBg = image.attr("data-imgToBG"),
+                    srcSet = image.attr("data-srcset");
 
                 if (typeof srcSet !== "undefined" && srcSet !== false && srcSet !== null){//pokud existuje srcset
                     image.attr("srcset", srcSet).removeAttr("data-srcset");
@@ -1351,7 +1351,7 @@
                     .removeAttr("data-src");
 
                 if (typeof imgBg !== "undefined" && imgBg !== false && imgBg !== null){//pokud callback NEexistuje
-                   imgToBg($(this));
+                   imgToBg(image);
                 }
 
                 if( image.hasClass("js-cover-fallback") && $html.hasClass("no-objectFit") )
@@ -1499,18 +1499,41 @@
 
         if (imgCount > 0) {
             targetImage = $('img[data-src]', _.$slider).first();
-            targetImage.attr('src', targetImage.attr('data-src')).removeClass('slick-loading').load(function() {
-                    targetImage.removeAttr('data-src');
-                    _.progressiveLazyLoad();
 
-                    if (_.options.adaptiveHeight === true) {
-                        _.setPosition();
-                    }
-                })
-                .error(function() {
-                    targetImage.removeAttr('data-src');
-                    _.progressiveLazyLoad();
-                });
+            var image = targetImage,
+                imageSource = image.attr('data-src'),
+                imgBg = image.attr("data-imgToBG"),
+                srcSet = image.attr("data-srcset");
+
+            if (typeof srcSet !== "undefined" && srcSet !== false && srcSet !== null){//pokud existuje srcset
+                image.attr("srcset", srcSet).removeAttr("data-srcset");
+                image.attr("sizes", image.attr("data-sizes")).removeAttr("data-sizes");
+            }
+
+            image
+                .attr('src', imageSource)
+                .removeClass('slick-loading')
+                .removeAttr("data-src");
+
+            if( image.hasClass("js-cover-fallback") && $html.hasClass("no-objectFit") )
+                imgToBg(image);
+
+            if (typeof imgBg !== "undefined" && imgBg !== false && imgBg !== null){//pokud callback existuje
+               imgToBg(image);
+            }
+
+            image.load(function() {
+                _.progressiveLazyLoad();
+
+                if (_.options.adaptiveHeight === true) {
+                    _.setPosition();
+                }
+            })
+            .error(function() {
+                targetImage.removeAttr('data-src');
+                _.progressiveLazyLoad();
+            });
+
         }
 
     };
@@ -2669,6 +2692,7 @@ $(document).ready(function(){
             autoplay: false,
             arrows:true,
             rows:rows,
+            lazyLoad: "progressive",
             slidesPerRow:slidesPerRow,
             /*responsive:[
                 {
