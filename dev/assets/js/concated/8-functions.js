@@ -51,7 +51,8 @@ function toggle(e, element){
         closeOnBlur = $this.attr("data-close-onblur"),//zavira po kliku mimo target a otevirajici tlacitko
         bodyFreezing = $this.attr("data-body-freeze"),//pridava tridu na body (pro zamezeni skrolu)
         effect = $this.attr("data-effect"),//vychozi je slide efekt
-        accessibility = $this.attr("data-accessibility");
+        accessibility = $this.attr("data-accessibility"),
+        focusOnFirstInput = $this.attr("data-focusOnFirstInput");
 
     $this.toggleClass("js-toggle-activated");
 
@@ -105,6 +106,8 @@ function toggle(e, element){
     }else{//neni to checkbox
         showHide("toggle", effect, $target);
     }
+
+    if (typeof focusOnFirstInput !== typeof undefined && $this.hasClass("js-toggle-activated")) $target.find("input").first().focus();
 
     if (!typeof toggleClass == typeof undefined || !toggleClass == false){
         setTimeout(function(){//iOs bug fix
