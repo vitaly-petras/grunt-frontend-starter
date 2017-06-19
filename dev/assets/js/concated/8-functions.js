@@ -7,6 +7,7 @@ function clouseOnBlur(el, target){
             var customEvent;
             if( iOS == true ) customEvent = "touchend";
             else customEvent = "click";
+
             $body.one(customEvent, function(event){
                 if(!$(event.target).closest(el).length && !$(event.target).closest(target).length) {//kliknuti mimo elementy
                     el.click();//zavre cilovy blok
@@ -19,7 +20,8 @@ function clouseOnBlur(el, target){
                     if (typeof attr !== typeof undefined && attr !== false && !$clickedElement.is(el)) {//pokud je to novy odkaz pro otevreni
                         el.click();//zavre cilovy blok
                     }else{//pokud je to proste kliknuti nekde uvnitr
-                        clouseOnBlur(el, target);//nastav nove hlidani na body
+                        if( !$(event.target).closest(el).length )//pouze polud to neni toggle
+                            clouseOnBlur(el, target);//nastav nove hlidani na body
                     }
                 }
             });
