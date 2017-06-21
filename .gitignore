@@ -12,6 +12,13 @@ podklady
 *.zip
 
 
+# development files
+#####################
+dev/assets/css
+dev/assets/all.js
+dev/assets/*min.js
+
+
 # OS generated files #
 ######################
 .DS_Store

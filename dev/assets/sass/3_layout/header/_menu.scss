@@ -1,5 +1,5 @@
 .menu{
-	@include reset-ul();
+	list-style: none;
 	@include cfx();
 
 	&__item{

@@ -13,7 +13,6 @@
 	font-size: $font-size;
 	font-family: inherit;
 	line-height: $input-height - ($input-border-width*2);
-	@include font();
 	color: $color-base;
 
 	background: $input-bg;
@@ -41,7 +40,6 @@ textarea {
 	font-size: $font-size;
 	font-family: inherit;
 	line-height: $input-height/3*2;
-	@include font();
 	color: $color-base;
 
 	background: $input-bg;
@@ -68,7 +66,6 @@ select {
 	font-size: $font-size;
 	font-family: inherit;
 	line-height: $input-height - ($input-border-width*2);
-	@include font();
 	color: $color-base;
 
 	background: $input-bg;

@@ -32,5 +32,5 @@ img[data-src], img[data-lazy]{
 
 	background-position: center center;
 	background-repeat: no-repeat;
-	@include cover();
+	background-size: cover;
 }

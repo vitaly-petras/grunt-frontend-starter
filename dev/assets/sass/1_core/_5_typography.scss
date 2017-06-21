@@ -5,7 +5,9 @@ body{
     //font-size na body elementu MUSI byt 16px !!!!!
     color:          $color-base;
     line-height:    $line-height;
-    @include        font();
+    
+    font-family:    $font-base;
+    font-weight:    400;//vychozi sirka pisma
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -59,7 +61,8 @@ a {
     cursor: pointer;
     outline: none;
 
-    @include animate(color);
+    transition-duration: 200ms;
+    transition-property: color;
 
     &:hover {
         text-decoration: none;

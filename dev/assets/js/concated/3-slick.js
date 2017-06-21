@@ -516,7 +516,7 @@
             _.options.slidesToScroll = 1;
         }
 
-        $('img[data-src]', _.$slider).not('[src]').addClass('slick-loading');
+        $('img[data-lazy]', _.$slider).addClass('slick-loading');
 
         _.setupInfinite();
 
@@ -1332,10 +1332,10 @@
             loadRange, cloneRange, rangeStart, rangeEnd;
 
         function loadImages(imagesScope) {
-            $('img[data-src]', imagesScope).each(function() {
+            $('img[data-lazy]', imagesScope).each(function() {
 
                 var image = $(this),
-                    imageSource = image.attr('data-src'),
+                    imageSource = image.attr('data-lazy'),
                     imageToLoad = document.createElement('img'),
                     imgBg = image.attr("data-imgToBG"),
                     srcSet = image.attr("data-srcset");
@@ -1348,7 +1348,7 @@
                 image
                     .attr('src', imageSource)
                     .removeClass('slick-loading')
-                    .removeAttr("data-src");
+                    .removeAttr("data-lazy");
 
                 if (typeof imgBg !== "undefined" && imgBg !== false && imgBg !== null){//pokud callback NEexistuje
                    imgToBg(image);
@@ -1495,13 +1495,13 @@
         var _ = this,
             imgCount, targetImage;
 
-        imgCount = $('img[data-src]', _.$slider).length;
+        imgCount = $('img[data-lazy]', _.$slider).length;
 
         if (imgCount > 0) {
-            targetImage = $('img[data-src]', _.$slider).first();
+            targetImage = $('img[data-lazy]', _.$slider).first();
 
             var image = targetImage,
-                imageSource = image.attr('data-src'),
+                imageSource = image.attr('data-lazy'),
                 imgBg = image.attr("data-imgToBG"),
                 srcSet = image.attr("data-srcset");
 
@@ -1513,7 +1513,7 @@
             image
                 .attr('src', imageSource)
                 .removeClass('slick-loading')
-                .removeAttr("data-src");
+                .removeAttr("data-lazy");
 
             if( image.hasClass("js-cover-fallback") && $html.hasClass("no-objectFit") )
                 imgToBg(image);
@@ -1530,7 +1530,7 @@
                 }
             })
             .error(function() {
-                targetImage.removeAttr('data-src');
+                targetImage.removeAttr('data-lazy');
                 _.progressiveLazyLoad();
             });
 
@@ -2670,6 +2670,7 @@
 }));
 
 
+
 $(document).ready(function(){
 
     //pro pouziti obrazku do pozadi pridat na img atribut "data-imgToBG"
@@ -2730,6 +2731,7 @@ $(document).ready(function(){
         autoplay: true,
         autoplaySpeed: 4000,
         arrows:true,
+        lazyLoad: "progressive",
         //asNavFor: '#js-synced-carousel-dots',
         //prevArrow: '<span class="slick-prev"><i class="icon icon-carousel-prev"></i></span>',
         //nextArrow: '<span class="slick-next"><i class="icon icon-carousel-next"></i></span>',

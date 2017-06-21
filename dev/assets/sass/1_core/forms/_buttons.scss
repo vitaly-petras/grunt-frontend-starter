@@ -17,8 +17,9 @@
 	text-decoration: none;
 	outline: none;
 
-	@include border-radius($radius);
-	@include animate();
+	border-radius: $radius;
+	transition-duration: 200ms;
+	transition-property: background-color, color, border-color;
 
 	&:hover {
 		border-color: $btn-border-hover;

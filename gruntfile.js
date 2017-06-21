@@ -554,7 +554,7 @@ module.exports = function(grunt) {
     'copy:templatePHP', 'clean:templatePHP',       //doplnit cesty na homepage a odstranit template
   ]);
 
-  grunt.registerTask('update', ['concat:basic', 'uglify:all', 'svg', 'sass:dev']);
+  grunt.registerTask('update', ['concat:basic', 'uglify:all', /*'svg',*/ 'sass:dev']);
 
   grunt.registerTask('build', [
     'codereview', 'update',
@@ -572,5 +572,7 @@ module.exports = function(grunt) {
   grunt.registerTask('ftp', ['compress', 'ftp-deploy:'+config['project']['for']]);
 
   grunt.registerTask('codereview', ['csscomb']);
+
+  grunt.registerTask('default', ['update', 'codereview', 'php', 'browserSync', 'watch']);
 };
 
