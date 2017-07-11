@@ -347,18 +347,6 @@ module.exports = function(grunt) {
       ],
     },
 
-    csscomb: {
-        options: {
-            config: '.csscomb.json'
-        },
-        sass: {
-            expand: true,
-            cwd: '<%= project.path.scss %>',
-            src: ['**/*.scss', '!1_core/*.scss'],
-            dest: '<%= project.path.scss %>',
-        }
-    },
-
     compress: {
       dist: {
         options: {
@@ -533,7 +521,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-tinyimg');
   grunt.loadNpmTasks('grunt-php2html');
   grunt.loadNpmTasks('grunt-tinypng');
-  grunt.loadNpmTasks('grunt-csscomb');
   grunt.loadNpmTasks('grunt-sync');
 
   grunt.registerTask('svg', ['clean:grunticonImages', 'svgmin', 'grunticon', "html_factory_grunticon_finisher", 'sass:dev', 'file_append']);
@@ -557,7 +544,7 @@ module.exports = function(grunt) {
   grunt.registerTask('update', ['concat:basic', 'uglify:all', /*'svg',*/ 'sass:dev']);
 
   grunt.registerTask('build', [
-    'codereview', 'update',
+    'update',
     'clean:dist', 'sync:dist',  
     'copy:htaccess', 'clean:htaccess',
     'convert2html', 
@@ -571,8 +558,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('ftp', ['compress', 'ftp-deploy:'+config['project']['for']]);
 
-  grunt.registerTask('codereview', ['csscomb']);
-
-  grunt.registerTask('default', ['update', 'codereview', 'php', 'browserSync', 'watch']);
+  grunt.registerTask('default', ['update', 'php', 'browserSync', 'watch']);
 };
 
