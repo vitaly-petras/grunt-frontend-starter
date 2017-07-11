@@ -389,11 +389,7 @@ function toggleChildren(element, target, event){
     //animuj vysku
     if (typeof oldHeight == typeof undefined || oldHeight == false){
         //new large height
-        $target.attr("data-height", $target.outerHeight()).css({
-            "-webkit-column-count"  : 1,
-            "-moz-column-count"     : 1,
-            "column-count"          : 1
-        });//iOs column fix
+        $target.attr("data-height", $target.outerHeight());//old height
 
         $target.animate({
             height: $target[0].scrollHeight
