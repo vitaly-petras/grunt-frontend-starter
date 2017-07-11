@@ -185,13 +185,14 @@ if (typeof Object.create !== 'function') {
 
 
 $(document).ready(function(){
-    $(selector).singlepagenav({
+    $(selector).singlePageNav({
         offset: 0,                  // Offset from top
-        currentClass: 'current',    // Class added to menu link when section is active
+        currentClass: 'iscurrent',    // Class added to menu link when section is active
         currentThreshold: 0,        // Threshold for triggering current section action
         duration: 500,              // Duration of scroll animation in milliseconds 
         effect: 'swing',            // Effect for scroll animation
-        started: function (){},     // Callback at start of animation
-        finished: function (){}     // Callback after animation is finished
+        onComplete: function (){
+           // console.log("started");
+        } 
     });
 });

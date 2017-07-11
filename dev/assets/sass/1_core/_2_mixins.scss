@@ -108,18 +108,8 @@
     @if $type == "min"{
         $value:$value+1;
     }
-    @if $value == $tablet{
-        @media screen and (#{$type}-width: px-to-em-query($value) ), (orientation:landscape) and (max-width:px-to-em-query($tablet)){
-            @content
-        }
-    }@else if $value == $mobile{
-        @media screen and (#{$type}-width: px-to-em-query($value) ) and (orientation:portrait){
-            @content
-        }
-    }@else{
-        @media screen and (#{$type}-width: px-to-em-query($value) ){
-            @content
-        }
+    @media screen and (#{$type}-width: px-to-em-query($value) ){
+        @content
     }
 }
 
