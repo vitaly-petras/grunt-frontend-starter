@@ -26,6 +26,7 @@ Viz readme.txt
 @import 						"1_core/4_reset";
 @import 						"1_core/5_typography";
 //@import 						"1_core/6_grid-system"; 
+@import 						'1_core/keyframes';
 @import 						"1_core/other-important";
 
 // core sprites png and svg
