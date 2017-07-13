@@ -39,7 +39,7 @@
 				
 			</header>
 
-			<main role="main" class="layout_content"><!-- toto pouzivat na obsah. Obsah typu okno, paticka, hlavicka apod sem nepatri. Patri sem opravdu jen ta "stava" ze stranky. Predstav si to jako obsah clanku, kterou ches precist. -->
+			<main role="main" class="layout__content"><!-- toto pouzivat na obsah. Obsah typu okno, paticka, hlavicka apod sem nepatri. Patri sem opravdu jen ta "stava" ze stranky. Predstav si to jako obsah clanku, kterou ches precist. -->
 				<div class="layout__center"><!-- toto bych rad pouzival misto .container -->
 					
 				</div>
