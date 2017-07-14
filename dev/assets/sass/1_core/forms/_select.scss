@@ -15,11 +15,11 @@ $selectLiLineHeight:			30px;
 
 	ul {
 		cursor: pointer;
-		@include reset-ul();
+		list-style: none;
 		position: relative;
 		height: $input-height;
 
-		@include border-radius(22px);
+		border-radius: $radius;
 		border: $input-border-width solid $input-border;
 		background: $input-bg;
 
@@ -30,7 +30,8 @@ $selectLiLineHeight:			30px;
 			position: absolute;
 			right: 15px;
 			top: ($input-height - 6) /2;
-			@include animate(transform);
+			transition-duration: 200ms;
+			transition-property: transform;
 
 			pointer-events: none;
 
@@ -47,7 +48,6 @@ $selectLiLineHeight:			30px;
 		line-height: selectLiLineHeight;
 
 		font-size: $font-size;
-		@include font();
 		color: $color-base;
 
 		&:first-child{
@@ -77,14 +77,16 @@ $selectLiLineHeight:			30px;
 			overflow: auto;
 
 			&:before{
-				@include rotate(180);
+				transform: rotate(180deg);
 			}
 		}
 
 		li {
 			border-top: $input-border-width solid $input-border;
 			background: #fff;
-			@include animate(background);
+			
+			transition-duration: 200ms;
+			transition-property: background;
 
 			&:hover{
 				background: darken($input-bg, 5%);
