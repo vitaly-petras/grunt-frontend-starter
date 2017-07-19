@@ -290,7 +290,14 @@
 
                     // Width has changed - compensate missing scrollbars
                     if ( testWidth > 1 ) {
-                        $( '<style id="fancybox-noscroll" type="text/css">' ).html( '.compensate-for-scrollbar, .fancybox-enabled body { margin-right: ' + testWidth + 'px; }' ).appendTo( 'head' );
+                        var $header = $("#js-header"),
+                            headerFixedFix = "";
+                        if( $header.length>0 ){
+                            if( $header.css("position") == "absolute" || $header.css("position") == "fixed" )
+                                headerFixedFix = ".fancybox-enabled #js-header{max-width:calc(100% - "+testWidth+"px);right:"+testWidth+"px;}";
+                        }
+
+                        $( '<style id="fancybox-noscroll" type="text/css">' ).html( '.compensate-for-scrollbar, .fancybox-enabled body { margin-right: ' + testWidth + 'px; }'+headerFixedFix ).appendTo( 'head' );
                     }
 
                 }
