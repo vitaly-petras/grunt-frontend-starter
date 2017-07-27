@@ -466,7 +466,7 @@ module.exports = function(grunt) {
           {
             expand: true, 
             cwd: '<%= project.path.root %>', 
-            src: ['*.php'], 
+            src: ['*.php', '!checklist.php'], 
             dest: '<%= project.path.dist %>', 
             ext: '.html' 
           }
