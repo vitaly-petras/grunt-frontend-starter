@@ -57,7 +57,6 @@ module.exports = function(grunt) {
     cssmin: {
       dist: {
         options: {
-          compatibility: 'ie8',
           aggressiveMerging: false,
         },
         files: [{
@@ -362,7 +361,7 @@ module.exports = function(grunt) {
       options: {
         browsers: [
           'last 3 versions', 
-          'ie >= 8', 
+          'ie >= 10', 
           '> 1%'
         ]
       },
