@@ -477,7 +477,7 @@ module.exports = function(grunt) {
     'ftp-deploy': {
       htmlfactory: {
         auth: {
-          host   : "74506.w6.wedos.net",
+          host   : "170632.w32.wedos.net",
           port   : "21",
           authKey: '<%= project.project.for %>'
         },
