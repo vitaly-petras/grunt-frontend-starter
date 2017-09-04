@@ -10,9 +10,8 @@ module.exports = function(grunt) {
   var config = {};
 
   config['project'] ={
-    'name'    : 'test',//toto jmeno/nazev bude i na ftp  //BEZ DIAKRITIKY A MEZER!!!!! + VŠECHNO MALÝMI
-    'keyword' : 'test',//klicove slovo ktere se propise vsude (css, js, sprity atd) //obvykle name = keyword //BEZ DIAKRITIKY A MEZER!!!!! + VŠECHNO MALÝMI
-    'title'   : 'test',//titulek v html sablonach
+    'name'    : 'fill me',//BEZ DIAKRITIKY A MEZER!!!!! + VŠECHNO MALÝMI
+    'title'   : 'fill me',//titulek v html sablonach
     'for'     : 'htmlfactory',
     'author'  : 'Vitalij Petras',
   };
@@ -24,7 +23,7 @@ module.exports = function(grunt) {
     'scss'    : 'dev/assets/sass/',
     'css'     : 'dev/assets/css/',
     'js'      : 'dev/assets/js/',
-    'sprites' : 'dev/assets/images/sprites/',
+    'images'  : 'dev/images/svg/',
     'icons'   : 'dev/assets/icons/',
     'dist'    : 'dist/',
   };
@@ -103,8 +102,8 @@ module.exports = function(grunt) {
       },
       //svg sprite
       svgSprite: {
-        files: ['<%= project.path.sprites %>svg-sprite/*.{svg,png}'],
-        tasks: ['clean:grunticonImages', 'svgmin', 'grunticon', "html_factory_grunticon_finisher", 'sass:dev', 'file_append'],
+        files: ['<%= project.path.icons %>**/*.svg'],
+        tasks: ['svg'],
       },
       //concated js
       concatedScripts: {
@@ -161,59 +160,6 @@ module.exports = function(grunt) {
       },
     },
 
-    /* svg sprite */
-    svg_sprite      : {
-      main : {
-        cwd         : '<%= project.path.sprites %>svg-sprite/',
-        src         : ['*.svg'],
-        dest        : '<%= project.path.sprites %>',
-        options     : {
-          shape:{
-            spacing : {  
-              padding     : 15
-            }, 
-          },
-          mode       : {
-            css      : { 
-              bust: false,
-              sprite: "../svg-sprite.svg",    
-              render      : {
-                scss   :{
-                  dest        : '../../../sass/1_core/sprites/svg-sprite/_svg-sprite.scss',
-                  template: '<%= project.path.scss %>1_core/sprites/svg-sprite/template.handlebars'
-                } 
-              }
-            },      
-          }
-        } 
-      },
-    },
-
-    /* svg2png */
-    svg2png: {
-      svgSpriteFallback: {
-        files: [
-          { 
-            cwd: '<%= project.path.sprites %>', 
-            src: ['*.svg'], 
-            dest: '<%= project.path.sprites %>',
-          }
-        ]
-      }
-    },
-
-    /* png sprite */
-    sprite:{
-      main: {
-        src: '<%= project.path.sprites %>png-sprite/*.png',
-        dest: '<%= project.path.icons %>png-sprite.png',
-        destCss: '<%= project.path.scss %>1_core/sprites/png-sprite/_png-sprite.scss',
-        /*algorithm: 'binary-tree',*/
-        padding: 15,
-        cssTemplate: '<%= project.path.scss %>1_core/sprites/png-sprite/template.handlebars'
-      }
-    },
-
     svgmin: {
       dist: {
           options: {
@@ -231,26 +177,17 @@ module.exports = function(grunt) {
       }
     },
 
-    grunticon: {
-      myIcons: {
-        files: [{
-            expand: true,
-            cwd: '<%= project.path.icons %>svg',
-            src: ['*.svg', '*.png'],
-            dest: "<%= project.path.icons %>"
-        }],
-        options: {
-          enhanceSVG: true,
-          cssprefix: ".icon__",
-          pngfolder: "../icons/png/",
-          compressPNG: true,
-          template: "<%= project.path.sprites %>grunticon/default-css.hbs",
-          /*customselectors: {
-            "back": [".test:before"]
-          },*/
-        }
-      }
+    svgstore: {
+      options: {
+        prefix : 'icon-', // This will prefix each ID
+      },
+      all: {
+        files: {
+          '<%= project.path.images %>/all.svg': ['<%= project.path.icons %>all/*.svg']
+        },
+      },
     },
+
 
     copy: {
       templatePHP: {
@@ -315,10 +252,6 @@ module.exports = function(grunt) {
       templateCSS: [
         '<%= project.path.scss %>global.scss.tpl'
       ],
-      grunticonImages: [
-        '<%= project.path.icons %>svg', 
-        '<%= project.path.icons %>png'
-      ],
       dist: [
         '<%= project.path.dist %>data.zip', 
       ],
@@ -370,20 +303,6 @@ module.exports = function(grunt) {
         src: '<%= project.path.dist %>assets/css/global.css',
         dest: '<%= project.path.dist %>assets/css/global.css'
       }
-    },
-
-    html_factory_grunticon_finisher: {
-        options: {
-            pathToPngFile:          config['path']["icons"] + "icons.data.png.css",
-            pathToSvgFile:          config['path']["icons"] + "icons.data.svg.css",
-            pathToFallbackFile:     config['path']["icons"] + "icons.fallback.css",
-            targetPngFile:          config['path']["icons"] + "icons.data.png.css",
-            targetSvgFile:          config['path']["icons"] + "icons.data.svg.css",
-            targetFallbackFile:     config['path']["icons"] + "icons.fallback.css",
-            targetDimensionsFile:   config['path']["scss"] + "1_core/sprites/_grunticon-dimensions.scss"
-        },
-        html_factory_grunticon_finisher: {
-        }
     },
 
     file_append: {
@@ -504,9 +423,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-spritesmith');
-  grunt.loadNpmTasks('grunt-svg-sprite');
-  grunt.loadNpmTasks('grunt-svg2png');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-compress');
@@ -514,15 +430,19 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-px-to-rem');
   grunt.loadNpmTasks('grunt-grunticon');
   grunt.loadNpmTasks('grunt-autoprefixer');
-  grunt.loadNpmTasks('grunt-html-factory-grunticon-finisher');
-  grunt.loadNpmTasks('grunt-file-append');
   grunt.loadNpmTasks('grunt-browser-sync');
   grunt.loadNpmTasks('grunt-tinyimg');
   grunt.loadNpmTasks('grunt-php2html');
   grunt.loadNpmTasks('grunt-tinypng');
   grunt.loadNpmTasks('grunt-sync');
+  grunt.loadNpmTasks('grunt-svg-sprite');
+  grunt.loadNpmTasks('grunt-svgstore');
 
-  grunt.registerTask('svg', ['clean:grunticonImages', 'svgmin', 'grunticon', "html_factory_grunticon_finisher", 'sass:dev', 'file_append']);
+  /* 
+  tasks 
+  */
+
+  grunt.registerTask('svg', ['svgstore']);
 
   grunt.registerTask('png', ['sprite', 'sass:dev']);
 
@@ -540,7 +460,7 @@ module.exports = function(grunt) {
     'copy:templatePHP', 'clean:templatePHP',       //doplnit cesty na homepage a odstranit template
   ]);
 
-  grunt.registerTask('update', ['concat:basic', 'uglify:all', /*'svg',*/ 'sass:dev']);
+  grunt.registerTask('update', ['concat:basic', 'svg', 'sass:dev']);
 
   grunt.registerTask('build', [
     'update',
