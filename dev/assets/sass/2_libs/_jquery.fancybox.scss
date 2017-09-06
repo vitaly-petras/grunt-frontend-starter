@@ -120,7 +120,32 @@
   box-sizing: border-box;
   text-align: center;
   z-index: 99994;
-  -webkit-overflow-scrolling: touch; }
+  -webkit-overflow-scrolling: touch;
+
+  &--video{
+    .fancybox-content{
+      height: auto;
+
+      &:before{
+        display:block;
+        content: "";
+        padding-bottom: percentage(9/16);
+      }
+
+      iframe{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      @include query( 1279 ){
+        width: 100%;
+      }
+    }
+  } 
+}
 
 .fancybox-slide::before {
   content: '';
