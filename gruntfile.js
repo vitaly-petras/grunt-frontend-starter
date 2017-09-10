@@ -413,7 +413,7 @@ module.exports = function(grunt) {
     'copy:templatePHP', 'clean:templatePHP',       //doplnit cesty na homepage a odstranit template
   ]);
 
-  grunt.registerTask('update', ['concat:basic', 'svg', 'sass:dev']);
+  grunt.registerTask('update', ['javascript', 'svg', 'sass:dev']);
 
   grunt.registerTask('javascript', ['concat:basic', 'babel']);
 
