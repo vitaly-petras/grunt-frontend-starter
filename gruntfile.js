@@ -94,15 +94,13 @@ module.exports = function(grunt) {
         tasks: ['sass:dev'],
         // pro nativni prevod do rem jednotek vymenit 'cssmin' za 'rem'
       },
-      //png sprite
-      pngSprite: {
-        files: ['<%= project.path.sprites %>png-sprite/*.png'],
-        tasks: ['sprite'],
-      },
       //svg sprite
       svgSprite: {
         files: ['<%= project.path.icons %>**/*.svg'],
         tasks: ['svg'],
+        options: {
+          reload: true
+        }
       },
       //concated js
       concatedScripts: {
@@ -130,16 +128,6 @@ module.exports = function(grunt) {
 
     /* minifikace javascriptu */
     uglify: {
-      /*basic: {
-        files: [{
-          //  config['project']['name']'/js/all.min.js': ['<%= config.project.name %>/js/all.js']
-          expand: true,   
-          cwd: '<%= project.path.js %>',
-          src: ['all.js'],                  // Dictionary of files
-          dest: '<%= project.path.js %>',
-          ext: '.min.js'
-        }]
-      },*/
       all: {
         files: [{
           expand: true,
@@ -295,18 +283,6 @@ module.exports = function(grunt) {
       }
     },
 
-    file_append: {
-      gruntIcon: {
-        files: [
-          {
-            append: 'grunticon(["assets/icons/icons.data.svg.css?v="+version+"", "assets/icons/icons.data.png.css?v="+version+"", "assets/icons/icons.fallback.css?v="+version+""], grunticon.svgLoadedCallback );',
-            input: '<%= project.path.icons %>grunticon.loader.js',
-            output: '<%= project.path.js %>concated/z-grunticon.loader.js'
-          }
-        ]
-      }
-    },
-
     browserSync: {
         dev: {
             bsFiles: {
@@ -414,15 +390,9 @@ module.exports = function(grunt) {
 
   grunt.registerTask('svg', ['svgstore']);
 
-  grunt.registerTask('png', ['sprite', 'sass:dev']);
-
-  grunt.registerTask('default', ['php', 'browserSync', 'watch']);
-
   grunt.registerTask('rem', ['copy:remFallback', 'px_to_rem']);
 
   grunt.registerTask('oimages', ['tinyimg', 'tinypng']);
-
-  grunt.registerTask('convert2html', ['php2html']);
 
   grunt.registerTask('template', [
     'copy:templateCSS', 'clean:templateCSS',       //prejmenovat globalni CSS a odstranit template
@@ -435,7 +405,7 @@ module.exports = function(grunt) {
     'update',
     'clean:dist', 'sync:dist',  
     'copy:htaccess', 'clean:htaccess',
-    'convert2html', 
+    'php2html', 
     'clean:distFiles', 
     'autoprefixer:dist', 'cssmin:dist', 'rem',
     'oimages'
