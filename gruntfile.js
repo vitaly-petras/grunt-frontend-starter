@@ -425,7 +425,7 @@ module.exports = function(grunt) {
     'clean:distFiles', 
     'autoprefixer:dist', 'cssmin:dist', 'rem',
     'oimages'
-  ]);// 'ftp-deploy:'+config['project']['for']
+  ]);
 
 
   grunt.registerTask('send', ['build', 'compress', 'ftp-deploy:'+config['project']['for']]);
