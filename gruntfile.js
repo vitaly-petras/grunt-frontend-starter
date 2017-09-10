@@ -133,10 +133,9 @@ module.exports = function(grunt) {
       all: {
         files: [{
           expand: true,
-          cwd: '<%= project.path.js %>',
+          cwd: '<%= project.path.dist %>/assets/js/',
           src: ['*.js', '!*.min.js'],
-          dest: '<%= project.path.js %>',
-          ext: '.min.js'
+          dest: '<%= project.path.dist %>/assets/js/',
         }]
       }
     },
@@ -258,7 +257,7 @@ module.exports = function(grunt) {
                 'assets/js/critical.js',
                 'assets/js/critical.min.js',
                 'assets/js/not-used-scripts',
-                'assets/js/*.js', '!assets/js/*.min.js',
+                'assets/js/*.map',
           ],                  // Dictionary of files
           dest: '<%= project.path.dist %>',
         }]
@@ -423,7 +422,8 @@ module.exports = function(grunt) {
     'copy:htaccess', 'clean:htaccess',
     'php2html', 
     'clean:distFiles', 
-    'autoprefixer:dist', 'cssmin:dist', 'rem',
+    'autoprefixer:dist', 'cssmin:dist', 'rem', 
+    'uglify',
     'oimages'
   ]);
 
