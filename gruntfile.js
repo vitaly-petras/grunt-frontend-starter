@@ -430,6 +430,20 @@ module.exports = function(grunt) {
 
   grunt.registerTask('javascript', ['concat:basic', 'babel']);
 
+  grunt.registerTask('ftp', function(){
+    if(exists) grunt.task.run('compress', 'ftp-deploy:'+config['project']['for'])
+    else grunt.fail.warn('No ftp accesses. You cant send files. Please use build task.');
+  });
+
+  grunt.registerTask('send', ['build', 'ftp']);
+
+
+
+
+
+
+  
+
   grunt.registerTask('build', [//pouzijte tuto funkci pro vygenerovani DIST souboru
     'update',
     'clean:dist', 'sync:dist',  
@@ -440,13 +454,7 @@ module.exports = function(grunt) {
     'uglify',
     'oimages'
   ]);
-
-  grunt.registerTask('ftp', function(){
-    if(exists) grunt.task.run('compress', 'ftp-deploy:'+config['project']['for'])
-    else grunt.fail.warn('No ftp accesses. You cant send files. Please use build task.');
-  });
-
-  grunt.registerTask('send', ['build', 'ftp']);
+  
 
   grunt.registerTask('default', ['update', 'php', 'browserSync', 'watch']);
 };
