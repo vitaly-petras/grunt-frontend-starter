@@ -17,14 +17,6 @@
 			</script>
 		<!-- //critical js -->
 
-		<!-- Fallback pro 'IE8' a 'bez javascriptu' -->
-			<!--[if lt IE 9]><script src="assets/js/ie-fallbacks/html5.js"></script><![endif]-->
-			<noscript>
-				<link rel="stylesheet" media="screen" href="assets/css/global-rem-fallback.css?v=<?php echo $version ?>">
-				<link rel="stylesheet" type="text/css" media="screen" href="assets/icons/icons.fallback.css?v=<?php echo $version ?>">
-			</noscript>
-		<!-- Fallback pro 'IE8' a 'bez javascriptu' -->
-		
 		<!-- !!! vyplnit dulezite SEO metatagy !!! -->
 			<title><%= project.project.title %></title>
 			<meta content="noindex,nofollow" name="robots"><!-- nezapomenout zde umazat "NO"index, "NO"follow -->
@@ -52,12 +44,7 @@
 	
 
 		<!-- nacitani vsech scripu a funkci -->
-			<script src="assets/js/all.min.js?v=<?php echo $version ?>"></script>
+			<script src="assets/js/all.js?v=<?php echo $version ?>"></script>
 		<!-- //nacitani vsech scripu a funkci -->
-
-		<!-- nacitani fallbacku pro starsi prohlizece -->
-			<!--[if lt IE 9]><script src="assets/js/ie-fallbacks/respond.min.js"></script><![endif]-->
-			<!--[if lte IE 9]><script src="assets/js/ie-fallbacks/placeholders.js"></script><![endif]-->
-		<!-- //nacitani fallbacku pro starsi prohlizece -->
 	</body>
 </html>
