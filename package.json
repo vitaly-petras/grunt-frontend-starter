@@ -30,6 +30,7 @@
     "grunt-tinyimg": "^1.0.0",
     "grunt-tinypng": "^0.7.0",
     "jit-grunt": "^0.9.1",
+    "load-grunt-tasks": "^3.5.2",
     "time-grunt": "^1.2.1"
   }
 }

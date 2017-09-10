@@ -28,8 +28,7 @@ module.exports = function(grunt) {
     'dist'    : 'dist/',
   };
 
-  require('time-grunt')(grunt);
-  require('jit-grunt')(grunt);
+  require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
 
@@ -198,15 +197,6 @@ module.exports = function(grunt) {
         },
         src: '<%= project.path.root %>homepage.php.tpl',
         dest: '<%= project.path.root %>homepage.php', 
-      },
-      templateREM: {
-        options: {
-          process: function(content, path) {
-            return grunt.template.process(content);
-          }
-        },
-        src: '<%= project.path.js %>load-css.js',
-        dest: '<%= project.path.js %>load-css.js', 
       },
       templateCSS: {
         options: {
@@ -418,26 +408,6 @@ module.exports = function(grunt) {
     },
   });
 
-  grunt.loadNpmTasks('grunt-contrib-sass');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-compress');
-  grunt.loadNpmTasks('grunt-ftp-deploy');
-  grunt.loadNpmTasks('grunt-px-to-rem');
-  grunt.loadNpmTasks('grunt-grunticon');
-  grunt.loadNpmTasks('grunt-autoprefixer');
-  grunt.loadNpmTasks('grunt-browser-sync');
-  grunt.loadNpmTasks('grunt-tinyimg');
-  grunt.loadNpmTasks('grunt-php2html');
-  grunt.loadNpmTasks('grunt-tinypng');
-  grunt.loadNpmTasks('grunt-sync');
-  grunt.loadNpmTasks('grunt-svg-sprite');
-  grunt.loadNpmTasks('grunt-svgstore');
-
   /* 
   tasks 
   */
@@ -455,7 +425,6 @@ module.exports = function(grunt) {
   grunt.registerTask('convert2html', ['php2html']);
 
   grunt.registerTask('template', [
-    'copy:templateREM',                            //css a rem fallback
     'copy:templateCSS', 'clean:templateCSS',       //prejmenovat globalni CSS a odstranit template
     'copy:templatePHP', 'clean:templatePHP',       //doplnit cesty na homepage a odstranit template
   ]);
