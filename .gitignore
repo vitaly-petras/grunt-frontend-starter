@@ -19,6 +19,7 @@ podklady
 dev/assets/css
 dev/assets/all.js
 dev/assets/*min.js
+*.map
 
 
 # OS generated files #

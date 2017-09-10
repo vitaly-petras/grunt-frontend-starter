@@ -105,7 +105,7 @@ module.exports = function(grunt) {
       //concated js
       concatedScripts: {
         files: ['<%= project.path.js %>concated/*.js'],
-        tasks: ['concat:basic', 'uglify:all'],
+        tasks: ['concat:basic', 'babel'],
       },
       //all scripts
       allScripts: {
@@ -145,6 +145,18 @@ module.exports = function(grunt) {
         src: '<%= project.path.js %>concated/*.js', //vstupni slozka
         dest: '<%= project.path.js %>all.js',  //vystupni slozka
       },
+    },
+
+    babel: {
+        options: {
+            sourceMap: true,
+            presets: ['env']
+        },
+        dist: {
+            files: {
+                '<%= project.path.js %>all.js': '<%= project.path.js %>all.js'
+            }
+        }
     },
 
     svgmin: {
@@ -400,6 +412,8 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('update', ['concat:basic', 'svg', 'sass:dev']);
+
+  grunt.registerTask('javascript', ['concat:basic', 'babel']);
 
   grunt.registerTask('build', [
     'update',
