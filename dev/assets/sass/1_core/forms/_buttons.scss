@@ -16,6 +16,8 @@
 	cursor: pointer;
 	text-decoration: none;
 	outline: none;
+	font-family: inherit;
+	font-size: inherit;
 
 	border-radius: $radius;
 	transition-duration: 200ms;

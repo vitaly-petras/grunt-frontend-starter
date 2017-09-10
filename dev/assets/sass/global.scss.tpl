@@ -32,10 +32,8 @@ Viz readme.txt
 // ------------------------------------------------ 
 @import 						"1_core/forms/buttons";
 @import 						"1_core/forms/inputs";
-@import 						"1_core/forms/labels";
 @import 						"1_core/forms/main";
 //@import 						"1_core/forms/select";
-//@import 						"1_core/forms/validation";
 
 
 
