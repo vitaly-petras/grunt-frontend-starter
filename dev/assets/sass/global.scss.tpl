@@ -25,15 +25,8 @@ Viz readme.txt
 @import 						"1_core/3_used-fonts";
 @import 						"1_core/4_reset";
 @import 						"1_core/5_typography";
-//@import 						"1_core/6_grid-system"; 
 @import 						'1_core/keyframes';
 @import 						"1_core/other-important";
-
-// core sprites png and svg
-// ------------------------------------------------ 
-@import 						"1_core/sprites/sprites";
-@import 						"1_core/sprites/grunticon-dimensions";
-
 
 // core forms
 // ------------------------------------------------ 
@@ -55,73 +48,19 @@ Viz readme.txt
 
 
 
-
-
 // ************************************************ //
-// 3. Layout  
-// ************************************************ //
-// sem patri prvky kostry pr.: hlavicka, paticka, obal webu
-// ------------------------------------------------ 
-@import 						"3_layout/layout";
-
-// header
-// ------------------------------------------------ 
-@import 						"3_layout/header/main";
-@import 						"3_layout/header/logo";
-@import 						"3_layout/header/menu";
-//@import 						"3_layout/header/navigation";
-
-
-
-
-
-
-// ************************************************ //
-// 4. Components  
+// 3. Components  
 // ************************************************ //
 // box
 // ------------------------------------------------ 
-@import 						"4_components/box/empty"; //smazat nebo nahradit
-
-// list
-// ------------------------------------------------ 
-@import 						"4_components/list/items"; //smazat nebo nahradit
-
-// table
-// ------------------------------------------------ 
-
-
-// window
-// ------------------------------------------------ 
-
-
-// form
-// ------------------------------------------------ 
-
-
-// wrap
-// ------------------------------------------------ 
-
-
-// in
-// ------------------------------------------------ 
-
+@import 						"3_components/empty"; //smazat nebo nahradit
 
 
 
 // ************************************************ //
-// 5. Single  
-// ************************************************ //
-// samostatne stranky (radeji nepouzivat)
-// ------------------------------------------------ 
-
-
-// ************************************************ //
-// 6 .Helpers  
+// 4 .Helpers  
 // ************************************************ //
 // pomocne tridy ve vsech velikostech
 // ------------------------------------------------ 
-// pridat xl-xs helpery + responsivity !!
-@import 						"6_helpers/0_columns";
-@import 						"6_helpers/1_helpers";
+@import 						"4_helpers/1_helpers";
 

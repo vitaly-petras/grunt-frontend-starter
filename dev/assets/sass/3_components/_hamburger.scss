@@ -1,9 +1,9 @@
-$toggleNavSpanHeight:		4px;//vyska spanu
-$toggleNavSpanVertical:		35px;//mezera shora a zespod
-$toggleNavSpanHorizontal:	30px;//mezera zleva/zprava
+$hamburgerSpanHeight:		4px;//vyska spanu
+$hamburgerSpanVertical:		35px;//mezera shora a zespod
+$hamburgerSpanHorizontal:	30px;//mezera zleva/zprava
 
 
-.toggle-nav{
+.c-hamburger{
 	display: block;
 	@include size(90);
 
@@ -28,37 +28,37 @@ $toggleNavSpanHorizontal:	30px;//mezera zleva/zprava
 		display: block;
 		position: absolute;
 
-		height: $toggleNavSpanHeight;
-		left: $toggleNavSpanHorizontal;
-		right: $toggleNavSpanHorizontal;
+		height: $hamburgerSpanHeight;
+		left: $hamburgerSpanHorizontal;
+		right: $hamburgerSpanHorizontal;
 
 		background: $color-border;
 		@include animate("transform, top, bottom, margin, opacity");
 
 		
 		&--top{
-			top: $toggleNavSpanVertical;
+			top: $hamburgerSpanVertical;
 		}
 
 		&--middle{
 			top: 50%;
-			margin-top: (-$toggleNavSpanHeight/2);
+			margin-top: (-$hamburgerSpanHeight/2);
 			@include animate(opacity);
 		}
 
 		&--bottom{
-			bottom: $toggleNavSpanVertical;
+			bottom: $hamburgerSpanVertical;
 		}
 	}
 
 	&.active{
 
-		.toggle-nav__span{
+		.c-hamburger__span{
 
 			&--top{
 				top: 50%;
 				@include rotate(45);
-				margin-top: (-$toggleNavSpanHeight/2);
+				margin-top: (-$hamburgerSpanHeight/2);
 			}
 
 			&--middle{
@@ -68,7 +68,7 @@ $toggleNavSpanHorizontal:	30px;//mezera zleva/zprava
 			&--bottom{
 				bottom: 50%;
 				@include rotate(-45);
-				margin-bottom: (-$toggleNavSpanHeight/2);
+				margin-bottom: (-$hamburgerSpanHeight/2);
 			}
 		}
 	}
