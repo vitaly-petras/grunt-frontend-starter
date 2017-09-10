@@ -10,13 +10,19 @@ module.exports = function(grunt) {
   var config = {};
 
   config['project'] ={
-    'name'    : 'fill me',//BEZ DIAKRITIKY A MEZER!!!!! + VŠECHNO MALÝMI
-    'title'   : 'fill me',//titulek v html sablonach
+    'name'    : 'fill-me',//BEZ DIAKRITIKY A MEZER!!!!! + VŠECHNO MALÝMI
+    'title'   : 'fill-me',//titulek v html sablonach
     'for'     : 'htmlfactory',
     'author'  : 'Vitalij Petras',
   };
 
   config['bs'] = /*'projekty/nove/'+*/config['project']['name'];//url pro browsersynch
+
+  
+  var exists = grunt.file.exists('passwords.json');
+  var passwords = exists?grunt.file.readJSON('passwords.json'):[];
+  //grunt.log.write(passwords);
+  
 
   config['path'] ={
     'root'    : 'dev/',
@@ -337,7 +343,7 @@ module.exports = function(grunt) {
 
     tinypng: {
       options: {
-          apiKey: "G6YNiVTmdOqImIT8wzpFlb1ZrDA5gtoS",
+          apiKey: exists?passwords["tinypng"]:null,
           sigFile: '.tinypng.json',
           checkSigs: true,
           summarize: true,
@@ -377,7 +383,8 @@ module.exports = function(grunt) {
         auth: {
           host   : "170632.w32.wedos.net",
           port   : "21",
-          authKey: '<%= project.project.for %>'
+          username: exists?passwords['ftp']['htmlfactory']['username']:null,
+          password: exists?passwords['ftp']['htmlfactory']['password']:null
         },
         dot: true,
         src: '<%= project.path.dist %>',         // local path
@@ -387,7 +394,8 @@ module.exports = function(grunt) {
         auth: {
           host    : "127799.w99.wedos.net",
           port    : 21,
-          authKey: '<%= project.project.for %>'
+          username: exists?passwords['ftp']['honza']['username']:null,
+          password: exists?passwords['ftp']['honza']['password']:null
         },
         dot: true,
         src: '<%= project.path.dist %>',         // local path
@@ -405,7 +413,13 @@ module.exports = function(grunt) {
 
   grunt.registerTask('rem', ['copy:remFallback', 'px_to_rem']);
 
-  grunt.registerTask('oimages', ['tinyimg', 'tinypng']);
+  grunt.registerTask('oimages', function(){
+    if(exists) grunt.task.run('tinyimg', 'tinypng')
+    else{
+      grunt.task.run('tinyimg');
+      grunt.log.write('no APIKEY for tinypng, this task will be skipped, but dont worry all is OK. (only jpg and png images will not be compressed)');
+    } 
+  });
 
   grunt.registerTask('template', [
     'copy:templateCSS', 'clean:templateCSS',       //prejmenovat globalni CSS a odstranit template
@@ -416,7 +430,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('javascript', ['concat:basic', 'babel']);
 
-  grunt.registerTask('build', [
+  grunt.registerTask('build', [//pouzijte tuto funkci pro vygenerovani DIST souboru
     'update',
     'clean:dist', 'sync:dist',  
     'copy:htaccess', 'clean:htaccess',
@@ -427,10 +441,12 @@ module.exports = function(grunt) {
     'oimages'
   ]);
 
+  grunt.registerTask('ftp', function(){
+    if(exists) grunt.task.run('compress', 'ftp-deploy:'+config['project']['for'])
+    else grunt.fail.warn('No ftp accesses. You cant send files. Please use build task.');
+  });
 
-  grunt.registerTask('send', ['build', 'compress', 'ftp-deploy:'+config['project']['for']]);
-
-  grunt.registerTask('ftp', ['compress', 'ftp-deploy:'+config['project']['for']]);
+  grunt.registerTask('send', ['build', 'ftp']);
 
   grunt.registerTask('default', ['update', 'php', 'browserSync', 'watch']);
 };

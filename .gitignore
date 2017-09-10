@@ -4,6 +4,7 @@
 node_modules
 dist
 .ftppass
+passwords.json
 .tinypng.json
 package-lock.json
 
