@@ -107,11 +107,13 @@ module.exports = function(grunt) {
         files: ['<%= project.path.js %>concated/*.js'],
         tasks: ['concat:basic', 'babel'],
       },
+      /*
       //all scripts
       allScripts: {
         files: ['<%= project.path.js %>*.js'],
         tasks: ['uglify:all'],
       },
+      */
       //html and php 
       htmlFiles:{
         files: ['<%= project.path.root %>**/*.{php,html}'],
