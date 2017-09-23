@@ -51,7 +51,8 @@ Viz readme.txt
 // ************************************************ //
 // box
 // ------------------------------------------------ 
-@import 						"3_components/empty"; //smazat nebo nahradit
+@import 						"3_components/layout";
+@import 						"3_components/text";
 
 
 
