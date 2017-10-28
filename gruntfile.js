@@ -288,18 +288,20 @@ module.exports = function(grunt) {
       }
     },
 
-    autoprefixer: {
+    postcss: {
       options: {
-        browsers: [
-          'last 3 versions', 
-          'ie >= 10', 
-          '> 1%'
+        map: true,
+        processors: [
+          require('autoprefixer')({browsers: ['last 2 versions', 'ie >= 10', '> 1%']})
         ]
       },
       dist: {  
-        // expand:true,
         src: '<%= project.path.dist %>assets/css/global.css',
         dest: '<%= project.path.dist %>assets/css/global.css'
+      },
+      dev: {  
+        src: '<%= project.path.css %>global.css',
+        dest: '<%= project.path.css %>global.css'
       }
     },
 
@@ -451,7 +453,7 @@ module.exports = function(grunt) {
     'copy:htaccess', 'clean:htaccess',
     'php2html', 
     'clean:distFiles', 
-    'autoprefixer:dist', 'cssmin:dist', 'rem', 
+    'postcss:dist', 'cssmin:dist', 'rem', 
     'uglify',
     'oimages'
   ]);
