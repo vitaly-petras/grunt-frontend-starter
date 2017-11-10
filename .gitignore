@@ -14,6 +14,11 @@ package-lock.json
 podklady
 *.zip
 
+#wordpress
+######################
+wordpress/wp-content/uploads
+wordpress/wp-content/cache
+
 
 # development files
 #####################
