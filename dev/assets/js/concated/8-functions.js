@@ -132,6 +132,7 @@ function toggle(e, element){
 //show or hide element
 function showHide(wtt, htd, target, speed){//what to do, how to do
     var speed = speed || 250;
+    loadHiddenImages(target);
 
     if( wtt == "hide" ){
         if( htd == "slide" ){
