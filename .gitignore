@@ -18,6 +18,7 @@ podklady
 ######################
 wordpress/wp-content/uploads
 wordpress/wp-content/cache
+wordpress/wp-content/aiowps_backups
 
 
 # development files
