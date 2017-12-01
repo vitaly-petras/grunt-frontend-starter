@@ -324,6 +324,7 @@ function showMoreInfo(event, element, target){
     oldHeight = $target.attr("data-height");
 
     $target.toggleClass("opened");
+    $(element).toggleClass("opened");
 
     if (typeof oldHeight == typeof undefined || oldHeight == false){
         $target.attr("data-height", $target.outerHeight());
