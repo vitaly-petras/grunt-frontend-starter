@@ -49,8 +49,6 @@ Viz readme.txt
 // ************************************************ //
 // 3. Components  
 // ************************************************ //
-// box
-// ------------------------------------------------ 
 @import 						"3_components/layout";
 @import 						"3_components/text";
 
@@ -61,5 +59,5 @@ Viz readme.txt
 // ************************************************ //
 // pomocne tridy ve vsech velikostech
 // ------------------------------------------------ 
-@import 						"4_helpers/1_helpers";
+//@import 						"4_helpers/1_helpers";
 

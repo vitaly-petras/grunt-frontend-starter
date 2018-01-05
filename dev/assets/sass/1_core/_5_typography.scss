@@ -1,16 +1,132 @@
 /*-----------------------------------------------------------------------------------*/
+/*  All font-sizes / font-weghts / font-families / etc
+/*-----------------------------------------------------------------------------------*/
+//vsechny tridy obsazene v teto sekci jsou pouze vzorove, je potreba je udelat podle grafiky
+.font-weight-medium{
+    font-weight: 500;
+}
+
+.font-weight-light{
+    font-weight: 300;
+}
+
+.font-weight-regular{
+    font-weight: 400;
+}
+
+.font-family-avenir{
+    font-family: Avenir, sans-serif;
+}
+
+.font-family-arbutus{
+    font-family: 'Arbutus Slab', serif;
+}
+
+.font-size-100{
+    font-size: 100px;
+
+    @include query( $query-xl ){
+        font-size: 80px;
+    }
+
+    @include query( $query-l ){
+        font-size: 60px;
+    }
+
+    @include query( $query-m ){
+        font-size: 40px;
+    }
+
+    @include query( $query-s ){
+        font-size: 30px;
+    }
+}
+
+//tento priklad font-size-60 lze napsat jeste lepe viz ukazka hned pod tim
+.font-size-60{
+    font-size: 60px;
+    line-height: 70px;
+
+    @include query( $query-xl ){
+        font-size: 50px;
+        line-height: 60px;
+    }
+
+    @include query( $query-l ){
+        font-size: 40px;
+        line-height: 50px;
+    }
+
+    @include query( $query-m ){
+        font-size: 30px;
+        line-height: 40px;
+    }
+
+    @include query( $query-s ){
+        font-size: 20px;
+        line-height: 30px;
+    }
+}
+
+//v tomto pripade jsme vzypocitali line-height v EM jednotkach a jiz tento line-height nemusime zmensovat = zmensuje se sam
+.font-size-60{
+    font-size: 60px;
+    line-height: 70 / 60 * 1em;;
+
+    @include query( $query-xl ){
+        font-size: 50px;
+    }
+
+    @include query( $query-l ){
+        font-size: 40px;
+    }
+
+    @include query( $query-m ){
+        font-size: 30px;
+    }
+
+    @include query( $query-s ){
+        font-size: 20px;
+    }
+}
+
+.font-size-36{
+    font-size: 36px;
+}
+
+.font-size-30{
+    font-size: 30px;
+}
+
+.font-size-24{
+    font-size: 24px;
+}
+
+.font-size-18{
+    font-size: 18px;
+}
+
+.font-size-16{
+    font-size: 16px;
+}
+
+
+/*-----------------------------------------------------------------------------------*/
 /*  TYPOGRAPHY
 /*-----------------------------------------------------------------------------------*/
 body{
-    //font-size na body elementu MUSI byt 16px !!!!!
+    font-size:      16px;
     color:          $color-base;
     line-height:    $line-height;
     
     font-family:    $font-base;
     font-weight:    400;//vychozi sirka pisma
-
+    
+    /*
+    //toto nechat zakomentovane
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    */
 
     background-color: $bg;
 
@@ -50,14 +166,6 @@ h6,.h6 {}
 strong,.bold,b{}
 .semibold{}
 .italic,em{}
-
-address,.address{
-
-}
-
-p{}
-ul{}
-ol{}
 
 
 /*-----------------------------------------------------------------------------------*/

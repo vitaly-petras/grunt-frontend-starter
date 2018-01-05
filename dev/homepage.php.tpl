@@ -25,6 +25,14 @@
 		<!-- //vyplnit dulezite SEO metatagy -->
 	</head>
 	<body>
+
+		<!-- NEMAZAT! IKONKY NAPRIC CELYM WEBEM -->
+		<div class="c-layout__hidesvg">
+			<?php @include "images/svg/all.svg"; ?>
+		</div>
+
+		<!-- pouziti -->
+		<svg><use xlink:href="#icon-logo"/></svg>
 		
 		<div class="c-layout">
 			<header class="c-header">
