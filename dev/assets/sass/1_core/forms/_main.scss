@@ -8,22 +8,6 @@ input, select, textarea {
 
 	&:focus {
 		outline: none;
-
-		&:-moz-placeholder {
-		  	color:transparent; 
-		}
-
-		&::-moz-placeholder {
-		  	color:transparent; 
-		}
-
-		&::-webkit-input-placeholder {
-		  	color:transparent; 
-		}
-
-		&:-ms-input-placeholder {  
-		  	color:transparent; 
-		}
 	}
 
 	&:-moz-placeholder {
