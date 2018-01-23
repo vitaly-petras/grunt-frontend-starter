@@ -13,7 +13,7 @@
 
 				<h1>Přehled stránek</h1>
 				<ul>
-					<li><a target="_blank" href="homepage.php">Homepage</a></li>	
+					<li><a target="_blank" href="index.php">Homepage</a></li>	
 				</ul>
 		</div>
 

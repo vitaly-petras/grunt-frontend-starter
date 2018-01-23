@@ -199,8 +199,8 @@ module.exports = function(grunt) {
             return grunt.template.process(content);
           }
         },
-        src: '<%= project.path.root %>homepage.php.tpl',
-        dest: '<%= project.path.root %>homepage.php', 
+        src: '<%= project.path.root %>index.php.tpl',
+        dest: '<%= project.path.root %>index.php', 
       },
       templateCSS: {
         options: {
@@ -241,7 +241,7 @@ module.exports = function(grunt) {
 
     clean: {
       templatePHP: [
-        '<%= project.path.root %>homepage.php.tpl'
+        '<%= project.path.root %>index.php.tpl'
       ],
       templateCSS: [
         '<%= project.path.scss %>global.scss.tpl'
@@ -317,6 +317,7 @@ module.exports = function(grunt) {
                 port: 8080, // our new port
                 open: true,
                 watchTask: true,
+                startPath: 'rozcestnik.php'
                 //notify: false
             }
         }
