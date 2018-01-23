@@ -16,9 +16,6 @@ module.exports = function(grunt) {
     'author'  : 'Vitalij Petras',
   };
 
-  config['bs'] = /*'projekty/nove/'+*/config['project']['name'];//url pro browsersynch
-
-  
   var exists = grunt.file.exists('passwords.json');
   var passwords = exists?grunt.file.readJSON('passwords.json'):[];
   //grunt.log.write(passwords);
@@ -316,10 +313,11 @@ module.exports = function(grunt) {
                 ]
             },
             options: {
-                proxy: 'localhost:80/<%= project.bs %>/<%= project.path.root %>', //our PHP server
+                proxy: '127.0.0.1:8010', //our PHP server
                 port: 8080, // our new port
                 open: true,
-                watchTask: true
+                watchTask: true,
+                //notify: false
             }
         }
     },
@@ -327,8 +325,10 @@ module.exports = function(grunt) {
     php: {
         dev: {
             options: {
-                port: 80,
-                base: '<%= project.path.root %>'
+                port: 8010,
+                base: 'dev',
+                //keepalive: true,
+                //open: true
             }
         }
     },
