@@ -413,3 +413,24 @@ function toggleChildren(element, target, event){
     }
 }
 
+
+//nacist dalsi produkty/kategorie
+function loadMoreItems(event, target) {
+    event.preventDefault();
+
+    var $target = $(target);
+
+    //nastavit vysku
+    $target.height($target.outerHeight()).css("overflow", "hidden");
+
+    //zobrazit/schovat polozky
+    var items = $target.children().clone();
+    if (items.length > 0) $target.append(items);
+
+    //animuj rozevreni
+    $target.animate({
+        height: $target[0].scrollHeight
+    }, 350, function () {
+        $target.removeAttr("style"); //odstranit vsechny inline styly
+    });
+}
