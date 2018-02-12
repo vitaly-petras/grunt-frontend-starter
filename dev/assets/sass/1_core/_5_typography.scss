@@ -2,27 +2,27 @@
 /*  All font-sizes / font-weghts / font-families / etc
 /*-----------------------------------------------------------------------------------*/
 //vsechny tridy obsazene v teto sekci jsou pouze vzorove, je potreba je udelat podle grafiky
-.font-weight-medium{
+@mixin font-weight-medium{
     font-weight: 500;
 }
 
-.font-weight-light{
+@mixin font-weight-light{
     font-weight: 300;
 }
 
-.font-weight-regular{
+@mixin font-weight-regular{
     font-weight: 400;
 }
 
-.font-family-avenir{
+@mixin font-family-avenir{
     font-family: Avenir, sans-serif;
 }
 
-.font-family-arbutus{
+@mixin font-family-arbutus{
     font-family: 'Arbutus Slab', serif;
 }
 
-.font-size-100{
+@mixin font-size-100{
     font-size: 100px;
 
     @include query( $query-xl ){
@@ -43,7 +43,7 @@
 }
 
 //tento priklad font-size-60 lze napsat jeste lepe viz ukazka hned pod tim
-.font-size-60{
+@mixin font-size-60{
     font-size: 60px;
     line-height: 70px;
 
@@ -69,7 +69,7 @@
 }
 
 //v tomto pripade jsme vzypocitali line-height v EM jednotkach a jiz tento line-height nemusime zmensovat = zmensuje se sam
-.font-size-60{
+@mixin font-size-60{
     font-size: 60px;
     line-height: 70 / 60 * 1em;;
 
@@ -90,23 +90,23 @@
     }
 }
 
-.font-size-36{
+@mixin font-size-36{
     font-size: 36px;
 }
 
-.font-size-30{
+@mixin font-size-30{
     font-size: 30px;
 }
 
-.font-size-24{
+@mixin font-size-24{
     font-size: 24px;
 }
 
-.font-size-18{
+@mixin font-size-18{
     font-size: 18px;
 }
 
-.font-size-16{
+@mixin font-size-16{
     font-size: 16px;
 }
 
