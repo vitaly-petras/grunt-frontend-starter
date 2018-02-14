@@ -38,7 +38,7 @@
 		<div class="layout">
 			<header class="header">
 				<div class="layout__center">
-					<a href="#" class="button">button</a>
+					
 				</div>
 			</header>
 
