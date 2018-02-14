@@ -18,7 +18,7 @@
 		<!-- //critical js -->
 
 		<!-- !!! vyplnit dulezite SEO metatagy !!! -->
-			<title><%= project.project.title %></title>
+			<title>fill-me</title>
 			<meta content="noindex,nofollow" name="robots"><!-- nezapomenout zde umazat "NO"index, "NO"follow -->
 			<meta name="description" content="popis vaseho webu">
 			<meta name="keywords" content="klíčová slova webu">
