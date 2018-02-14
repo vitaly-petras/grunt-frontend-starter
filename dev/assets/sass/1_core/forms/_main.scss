@@ -6,10 +6,6 @@ input, select, textarea {
 	vertical-align:middle;
 	box-shadow: none;
 
-	&:focus {
-		outline: none;
-	}
-
 	&:-moz-placeholder {
 	   opacity: 1; 
 	}
