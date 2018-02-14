@@ -69,13 +69,6 @@
     background-repeat: no-repeat;
 }
 
-@mixin box-sizing($sizing) {
-    -webkit-box-sizing: $sizing;
-    -moz-box-sizing: $sizing;
-    -ms-box-sizing: $sizing; 
-    box-sizing: $sizing;
-}
-
 // Zápis width a height - obdélník
 @mixin size($width, $height:$width) {
     width: remove-units($width)+px;

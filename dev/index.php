@@ -27,28 +27,29 @@
 	<body>
 
 		<!-- NEMAZAT! IKONKY NAPRIC CELYM WEBEM -->
-		<div class="c-layout__hidesvg">
+		<div class="layout__hidesvg">
 			<?php @include "images/svg/all.svg"; ?>
 		</div>
 
-		<!-- pouziti -->
+		<!-- pouziti 
 		<svg><use xlink:href="#icon-logo"/></svg>
+		-->
 		
-		<div class="c-layout">
-			<header class="c-header">
-				<div class="c-layout__center">
-					
+		<div class="layout">
+			<header class="header">
+				<div class="layout__center">
+					<a href="#" class="button">button</a>
 				</div>
 			</header>
 
-			<main role="main" class="c-layout__content"><!-- toto pouzivat na obsah. Obsah typu okno, paticka, hlavicka apod sem nepatri. Patri sem opravdu jen ta "stava" ze stranky. Predstav si to jako obsah clanku, kterou ches precist. -->
-				<div class="c-layout__center">
+			<main role="main" class="layout__content"><!-- toto pouzivat na obsah. Obsah typu okno, paticka, hlavicka apod sem nepatri. Patri sem opravdu jen ta "stava" ze stranky. Predstav si to jako obsah clanku, kterou ches precist. -->
+				<div class="layout__center">
 					
 				</div>
 			</main>
 
-			 <footer class="c-footer">
-				<div class="c-layout__center">
+			 <footer class="footer">
+				<div class="layout__center">
 					footer
 				</div>
 			</footer>

@@ -2,12 +2,12 @@
 *  Grid system 
 **************************************************************************************/
 
-.row{
+.grid{
 	@include cfx();
 	list-style: none;
 	margin-left: -$column-gap;
 
-	.col {
+	&__item {
 		float: left;
 		padding-left: $column-gap;
 
@@ -28,17 +28,12 @@
 		}
 
 
-		// grid-last 						(grid__item-last-1)
+		// grid-last 						(grid__item--last-1)
 		// ------------------------------------------------
 		@include query( $query-last ){
 
 			@for $i from 1 through $columns-count {
 				&--last-#{$i}{ width: percentage($i / $columns-count); }
-			}
-
-			&--offset-last-0{ margin-left:0; }
-			@for $i from 1 through $columns-count {
-				&--offset-last-#{$i}{ margin-left: percentage($i  / $columns-count); }
 			}
 		}
 

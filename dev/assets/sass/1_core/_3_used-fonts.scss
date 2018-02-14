@@ -1,18 +1,7 @@
 // ************************************************************************************
-// Used fonts mixins
-// ************************************************************************************
-
-// pouzit definovaneho mixinu v 2_mixins.scss
-// font-face($font-name, $font-file)
-
-// ************************************************************************************
-
-// pouziti fontu v sass
-//.cokoliv{ @include font(); }
-//
-// vysledek v css:
-//.cokoliv { font-family: "Open Sans Regular", Arial, Helvetica, sans-serif; }
-
+/*
+	zde vkladame font-face pravidla pro externi fonty
+*/
 // ************************************************************************************
 
 /*
@@ -36,11 +25,7 @@
 | 900 	| Black (Heavy)				|
 ------------------------------------
 */
-
-// fonts mixin example
-//@include    font-face( 'pebbleregular', pebble/pebble_rg_beta2 );
-
-
+/*
 //fonts mixin
 @mixin font($font-family:sans, $font-variant:regular){
 
@@ -81,7 +66,7 @@
 	}
 }
 //volani je potom nasledujici @include font(roman/sans, regular/bold/semibold);
-
+*/
 /*
 pokud je na webu pouze jeden font zjednodusit funkci takto
 @mixin font($font-variant:regular){

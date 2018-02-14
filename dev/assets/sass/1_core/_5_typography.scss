@@ -128,8 +128,6 @@ body{
     -moz-osx-font-smoothing: grayscale;
     */
 
-    background-color: $bg;
-
     &.overflow, &.test-overflow{
         height: 100%;
         overflow: hidden;

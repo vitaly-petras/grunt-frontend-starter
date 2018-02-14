@@ -232,6 +232,31 @@ sub{vertical-align: sub;}
 sup{vertical-align: super;}
 
 *{
-    @include box-sizing($box-sizing);
-    &:before,&:after{@include box-sizing($box-sizing);}
+    box-sizing: border-box;
+
+    &::before,&::after{
+        box-sizing: border-box;
+    }
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*  FORMS BASIC SETTINGS
+/*-----------------------------------------------------------------------------------*/
+input, select, textarea {
+    vertical-align:middle;
+    box-shadow: none;
+
+    &::placeholder{
+        opacity: 1;
+    }
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
 }

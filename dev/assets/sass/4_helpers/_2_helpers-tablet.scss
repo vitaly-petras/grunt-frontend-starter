@@ -4,218 +4,218 @@
 @include query( $tablet ){
 
 	//centering objects
-	.h-tab-vertical-aligned	{	@include align(vertical); 	}
-	.h-tab-horizontal-aligned	{	@include align(horizontal); }
-	.h-tab-both-aligned		{	@include align(both); 		}
+	._tab-vertical-aligned	{	@include align(vertical); 	}
+	._tab-horizontal-aligned	{	@include align(horizontal); }
+	._tab-both-aligned		{	@include align(both); 		}
 
 
 	//CUSTOM
-	.h-tab-table{display: table;width: 100%;vertical-align: middle;}
-	.h-tab-cell{display: table-cell;vertical-align: middle;}
+	._tab-table{display: table;width: 100%;vertical-align: middle;}
+	._tab-cell{display: table-cell;vertical-align: middle;}
 
 
 	// TEXT
-	.h-tab-text-right {text-align: right}
-	.h-tab-text-left {text-align: left}
-	.h-tab-text-center {text-align: center}
-	.h-tab-text-justify {text-align: justify}
-	.h-tab-uppercase{text-transform: uppercase;}
+	._tab-text-right {text-align: right}
+	._tab-text-left {text-align: left}
+	._tab-text-center {text-align: center}
+	._tab-text-justify {text-align: justify}
+	._tab-uppercase{text-transform: uppercase;}
 
-	.h-tab-text-underline {text-decoration: underline}
-	.h-tab-text-no-decoration {text-decoration: none}
-	.h-tab-text-strike {text-decoration: line-through}
+	._tab-text-underline {text-decoration: underline}
+	._tab-text-no-decoration {text-decoration: none}
+	._tab-text-strike {text-decoration: line-through}
 
-	.h-tab-text-no-wrap {white-space: nowrap}
-	.h-tab-text-wrap {word-wrap: break-word}
+	._tab-text-no-wrap {white-space: nowrap}
+	._tab-text-wrap {word-wrap: break-word}
 
 	// MARGIN
-	.h-tab-m0  {margin: 0px}
-	.h-tab-m5  {margin: 5px}
-	.h-tab-m10 {margin: 10px}
-	.h-tab-m15 {margin: 15px}
-	.h-tab-m20 {margin: 20px}
-	.h-tab-m25 {margin: 25px}
-	.h-tab-m30 {margin: 30px}
-	.h-tab-m35 {margin: 35px}
-	.h-tab-m40 {margin: 40px}
-	.h-tab-m45 {margin: 45px}
-	.h-tab-m50 {margin: 50px}
-	.h-tab-m55 {margin: 55px}
-	.h-tab-m60 {margin: 60px}
+	._tab-m0  {margin: 0px}
+	._tab-m5  {margin: 5px}
+	._tab-m10 {margin: 10px}
+	._tab-m15 {margin: 15px}
+	._tab-m20 {margin: 20px}
+	._tab-m25 {margin: 25px}
+	._tab-m30 {margin: 30px}
+	._tab-m35 {margin: 35px}
+	._tab-m40 {margin: 40px}
+	._tab-m45 {margin: 45px}
+	._tab-m50 {margin: 50px}
+	._tab-m55 {margin: 55px}
+	._tab-m60 {margin: 60px}
 
-	.h-tab-ml0  {margin-left: 0px}
-	.h-tab-ml5  {margin-left: 5px}
-	.h-tab-ml10 {margin-left: 10px}
-	.h-tab-ml15 {margin-left: 15px}
-	.h-tab-ml20 {margin-left: 20px}
-	.h-tab-ml25 {margin-left: 25px}
-	.h-tab-ml30 {margin-left: 30px}
-	.h-tab-ml35 {margin-left: 35px}
-	.h-tab-ml40 {margin-left: 40px}
-	.h-tab-ml45 {margin-left: 45px}
-	.h-tab-ml50 {margin-left: 50px}
-	.h-tab-ml55 {margin-left: 55px}
-	.h-tab-ml60 {margin-left: 60px}
+	._tab-ml0  {margin-left: 0px}
+	._tab-ml5  {margin-left: 5px}
+	._tab-ml10 {margin-left: 10px}
+	._tab-ml15 {margin-left: 15px}
+	._tab-ml20 {margin-left: 20px}
+	._tab-ml25 {margin-left: 25px}
+	._tab-ml30 {margin-left: 30px}
+	._tab-ml35 {margin-left: 35px}
+	._tab-ml40 {margin-left: 40px}
+	._tab-ml45 {margin-left: 45px}
+	._tab-ml50 {margin-left: 50px}
+	._tab-ml55 {margin-left: 55px}
+	._tab-ml60 {margin-left: 60px}
 
-	.h-tab-mr0  {margin-right: 0px}
-	.h-tab-mr5  {margin-right: 5px}
-	.h-tab-mr10 {margin-right: 10px}
-	.h-tab-mr15 {margin-right: 15px}
-	.h-tab-mr20 {margin-right: 20px}
-	.h-tab-mr25 {margin-right: 25px}
-	.h-tab-mr30 {margin-right: 30px}
-	.h-tab-mr35 {margin-right: 35px}
-	.h-tab-mr40 {margin-right: 40px}
-	.h-tab-mr45 {margin-right: 45px}
-	.h-tab-mr50 {margin-right: 50px}
-	.h-tab-mr55 {margin-right: 55px}
-	.h-tab-mr60 {margin-right: 60px}
+	._tab-mr0  {margin-right: 0px}
+	._tab-mr5  {margin-right: 5px}
+	._tab-mr10 {margin-right: 10px}
+	._tab-mr15 {margin-right: 15px}
+	._tab-mr20 {margin-right: 20px}
+	._tab-mr25 {margin-right: 25px}
+	._tab-mr30 {margin-right: 30px}
+	._tab-mr35 {margin-right: 35px}
+	._tab-mr40 {margin-right: 40px}
+	._tab-mr45 {margin-right: 45px}
+	._tab-mr50 {margin-right: 50px}
+	._tab-mr55 {margin-right: 55px}
+	._tab-mr60 {margin-right: 60px}
 
-	.h-tab-mt0  {margin-top: 0px}
-	.h-tab-mt5  {margin-top: 5px}
-	.h-tab-mt10 {margin-top: 10px}
-	.h-tab-mt15 {margin-top: 15px}
-	.h-tab-mt20 {margin-top: 20px}
-	.h-tab-mt25 {margin-top: 25px}
-	.h-tab-mt30 {margin-top: 30px}
-	.h-tab-mt35 {margin-top: 35px}
-	.h-tab-mt40 {margin-top: 40px}
-	.h-tab-mt45 {margin-top: 45px}
-	.h-tab-mt50 {margin-top: 50px}
-	.h-tab-mt55 {margin-top: 55px}
-	.h-tab-mt60 {margin-top: 60px}
+	._tab-mt0  {margin-top: 0px}
+	._tab-mt5  {margin-top: 5px}
+	._tab-mt10 {margin-top: 10px}
+	._tab-mt15 {margin-top: 15px}
+	._tab-mt20 {margin-top: 20px}
+	._tab-mt25 {margin-top: 25px}
+	._tab-mt30 {margin-top: 30px}
+	._tab-mt35 {margin-top: 35px}
+	._tab-mt40 {margin-top: 40px}
+	._tab-mt45 {margin-top: 45px}
+	._tab-mt50 {margin-top: 50px}
+	._tab-mt55 {margin-top: 55px}
+	._tab-mt60 {margin-top: 60px}
 
-	.h-tab-mb0  {margin-bottom: 0px}
-	.h-tab-mb5  {margin-bottom: 5px}
-	.h-tab-mb10 {margin-bottom: 10px}
-	.h-tab-mb15 {margin-bottom: 15px}
-	.h-tab-mb20 {margin-bottom: 20px}
-	.h-tab-mb25 {margin-bottom: 25px}
-	.h-tab-mb30 {margin-bottom: 30px}
-	.h-tab-mb35 {margin-bottom: 35px}
-	.h-tab-mb40 {margin-bottom: 40px}
-	.h-tab-mb45 {margin-bottom: 45px}
-	.h-tab-mb50 {margin-bottom: 50px}
-	.h-tab-mb55 {margin-bottom: 55px}
-	.h-tab-mb60 {margin-bottom: 60px}
+	._tab-mb0  {margin-bottom: 0px}
+	._tab-mb5  {margin-bottom: 5px}
+	._tab-mb10 {margin-bottom: 10px}
+	._tab-mb15 {margin-bottom: 15px}
+	._tab-mb20 {margin-bottom: 20px}
+	._tab-mb25 {margin-bottom: 25px}
+	._tab-mb30 {margin-bottom: 30px}
+	._tab-mb35 {margin-bottom: 35px}
+	._tab-mb40 {margin-bottom: 40px}
+	._tab-mb45 {margin-bottom: 45px}
+	._tab-mb50 {margin-bottom: 50px}
+	._tab-mb55 {margin-bottom: 55px}
+	._tab-mb60 {margin-bottom: 60px}
 
 	// PADDING
-	.h-tab-p0  {padding: 0px}
-	.h-tab-p5  {padding: 5px}
-	.h-tab-p10 {padding: 10px}
-	.h-tab-p15 {padding: 15px}
-	.h-tab-p20 {padding: 20px}
-	.h-tab-p25 {padding: 25px}
-	.h-tab-p30 {padding: 30px}
-	.h-tab-p35 {padding: 35px}
-	.h-tab-p40 {padding: 40px}
-	.h-tab-p45 {padding: 45px}
-	.h-tab-p50 {padding: 50px}
-	.h-tab-p55 {padding: 55px}
-	.h-tab-p60 {padding: 60px}
+	._tab-p0  {padding: 0px}
+	._tab-p5  {padding: 5px}
+	._tab-p10 {padding: 10px}
+	._tab-p15 {padding: 15px}
+	._tab-p20 {padding: 20px}
+	._tab-p25 {padding: 25px}
+	._tab-p30 {padding: 30px}
+	._tab-p35 {padding: 35px}
+	._tab-p40 {padding: 40px}
+	._tab-p45 {padding: 45px}
+	._tab-p50 {padding: 50px}
+	._tab-p55 {padding: 55px}
+	._tab-p60 {padding: 60px}
 
-	.h-tab-pl0  {padding-left: 0px}
-	.h-tab-pl5  {padding-left: 5px}
-	.h-tab-pl10 {padding-left: 10px}
-	.h-tab-pl15 {padding-left: 15px}
-	.h-tab-pl20 {padding-left: 20px}
-	.h-tab-pl25 {padding-left: 25px}
-	.h-tab-pl30 {padding-left: 30px}
-	.h-tab-pl35 {padding-left: 35px}
-	.h-tab-pl40 {padding-left: 40px}
-	.h-tab-pl45 {padding-left: 45px}
-	.h-tab-pl50 {padding-left: 50px}
-	.h-tab-pl55 {padding-left: 55px}
-	.h-tab-pl60 {padding-left: 60px}
+	._tab-pl0  {padding-left: 0px}
+	._tab-pl5  {padding-left: 5px}
+	._tab-pl10 {padding-left: 10px}
+	._tab-pl15 {padding-left: 15px}
+	._tab-pl20 {padding-left: 20px}
+	._tab-pl25 {padding-left: 25px}
+	._tab-pl30 {padding-left: 30px}
+	._tab-pl35 {padding-left: 35px}
+	._tab-pl40 {padding-left: 40px}
+	._tab-pl45 {padding-left: 45px}
+	._tab-pl50 {padding-left: 50px}
+	._tab-pl55 {padding-left: 55px}
+	._tab-pl60 {padding-left: 60px}
 
-	.h-tab-pr0  {padding-right: 0px}
-	.h-tab-pr5  {padding-right: 5px}
-	.h-tab-pr10 {padding-right: 10px}
-	.h-tab-pr15 {padding-right: 15px}
-	.h-tab-pr20 {padding-right: 20px}
-	.h-tab-pr25 {padding-right: 25px}
-	.h-tab-pr30 {padding-right: 30px}
-	.h-tab-pr35 {padding-right: 35px}
-	.h-tab-pr40 {padding-right: 40px}
-	.h-tab-pr45 {padding-right: 45px}
-	.h-tab-pr50 {padding-right: 50px}
-	.h-tab-pr55 {padding-right: 55px}
-	.h-tab-pr60 {padding-right: 60px}
+	._tab-pr0  {padding-right: 0px}
+	._tab-pr5  {padding-right: 5px}
+	._tab-pr10 {padding-right: 10px}
+	._tab-pr15 {padding-right: 15px}
+	._tab-pr20 {padding-right: 20px}
+	._tab-pr25 {padding-right: 25px}
+	._tab-pr30 {padding-right: 30px}
+	._tab-pr35 {padding-right: 35px}
+	._tab-pr40 {padding-right: 40px}
+	._tab-pr45 {padding-right: 45px}
+	._tab-pr50 {padding-right: 50px}
+	._tab-pr55 {padding-right: 55px}
+	._tab-pr60 {padding-right: 60px}
 
-	.h-tab-pt0  {padding-top: 0px}
-	.h-tab-pt5  {padding-top: 5px}
-	.h-tab-pt10 {padding-top: 10px}
-	.h-tab-pt15 {padding-top: 15px}
-	.h-tab-pt20 {padding-top: 20px}
-	.h-tab-pt25 {padding-top: 25px}
-	.h-tab-pt30 {padding-top: 30px}
-	.h-tab-pt35 {padding-top: 35px}
-	.h-tab-pt40 {padding-top: 40px}
-	.h-tab-pt45 {padding-top: 45px}
-	.h-tab-pt50 {padding-top: 50px}
-	.h-tab-pt55 {padding-top: 55px}
-	.h-tab-pt60 {padding-top: 60px}
+	._tab-pt0  {padding-top: 0px}
+	._tab-pt5  {padding-top: 5px}
+	._tab-pt10 {padding-top: 10px}
+	._tab-pt15 {padding-top: 15px}
+	._tab-pt20 {padding-top: 20px}
+	._tab-pt25 {padding-top: 25px}
+	._tab-pt30 {padding-top: 30px}
+	._tab-pt35 {padding-top: 35px}
+	._tab-pt40 {padding-top: 40px}
+	._tab-pt45 {padding-top: 45px}
+	._tab-pt50 {padding-top: 50px}
+	._tab-pt55 {padding-top: 55px}
+	._tab-pt60 {padding-top: 60px}
 
-	.h-tab-pb0  {padding-bottom: 0px}
-	.h-tab-pb5  {padding-bottom: 5px}
-	.h-tab-pb10 {padding-bottom: 10px}
-	.h-tab-pb15 {padding-bottom: 15px}
-	.h-tab-pb20 {padding-bottom: 20px}
-	.h-tab-pb25 {padding-bottom: 25px}
-	.h-tab-pb30 {padding-bottom: 30px}
-	.h-tab-pb35 {padding-bottom: 35px}
-	.h-tab-pb40 {padding-bottom: 40px}
-	.h-tab-pb45 {padding-bottom: 45px}
-	.h-tab-pb50 {padding-bottom: 50px}
-	.h-tab-pb55 {padding-bottom: 55px}
-	.h-tab-pb60 {padding-bottom: 60px}
+	._tab-pb0  {padding-bottom: 0px}
+	._tab-pb5  {padding-bottom: 5px}
+	._tab-pb10 {padding-bottom: 10px}
+	._tab-pb15 {padding-bottom: 15px}
+	._tab-pb20 {padding-bottom: 20px}
+	._tab-pb25 {padding-bottom: 25px}
+	._tab-pb30 {padding-bottom: 30px}
+	._tab-pb35 {padding-bottom: 35px}
+	._tab-pb40 {padding-bottom: 40px}
+	._tab-pb45 {padding-bottom: 45px}
+	._tab-pb50 {padding-bottom: 50px}
+	._tab-pb55 {padding-bottom: 55px}
+	._tab-pb60 {padding-bottom: 60px}
 
 	// FONT
-	.h-tab-fs10 {font-size: 10px}
-	.h-tab-fs11 {font-size: 11px}
-	.h-tab-fs12 {font-size: 12px}
-	.h-tab-fs13 {font-size: 13px}
-	.h-tab-fs14 {font-size: 14px}
-	.h-tab-fs15 {font-size: 15px}
-	.h-tab-fs16 {font-size: 16px}
-	.h-tab-fs17 {font-size: 17px}
-	.h-tab-fs18 {font-size: 18px}
-	.h-tab-fs19 {font-size: 19px}
-	.h-tab-fs20 {font-size: 20px}
-	.h-tab-fs21 {font-size: 21px}
-	.h-tab-fs22 {font-size: 22px}
-	.h-tab-fs23 {font-size: 23px}
-	.h-tab-fs24 {font-size: 24px}
+	._tab-fs10 {font-size: 10px}
+	._tab-fs11 {font-size: 11px}
+	._tab-fs12 {font-size: 12px}
+	._tab-fs13 {font-size: 13px}
+	._tab-fs14 {font-size: 14px}
+	._tab-fs15 {font-size: 15px}
+	._tab-fs16 {font-size: 16px}
+	._tab-fs17 {font-size: 17px}
+	._tab-fs18 {font-size: 18px}
+	._tab-fs19 {font-size: 19px}
+	._tab-fs20 {font-size: 20px}
+	._tab-fs21 {font-size: 21px}
+	._tab-fs22 {font-size: 22px}
+	._tab-fs23 {font-size: 23px}
+	._tab-fs24 {font-size: 24px}
 
-	.h-tab-fw-normal {font-weight: normal}
-	.h-tab-fw-bold {font-weight: bold}
+	._tab-fw-normal {font-weight: normal}
+	._tab-fw-bold {font-weight: bold}
 
-	.h-tab-fstyle-normal {font-style: normal}
-	.h-tab-fstyle-italic {font-style: italic}
+	._tab-fstyle-normal {font-style: normal}
+	._tab-fstyle-italic {font-style: italic}
 
 	// FLOAT + CLEAR
-	.h-tab-clear {clear: both}
-	.h-tab-clear-r {clear: right}
-	.h-tab-clear-l {clear: left}
+	._tab-clear {clear: both}
+	._tab-clear-r {clear: right}
+	._tab-clear-l {clear: left}
 
-	.h-tab-float-right	{float: right;}
-	.h-tab-float-left		{float: left;}
-	.h-tab-float-none	  	{float: none}
+	._tab-float-right	{float: right;}
+	._tab-float-left		{float: left;}
+	._tab-float-none	  	{float: none}
 
 	// DISPLAY
-	.h-tab-display-inline {display: inline}
-	.h-tab-display-inline-block {display: inline-block}
-	.h-tab-display-block {display: block}
-	.h-tab-display-none {display: none}
-	.h-tab-center-block{display: block;margin-left: auto;margin-right: auto;float: none;}
+	._tab-display-inline {display: inline}
+	._tab-display-inline-block {display: inline-block}
+	._tab-display-block {display: block}
+	._tab-display-none {display: none}
+	._tab-center-block{display: block;margin-left: auto;margin-right: auto;float: none;}
 
 	// CURSOR
-	.h-tab-cursor-pointer {cursor: pointer}
-	.h-tab-cursor-move {cursor: move}
-	.h-tab-cursor-auto {cursor: auto}
-	.h-tab-cursor-help {cursor: help}
+	._tab-cursor-pointer {cursor: pointer}
+	._tab-cursor-move {cursor: move}
+	._tab-cursor-auto {cursor: auto}
+	._tab-cursor-help {cursor: help}
 
 	// OTHER
-	.h-tab-relative {position: relative }
+	._tab-relative {position: relative }
 
 }
