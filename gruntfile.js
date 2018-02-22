@@ -226,7 +226,7 @@ module.exports = function(grunt) {
         files: [
           {
             cwd: '<%= project.path.root %>', 
-            src: ['**', '!**/*.php', '!page-components', '!page_components', '!assets/images/sprites/**'], 
+            src: ['**', '!**/*.php', '!page-components', '!page_components', '!assets/images/sprites/**', '!forms/*.php'], 
             dest: '<%= project.path.dist %>'
           }, // makes all src relative to cwd 
         ],
@@ -374,7 +374,7 @@ module.exports = function(grunt) {
           {
             expand: true, 
             cwd: '<%= project.path.root %>', 
-            src: ['*.php', '!checklist.php'], 
+            src: ['*.php', '!checklist.php', '!forms/*.php'], 
             dest: '<%= project.path.dist %>', 
             ext: '.html' 
           }
