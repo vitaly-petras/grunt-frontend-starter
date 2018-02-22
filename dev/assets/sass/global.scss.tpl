@@ -28,15 +28,6 @@ Viz readme.txt
 @import 						'1_core/keyframes';
 @import 						"1_core/other-important";
 
-// core forms
-// ------------------------------------------------ 
-@import 						"1_core/forms/buttons";
-@import 						"1_core/forms/inputs";
-@import 						"1_core/forms/main";
-//@import 						"1_core/forms/select";
-
-
-
 
 // ************************************************ //
 // 2. Libs  
@@ -49,6 +40,12 @@ Viz readme.txt
 // ************************************************ //
 // 3. Components  
 // ************************************************ //
+//form elements
+@import 						"3_components/button";
+@import 						"3_components/inputs";//input, select, textarea
+//@import 						"3_components/select";//styled select
+
+//web elements
 @import 						"3_components/layout";
 @import 						"3_components/text";
 
@@ -60,4 +57,3 @@ Viz readme.txt
 // pomocne tridy ve vsech velikostech
 // ------------------------------------------------ 
 //@import 						"4_helpers/1_helpers";
-

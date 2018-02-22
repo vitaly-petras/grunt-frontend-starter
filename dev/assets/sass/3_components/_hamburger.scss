@@ -3,7 +3,7 @@ $hamburgerSpanVertical:		35px;//mezera shora a zespod
 $hamburgerSpanHorizontal:	30px;//mezera zleva/zprava
 
 
-.c-hamburger{
+.hamburger{
 	display: block;
 	@include size(90);
 
@@ -53,7 +53,7 @@ $hamburgerSpanHorizontal:	30px;//mezera zleva/zprava
 
 	&.active{
 
-		.c-hamburger__span{
+		.hamburger__span{
 
 			&--top{
 				top: 50%;

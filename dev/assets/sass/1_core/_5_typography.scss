@@ -128,8 +128,6 @@ body{
     -moz-osx-font-smoothing: grayscale;
     */
 
-    background-color: $bg;
-
     &.overflow, &.test-overflow{
         height: 100%;
         overflow: hidden;
@@ -175,7 +173,6 @@ a {
     text-decoration: underline;
     color: $color-link;
     cursor: pointer;
-    outline: none;
 
     transition-duration: 200ms;
     transition-property: color;
