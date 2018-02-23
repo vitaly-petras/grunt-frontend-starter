@@ -416,12 +416,20 @@ module.exports = function(grunt) {
   grunt.registerTask('svg', ['svgstore']);
 
   grunt.registerTask('rem', ['copy:remFallback', 'px_to_rem']);
-
+  /*
   grunt.registerTask('oimages', function(){
     if(exists) return ['tinyimg', 'tinypng']
     else{
       grunt.log.write('no APIKEY for tinypng, this task will be skipped, but dont worry all is OK. (only jpg and png images will not be compressed)');
       return ['tinyimg'];
+    } 
+  });
+  */
+  grunt.registerTask('oimages', function(){
+    if(exists) grunt.task.run('tinyimg', 'tinypng');
+    else{
+      grunt.log.write('no APIKEY for tinypng, this task will be skipped, but dont worry all is OK. (only jpg and png images will not be compressed)');
+      grunt.task.run('tinyimg');
     } 
   });
 
