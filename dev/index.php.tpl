@@ -1,6 +1,6 @@
 <?php $version = "1.0" //verze stylu, scriptu = proti cachovani ?>
 <!DOCTYPE html>
-<html lang="cs" class="no-js">
+<html lang="cs-CZ" class="no-js">
 	<head>
 		<!-- ostatni -->
 			<meta charset="UTF-8">
