@@ -1,0 +1,12 @@
+.container{
+	@include cfx;
+	margin: 0 auto;
+	position: relative;
+
+	width: $width-layout;
+
+	@include query( $query-last ){
+		width: auto;
+		padding: 0 $padding-layout;
+	}
+}

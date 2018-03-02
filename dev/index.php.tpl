@@ -35,21 +35,21 @@
 		<svg><use xlink:href="#icon-logo"/></svg>
 		-->
 		
-		<div class="layout">
+		<div class="page">
 			<header class="header">
-				<div class="layout__center">
+				<div class="container">
 					
 				</div>
 			</header>
 
-			<main role="main" class="layout__content"><!-- toto pouzivat na obsah. Obsah typu okno, paticka, hlavicka apod sem nepatri. Patri sem opravdu jen ta "stava" ze stranky. Predstav si to jako obsah clanku, kterou ches precist. -->
-				<div class="layout__center">
+			<main role="main" class="page__content"><!-- toto pouzivat na obsah. Obsah typu okno, paticka, hlavicka apod sem nepatri. Patri sem opravdu jen ta "stava" ze stranky. Predstav si to jako obsah clanku, kterou ches precist. -->
+				<div class="container">
 					
 				</div>
 			</main>
 
 			 <footer class="footer">
-				<div class="layout__center">
+				<div class="container">
 					footer
 				</div>
 			</footer>

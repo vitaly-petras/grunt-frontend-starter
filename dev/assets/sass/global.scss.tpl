@@ -46,7 +46,8 @@ Viz readme.txt
 //@import 						"3_components/select";//styled select
 
 //web elements
-@import 						"3_components/layout";
+@import 						"3_components/page";
+@import 						"3_components/container";
 @import 						"3_components/text";
 
 

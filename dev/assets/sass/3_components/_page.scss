@@ -1,0 +1,15 @@
+.page{
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	
+	&__content{
+		flex-grow: 100;
+	}
+
+	&__hidesvg{
+		width: 0;
+		height: 0;
+		overflow: hidden;
+	}
+}
