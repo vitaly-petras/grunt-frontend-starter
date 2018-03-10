@@ -158,11 +158,9 @@ function showHide(wtt, htd, target, speed){//what to do, how to do
 //zamezeni skorolovani
 function bodyFreeze(){
     if( $body.hasClass("overflow") ){//vratit do puvodniho stavu
-        var scrollLength = Math.abs(parseInt($body.css("top")));
-        $body.removeClass("overflow").removeClass("fixed").css("top", 0);
-         $("html, body").scrollTop(scrollLength);
+        $body.removeClass("overflow");
     }else{//zmrazit skrolovani v dokumentu
-        $body.css("top", -$window.scrollTop()).addClass("overflow");
+        $body.addClass("overflow");
     }
 }
 
