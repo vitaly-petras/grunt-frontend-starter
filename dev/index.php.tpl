@@ -35,7 +35,7 @@
 		<svg><use xlink:href="#icon-logo"/></svg>
 		-->
 		
-		<div class="page">
+		<div class="page" id="js-page">
 			<header class="header">
 				<div class="container">
 					
