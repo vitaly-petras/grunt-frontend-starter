@@ -159,7 +159,23 @@ function showHide(wtt, htd, target, speed){//what to do, how to do
 function bodyFreeze(){
     if( $body.hasClass("overflow") ){//vratit do puvodniho stavu
         $body.removeClass("overflow");
+        document.documentElement.style.marginRight = '';
+
+        const fixedHeader = document.getElementById('js-header');
+        if(fixedHeader) fixedHeader.style.width = `100%`;
+
     }else{//zmrazit skrolovani v dokumentu
+        const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+        document.documentElement.style.marginRight = scrollBarWidth + 'px';
+
+        const fixedHeader = document.getElementById('js-header');
+        if(fixedHeader){
+            const position = window.getComputedStyle(fixedHeader).position;
+            if (position == 'fixed' || position == 'absolute') {
+                fixedHeader.style.width = `calc(100% - ${scrollBarWidth}px)`;
+            }
+        }
+
         $body.addClass("overflow");
     }
 }
