@@ -226,7 +226,7 @@ module.exports = function(grunt) {
         files: [
           {
             cwd: '<%= project.path.root %>', 
-            src: ['**', '!**/*.php', '!page-components', '!page_components', '!assets/images/sprites/**', '!forms/*.php'], 
+            src: ['**', '!**/*.php', '!page-components', '!page_components', '!assets/images/sprites/**', 'forms/*.php'], 
             dest: '<%= project.path.dist %>'
           }, // makes all src relative to cwd 
         ],

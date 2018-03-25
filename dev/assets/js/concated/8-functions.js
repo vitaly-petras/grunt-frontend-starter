@@ -167,6 +167,11 @@ function bodyFreeze(){
         }
 
         $body.removeClass("overflow");
+        document.documentElement.style.marginRight = '';
+
+        const fixedHeader = document.getElementById('js-header');
+        if(fixedHeader) fixedHeader.style.width = `100%`;
+
 
     }else{//zmrazit skrolovani v dokumentu
         if(iOS == true){
@@ -175,6 +180,17 @@ function bodyFreeze(){
             body.style.position = 'fixed';
             body.style.left = '0px';
             body.style.width = '100%';
+        }
+
+        const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+        document.documentElement.style.marginRight = scrollBarWidth + 'px';
+
+        const fixedHeader = document.getElementById('js-header');
+        if(fixedHeader){
+            const position = window.getComputedStyle(fixedHeader).position;
+            if (position == 'fixed' || position == 'absolute') {
+                fixedHeader.style.width = `calc(100% - ${scrollBarWidth}px)`;
+            }
         }
 
         $body.addClass("overflow");
