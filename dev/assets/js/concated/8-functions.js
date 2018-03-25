@@ -157,9 +157,26 @@ function showHide(wtt, htd, target, speed){//what to do, how to do
 
 //zamezeni skorolovani
 function bodyFreeze(){
+    var body = document.body;
     if( $body.hasClass("overflow") ){//vratit do puvodniho stavu
+
+        if(iOS == true){
+            const scrollLength = parseInt(window.getComputedStyle(body).top) * -1;
+            body.removeAttribute('style');
+            window.scrollTo(0, scrollLength);
+        }
+
         $body.removeClass("overflow");
+
     }else{//zmrazit skrolovani v dokumentu
+        if(iOS == true){
+            const scrollTop = (window.pageYOffset || document.documentElement.scrollTop) - (document.documentElement.clientTop || 0);
+            body.style.top = -scrollTop + 'px';
+            body.style.position = 'fixed';
+            body.style.left = '0px';
+            body.style.width = '100%';
+        }
+
         $body.addClass("overflow");
     }
 }
