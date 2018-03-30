@@ -42,7 +42,7 @@ module.exports = function(grunt) {
       dev: {                            // Target
         options: {                       // Target options
           style: 'expanded',
-          sourcemap:'none'
+          sourcemap:true
         },
         files:   [{  
           expand: true,   
