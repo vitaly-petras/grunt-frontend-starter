@@ -76,6 +76,7 @@ audio:not([controls]) {
 html{
 	-webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
+    box-sizing: border-box;
 }
 
 
@@ -232,10 +233,10 @@ sub{vertical-align: sub;}
 sup{vertical-align: super;}
 
 *{
-    box-sizing: border-box;
+    box-sizing: inherit;
 
     &::before,&::after{
-        box-sizing: border-box;
+        box-sizing: inherit;
     }
 }
 
