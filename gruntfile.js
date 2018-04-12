@@ -262,8 +262,6 @@ module.exports = function(grunt) {
                 'assets/sass', 
                 'assets/images/sprites',
                 'assets/js/concated',
-                'assets/js/critical.js',
-                'assets/js/critical.min.js',
                 'assets/js/not-used-scripts',
                 'assets/js/*.map',
                 'assets/icons'
