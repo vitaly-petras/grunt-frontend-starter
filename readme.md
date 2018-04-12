@@ -30,9 +30,6 @@ Do kořenového adresáře kde se nachází soubor `gruntfile.js` lze přidat so
 
 Díky [TinyPNG](https://tinypng.com/) při buildu dochází k kompresi jpg a png obrázků. Tento krok je volittelný, ale doporučuje se ho využit. Tato služba je zdarma do 500 kompresí za měsíc.
 
-## Licenses
-- [jQuery](https://github.com/jquery/jquery/blob/master/LICENSE.txt)
-
 ---
 
 Vitalij Petráš @ [HTMLFACTORY](http://www.html-factory.cz/) © 2018

@@ -148,6 +148,7 @@ module.exports = function(grunt) {
       basic: {
         src: [//vstupni slozka
           'node_modules/jquery/dist/jquery.js', 
+          'node_modules/slick-carousel/slick/slick.js',
           '<%= project.path.js %>concated/*.js'
           ],
         dest: '<%= project.path.js %>all.js',  //vystupni slozka
