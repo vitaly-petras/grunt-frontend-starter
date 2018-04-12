@@ -12,7 +12,7 @@
 		<!-- //ostatni -->
 
 		<!-- !!! vyplnit dulezite SEO metatagy !!! -->
-			<title>fill-me</title>
+			<title><%= project.project.title %></title>
 			<meta content="noindex,nofollow" name="robots"><!-- nezapomenout zde umazat "NO"index, "NO"follow -->
 			<meta name="description" content="popis vaseho webu">
 			<meta name="keywords" content="klíčová slova webu">

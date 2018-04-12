@@ -1,10 +1,10 @@
 /*! 
 ==============================================================
 
-Project  	: fill-me
-Author  	: Vitalij Petras
+Project  	: <%= project.project.name %>
+Author  	: <%= project.project.author %>
 Author URI	: www.html-factory.cz
-Created 	: 12.04.2018
+Created 	: <%= grunt.template.today("dd.mm.yyyy") %>
 
 ----------------------------------------
 ---------------- POZOR! ----------------
