@@ -8,7 +8,7 @@ function clouseOnBlur(el, target){
             if( iOS == true ) customEvent = "touchend";
             else customEvent = "click";
 
-            $body.one(customEvent, function(event){
+            $('body').one(customEvent, function(event){
                 if(!$(event.target).closest(el).length && !$(event.target).closest(target).length) {//kliknuti mimo elementy
                     el.click();//zavre cilovy blok
                     //console.log("clicked out");
@@ -73,7 +73,7 @@ function toggle(e, element){
     }
 
     if (typeof accessibility !== typeof undefined && typeof $this.attr("data-scrollhere") == typeof undefined){
-        $this.attr("data-scrollhere", $this.offset().top  + $this.outerHeight() - $window.height());
+        $this.attr("data-scrollhere", $this.offset().top  + $this.outerHeight() - $(window).height());
     }
 
     var $target = $(target);//definovani cile
@@ -158,7 +158,7 @@ function showHide(wtt, htd, target, speed){//what to do, how to do
 //zamezeni skorolovani
 function bodyFreeze(){
     var body = document.body;
-    if( $body.hasClass("overflow") ){//vratit do puvodniho stavu
+    if( $('body').hasClass("overflow") ){//vratit do puvodniho stavu
 
         if(iOS == true){
             const scrollLength = parseInt(window.getComputedStyle(body).top) * -1;
@@ -166,7 +166,7 @@ function bodyFreeze(){
             window.scrollTo(0, scrollLength);
         }
 
-        $body.removeClass("overflow");
+        $('body').removeClass("overflow");
         document.documentElement.style.marginRight = '';
 
         const fixedHeader = document.getElementById('js-header');
@@ -193,7 +193,7 @@ function bodyFreeze(){
             }
         }
 
-        $body.addClass("overflow");
+        $('body').addClass("overflow");
     }
 }
 
@@ -326,7 +326,7 @@ function showMoreInfo(event, element, target){
     event.preventDefault();
     var $this = $(element),
         toggleText = $this.attr("data-toggle-text"),
-        offset = $target.offset().top + $this.outerHeight() - $window.height(),
+        offset = $target.offset().top + $this.outerHeight() - $(window).height(),
         $target,
         oldHeight;
 
@@ -393,7 +393,7 @@ function toggleChildren(element, target, event){
         elementPosition = $target.attr("data-scrollhere");
 
     if (typeof elementPosition == typeof undefined || elementPosition == false)
-       $target.attr("data-scrollhere", $this.offset().top  + $this.outerHeight() - $window.height());
+       $target.attr("data-scrollhere", $this.offset().top  + $this.outerHeight() - $(window).height());
 
     //aktivni trida
     $target.toggleClass("isOpened");
