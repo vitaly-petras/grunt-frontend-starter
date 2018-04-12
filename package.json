@@ -36,5 +36,8 @@
     "jit-grunt": "^0.9.1",
     "load-grunt-tasks": "^3.5.2",
     "time-grunt": "^1.2.1"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1",
   }
 }

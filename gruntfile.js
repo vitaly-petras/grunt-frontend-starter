@@ -146,7 +146,10 @@ module.exports = function(grunt) {
     /* sjednoceni vsech .js souboru do jednoho */
     concat: {
       basic: {
-        src: '<%= project.path.js %>concated/*.js', //vstupni slozka
+        src: [//vstupni slozka
+          'node_modules/jquery/dist/jquery.js', 
+          '<%= project.path.js %>concated/*.js'
+          ],
         dest: '<%= project.path.js %>all.js',  //vystupni slozka
       },
     },

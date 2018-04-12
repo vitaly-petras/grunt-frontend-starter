@@ -298,9 +298,6 @@ function fixedTopBar(){
     });
 }
 
-$(window).load(function(){
-    
-});
 
 //progressive loading images
 function loadHiddenImages(el){
