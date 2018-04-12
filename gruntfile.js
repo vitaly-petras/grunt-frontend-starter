@@ -94,7 +94,7 @@ module.exports = function(grunt) {
       //styles
       css: {
         files: '<%= project.path.scss %>**/*.scss',
-        tasks: ['sass:dev'],
+        tasks: ['sass:dev', 'postcss:dev'],
         // pro nativni prevod do rem jednotek vymenit 'cssmin' za 'rem'
       },
       //svg sprite
@@ -149,6 +149,7 @@ module.exports = function(grunt) {
         src: [//vstupni slozka
           'node_modules/jquery/dist/jquery.js', 
           'node_modules/slick-carousel/slick/slick.js',
+          'node_modules/object-fit-images/dist/ofi.js',
           '<%= project.path.js %>concated/*.js'
           ],
         dest: '<%= project.path.js %>all.js',  //vystupni slozka
@@ -290,17 +291,24 @@ module.exports = function(grunt) {
     },
 
     postcss: {
-      options: {
-        map: true,
-        processors: [
-          require('autoprefixer')()
-        ]
-      },
       dist: {  
+        options: {
+          map: false,
+          processors: [
+            require('autoprefixer'),
+            require('postcss-object-fit-images')
+          ]
+        },
         src: '<%= project.path.dist %>assets/css/global.css',
         dest: '<%= project.path.dist %>assets/css/global.css'
       },
       dev: {  
+        options: {
+          map: true,
+          processors: [
+            require('postcss-object-fit-images')
+          ]
+        },
         src: '<%= project.path.css %>global.css',
         dest: '<%= project.path.css %>global.css'
       }
