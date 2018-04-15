@@ -5,7 +5,7 @@ function clouseOnBlur(el, target){
     if( el.hasClass("js-toggle-activated") ){
         setTimeout(function(){
             var customEvent;
-            if( iOS == true ) customEvent = "touchend";
+            if(!!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform)) customEvent = "touchend";
             else customEvent = "click";
 
             $('body').one(customEvent, function(event){
