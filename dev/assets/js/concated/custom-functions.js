@@ -160,7 +160,7 @@ function bodyFreeze(){
     var body = document.body;
     if( $('body').hasClass("overflow") ){//vratit do puvodniho stavu
 
-        if(iOS == true){
+        if(!!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform)){
             const scrollLength = parseInt(window.getComputedStyle(body).top) * -1;
             body.removeAttribute('style');
             window.scrollTo(0, scrollLength);
@@ -174,7 +174,7 @@ function bodyFreeze(){
 
 
     }else{//zmrazit skrolovani v dokumentu
-        if(iOS == true){
+        if(!!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform)){
             const scrollTop = (window.pageYOffset || document.documentElement.scrollTop) - (document.documentElement.clientTop || 0);
             body.style.top = -scrollTop + 'px';
             body.style.position = 'fixed';
