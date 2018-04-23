@@ -1,7 +1,9 @@
 ## Instalace projektu
+
 ```npm install```
 
 ## Práce s projektem
+
 ```grunt```
 
 ## PHP2HTML development
