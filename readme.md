@@ -6,10 +6,13 @@
 
 ```grunt```
 
+
 ## PHP2HTML development
+
 Vyvojářská verze webu je realizováná v PHP. Abyste ji rozchodily je nutné mít nainstalovaný *php-cgi*. Instrukce najdete [zde](https://github.com/bezoerb/grunt-php2html)
 
 ## !!! Pozor !!!
+
 V GITu je k dispozici vývojařská verze projektu, která se nachází v `dev` složce. Tato verze **není určená** pro produkční web. Pro produkční web prosím použijte příkaz `grunt build`, která se postárá o:
 - minifikaci všech textových souborů js, html, css
 - kompresi všech obrázků svg, png, jpg
@@ -20,6 +23,7 @@ V GITu je k dispozici vývojařská verze projektu, která se nachází v `dev` 
 
 
 ## Generace souborů pro produkci - **build**
+
 Po instalaci projektu `npm install` je potřeba provést příkaz `grunt build`. Tento buildovací příkaz vygeneruje složku dist, která je připravená pro nahrání na produkční web.
 
 Do kořenového adresáře kde se nachází soubor `gruntfile.js` lze přidat soubor `passwords.js`. 
