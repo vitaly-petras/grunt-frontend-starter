@@ -20,6 +20,10 @@
 
 	transition-duration: 200ms;
 	transition-property: background-color, color, border-color;
+
+	&::placeholder{
+    	color: currentColor;
+    }
 	
 	&:focus {
 		background: darken($input-bg, 5%);
@@ -45,6 +49,10 @@ textarea {
 
 	transition-duration: 200ms;
 	transition-property: background-color, color, border-color;
+
+	&::placeholder{
+    	color: currentColor;
+    }
 
 	&:focus {
 		background: darken($input-bg, 5%);
