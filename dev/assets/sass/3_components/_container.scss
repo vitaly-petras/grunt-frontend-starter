@@ -1,12 +1,15 @@
 .container{
-	@include cfx;
+	display: inherit;
+	justify-content: inherit;
+	align-items: inherit;
+	flex-direction: inherit;
+
 	margin: 0 auto;
 	position: relative;
-
-	width: $width-layout;
+	width: 100%;
+	max-width: $width-layout;
 
 	@include query( $query-last ){
-		width: auto;
 		padding: 0 $padding-layout;
 	}
 }
