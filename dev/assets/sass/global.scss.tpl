@@ -48,6 +48,7 @@ Viz readme.txt
 
 //web elements
 @import 						"3_components/page";
+@import 						"3_components/hidesvg";
 @import 						"3_components/container";
 @import 						"3_components/text";
 

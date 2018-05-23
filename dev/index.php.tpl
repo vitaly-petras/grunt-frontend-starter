@@ -21,7 +21,7 @@
 	<body>
 
 		<!-- NEMAZAT! IKONKY NAPRIC CELYM WEBEM -->
-		<div class="layout__hidesvg">
+		<div class="hidesvg">
 			<?php @include "images/svg/all.svg"; ?>
 		</div>
 
