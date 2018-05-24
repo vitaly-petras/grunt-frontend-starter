@@ -1,0 +1,220 @@
+@if variable-exists(color-primary){
+	.button--primary{
+		color: white;
+		background-color: $color-primary;
+
+		&:hover{
+			color: white;
+			background-color: darken($color-primary, 5%);
+		}
+	}
+
+	.button--outline-primary{
+		color: $color-primary;
+		border-color: $color-primary;
+
+		&:hover{
+			color: white;
+			background-color: darken($color-primary, 5%);
+		}
+	}
+}
+
+@if variable-exists(color-secondary){
+	.button--secondary{
+		color: white;
+		background-color: $color-secondary;
+
+		&:hover{
+			color: white;
+			background-color: darken($color-secondary, 5%);
+		}
+	}
+
+	.button--outline-secondary{
+		color: $color-secondary;
+		border-color: $color-secondary;
+
+		&:hover{
+			color: white;
+			background-color: darken($color-secondary, 5%);
+		}
+	}
+}
+
+@if variable-exists(color-success){
+	.button--success{
+		color: white;
+		background-color: $color-success;
+
+		&:hover{
+			color: white;
+			background-color: darken($color-success, 5%);
+		}
+	}
+
+	.button--outline-success{
+		color: $color-success;
+		border-color: $color-success;
+
+		&:hover{
+			color: white;
+			background-color: darken($color-success, 5%);
+		}
+	}
+}
+
+@if variable-exists(color-danger){
+	.button--danger{
+		color: white;
+		background-color: $color-danger;
+
+		&:hover{
+			color: white;
+			background-color: darken($color-danger, 5%);
+		}
+	}
+
+	.button--outline-danger{
+		color: $color-danger;
+		border-color: $color-danger;
+
+		&:hover{
+			color: white;
+			background-color: darken($color-danger, 5%);
+		}
+	}
+}
+
+@if variable-exists(color-warning){
+	.button--warning{
+		color: white;
+		background-color: $color-warning;
+
+		&:hover{
+			color: white;
+			background-color: darken($color-warning, 5%);
+		}
+	}
+
+	.button--outline-warning{
+		color: $color-warning;
+		border-color: $color-warning;
+
+		&:hover{
+			color:white;
+			background-color: darken($color-warning, 5%);
+		}
+	}
+}
+
+@if variable-exists(color-info){
+	.button--info{
+		color: white;
+		background-color: $color-info;
+
+		&:hover{
+			color: white;
+			background-color: darken($color-info, 5%);
+		}
+	}
+
+	.button--outline-info{
+		color: $color-info;
+		border-color: $color-info;
+
+		&:hover{
+			color: white;
+			background-color: darken($color-info, 5%);
+		}
+	}
+}
+
+@if variable-exists(color-light){
+	.button--light{
+		color: $color-base;
+		background-color: $color-light;
+
+		&:hover{
+			color: $color-base;
+			background-color: darken($color-light, 5%);
+		}
+	}
+
+	.button--outline-light{
+		color: $color-light;
+		border-color: $color-light;
+
+		&:hover{
+			color: white;
+			background-color: darken($color-light, 5%);
+		}
+	}
+}
+
+@if variable-exists(color-dark){
+	.button--dark{
+		color: white;
+		background-color: $color-dark;
+
+		&:hover{
+			color: white;
+			background-color: lighten($color-dark, 5%);
+		}
+	}
+
+	.button--outline-dark{
+		color: $color-dark;
+		border-color: $color-dark;
+
+		&:hover{
+			color: white;
+			background-color: lighten($color-dark, 5%);
+		}
+	}
+}
+
+@if variable-exists(color-link){
+	.button--link{
+		color: $color-link;
+
+		&:hover{
+			color: $color-link-hover;
+			text-decoration: underline;
+		}
+	}
+
+	.button--outline-link{
+		color: $color-link;
+		border-color: $color-link;
+
+		&:hover{
+			color: white;
+			text-decoration: underline;
+			background-color: $color-link-hover;
+		}
+	}
+}
+
+.button--loading{
+	display: inline-block;
+	position: relative;
+	cursor: wait;
+	text-indent: -9999px;
+	pointer-events: none;
+
+	&:after{
+		display:block;
+		content: "";
+
+		@include align();
+		width: $button-height - 10px;
+		height: $button-height - 10px;
+
+		border-radius: 50%;
+		border: round($button-height / 10) solid #000;
+		border-color: currentColor transparent currentColor transparent;
+
+		animation: loading 1.3s linear infinite;
+	}
+}

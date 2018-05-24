@@ -29,25 +29,25 @@ $line-height:					1.25; //spocitat z defaultniho pisma
 
 
 // ************ Colors ***************** //
-$color-black: 					#000;
-$color-white: 					#fff;
-
-//barvy obsazene v grafice
-$color-red: 					#d63636;
-$color-blue: 					#365fd6;
-$color-green: 					#30a24e;
+//vsechny tyto barvy by mely byt v kazdem projektu
+$color-danger:          		#e30613;
+$color-light:            		#b3b3b3;
+$color-dark:            		#1d1d1b;
+$color-success:					green;
+$color-warning:					orange;
+$color-info:					lightblue;
+$color-secondary:				brown;
+$color-primary:					blue;
 
 // zakladni barva pisma pro cely web
-$color-base: 					#000;
+$color-base: 					black;
 
 // základní barva odkazů
-$color-link: 					$color-blue;
-$color-link-hover: 				$color-green;
+$color-link: 					$color-primary;
+$color-link-hover: 				$color-secondary;
 
 // ostatní barvy
 $color-border:					#cccccc;
-$color-inactive:				#f0f0f0;
-$color-shadow:					fade(#000, 30%);
 
 
 // ************ Radius ***************** //
@@ -57,29 +57,22 @@ $radius-big: 					$radius * 2;
 
 
 // ************ Buttons ***************** //
-// základní button
-$btn-height: 					30px;
-$btn-color: 					$color-black;
+$button-padding-x:				25px;
+$button-padding-y:				5px;
+$button-height: 				40px;
+$button-height-sm: 				30px;
+$button-height-lg: 				50px;
 
-$btn-border-width: 				1px;
-$btn-bg:						$color-white;
-$btn-border: 					$color-border;
-
-$btn-bg-hover: 					darken($btn-bg,15%);
-$btn-border-hover: 				darken($btn-border,10%);
+$button-border-width: 			1px;
 
 
 
 // ************ Inputs ***************** //
-$input-height: 					$btn-height; // vetisnou input je velky jako button
+$input-height: 					$button-height; // vetisnou input je velky jako button
 
-$input-border-width: 			$btn-border-width;
-$input-bg: 						$color-white;
+$input-border-width: 			$button-border-width;
+$input-bg: 						white;
 $input-border: 					$color-border;
-
-// nevalidní input
-$input-err-border: 				$color-red;
-$input-err-bg:					lighten($input-err-border, 30%);
 
 
 // ************ Transitions & animations ***************** //

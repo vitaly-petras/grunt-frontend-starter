@@ -4,15 +4,19 @@
 
 .button {
 	width: auto;
-	padding: 0 28px;
-	height: $btn-height;
-	line-height: $btn-height - ($btn-border-width*2);
-	vertical-align:middle;
-	display: inline-block;
+	padding: $button-padding-y $button-padding-x;
+	height: $button-height;
+	line-height: 1;
 
-	border: $btn-border-width solid $btn-border;
-	color: $btn-color;
-	background: $btn-bg;
+	vertical-align:middle;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+
+	border: 0;
+	color: $color-base;
+	background: transparent;
+
 	cursor: pointer;
 	text-decoration: none;
 	font-family: inherit;
@@ -21,32 +25,28 @@
 	border-radius: $radius;
 	transition-duration: 200ms;
 	transition-property: background-color, color, border-color;
-
-	&:hover {
-		border-color: $btn-border-hover;
-		color: $btn-color;
-		background: $btn-bg-hover;
+	
+	&::before,&::after{
+		content: '';
+    	flex: 1 0 auto;
 	}
 
-	&--loading{
-		position: relative;
-		color: transparent !important;
-		cursor: wait;
-		pointer-events: none;
+	&--block{
+		display: block;
+	}
 
-		&:after{
-			display:block;
-			content: "";
+	&[class*='button--outline']{
+		border-width: $button-border-width;
+		border-style: solid;
+	}
 
-			@include align();
-			width: $btn-height - 10px;
-			height: $btn-height - 10px;
+	&--sm{
+		height: $button-height-sm;
+	}
 
-			border-radius: 50%;
-			border: round($btn-height / 10) solid #000;
-			border-color: #ffffff transparent #ffffff transparent;
-
-			animation: loading 1.3s linear infinite;
-		}
+	&--lg{
+		height: $button-height-lg;
 	}
 }
+
+	
