@@ -8,6 +8,7 @@
 	position: relative;
 	width: 100%;
 	max-width: $width-layout;
+	min-height: inherit;
 
 	@include query( $query-last ){
 		padding: 0 $padding-layout;
