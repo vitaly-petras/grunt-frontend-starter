@@ -47,6 +47,11 @@
 	&--lg{
 		height: $button-height-lg;
 	}
+
+	&:focus{
+		outline: none;
+		transform: scale(1.1);
+	}
 }
 
 	
