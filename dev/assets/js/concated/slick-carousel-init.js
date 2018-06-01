@@ -98,3 +98,11 @@ $(document).ready(function(){
     });
     */
 });
+
+
+//object fit images after lazyloaded
+$(function(){
+    $(".slick-slider").on('lazyLoaded', function(event, slick, image, imageSource){
+        objectFitImages(image);
+    });
+});
