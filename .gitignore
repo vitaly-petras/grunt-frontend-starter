@@ -27,6 +27,7 @@ dev/assets/css
 dev/assets/js/all.js
 dev/assets/*min.js
 *.map
+dev/images/svg
 
 
 # OS generated files #
