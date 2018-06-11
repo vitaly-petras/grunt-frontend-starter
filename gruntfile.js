@@ -12,7 +12,7 @@ module.exports = function(grunt) {
   config['project'] ={
     'name'    : 'fill-me',//BEZ DIAKRITIKY A MEZER!!!!! + VŠECHNO MALÝMI
     'title'   : 'fill-me',//titulek v html sablonach
-    'for'     : 'htmlfactory',
+    'for'     : 'htmlfactory',//praguecoding
     'author'  : 'Vitalij Petras',
   };
 
@@ -392,31 +392,41 @@ module.exports = function(grunt) {
       }
     },
 
-    'ftp-deploy': {
+    ftp_push: {
       htmlfactory: {
-        auth: {
-          host   : "170632.w32.wedos.net",
-          port   : "21",
+        options: {
+          host: "170632.w32.wedos.net",
+          port: 21,
           username: exists?passwords['ftp']['htmlfactory']['username']:null,
-          password: exists?passwords['ftp']['htmlfactory']['password']:null
+          password: exists?passwords['ftp']['htmlfactory']['password']:null,
+          dest: "<%= project.project.name %>"
         },
-        dot: true,
-        src: '<%= project.path.dist %>',         // local path
-        dest: '<%= project.project.name %>', //path on ftp
+        files: [
+          {
+            expand: true,
+            cwd: '<%= project.path.dist %>',         // local path
+            src: ['**/*', '.htaccess'],  
+            
+          }
+        ]
       },
-      honza: {
-        auth: {
+      praguecoding: {
+        options: {
           host    : "127799.w99.wedos.net",
           port    : 21,
-          username: exists?passwords['ftp']['honza']['username']:null,
-          password: exists?passwords['ftp']['honza']['password']:null
+          username: exists?passwords['ftp']['praguecoding']['username']:null,
+          password: exists?passwords['ftp']['praguecoding']['password']:null,
+          dest: "<%= project.project.name %>"
         },
-        dot: true,
-        src: '<%= project.path.dist %>',         // local path
-        dest: '<%= project.project.name %>', //path on ftp
-        //http://www.praguecoding.eu/projects2/
+        files: [
+          {
+            expand: true,
+            cwd: '<%= project.path.dist %>',         // local path
+            src: ['**/*', '.htaccess'],  
+          }
+        ]
       }
-    },
+    }
   });
 
   /* 
@@ -453,7 +463,7 @@ module.exports = function(grunt) {
   grunt.registerTask('javascript', ['concat:basic', 'babel']);
 
   grunt.registerTask('ftp', function(){
-    if(exists) grunt.task.run('compress', 'ftp-deploy:'+config['project']['for'])
+    if(exists) grunt.task.run('compress', 'ftp_push:'+config['project']['for'])
     else grunt.fail.warn('No ftp accesses. You cant send files. Please use build task.');
   });
 
