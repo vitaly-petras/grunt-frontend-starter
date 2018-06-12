@@ -59,6 +59,7 @@ $radius-big: 					$radius * 2;
 // ************ Buttons ***************** //
 $button-padding-x:				25px;
 $button-padding-y:				5px;
+
 $button-height: 				40px;
 $button-height-sm: 				30px;
 $button-height-lg: 				50px;
@@ -68,11 +69,17 @@ $button-border-width: 			1px;
 
 
 // ************ Inputs ***************** //
-$input-height: 					$button-height; // vetisnou input je velky jako button
+$input-padding-x:				$button-padding-x;
+$input-padding-y:				10px;
+
+$input-height: 					$button-height;
+$input-height-sm: 				$button-height-sm;
+$input-height-lg: 				$button-height-lg;
 
 $input-border-width: 			$button-border-width;
-$input-bg: 						white;
 $input-border: 					$color-border;
+$input-bg: 						white;
+
 
 
 // ************ Transitions & animations ***************** //
