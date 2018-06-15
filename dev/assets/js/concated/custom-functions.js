@@ -159,12 +159,13 @@ function showHide(wtt, htd, target, speed){//what to do, how to do
 function bodyFreeze(){
     var body = document.body;
     if( $('body').hasClass("overflow") ){//vratit do puvodniho stavu
-
+        /*
         if(!!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform)){
             const scrollLength = parseInt(window.getComputedStyle(body).top) * -1;
             body.removeAttribute('style');
             window.scrollTo(0, scrollLength);
         }
+        */
 
         $('body').removeClass("overflow");
         document.documentElement.style.marginRight = '';
@@ -174,6 +175,7 @@ function bodyFreeze(){
 
 
     }else{//zmrazit skrolovani v dokumentu
+        /*
         if(!!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform)){
             const scrollTop = (window.pageYOffset || document.documentElement.scrollTop) - (document.documentElement.clientTop || 0);
             body.style.top = -scrollTop + 'px';
@@ -181,6 +183,7 @@ function bodyFreeze(){
             body.style.left = '0px';
             body.style.width = '100%';
         }
+        */
 
         const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
         document.documentElement.style.marginRight = scrollBarWidth + 'px';
