@@ -104,3 +104,13 @@ $selectric-text-color:      $input-color;
 .selectric-open button{
   transform: rotate(180deg);
 }
+
+/*
+$(function(){
+  $('.select').selectric({
+    responsive: true,
+    maxHeight: 245,
+    arrowButtonMarkup: '<button></button>'
+  });
+});
+*/
