@@ -4,9 +4,9 @@
 	padding-left: $input-padding-x;
 	padding-right: $input-padding-x;
 
-	font-size: inherit;
+	font-size: $input-font-size;
 	font-family: inherit;
-	color: $color-base;
+	color: $input-color;
 
 	background: $input-bg;
 	border: $input-border-width solid $input-border;
