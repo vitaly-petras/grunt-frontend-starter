@@ -34,10 +34,11 @@ $selectric-text-color:      $input-color;
         @include align();
         width: 0;
         height: 0;
-
+      
+        color: inherit;
         border-style: solid;
         border-width: 6px 6px 0 6px;
-        border-color: $color-primary transparent transparent transparent;
+        border-color: currentColor transparent transparent transparent;
       }
   }
 
