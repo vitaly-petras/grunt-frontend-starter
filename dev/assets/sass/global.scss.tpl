@@ -60,4 +60,5 @@ Viz readme.txt
 // ************************************************ //
 // pomocne tridy ve vsech velikostech
 // ------------------------------------------------ 
-//@import 						"4_helpers/1_helpers";
+//@import 						"4_helpers/color";
+//@import 						"4_helpers/background";

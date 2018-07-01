@@ -1,0 +1,57 @@
+/*-----------------------------------------------------------------------------------*/
+/*  color helpers
+/*-----------------------------------------------------------------------------------*/
+
+@if variable-exists(color-primary){
+	._color-primary{
+		color: $color-primary
+	}
+}
+
+@if variable-exists(color-secondary){
+	._color-secondary{
+		color: $color-secondary
+	}
+}
+
+@if variable-exists(color-success){
+	._color-success{
+		color: $color-success
+	}
+}
+
+@if variable-exists(color-danger){
+	._color-danger{
+		color: $color-danger
+	}
+}
+
+@if variable-exists(color-warning){
+	._color-warning{
+		color: $color-warning
+	}
+}
+
+@if variable-exists(color-info){
+	._color-info{
+		color: $color-info
+	}
+}
+
+@if variable-exists(color-light){
+	._color-light{
+		color: $color-light
+	}
+}
+
+@if variable-exists(color-dark){
+	._color-dark{
+		color: $color-dark
+	}
+}
+
+@if variable-exists(color-link){
+	._color-link{
+		color: $color-link
+	}
+}
