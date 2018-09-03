@@ -16,8 +16,9 @@ module.exports = function(grunt) {
     'author'  : 'Vitalij Petras',
   };
 
-  var exists = grunt.file.exists('passwords.json');
-  var passwords = exists?grunt.file.readJSON('passwords.json'):[];
+  var passwords = grunt.file.exists('passwords.json') ? grunt.file.readJSON('passwords.json') : false;
+  var tinyPngPass = passwords && passwords['tinypng'] ? passwords['tinypng'] : false;
+  var ftpPass = passwords && passwords['ftp'] ? passwords['ftp'] : false;
   //grunt.log.write(passwords);
   
 
@@ -357,7 +358,7 @@ module.exports = function(grunt) {
 
     tinypng: {
       options: {
-          apiKey: exists?passwords["tinypng"]:null,
+          apiKey: tinyPngPass,
           sigFile: '.tinypng.json',
           checkSigs: true,
           summarize: true,
@@ -397,8 +398,8 @@ module.exports = function(grunt) {
         options: {
           host: "170632.w32.wedos.net",
           port: 21,
-          username: exists?passwords['ftp']['htmlfactory']['username']:null,
-          password: exists?passwords['ftp']['htmlfactory']['password']:null,
+          username: ftpPass?ftpPass['htmlfactory']['username']:null,
+          password: ftpPass?ftpPass['htmlfactory']['password']:null,
           dest: "<%= project.project.name %>"
         },
         files: [
@@ -414,8 +415,8 @@ module.exports = function(grunt) {
         options: {
           host    : "127799.w99.wedos.net",
           port    : 21,
-          username: exists?passwords['ftp']['praguecoding']['username']:null,
-          password: exists?passwords['ftp']['praguecoding']['password']:null,
+          username: ftpPass?ftpPass['praguecoding']['username']:null,
+          password: ftpPass?ftpPass['praguecoding']['password']:null,
           dest: "<%= project.project.name %>"
         },
         files: [
@@ -438,7 +439,7 @@ module.exports = function(grunt) {
   grunt.registerTask('rem', ['copy:remFallback', 'px_to_rem']);
   /*
   grunt.registerTask('oimages', function(){
-    if(exists) return ['tinyimg', 'tinypng']
+    if(tinyPngPass) return ['tinyimg', 'tinypng']
     else{
       grunt.log.write('no APIKEY for tinypng, this task will be skipped, but dont worry all is OK. (only jpg and png images will not be compressed)');
       return ['tinyimg'];
@@ -446,7 +447,7 @@ module.exports = function(grunt) {
   });
   */
   grunt.registerTask('oimages', function(){
-    if(exists) grunt.task.run('tinyimg', 'tinypng');
+    if(tinyPngPass) grunt.task.run('tinyimg', 'tinypng');
     else{
       grunt.log.write('no APIKEY for tinypng, this task will be skipped, but dont worry all is OK. (only jpg and png images will not be compressed)');
       grunt.task.run('tinyimg');
@@ -463,7 +464,7 @@ module.exports = function(grunt) {
   grunt.registerTask('javascript', ['concat:basic', 'babel']);
 
   grunt.registerTask('ftp', function(){
-    if(exists) grunt.task.run('compress', 'ftp_push:'+config['project']['for'])
+    if(ftpPass) grunt.task.run('compress', 'ftp_push:'+config['project']['for'])
     else grunt.fail.warn('No ftp accesses. You cant send files. Please use build task.');
   });
 
