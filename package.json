@@ -9,9 +9,9 @@
   "author": "www.HTMLFACTORY.cz",
   "license": "MIT",
   "devDependencies": {
-    "autoprefixer": "^7.1.6",
+    "autoprefixer": "^7.2.6",
     "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
+    "babel-preset-env": "^1.7.0",
     "grunt": "^0.4.5",
     "grunt-babel": "^7.0.0",
     "grunt-browser-sync": "^2.2.0",
