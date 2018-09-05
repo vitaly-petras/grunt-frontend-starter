@@ -1,41 +1,33 @@
 /*************************************************************************************
-*  Grid system 
+*  Grid system
 **************************************************************************************/
 
-.grid{
-	@include cfx();
-	list-style: none;
-	margin-left: -$column-gap;
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin-left: -$grid-gutter;
 
-	&__item {
-		float: left;
-		padding-left: $column-gap;
+  &__item {
+    padding-left: $grid-gutter;
+    flex: 0 1 auto;
 
-		&--right{
-			float: right;
-		}
+    // grid default 				(grid__item-1)
+    // ------------------------------------------------
+    @for $i from 1 through $grid-columns-number {
+      &--#{$i} {
+        width: percentage($i / $grid-columns-number);
+      }
+    }
 
-		&--center{
-			float:none;
-			clear:both;
-			margin: 0 auto;
-		}
-
-		// grid default 				(grid__item-1)
-		// ------------------------------------------------
-		@for $i from 1 through $columns-count {
-			&--#{$i}{ width: percentage($i / $columns-count); }
-		}
-
-
-		// grid-last 						(grid__item--last-1)
-		// ------------------------------------------------
-		@include query( $query-last ){
-
-			@for $i from 1 through $columns-count {
-				&--last-#{$i}{ width: percentage($i / $columns-count); }
-			}
-		}
-
-	}//--col
-}//--row
+    // grid-last 						(grid__item--last-1)
+    // ------------------------------------------------
+    @include query($query-last) {
+      @for $i from 1 through $grid-columns-number {
+        &--last-#{$i} {
+          width: percentage($i / $grid-columns-number);
+        }
+      }
+    }
+  } //--col
+} //--row
