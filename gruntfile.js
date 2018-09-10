@@ -224,6 +224,22 @@ module.exports = function(grunt) {
       htaccess:{
         src: ['<%= project.path.dist %>_htaccess'],
         dest: '<%= project.path.dist %>.htaccess'
+      },
+      phpAnchorLinksToHTML:{
+        options: {
+          process: function(content, path) {
+            return content.replace(/.php#/gi, '.html#');
+            //return content.replace(/[sad ]/g, '_');
+          }
+        },
+        files: [
+          {
+            expand: true,
+            cwd: '<%= project.path.dist %>',
+            src: ['**/*.html'],
+            dest: '<%= project.path.dist %>'
+          },
+        ],
       }
     },
 
@@ -478,7 +494,7 @@ module.exports = function(grunt) {
     'update',
     'clean:dist', 'sync:dist',
     'copy:htaccess', 'clean:htaccess',
-    'php2html',
+    'php2html', 'copy:phpAnchorLinksToHTML',
     'clean:distFiles',
     'postcss:dist', 'cssmin:dist', 'rem',
     'uglify',
