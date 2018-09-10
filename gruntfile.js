@@ -20,7 +20,7 @@ module.exports = function(grunt) {
   var tinyPngPass = passwords && passwords['tinypng'] ? passwords['tinypng'] : false;
   var ftpPass = passwords && passwords['ftp'] ? passwords['ftp'] : false;
   //grunt.log.write(passwords);
-  
+
 
   config['path'] ={
     'root'    : 'dev/',
@@ -45,8 +45,8 @@ module.exports = function(grunt) {
           style: 'expanded',
           sourcemap:true
         },
-        files:   [{  
-          expand: true,   
+        files:   [{
+          expand: true,
           cwd: '<%= project.path.scss %>',
           src: ['*.scss', '!_*'],                  // Dictionary of files
           dest: '<%= project.path.css %>',
@@ -118,7 +118,7 @@ module.exports = function(grunt) {
         tasks: ['uglify:all'],
       },
       */
-      //html and php 
+      //html and php
       htmlFiles:{
         files: ['<%= project.path.root %>**/*.{php,html}'],
       },
@@ -129,7 +129,7 @@ module.exports = function(grunt) {
           reload: true
         }
       }
-      
+
     },
 
     /* minifikace javascriptu */
@@ -148,7 +148,7 @@ module.exports = function(grunt) {
     concat: {
       basic: {
         src: [//vstupni slozka
-          'node_modules/jquery/dist/jquery.js', 
+          'node_modules/jquery/dist/jquery.js',
           'node_modules/slick-carousel/slick/slick.js',
           'node_modules/object-fit-images/dist/ofi.js',
           '<%= project.path.js %>concated/*.js'
@@ -173,7 +173,7 @@ module.exports = function(grunt) {
       dist: {
           options: {
               plugins: [
-                  // Don't remove XML declaration (needed to avoid errors creating PNG on Win 7) 
+                  // Don't remove XML declaration (needed to avoid errors creating PNG on Win 7)
                   { removeXMLProcInst: false }
               ]
           },
@@ -206,7 +206,7 @@ module.exports = function(grunt) {
           }
         },
         src: '<%= project.path.root %>index.php.tpl',
-        dest: '<%= project.path.root %>index.php', 
+        dest: '<%= project.path.root %>index.php',
       },
       templateCSS: {
         options: {
@@ -215,14 +215,14 @@ module.exports = function(grunt) {
           }
         },
         src: '<%= project.path.scss %>global.scss.tpl',
-        dest: '<%= project.path.scss %>global.scss', 
+        dest: '<%= project.path.scss %>global.scss',
       },
       remFallback:{
-        src: ['<%= project.path.dist %>assets/css/global.css'], 
+        src: ['<%= project.path.dist %>assets/css/global.css'],
         dest: '<%= project.path.dist %>assets/css/global-rem-fallback.css'
       },
       htaccess:{
-        src: ['<%= project.path.dist %>_htaccess'], 
+        src: ['<%= project.path.dist %>_htaccess'],
         dest: '<%= project.path.dist %>.htaccess'
       }
     },
@@ -231,17 +231,17 @@ module.exports = function(grunt) {
       dist: {
         files: [
           {
-            cwd: '<%= project.path.root %>', 
-            src: ['**', '!**/*.php', '!page-components', '!page_components', '!assets/images/sprites/**', 'forms/*.php'], 
+            cwd: '<%= project.path.root %>',
+            src: ['**', '!**/*.php', '!page-components', '!page_components', '!assets/images/sprites/**', 'forms/*.php'],
             dest: '<%= project.path.dist %>'
-          }, // makes all src relative to cwd 
+          }, // makes all src relative to cwd
         ],
-        verbose: false, // Default: false 
-        pretend: false, // Don't do any disk operations - just write log. Default: false 
-        failOnError: false, // Fail the task when copying is not possible. Default: false 
-        ignoreInDest: ["data.zip", '**/*.php', 'page-components', 'page_components', '.htaccess'], // Never remove js files from destination. Default: none 
-        updateAndDelete: true, // Remove all files from dest that are not found in src. Default: false 
-        compareUsing: "mtime" // compares via md5 hash of file contents, instead of file modification time. Default: "mtime" 
+        verbose: false, // Default: false
+        pretend: false, // Don't do any disk operations - just write log. Default: false
+        failOnError: false, // Fail the task when copying is not possible. Default: false
+        ignoreInDest: ["data.zip", '**/*.php', 'page-components', 'page_components', '.htaccess'], // Never remove js files from destination. Default: none
+        updateAndDelete: true, // Remove all files from dest that are not found in src. Default: false
+        compareUsing: "mtime" // compares via md5 hash of file contents, instead of file modification time. Default: "mtime"
       }
     },
 
@@ -253,14 +253,14 @@ module.exports = function(grunt) {
         '<%= project.path.scss %>global.scss.tpl'
       ],
       dist: [
-        '<%= project.path.dist %>data.zip', 
+        '<%= project.path.dist %>data.zip',
       ],
       distFiles: {
-        files:   [{  
-          expand: true,   
+        files:   [{
+          expand: true,
           cwd: '<%= project.path.dist %>',
           src: [
-                'assets/sass', 
+                'assets/sass',
                 'assets/images/sprites',
                 'assets/js/concated',
                 'assets/js/not-used-scripts',
@@ -290,7 +290,7 @@ module.exports = function(grunt) {
     },
 
     postcss: {
-      dist: {  
+      dist: {
         options: {
           map: false,
           processors: [
@@ -301,7 +301,7 @@ module.exports = function(grunt) {
         src: '<%= project.path.dist %>assets/css/global.css',
         dest: '<%= project.path.dist %>assets/css/global.css'
       },
-      dev: {  
+      dev: {
         options: {
           map: true,
           processors: [
@@ -378,16 +378,16 @@ module.exports = function(grunt) {
     php2html: {
       dist: {
         options: {
-          processLinks: true,// relative links should be renamed from .php to .html 
+          processLinks: true,// relative links should be renamed from .php to .html
           htmlhint: false,
         },
         files: [
           {
-            expand: true, 
-            cwd: '<%= project.path.root %>', 
-            src: ['*.php', '!checklist.php', '!forms/*.php'], 
-            dest: '<%= project.path.dist %>', 
-            ext: '.html' 
+            expand: true,
+            cwd: '<%= project.path.root %>',
+            src: ['*.php', '!checklist.php', '!forms/*.php'],
+            dest: '<%= project.path.dist %>',
+            ext: '.html'
           }
         ]
       }
@@ -406,8 +406,8 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: '<%= project.path.dist %>',         // local path
-            src: ['**/*', '.htaccess'],  
-            
+            src: ['**/*', '.htaccess'],
+
           }
         ]
       },
@@ -423,15 +423,15 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: '<%= project.path.dist %>',         // local path
-            src: ['**/*', '.htaccess'],  
+            src: ['**/*', '.htaccess'],
           }
         ]
       }
     }
   });
 
-  /* 
-  tasks 
+  /*
+  tasks
   */
 
   grunt.registerTask('svg', ['svgstore']);
@@ -443,7 +443,7 @@ module.exports = function(grunt) {
     else{
       grunt.log.write('no APIKEY for tinypng, this task will be skipped, but dont worry all is OK. (only jpg and png images will not be compressed)');
       return ['tinyimg'];
-    } 
+    }
   });
   */
   grunt.registerTask('oimages', function(){
@@ -451,7 +451,7 @@ module.exports = function(grunt) {
     else{
       grunt.log.write('no APIKEY for tinypng, this task will be skipped, but dont worry all is OK. (only jpg and png images will not be compressed)');
       grunt.task.run('tinyimg');
-    } 
+    }
   });
 
   grunt.registerTask('template', [
@@ -472,19 +472,19 @@ module.exports = function(grunt) {
 
 
 
-  
+
 
   grunt.registerTask('build', [//pouzijte tuto funkci pro vygenerovani DIST souboru
     'update',
-    'clean:dist', 'sync:dist',  
+    'clean:dist', 'sync:dist',
     'copy:htaccess', 'clean:htaccess',
-    'php2html', 
-    'clean:distFiles', 
-    'postcss:dist', 'cssmin:dist', 'rem', 
+    'php2html',
+    'clean:distFiles',
+    'postcss:dist', 'cssmin:dist', 'rem',
     'uglify',
     'oimages'
   ]);
-  
+
 
   grunt.registerTask('default', ['update', 'php', 'browserSync', 'watch']);
 };
