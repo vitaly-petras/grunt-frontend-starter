@@ -354,7 +354,7 @@ module.exports = function(grunt) {
         dev: {
             options: {
                 port: 8010,
-                base: 'dev',
+                base: '<%= project.path.root %>',
                 //keepalive: true,
                 //open: true
             }
