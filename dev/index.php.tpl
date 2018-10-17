@@ -13,9 +13,20 @@
 
 		<!-- !!! vyplnit dulezite SEO metatagy !!! -->
 			<title><%= project.project.title %></title>
-			<meta content="noindex,nofollow" name="robots"><!-- nezapomenout zde umazat "NO"index, "NO"follow -->
+			<meta content="index,follow" name="robots">
 			<meta name="description" content="popis vaseho webu">
-			<meta name="keywords" content="klíčová slova webu">
+
+			<meta property="og:title" content="<%= project.project.title %>">
+			<meta property="og:description" content="A description displayed below the title.">
+			<meta property="og:url" content="https://www.example.com">
+			<meta property="og:site_name" content="Website name">
+			<meta property="og:type" content="article">
+			
+			<meta property="og:image" content="https://www.example.com/static/images/image.jpg">
+			<meta property="og:image:width" content="1200">
+			<meta property="og:image:height" content="630">
+			<meta property="og:locale" content="en_US">
+			<meta property="og:image:type" content="image/jpeg">
 		<!-- //vyplnit dulezite SEO metatagy -->
 	</head>
 	<body>
