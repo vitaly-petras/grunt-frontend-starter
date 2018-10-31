@@ -30,7 +30,7 @@
     "grunt-sass": "^2.1.0",
     "grunt-svgmin": "^3.3.0",
     "grunt-svgstore": "^1.0.0",
-    "grunt-sync": "^0.6.2",
+    "grunt-sync": "^0.8.0",
     "grunt-tinyimg": "^1.0.0",
     "grunt-tinypng": "^0.7.0",
     "jit-grunt": "^0.9.1",
@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "jquery": "^3.3.1",
-    "object-fit-images": "^3.2.3",
+    "object-fit-images": "^3.2.4",
     "postcss-object-fit-images": "^1.1.2",
     "slick-carousel": "^1.8.1"
   }
