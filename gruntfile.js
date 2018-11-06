@@ -160,7 +160,8 @@ module.exports = function(grunt) {
     babel: {
         options: {
             sourceMap: true,
-            presets: ['env']
+            presets: ['env'],
+            plugins: ['modules-umd']
         },
         dist: {
             files: {
