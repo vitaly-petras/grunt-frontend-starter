@@ -1,4 +1,4 @@
-/*! 
+/*!
 ==============================================================
 
 Project  	: <%= project.project.name %>
@@ -11,17 +11,17 @@ Created 	: <%= grunt.template.today("dd.mm.yyyy") %>
 ----------------------------------------
 
 Stylopis byl vygenerovan pomoci CSS preprocesoru.
-Nikdy needitujte primo .css soubor!
+Nikdy needitujte tento .css soubor!
 Viz readme.txt
 
-============================================================== 
+==============================================================
 */
 
 // ************************************************ //
-// 1. Core  
+// 1. Core
 // ************************************************ //
 @import 						"1_core/1_variables";
-@import 						"1_core/2_mixins"; 
+@import 						"1_core/2_mixins";
 @import 						"1_core/3_used-fonts";
 @import 						"1_core/4_reset";
 @import 						"1_core/5_typography";
@@ -30,7 +30,7 @@ Viz readme.txt
 
 
 // ************************************************ //
-// 2. Libs  
+// 2. Libs
 // ************************************************ //
 //@import 						"2_libs/animate";
 //@import 						"../../../node_modules/slick-carousel/slick/slick";
@@ -39,7 +39,7 @@ Viz readme.txt
 
 
 // ************************************************ //
-// 3. Components  
+// 3. Components
 // ************************************************ //
 //form elements
 @import 						"3_components/button";
@@ -56,9 +56,9 @@ Viz readme.txt
 
 
 // ************************************************ //
-// 4 .Helpers  
+// 4 .Helpers
 // ************************************************ //
 // pomocne tridy ve vsech velikostech
-// ------------------------------------------------ 
+// ------------------------------------------------
 //@import 						"4_helpers/color";
 //@import 						"4_helpers/background";
