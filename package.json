@@ -34,12 +34,13 @@
     "grunt-tinypng": "^0.7.0",
     "jit-grunt": "^0.9.1",
     "load-grunt-tasks": "^3.5.2",
-    "time-grunt": "^1.2.1"
+    "time-grunt": "^1.2.1",
+    "postcss-object-fit-images": "^1.1.2"
   },
   "dependencies": {
     "jquery": "^3.3.1",
     "object-fit-images": "^3.2.4",
-    "postcss-object-fit-images": "^1.1.2",
+
     "slick-carousel": "^1.8.1"
   }
 }
