@@ -12,11 +12,11 @@
 		<!-- //ostatni -->
 
 		<!-- !!! vyplnit dulezite SEO metatagy !!! -->
-			<title><%= project.project.title %></title>
+			<title>fill-me</title>
 			<meta content="index,follow" name="robots">
 			<meta name="description" content="popis vaseho webu">
 
-			<meta property="og:title" content="<%= project.project.title %>">
+			<meta property="og:title" content="fill-me">
 			<meta property="og:description" content="A description displayed below the title.">
 			<meta property="og:url" content="https://www.example.com">
 			<meta property="og:site_name" content="Website name">
