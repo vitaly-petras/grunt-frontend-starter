@@ -28,7 +28,6 @@ module.exports = function(grunt) {
     dist: "dist/"
   };
 
-
   require("load-grunt-tasks")(grunt);
 
   grunt.initConfig({
@@ -62,22 +61,18 @@ module.exports = function(grunt) {
         livereload: true,
         spawn: false
       },
-      //styles
       css: {
         files: "<%= project.path.root %><%= project.path.scss %>**/*.scss",
         tasks: ["sass:dev", "postcss:dev"]
       },
-      //concated js
-      concatedScripts: {
-        files: ["<%= project.path.root %><%= project.path.js %>concated/*.js"],
-        tasks: ["concat:basic", "babel"]
+      js: {
+        files: ["<%= project.path.root %><%= project.path.js %>*.js"],
+        tasks: ["concat", "babel"]
       },
-      //html and php
-      htmlFiles: {
+      html: {
         files: ["<%= project.path.root %>**/*.{php,html}"],
         tasks: ["preprocess"]
       },
-
       configFiles: {
         files: ["gruntfile.js", "package.json"],
         options: {
@@ -102,15 +97,16 @@ module.exports = function(grunt) {
 
     /* sjednoceni vsech .js souboru do jednoho */
     concat: {
-      basic: {
+      target: {
         src: [
-          //vstupni slozka
+          //vstupni soubory
           "node_modules/jquery/dist/jquery.js",
           "node_modules/slick-carousel/slick/slick.js",
           "node_modules/object-fit-images/dist/ofi.js",
-          "<%= project.path.root %><%= project.path.js %>concated/*.js"
+          "<%= project.path.root %><%= project.path.js %>*.js"
         ],
-        dest: "<%= project.path.virtual %><%= project.path.js %>all.js" //vystupni slozka
+        //vystupni soubor
+        dest: "<%= project.path.virtual %><%= project.path.js %>all.js"
       }
     },
 
@@ -121,7 +117,8 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          "<%= project.path.virtual %><%= project.path.js %>all.js": "<%= project.path.virtual %><%= project.path.js %>all.js"
+          "<%= project.path.virtual %><%= project.path.js %>all.js":
+            "<%= project.path.virtual %><%= project.path.js %>all.js"
         }
       }
     },
@@ -197,7 +194,6 @@ module.exports = function(grunt) {
             src: [
               "assets/sass",
               "assets/images/sprites",
-              "assets/js/concated",
               "assets/js/not-used-scripts",
               "assets/js/*.map",
               "assets/icons"
@@ -235,7 +231,7 @@ module.exports = function(grunt) {
               mediaQuery: true,
               minPixelValue: 0
             }),
-            require('cssnano')()
+            require("cssnano")()
           ]
         },
         src: "<%= project.path.dist %>assets/css/global.css",
@@ -309,7 +305,7 @@ module.exports = function(grunt) {
     preprocess: {
       options: {
         context: {
-          DEBUG: true,
+          DEBUG: true
           //version: grunt.file.read("version.properties")
         }
         //srcDir: "<%= project.path.root %>"
@@ -391,7 +387,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask("update", ["javascript", "sass:dev", "preprocess", "postcss:dev"]);
 
-  grunt.registerTask("javascript", ["concat:basic", "babel"]);
+  grunt.registerTask("javascript", ["concat", "babel"]);
 
   grunt.registerTask("ftp", function() {
     if (ftpPass) grunt.task.run("compress", "ftp_push:" + config["project"]["for"]);
