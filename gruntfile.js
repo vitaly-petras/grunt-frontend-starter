@@ -56,24 +56,6 @@ module.exports = function(grunt) {
       }
     },
 
-    /* minifikace css souboru */
-    cssmin: {
-      dist: {
-        options: {
-          aggressiveMerging: false
-        },
-        files: [
-          {
-            expand: true,
-            cwd: "<%= project.path.dist %>",
-            src: ["**/*.css", "!*.min.css"],
-            dest: "<%= project.path.dist %>"
-            //ext: '.css'
-          }
-        ]
-      }
-    },
-
     /* watch */
     watch: {
       options: {
@@ -84,7 +66,6 @@ module.exports = function(grunt) {
       css: {
         files: "<%= project.path.scss %>**/*.scss",
         tasks: ["sass:dev", "postcss:dev"]
-        // pro nativni prevod do rem jednotek vymenit 'cssmin' za 'rem'
       },
       //svg sprite
       svgSprite: {
@@ -297,7 +278,8 @@ module.exports = function(grunt) {
               replace: true,
               mediaQuery: true,
               minPixelValue: 0
-            })
+            }),
+            require('cssnano')()
           ]
         },
         src: "<%= project.path.dist %>assets/css/global.css",
@@ -486,7 +468,6 @@ module.exports = function(grunt) {
     "copy:phpAnchorLinksToHTML",
     "clean:distFiles",
     "postcss:dist",
-    "cssmin:dist",
     "uglify",
     "oimages"
   ]);
