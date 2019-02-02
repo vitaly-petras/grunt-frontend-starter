@@ -67,14 +67,6 @@ module.exports = function(grunt) {
         files: "<%= project.path.scss %>**/*.scss",
         tasks: ["sass:dev", "postcss:dev"]
       },
-      //svg sprite
-      svgSprite: {
-        files: ["<%= project.path.icons %>**/*.svg"],
-        tasks: ["svg"],
-        options: {
-          reload: true
-        }
-      },
       //concated js
       concatedScripts: {
         files: ["<%= project.path.js %>concated/*.js"],
@@ -136,17 +128,6 @@ module.exports = function(grunt) {
       dist: {
         files: {
           "<%= project.path.js %>all.js": "<%= project.path.js %>all.js"
-        }
-      }
-    },
-
-    svgstore: {
-      options: {
-        prefix: "icon-" // This will prefix each ID
-      },
-      all: {
-        files: {
-          "<%= project.path.images %>/all.svg": ["<%= project.path.icons %>all/*.svg"]
         }
       }
     },
@@ -400,7 +381,6 @@ module.exports = function(grunt) {
   tasks
   */
 
-  grunt.registerTask("svg", ["svgstore"]);
   /*
   grunt.registerTask('oimages', function(){
     if(tinyPngPass) return ['tinyimg', 'tinypng']
@@ -427,7 +407,7 @@ module.exports = function(grunt) {
     "clean:templatePHP" //doplnit cesty na homepage a odstranit template
   ]);
 
-  grunt.registerTask("update", ["javascript", "svg", "sass:dev", "postcss:dev"]);
+  grunt.registerTask("update", ["javascript", "sass:dev", "postcss:dev"]);
 
   grunt.registerTask("javascript", ["concat:basic", "babel"]);
 
