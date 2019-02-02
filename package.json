@@ -27,7 +27,6 @@
     "grunt-php2html": "^0.3.0",
     "grunt-postcss": "^0.9.0",
     "grunt-sass": "^2.1.0",
-    "grunt-svgmin": "^3.3.0",
     "grunt-svgstore": "^1.0.0",
     "grunt-sync": "^0.8.0",
     "grunt-tinyimg": "^1.0.0",

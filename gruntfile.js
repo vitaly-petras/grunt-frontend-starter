@@ -140,25 +140,6 @@ module.exports = function(grunt) {
       }
     },
 
-    svgmin: {
-      dist: {
-        options: {
-          plugins: [
-            // Don't remove XML declaration (needed to avoid errors creating PNG on Win 7)
-            { removeXMLProcInst: false }
-          ]
-        },
-        files: [
-          {
-            expand: true,
-            cwd: "<%= project.path.sprites %>svg-sprite/",
-            src: ["*.svg", "*.png"],
-            dest: "<%= project.path.icons %>svg"
-          }
-        ]
-      }
-    },
-
     svgstore: {
       options: {
         prefix: "icon-" // This will prefix each ID
