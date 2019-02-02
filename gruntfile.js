@@ -5,31 +5,22 @@
 "use strict";
 
 module.exports = function(grunt) {
-  var config = {};
-
-  config["project"] = {
-    name: "fill-me", //BEZ DIAKRITIKY A MEZER!!!!! + VŠECHNO MALÝMI
-    title: "fill-me", //titulek v html sablonach
-    for: "htmlfactory", //praguecoding
-    author: "Vitalij Petras"
-  };
-
-  //grunt.log.write(grunt.file.exists(".tinypng-key") && grunt.file.readJSON(".tinypng-key"));
   const tinyPngKey = grunt.file.exists(".tinypng-key") && grunt.file.readJSON(".tinypng-key");
+  //grunt.log.write(tinyPngKey);
 
-  config["path"] = {
-    virtual: "virtual/",
-    root: "dev/",
+  const path = {
+    development: "dev/",
     scss: "assets/sass/",
+    images: "images/",
     css: "assets/css/",
     js: "assets/js/",
-    dist: "dist/"
+    public: "public/"
   };
 
   require("load-grunt-tasks")(grunt);
 
   grunt.initConfig({
-    project: config,
+    path: path,
 
     /* sass */
     sass: {
@@ -44,9 +35,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: "<%= project.path.root %><%= project.path.scss %>",
+            cwd: "<%= path.development %><%= path.scss %>",
             src: ["*.scss", "!_*"], // Dictionary of files
-            dest: "<%= project.path.virtual %><%= project.path.css %>",
+            dest: "<%= path.public %><%= path.css %>",
             ext: ".css"
           }
         ]
@@ -60,15 +51,15 @@ module.exports = function(grunt) {
         spawn: false
       },
       css: {
-        files: "<%= project.path.root %><%= project.path.scss %>**/*.scss",
+        files: "<%= path.development %><%= path.scss %>**/*.scss",
         tasks: ["sass:dev", "postcss:dev"]
       },
       js: {
-        files: ["<%= project.path.root %><%= project.path.js %>*.js"],
+        files: ["<%= path.development %><%= path.js %>*.js"],
         tasks: ["javascript"]
       },
       html: {
-        files: ["<%= project.path.root %>**/*.{php,html}"],
+        files: ["<%= path.development %>**/*.{php,html}"],
         tasks: ["preprocess"]
       },
       configFiles: {
@@ -85,9 +76,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: "<%= project.path.dist %>/assets/js/",
+            cwd: "<%= path.public %>/assets/js/",
             src: ["*.js", "!*.min.js"],
-            dest: "<%= project.path.dist %>/assets/js/"
+            dest: "<%= path.public %>/assets/js/"
           }
         ]
       }
@@ -101,15 +92,15 @@ module.exports = function(grunt) {
           "node_modules/jquery/dist/jquery.js",
           "node_modules/slick-carousel/slick/slick.js",
           "node_modules/object-fit-images/dist/ofi.js",
-          "<%= project.path.root %><%= project.path.js %>*.js"
+          "<%= path.development %><%= path.js %>*.js"
         ],
         //vystupni soubor
-        dest: "<%= project.path.virtual %><%= project.path.js %>all.js"
+        dest: "<%= path.public %><%= path.js %>all.js"
       }
     },
 
     jshint: {
-      all: ["<%= project.path.root %><%= project.path.js %>**/*.js"]
+      all: ["<%= path.development %><%= path.js %>**/*.js"]
     },
 
     babel: {
@@ -117,18 +108,18 @@ module.exports = function(grunt) {
         sourceMap: true,
         presets: ["env"]
       },
-      dist: {
+      public: {
         files: {
-          "<%= project.path.virtual %><%= project.path.js %>all.js":
-            "<%= project.path.virtual %><%= project.path.js %>all.js"
+          "<%= path.public %><%= path.js %>all.js":
+            "<%= path.public %><%= path.js %>all.js"
         }
       }
     },
 
     copy: {
       htaccess: {
-        src: ["<%= project.path.dist %>_htaccess"],
-        dest: "<%= project.path.dist %>.htaccess"
+        src: ["<%= path.public %>_htaccess"],
+        dest: "<%= path.public %>.htaccess"
       },
       phpAnchorLinksToHTML: {
         options: {
@@ -140,21 +131,21 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: "<%= project.path.dist %>",
+            cwd: "<%= path.public %>",
             src: ["**/*.html"],
-            dest: "<%= project.path.dist %>"
+            dest: "<%= path.public %>"
           }
         ]
       }
     },
 
     sync: {
-      dist: {
+      public: {
         files: [
           {
-            cwd: "<%= project.path.root %>",
+            cwd: "<%= path.development %>",
             src: ["**", "!**/*.php", "!page-components", "!page_components", "!assets/images/sprites/**", "forms/*.php"],
-            dest: "<%= project.path.dist %>"
+            dest: "<%= path.public %>"
           } // makes all src relative to cwd
         ],
         verbose: false, // Default: false
@@ -167,32 +158,32 @@ module.exports = function(grunt) {
     },
 
     clean: {
-      dist: ["<%= project.path.dist %>data.zip"],
-      distFiles: {
+      public: ["<%= path.public %>data.zip"],
+      publicFiles: {
         files: [
           {
             expand: true,
-            cwd: "<%= project.path.dist %>",
+            cwd: "<%= path.public %>",
             src: ["assets/sass", "assets/images/sprites", "assets/js/not-used-scripts", "assets/js/*.map", "assets/icons"], // Dictionary of files
-            dest: "<%= project.path.dist %>"
+            dest: "<%= path.public %>"
           }
         ]
       },
-      gruntIconLoader: ["<%= project.path.icons %>grunticon.loader.js"],
-      htaccess: ["<%= project.path.dist %>_htaccess"]
+      gruntIconLoader: ["<%= path.icons %>grunticon.loader.js"],
+      htaccess: ["<%= path.public %>_htaccess"]
     },
 
     compress: {
-      dist: {
+      public: {
         options: {
-          archive: "<%= project.path.dist %>data.zip"
+          archive: "<%= path.public %>data.zip"
         },
-        files: [{ expand: true, cwd: "<%= project.path.dist %>", src: ["**"], dest: "<%= project.project.name %>" }]
+        files: [{ expand: true, cwd: "<%= path.public %>", src: ["**"], dest: "project" }]
       }
     },
 
     postcss: {
-      dist: {
+      public: {
         options: {
           map: false,
           processors: [
@@ -211,16 +202,16 @@ module.exports = function(grunt) {
             require("cssnano")()
           ]
         },
-        src: "<%= project.path.dist %>assets/css/global.css",
-        dest: "<%= project.path.dist %>assets/css/global.css"
+        src: "<%= path.public %>assets/css/global.css",
+        dest: "<%= path.public %>assets/css/global.css"
       },
       dev: {
         options: {
           map: true,
           processors: [require("postcss-object-fit-images")]
         },
-        src: "<%= project.path.virtual %><%= project.path.css %>global.css",
-        dest: "<%= project.path.virtual %><%= project.path.css %>global.css"
+        src: "<%= path.public %><%= path.css %>global.css",
+        dest: "<%= path.public %><%= path.css %>global.css"
       }
     },
 
@@ -228,9 +219,9 @@ module.exports = function(grunt) {
       dev: {
         bsFiles: {
           src: [
-            "<%= project.path.virtual %><%= project.path.css %>*.css",
-            "<%= project.path.virtual %><%= project.path.js %>*.js",
-            "<%= project.path.virtual %>**/*.html"
+            "<%= path.public %><%= path.css %>*.css",
+            "<%= path.public %><%= path.js %>*.js",
+            "<%= path.public %>**/*.html"
           ]
         },
         options: {
@@ -239,7 +230,7 @@ module.exports = function(grunt) {
           startPath: "rozcestnik.html",
           scrollProportionally: false,
           server: {
-            baseDir: "<%= project.path.virtual %>"
+            baseDir: "<%= path.public %>"
           }
         }
       }
@@ -258,9 +249,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true, // Enable dynamic expansion
-            cwd: "<%= project.path.root %>images/", // Src matches are relative to this path
+            cwd: "<%= path.development %><%= path.images %>", // Src matches are relative to this path
             src: ["**/*.{png,jpg}"], // Actual patterns to match
-            dest: "<%= project.path.virtual %>images/" // Destination path prefix
+            dest: "<%= path.public %><%= path.images %>" // Destination path prefix
           }
         ]
       }
@@ -304,9 +295,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: "<%= project.path.root %>images/",
+            cwd: "<%= path.development %><%= path.images %>",
             src: ["**/*.{png,jpg,gif,svg}"],
-            dest: "<%= project.path.virtual %>images/"
+            dest: "<%= path.public %><%= path.images %>"
           }
         ]
       },
@@ -314,9 +305,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: "<%= project.path.root %>images/",
+            cwd: "<%= path.development %><%= path.images %>",
             src: ["**/*.{gif,svg}"],
-            dest: "<%= project.path.virtual %>images/"
+            dest: "<%= path.public %><%= path.images %>"
           }
         ]
       }
@@ -328,12 +319,12 @@ module.exports = function(grunt) {
           DEBUG: true
           //version: grunt.file.read("version.properties")
         }
-        //srcDir: "<%= project.path.root %>"
+        //srcDir: "<%= path.development %>"
       },
       all_from_dir: {
-        cwd: "<%= project.path.root %>",
+        cwd: "<%= path.development %>",
         src: ["*.html"],
-        dest: "<%= project.path.virtual %>",
+        dest: "<%= path.public %>",
         expand: true,
         ext: ".html"
       }
@@ -352,19 +343,19 @@ module.exports = function(grunt) {
 
   grunt.registerTask("javascript", ["jshint", "concat", "babel"]);
 
-  grunt.registerTask("send", ["build"]);
+  grunt.registerTask("send", ["build", "compress"]);
 
   grunt.registerTask("build", [
-    //pouzijte tuto funkci pro vygenerovani DIST souboru
+    //pouzijte tuto funkci pro vygenerovani public souboru
     "update",
-    "clean:dist",
-    "sync:dist",
+    "clean:public",
+    "sync:public",
     "copy:htaccess",
     "clean:htaccess",
     "preprocess",
     "copy:phpAnchorLinksToHTML",
-    "clean:distFiles",
-    "postcss:dist",
+    "clean:publicFiles",
+    "postcss:public",
     "uglify",
     "oimages"
   ]);

@@ -2,8 +2,9 @@
 ######################
 .sass-cache
 node_modules
-dist
+public
 .ftppass
+.tinypng-key
 passwords.json
 .tinypng.json
 package-lock.json
@@ -23,12 +24,7 @@ wordpress/wp-content/aiowps_backups
 
 # development files
 #####################
-dev/assets/css
-dev/assets/js/all.js
-dev/assets/*min.js
 *.map
-dev/images/svg
-virtual
 
 
 # OS generated files #
