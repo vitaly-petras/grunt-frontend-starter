@@ -1,7 +1,3 @@
-/*
- * Licensed under the MIT license.
- */
-
 "use strict";
 
 module.exports = function(grunt) {
@@ -22,29 +18,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     path: path,
 
-    /* sass */
-    sass: {
-      // Task
-      dev: {
-        // Target
-        options: {
-          // Target options
-          style: "expanded",
-          sourcemap: true
-        },
-        files: [
-          {
-            expand: true,
-            cwd: "<%= path.development %><%= path.scss %>",
-            src: ["*.scss", "!_*"], // Dictionary of files
-            dest: "<%= path.public %><%= path.css %>",
-            ext: ".css"
-          }
-        ]
-      }
-    },
-
-    /* watch */
+    //hlidani souboru
     watch: {
       options: {
         livereload: true,
@@ -70,21 +44,39 @@ module.exports = function(grunt) {
       }
     },
 
-    /* minifikace javascriptu */
-    uglify: {
-      target: {
+    sass: {
+      dev: {
+        options: {
+          style: "expanded",
+          sourcemap: true
+        },
         files: [
           {
             expand: true,
-            cwd: "<%= path.public %>/assets/js/",
-            src: ["*.js", "!*.min.js"],
-            dest: "<%= path.public %>/assets/js/"
+            cwd: "<%= path.development %><%= path.scss %>",
+            src: ["*.scss", "!_*"],
+            dest: "<%= path.public %><%= path.css %>",
+            ext: ".css"
           }
         ]
       }
     },
 
-    /* sjednoceni vsech .js souboru do jednoho */
+    // minifikace javascriptu
+    uglify: {
+      target: {
+        files: [
+          {
+            expand: true,
+            cwd: "<%= path.public %><%= path.js %>",
+            src: ["*.js", "!*.min.js"],
+            dest: "<%= path.public %><%= path.js %>"
+          }
+        ]
+      }
+    },
+
+    // sjednoceni vsech .js souboru do jednoho
     concat: {
       target: {
         src: [
@@ -99,10 +91,12 @@ module.exports = function(grunt) {
       }
     },
 
+    // validace js
     jshint: {
       all: ["<%= path.development %><%= path.js %>**/*.js"]
     },
 
+    // zapis javascriptu budoucnosti a jeho automatick0 polyfilly
     babel: {
       options: {
         sourceMap: true,
@@ -116,47 +110,34 @@ module.exports = function(grunt) {
       }
     },
 
+    // vlozime htaccess do public slouzky pro kešování
     copy: {
       htaccess: {
         src: ["<%= path.public %>_htaccess"],
         dest: "<%= path.public %>.htaccess"
       },
-      phpAnchorLinksToHTML: {
-        options: {
-          process: function(content, path) {
-            return content.replace(/.php#/gi, ".html#");
-            //return content.replace(/[sad ]/g, '_');
-          }
-        },
-        files: [
-          {
-            expand: true,
-            cwd: "<%= path.public %>",
-            src: ["**/*.html"],
-            dest: "<%= path.public %>"
-          }
-        ]
-      }
     },
 
+    // sznchronizuj slozky
     sync: {
       public: {
         files: [
           {
             cwd: "<%= path.development %>",
-            src: ["**", "!**/*.php", "!page-components", "!page_components", "!assets/images/sprites/**", "forms/*.php"],
+            src: ["**", "!page-components", "!page_components"],
             dest: "<%= path.public %>"
-          } // makes all src relative to cwd
+          }
         ],
-        verbose: false, // Default: false
-        pretend: false, // Don't do any disk operations - just write log. Default: false
-        failOnError: false, // Fail the task when copying is not possible. Default: false
-        ignoreInDest: ["data.zip", "**/*.php", "page-components", "page_components", ".htaccess"], // Never remove js files from destination. Default: none
-        updateAndDelete: true, // Remove all files from dest that are not found in src. Default: false
-        compareUsing: "mtime" // compares via md5 hash of file contents, instead of file modification time. Default: "mtime"
+        verbose: false,
+        pretend: false,
+        failOnError: false,
+        ignoreInDest: ["data.zip", "page-components", "page_components", ".htaccess"],
+        updateAndDelete: true,
+        compareUsing: "mtime"
       }
     },
 
+    // mazani souboru
     clean: {
       public: ["<%= path.public %>data.zip"],
       publicFiles: {
@@ -164,15 +145,15 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: "<%= path.public %>",
-            src: ["assets/sass", "assets/images/sprites", "assets/js/not-used-scripts", "assets/js/*.map", "assets/icons"], // Dictionary of files
+            src: ["<%= path.scss %>", "assets/js/*.map"],
             dest: "<%= path.public %>"
           }
         ]
       },
-      gruntIconLoader: ["<%= path.icons %>grunticon.loader.js"],
       htaccess: ["<%= path.public %>_htaccess"]
     },
 
+    // komprese
     compress: {
       public: {
         options: {
@@ -202,8 +183,8 @@ module.exports = function(grunt) {
             require("cssnano")()
           ]
         },
-        src: "<%= path.public %>assets/css/global.css",
-        dest: "<%= path.public %>assets/css/global.css"
+        src: "<%= path.public %><%= path.css %>global.css",
+        dest: "<%= path.public %><%= path.css %>global.css"
       },
       dev: {
         options: {
@@ -236,6 +217,7 @@ module.exports = function(grunt) {
       }
     },
 
+    // komprese obrazku
     tinypng: {
       options: {
         apiKey: tinyPngKey,
@@ -257,6 +239,7 @@ module.exports = function(grunt) {
       }
     },
 
+    // komprese obrazku
     imagemin: {
       options: {
         use: [
@@ -313,6 +296,7 @@ module.exports = function(grunt) {
       }
     },
 
+    // šablonování html
     preprocess: {
       options: {
         context: {
@@ -346,14 +330,12 @@ module.exports = function(grunt) {
   grunt.registerTask("send", ["build", "compress"]);
 
   grunt.registerTask("build", [
-    //pouzijte tuto funkci pro vygenerovani public souboru
     "update",
     "clean:public",
     "sync:public",
     "copy:htaccess",
     "clean:htaccess",
     "preprocess",
-    "copy:phpAnchorLinksToHTML",
     "clean:publicFiles",
     "postcss:public",
     "uglify",
