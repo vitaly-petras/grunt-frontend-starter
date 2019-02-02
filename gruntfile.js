@@ -67,7 +67,7 @@ module.exports = function(grunt) {
       },
       js: {
         files: ["<%= project.path.root %><%= project.path.js %>*.js"],
-        tasks: ["concat", "babel"]
+        tasks: ["javascript"]
       },
       html: {
         files: ["<%= project.path.root %>**/*.{php,html}"],
@@ -83,7 +83,7 @@ module.exports = function(grunt) {
 
     /* minifikace javascriptu */
     uglify: {
-      all: {
+      target: {
         files: [
           {
             expand: true,
@@ -108,6 +108,10 @@ module.exports = function(grunt) {
         //vystupni soubor
         dest: "<%= project.path.virtual %><%= project.path.js %>all.js"
       }
+    },
+
+    jshint: {
+      all: ["<%= project.path.root %><%= project.path.js %>**/*.js"]
     },
 
     babel: {
@@ -191,13 +195,7 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: "<%= project.path.dist %>",
-            src: [
-              "assets/sass",
-              "assets/images/sprites",
-              "assets/js/not-used-scripts",
-              "assets/js/*.map",
-              "assets/icons"
-            ], // Dictionary of files
+            src: ["assets/sass", "assets/images/sprites", "assets/js/not-used-scripts", "assets/js/*.map", "assets/icons"], // Dictionary of files
             dest: "<%= project.path.dist %>"
           }
         ]
@@ -387,7 +385,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask("update", ["javascript", "sass:dev", "preprocess", "postcss:dev"]);
 
-  grunt.registerTask("javascript", ["concat", "babel"]);
+  grunt.registerTask("javascript", ["jshint", "concat", "babel"]);
 
   grunt.registerTask("ftp", function() {
     if (ftpPass) grunt.task.run("compress", "ftp_push:" + config["project"]["for"]);
