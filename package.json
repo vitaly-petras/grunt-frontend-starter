@@ -1,12 +1,12 @@
 {
-  "name": "test",
+  "name": "htmlfactory-starter-template",
   "version": "1.0.0",
   "description": "no desc",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "www.HTMLFACTORY.cz",
+  "author": "www.htmlfactory.cz",
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^7.2.6",
