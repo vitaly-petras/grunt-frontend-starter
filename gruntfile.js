@@ -344,7 +344,7 @@ module.exports = function(grunt) {
   grunt.registerTask("debug", ["update", "optimize", "browserSync", "watch"]);
 
   grunt.registerTask("default", function() {
-    grunt.log.writeln('\nVyberte prosím z dostupných příkazů:'['red'].bold)
+    grunt.log.writeln('\nVyberte prosím z dostupných příkazů:'['black'].bold)
     grunt.log.writeln(` - grunt develop\n - grunt build\n - grunt debug`);
   });
 };
