@@ -1,5 +1,3 @@
-
-
 //zavrit po kliku mimo elementy
 function clouseOnBlur(el, target){
     if( el.hasClass("js-toggle-activated") ){
@@ -96,7 +94,7 @@ function toggle(e, element){
             else{
                 showHide("hide", effect, $target);
             }
-        } 
+        }
         else{
             if(showOn == "checked"){
                 showHide("hide", effect, $target);
@@ -225,7 +223,7 @@ $(window).resize(function () {
 
 
 
-//nacist obrazek jako pozadi 
+//nacist obrazek jako pozadi
 function imgToBg(el){
     var $this = $(el),
         src = $this.attr("src"),
@@ -280,23 +278,23 @@ function fixedTopBar(){
 
 
 
-                if ( windowScrollTop > (topBar.outerHeight()) ) {                   
+                if ( windowScrollTop > (topBar.outerHeight()) ) {
                     setTimeout(function() {
-                        
+
                         pageHeader.addClass('fixed');
-                    
+
                     }, 1);
                 }
                 else{
-                    
-                    pageHeader.removeClass('fixed');                    
-                        
+
+                    pageHeader.removeClass('fixed');
+
                 }
 
-            
 
-                
-            
+
+
+
         }, 50);
     });
 }
@@ -388,7 +386,7 @@ function showMoreInfo(event, element, target){
 //zobrazit dalsi produkty/kategorie
 function toggleChildren(element, target, event){
     event.preventDefault();
-    
+
     var $target = $(target),
         $this = $(element),
         toggleText = $this.attr("data-toggle-text"),

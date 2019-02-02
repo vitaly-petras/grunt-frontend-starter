@@ -20,14 +20,14 @@ module.exports = function(grunt) {
   //grunt.log.write(passwords);
 
   config["path"] = {
+    virtual: "virtual/",
     root: "dev/",
-    scss: "dev/assets/sass/",
-    css: "dev/assets/css/",
-    js: "dev/assets/js/",
-    images: "dev/images/svg/",
-    icons: "dev/assets/icons/",
+    scss: "assets/sass/",
+    css: "assets/css/",
+    js: "assets/js/",
     dist: "dist/"
   };
+
 
   require("load-grunt-tasks")(grunt);
 
@@ -47,9 +47,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: "<%= project.path.scss %>",
+            cwd: "<%= project.path.root %><%= project.path.scss %>",
             src: ["*.scss", "!_*"], // Dictionary of files
-            dest: "<%= project.path.css %>",
+            dest: "<%= project.path.virtual %><%= project.path.css %>",
             ext: ".css"
           }
         ]
@@ -64,24 +64,18 @@ module.exports = function(grunt) {
       },
       //styles
       css: {
-        files: "<%= project.path.scss %>**/*.scss",
+        files: "<%= project.path.root %><%= project.path.scss %>**/*.scss",
         tasks: ["sass:dev", "postcss:dev"]
       },
       //concated js
       concatedScripts: {
-        files: ["<%= project.path.js %>concated/*.js"],
+        files: ["<%= project.path.root %><%= project.path.js %>concated/*.js"],
         tasks: ["concat:basic", "babel"]
       },
-      /*
-      //all scripts
-      allScripts: {
-        files: ['<%= project.path.js %>*.js'],
-        tasks: ['uglify:all'],
-      },
-      */
       //html and php
       htmlFiles: {
-        files: ["<%= project.path.root %>**/*.{php,html}"]
+        files: ["<%= project.path.root %>**/*.{php,html}"],
+        tasks: ["preprocess"]
       },
 
       configFiles: {
@@ -114,9 +108,9 @@ module.exports = function(grunt) {
           "node_modules/jquery/dist/jquery.js",
           "node_modules/slick-carousel/slick/slick.js",
           "node_modules/object-fit-images/dist/ofi.js",
-          "<%= project.path.js %>concated/*.js"
+          "<%= project.path.root %><%= project.path.js %>concated/*.js"
         ],
-        dest: "<%= project.path.js %>all.js" //vystupni slozka
+        dest: "<%= project.path.virtual %><%= project.path.js %>all.js" //vystupni slozka
       }
     },
 
@@ -127,7 +121,7 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          "<%= project.path.js %>all.js": "<%= project.path.js %>all.js"
+          "<%= project.path.virtual %><%= project.path.js %>all.js": "<%= project.path.virtual %><%= project.path.js %>all.js"
         }
       }
     },
@@ -148,8 +142,8 @@ module.exports = function(grunt) {
             return grunt.template.process(content);
           }
         },
-        src: "<%= project.path.scss %>global.scss.tpl",
-        dest: "<%= project.path.scss %>global.scss"
+        src: "<%= project.path.root %><%= project.path.scss %>global.scss.tpl",
+        dest: "<%= project.path.root %><%= project.path.scss %>global.scss"
       },
       htaccess: {
         src: ["<%= project.path.dist %>_htaccess"],
@@ -193,7 +187,7 @@ module.exports = function(grunt) {
 
     clean: {
       templatePHP: ["<%= project.path.root %>index.php.tpl"],
-      templateCSS: ["<%= project.path.scss %>global.scss.tpl"],
+      templateCSS: ["<%= project.path.root %><%= project.path.scss %>global.scss.tpl"],
       dist: ["<%= project.path.dist %>data.zip"],
       distFiles: {
         files: [
@@ -252,8 +246,8 @@ module.exports = function(grunt) {
           map: true,
           processors: [require("postcss-object-fit-images")]
         },
-        src: "<%= project.path.css %>global.css",
-        dest: "<%= project.path.css %>global.css"
+        src: "<%= project.path.virtual %><%= project.path.css %>global.css",
+        dest: "<%= project.path.virtual %><%= project.path.css %>global.css"
       }
     },
 
@@ -261,10 +255,9 @@ module.exports = function(grunt) {
       dev: {
         bsFiles: {
           src: [
-            "<%= project.path.css %>*.css",
-            "<%= project.path.js %>*.js",
-            "<%= project.path.root %>**/*.html",
-            "<%= project.path.root %>**/*.php"
+            "<%= project.path.virtual %><%= project.path.css %>*.css",
+            "<%= project.path.virtual %><%= project.path.js %>*.js",
+            "<%= project.path.virtual %>**/*.html"
           ]
         },
         options: {
@@ -272,7 +265,7 @@ module.exports = function(grunt) {
           port: 8080, // our new port
           open: true,
           watchTask: true,
-          startPath: "rozcestnik.php"
+          startPath: "rozcestnik.html"
           //notify: false
         }
       }
@@ -282,7 +275,7 @@ module.exports = function(grunt) {
       dev: {
         options: {
           port: 8010,
-          base: "<%= project.path.root %>"
+          base: "<%= project.path.virtual %>"
           //keepalive: true,
           //open: true
         }
@@ -323,21 +316,20 @@ module.exports = function(grunt) {
       }
     },
 
-    php2html: {
-      dist: {
-        options: {
-          processLinks: true, // relative links should be renamed from .php to .html
-          htmlhint: false
-        },
-        files: [
-          {
-            expand: true,
-            cwd: "<%= project.path.root %>",
-            src: ["*.php", "!checklist.php", "!forms/*.php"],
-            dest: "<%= project.path.dist %>",
-            ext: ".html"
-          }
-        ]
+    preprocess: {
+      options: {
+        context: {
+          DEBUG: true,
+          //version: grunt.file.read("version.properties")
+        }
+        //srcDir: "<%= project.path.root %>"
+      },
+      all_from_dir: {
+        cwd: "<%= project.path.root %>",
+        src: ["*.html"],
+        dest: "<%= project.path.virtual %>",
+        expand: true,
+        ext: ".html"
       }
     },
 
@@ -407,7 +399,7 @@ module.exports = function(grunt) {
     "clean:templatePHP" //doplnit cesty na homepage a odstranit template
   ]);
 
-  grunt.registerTask("update", ["javascript", "sass:dev", "postcss:dev"]);
+  grunt.registerTask("update", ["javascript", "sass:dev", "preprocess", "postcss:dev"]);
 
   grunt.registerTask("javascript", ["concat:basic", "babel"]);
 
@@ -425,7 +417,7 @@ module.exports = function(grunt) {
     "sync:dist",
     "copy:htaccess",
     "clean:htaccess",
-    "php2html",
+    "preprocess",
     "copy:phpAnchorLinksToHTML",
     "clean:distFiles",
     "postcss:dist",
