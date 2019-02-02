@@ -15,9 +15,9 @@ module.exports = function(grunt) {
   };
 
   var passwords = grunt.file.exists("passwords.json") ? grunt.file.readJSON("passwords.json") : false;
-  var tinyPngPass = passwords && passwords["tinypng"] ? passwords["tinypng"] : false;
   var ftpPass = passwords && passwords["ftp"] ? passwords["ftp"] : false;
-  //grunt.log.write(passwords);
+  //grunt.log.write(grunt.file.exists(".tinypng-key") && grunt.file.readJSON(".tinypng-key"));
+  const tinyPngKey = grunt.file.exists(".tinypng-key") && grunt.file.readJSON(".tinypng-key");
 
   config["path"] = {
     virtual: "virtual/",
@@ -267,22 +267,9 @@ module.exports = function(grunt) {
       }
     },
 
-    tinyimg: {
-      all: {
-        files: [
-          {
-            expand: true, // Enable dynamic expansion
-            cwd: "<%= project.path.dist %>", // Src matches are relative to this path
-            src: ["**/*.svg", "!images/svg/*.svg"], //{png,jpg,svg} // Actual patterns to match
-            dest: "<%= project.path.dist %>" // Destination path prefix
-          }
-        ]
-      }
-    },
-
     tinypng: {
       options: {
-        apiKey: tinyPngPass,
+        apiKey: tinyPngKey,
         sigFile: ".tinypng.json",
         checkSigs: true,
         summarize: true,
@@ -293,9 +280,65 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true, // Enable dynamic expansion
-            cwd: "<%= project.path.dist %>", // Src matches are relative to this path
-            src: ["**/*.{png,jpg}", "!assets/icons/**", "!assets/favicons/**"], // Actual patterns to match
-            dest: "<%= project.path.dist %>" // Destination path prefix
+            cwd: "<%= project.path.root %>images/", // Src matches are relative to this path
+            src: ["**/*.{png,jpg}"], // Actual patterns to match
+            dest: "<%= project.path.virtual %>images/" // Destination path prefix
+          }
+        ]
+      }
+    },
+
+    imagemin: {
+      options: {
+        use: [
+          //png
+          require("imagemin-pngquant")({
+            speed: 1,
+            quality: [0, 0.98] //lossy settings
+          }),
+          require("imagemin-zopfli")({
+            more: true
+          }),
+          require("imagemin-giflossy")({
+            optimizationLevel: 3,
+            optimize: 3, //keep-empty: Preserve empty transparent frames
+            lossy: 2
+          }),
+          //svg
+          require("imagemin-svgo")({
+            plugins: [
+              {
+                removeViewBox: false
+              }
+            ]
+          }),
+          //jpg lossless
+          require("imagemin-jpegtran")({
+            progressive: true
+          }),
+          //jpg very light lossy, use vs jpegtran
+          require("imagemin-mozjpeg")({
+            quality: 90
+          })
+        ]
+      },
+      all: {
+        files: [
+          {
+            expand: true,
+            cwd: "<%= project.path.root %>images/",
+            src: ["**/*.{png,jpg,gif,svg}"],
+            dest: "<%= project.path.virtual %>images/"
+          }
+        ]
+      },
+      no_jpg_png: {
+        files: [
+          {
+            expand: true,
+            cwd: "<%= project.path.root %>images/",
+            src: ["**/*.{gif,svg}"],
+            dest: "<%= project.path.virtual %>images/"
           }
         ]
       }
@@ -358,24 +401,9 @@ module.exports = function(grunt) {
   tasks
   */
 
-  /*
-  grunt.registerTask('oimages', function(){
-    if(tinyPngPass) return ['tinyimg', 'tinypng']
-    else{
-      grunt.log.write('no APIKEY for tinypng, this task will be skipped, but dont worry all is OK. (only jpg and png images will not be compressed)');
-      return ['tinyimg'];
-    }
-  });
-  */
-  grunt.registerTask("oimages", function() {
-    if (tinyPngPass) grunt.task.run("tinyimg", "tinypng");
-    else {
-      grunt.log.write(
-        "no APIKEY for tinypng, this task will be skipped, but dont worry all is OK. (only jpg and png images will not be compressed)"
-      );
-      grunt.task.run("tinyimg");
-    }
-  });
+  grunt.registerTask("oimages", () =>
+    tinyPngKey ? grunt.task.run("tinypng", "imagemin:no_jpg_png") : grunt.task.run("imagemin:all")
+  );
 
   grunt.registerTask("template", [
     "copy:templateCSS",
