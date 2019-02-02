@@ -10,7 +10,8 @@ module.exports = function(grunt) {
     images: "images/",
     css: "assets/css/",
     js: "assets/js/",
-    public: "public/"
+    public: "public/",
+    htmlComponents: "html-components/"
   };
 
   require("load-grunt-tasks")(grunt);
@@ -26,7 +27,7 @@ module.exports = function(grunt) {
       },
       css: {
         files: "<%= path.development %><%= path.scss %>**/*.scss",
-        tasks: ["sass:dev", "postcss:dev"]
+        tasks: ["sass"]
       },
       js: {
         files: ["<%= path.development %><%= path.js %>*.js"],
@@ -35,6 +36,10 @@ module.exports = function(grunt) {
       html: {
         files: ["<%= path.development %>**/*.{php,html}"],
         tasks: ["preprocess"]
+      },
+      images: {
+        files: ["<%= path.development %><%= path.images %>**/*"],
+        tasks: ["sync:images"]
       },
       configFiles: {
         files: ["gruntfile.js", "package.json"],
@@ -45,7 +50,7 @@ module.exports = function(grunt) {
     },
 
     sass: {
-      dev: {
+      target: {
         options: {
           style: "expanded",
           sourcemap: true
@@ -104,8 +109,7 @@ module.exports = function(grunt) {
       },
       public: {
         files: {
-          "<%= path.public %><%= path.js %>all.js":
-            "<%= path.public %><%= path.js %>all.js"
+          "<%= path.public %><%= path.js %>all.js": "<%= path.public %><%= path.js %>all.js"
         }
       }
     },
@@ -113,44 +117,56 @@ module.exports = function(grunt) {
     // vlozime htaccess do public slouzky pro kešování
     copy: {
       htaccess: {
-        src: ["<%= path.public %>_htaccess"],
+        src: ["<%= path.development %>_htaccess"],
         dest: "<%= path.public %>.htaccess"
-      },
+      }
     },
 
     // sznchronizuj slozky
     sync: {
-      public: {
+      all: {
         files: [
           {
             cwd: "<%= path.development %>",
-            src: ["**", "!page-components", "!page_components"],
+            src: [
+              "**",
+              "!**/*.html",
+              "!<%= path.css %>**",
+              "!<%= path.scss %>**",
+              "!<%= path.js %>**",
+              "!<%= path.htmlComponents %>**",
+              "!_htaccess"
+            ],
             dest: "<%= path.public %>"
           }
         ],
-        verbose: false,
-        pretend: false,
-        failOnError: false,
-        ignoreInDest: ["data.zip", "page-components", "page_components", ".htaccess"],
-        updateAndDelete: true,
-        compareUsing: "mtime"
+        verbose: false, // Default: false
+        pretend: false, // Don't do any disk operations - just write log. Default: false
+        failOnError: false, // Fail the task when copying is not possible. Default: false
+        ignoreInDest: ["**/*@*"],
+        updateAndDelete: true, // Remove all files from dest that are not found in src. Default: false
+        compareUsing: "mtime" // compares via md5 hash of file contents, instead of file modification time. Default: "mtime"
+      },
+      images: {
+        files: [
+          {
+            cwd: "<%= path.development %><%= path.images %>",
+            src: ["**"],
+            dest: "<%= path.public %><%= path.images %>"
+          }
+        ],
+        verbose: false, // Default: false
+        pretend: false, // Don't do any disk operations - just write log. Default: false
+        failOnError: false, // Fail the task when copying is not possible. Default: false
+        ignoreInDest: ["**/*@*"],
+        updateAndDelete: true, // Remove all files from dest that are not found in src. Default: false
+        compareUsing: "mtime" // compares via md5 hash of file contents, instead of file modification time. Default: "mtime"
       }
     },
 
     // mazani souboru
     clean: {
-      public: ["<%= path.public %>data.zip"],
-      publicFiles: {
-        files: [
-          {
-            expand: true,
-            cwd: "<%= path.public %>",
-            src: ["<%= path.scss %>", "assets/js/*.map"],
-            dest: "<%= path.public %>"
-          }
-        ]
-      },
-      htaccess: ["<%= path.public %>_htaccess"]
+      public: ["<%= path.public %>"]
     },
 
     // komprese
@@ -164,7 +180,7 @@ module.exports = function(grunt) {
     },
 
     postcss: {
-      public: {
+      target: {
         options: {
           map: false,
           processors: [
@@ -182,14 +198,6 @@ module.exports = function(grunt) {
             }),
             require("cssnano")()
           ]
-        },
-        src: "<%= path.public %><%= path.css %>global.css",
-        dest: "<%= path.public %><%= path.css %>global.css"
-      },
-      dev: {
-        options: {
-          map: true,
-          processors: [require("postcss-object-fit-images")]
         },
         src: "<%= path.public %><%= path.css %>global.css",
         dest: "<%= path.public %><%= path.css %>global.css"
@@ -231,7 +239,7 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true, // Enable dynamic expansion
-            cwd: "<%= path.development %><%= path.images %>", // Src matches are relative to this path
+            cwd: "<%= path.public %><%= path.images %>", // Src matches are relative to this path
             src: ["**/*.{png,jpg}"], // Actual patterns to match
             dest: "<%= path.public %><%= path.images %>" // Destination path prefix
           }
@@ -278,7 +286,7 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: "<%= path.development %><%= path.images %>",
+            cwd: "<%= path.public %><%= path.images %>",
             src: ["**/*.{png,jpg,gif,svg}"],
             dest: "<%= path.public %><%= path.images %>"
           }
@@ -288,7 +296,7 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: "<%= path.development %><%= path.images %>",
+            cwd: "<%= path.public %><%= path.images %>",
             src: ["**/*.{gif,svg}"],
             dest: "<%= path.public %><%= path.images %>"
           }
@@ -307,7 +315,7 @@ module.exports = function(grunt) {
       },
       all_from_dir: {
         cwd: "<%= path.development %>",
-        src: ["*.html"],
+        src: ["**/*.html", "!<%= path.htmlComponents %>**", "!checklist.html"],
         dest: "<%= path.public %>",
         expand: true,
         ext: ".html"
@@ -323,24 +331,17 @@ module.exports = function(grunt) {
     tinyPngKey ? grunt.task.run("tinypng", "imagemin:no_jpg_png") : grunt.task.run("imagemin:all")
   );
 
-  grunt.registerTask("update", ["javascript", "sass:dev", "preprocess", "postcss:dev"]);
+  grunt.registerTask("update", ["clean:public", "sync:all", "javascript", "sass", "preprocess"]);
 
   grunt.registerTask("javascript", ["jshint", "concat", "babel"]);
 
-  grunt.registerTask("send", ["build", "compress"]);
+  grunt.registerTask("optimize", ["postcss", "uglify", "oimages"]);
 
-  grunt.registerTask("build", [
-    "update",
-    "clean:public",
-    "sync:public",
-    "copy:htaccess",
-    "clean:htaccess",
-    "preprocess",
-    "clean:publicFiles",
-    "postcss:public",
-    "uglify",
-    "oimages"
-  ]);
+  grunt.registerTask("build", ["update", "copy:htaccess", "optimize", "compress"]);
 
-  grunt.registerTask("default", ["update", "browserSync", "watch"]);
+  grunt.registerTask("develop", ["update", "browserSync", "watch"]);
+
+  grunt.registerTask("default", function() {
+    grunt.log.writeln(`\nCommands: \n - grunt develop\n - grunt build\n - grunt debug`);
+  });
 };
