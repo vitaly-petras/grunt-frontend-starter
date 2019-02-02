@@ -27,11 +27,11 @@ module.exports = function(grunt) {
       },
       css: {
         files: "<%= path.development %><%= path.scss %>**/*.scss",
-        tasks: ["sass"]
+        tasks: grunt.cli.tasks[0] === "develop" ? ["sass"] : ["sass", "postcss"]
       },
       js: {
         files: ["<%= path.development %><%= path.js %>*.js"],
-        tasks: ["javascript"]
+        tasks: grunt.cli.tasks[0] === "develop" ? ["javascript"] : ["javascript", "uglify"]
       },
       html: {
         files: ["<%= path.development %>**/*.{php,html}"],
@@ -39,7 +39,7 @@ module.exports = function(grunt) {
       },
       images: {
         files: ["<%= path.development %><%= path.images %>**/*"],
-        tasks: ["sync:images"]
+        tasks: grunt.cli.tasks[0] === "develop" ? ["sync:images"] : ["sync:images", "oimages"]
       },
       configFiles: {
         files: ["gruntfile.js", "package.json"],
@@ -205,7 +205,7 @@ module.exports = function(grunt) {
     },
 
     browserSync: {
-      dev: {
+      target: {
         bsFiles: {
           src: [
             "<%= path.public %><%= path.css %>*.css",
@@ -340,6 +340,8 @@ module.exports = function(grunt) {
   grunt.registerTask("build", ["update", "copy:htaccess", "optimize", "compress"]);
 
   grunt.registerTask("develop", ["update", "browserSync", "watch"]);
+
+  grunt.registerTask("debug", ["update", "optimize", "browserSync", "watch"]);
 
   grunt.registerTask("default", function() {
     grunt.log.writeln(`\nCommands: \n - grunt develop\n - grunt build\n - grunt debug`);
