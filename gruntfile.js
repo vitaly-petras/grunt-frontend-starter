@@ -261,23 +261,13 @@ module.exports = function(grunt) {
           ]
         },
         options: {
-          proxy: "127.0.0.1:8010", //our PHP server
-          port: 8080, // our new port
           open: true,
           watchTask: true,
-          startPath: "rozcestnik.html"
-          //notify: false
-        }
-      }
-    },
-
-    php: {
-      dev: {
-        options: {
-          port: 8010,
-          base: "<%= project.path.virtual %>"
-          //keepalive: true,
-          //open: true
+          startPath: "rozcestnik.html",
+          scrollProportionally: false,
+          server: {
+            baseDir: "<%= project.path.virtual %>"
+          }
         }
       }
     },
@@ -425,5 +415,5 @@ module.exports = function(grunt) {
     "oimages"
   ]);
 
-  grunt.registerTask("default", ["update", "php", "browserSync", "watch"]);
+  grunt.registerTask("default", ["update", "browserSync", "watch"]);
 };
