@@ -32,6 +32,7 @@
     "grunt-tinypng": "^0.7.0",
     "jit-grunt": "^0.9.1",
     "load-grunt-tasks": "^3.5.2",
+    "postcss-flexbugs-fixes": "^4.1.0",
     "postcss-object-fit-images": "^1.1.2",
     "postcss-pxtorem": "^4.0.1",
     "time-grunt": "^1.2.1"
