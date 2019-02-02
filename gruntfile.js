@@ -219,6 +219,7 @@ module.exports = function(grunt) {
           map: false,
           processors: [
             require("autoprefixer"),
+            require("postcss-flexbugs-fixes"),
             require("postcss-object-fit-images"),
             require(`postcss-pxtorem`)({
               rootValue: 16,
