@@ -128,24 +128,6 @@ module.exports = function(grunt) {
     },
 
     copy: {
-      templatePHP: {
-        options: {
-          process: function(content, path) {
-            return grunt.template.process(content);
-          }
-        },
-        src: "<%= project.path.root %>index.php.tpl",
-        dest: "<%= project.path.root %>index.php"
-      },
-      templateCSS: {
-        options: {
-          process: function(content, path) {
-            return grunt.template.process(content);
-          }
-        },
-        src: "<%= project.path.root %><%= project.path.scss %>global.scss.tpl",
-        dest: "<%= project.path.root %><%= project.path.scss %>global.scss"
-      },
       htaccess: {
         src: ["<%= project.path.dist %>_htaccess"],
         dest: "<%= project.path.dist %>.htaccess"
@@ -187,8 +169,6 @@ module.exports = function(grunt) {
     },
 
     clean: {
-      templatePHP: ["<%= project.path.root %>index.php.tpl"],
-      templateCSS: ["<%= project.path.root %><%= project.path.scss %>global.scss.tpl"],
       dist: ["<%= project.path.dist %>data.zip"],
       distFiles: {
         files: [
@@ -404,13 +384,6 @@ module.exports = function(grunt) {
   grunt.registerTask("oimages", () =>
     tinyPngKey ? grunt.task.run("tinypng", "imagemin:no_jpg_png") : grunt.task.run("imagemin:all")
   );
-
-  grunt.registerTask("template", [
-    "copy:templateCSS",
-    "clean:templateCSS", //prejmenovat globalni CSS a odstranit template
-    "copy:templatePHP",
-    "clean:templatePHP" //doplnit cesty na homepage a odstranit template
-  ]);
 
   grunt.registerTask("update", ["javascript", "sass:dev", "preprocess", "postcss:dev"]);
 
