@@ -137,7 +137,8 @@ module.exports = function(grunt) {
               "!<%= path.scss %>**",
               "!<%= path.js %>**",
               "!<%= path.htmlComponents %>**",
-              "!_htaccess"
+              "!_htaccess",
+              "!**/*.md"
             ],
             dest: "<%= path.public %>"
           }
