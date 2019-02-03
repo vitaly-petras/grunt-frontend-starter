@@ -10,19 +10,25 @@
 Níže najdeš informace jak s projektem zacházet.
 
 ### 💻 Dostupné příkazy
-1.	```
+1.
+```
 grunt develop
 ```
+
 		Spustí vyvojářský server. Hlídá soubory, kompiluje a aktualizuje prohlížeč když se něco změní.
 
-2.	```
+2.
+```
 grunt build
 ```
+
 		Prožene celý projekt různými optimalizacemi a vytvoří složku **`public`**, která je určená pro vložení do produkce (ostrého webu).
 
-3.	```
+3.
+```
 grunt debug
 ```
+
 		Vygeneruje public složku a spustí server optimalizovaného webu. Hodí se předevšim při testování a debugování prohlížečů a zařízení.
 
 
