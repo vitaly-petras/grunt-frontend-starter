@@ -10,18 +10,19 @@
 Níže najdeš informace jak s projektem zacházet.
 
 ### 💻 Dostupné příkazy
--	**`grunt develop`**
 
-		Spustí vyvojářský server. Hlídá soubory, kompiluje a aktualizuje prohlížeč když se něco změní.
+**`grunt develop`**
 
--	**`grunt build`**
+Spustí vyvojářský server. Hlídá soubory, kompiluje a aktualizuje prohlížeč když se něco změní.
 
-		Prožene celý projekt různými optimalizacemi a vytvoří složku **public**, která je určená pro vložení do produkce (ostrého webu).
+**`grunt build`**
+
+Prožene celý projekt různými optimalizacemi a vytvoří složku **public**, která je určená pro vložení do produkce (ostrého webu).
 
 
--	**`grunt debug`**
+**`grunt debug`**
 
-		Vygeneruje public složku a spustí server optimalizovaného webu. Hodí se předevšim při testování a debugování prohlížečů a zařízení.
+Vygeneruje public složku a spustí server optimalizovaného webu. Hodí se předevšim při testování a debugování prohlížečů a zařízení.
 
 
 ## 🧐 Co je uvnitř?
