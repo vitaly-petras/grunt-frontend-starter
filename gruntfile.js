@@ -129,7 +129,7 @@ module.exports = function(grunt) {
       all: [`${path.development}${path.js}**/*.js`]
     },
 
-    // zapis javascriptu budoucnosti a jeho automatick0 polyfilly
+    // zapis javascriptu budoucnosti a jeho automatické polyfilly
     babel: {
       options: {
         sourceMap: true,
@@ -397,7 +397,7 @@ module.exports = function(grunt) {
         srcDir: `${path.public}`,
         type: "html",
         context: {
-          DEBUG: true
+          task: grunt.cli.tasks[0]
           //version: grunt.file.read("version.properties")
         }
       },
