@@ -5,14 +5,19 @@ module.exports = function(grunt) {
   //grunt.log.write(tinyPngKey);
 
   const path = {
+    //main stacks
     development: "dev/",
+    public: "public/",
+
+    //assets
     scss: "assets/sass/",
     images: "images/",
     icons: "icons/",
     css: "assets/css/",
     js: "assets/js/",
-    public: "public/",
-    htmlComponents: "html-components/"
+
+    //pages
+    pages: "pages/"
   };
 
   require("load-grunt-tasks")(grunt);
@@ -34,9 +39,9 @@ module.exports = function(grunt) {
         files: ["<%= path.development %><%= path.js %>*.js"],
         tasks: grunt.cli.tasks[0] === "develop" ? ["javascript"] : ["javascript", "uglify"]
       },
-      html: {
-        files: ["<%= path.development %>**/*.{php,html}"],
-        tasks: ["preprocess"]
+      pages: {
+        files: ["<%= path.development %><%= path.pages %>**/*.{php,html}"],
+        tasks: ["update_pages"]
       },
       images: {
         files: ["<%= path.development %><%= path.images %>**/*"],
@@ -44,7 +49,7 @@ module.exports = function(grunt) {
       },
       icons: {
         files: ["<%= path.development %><%= path.icons %>**/*"],
-        tasks: ["imagemin:icons", "sync:icons", "preprocess"]
+        tasks: ["imagemin:icons", "sync:icons", "update_pages"]
       },
       configFiles: {
         files: ["gruntfile.js", "package.json"],
@@ -137,13 +142,12 @@ module.exports = function(grunt) {
             cwd: "<%= path.development %>",
             src: [
               "**",
-              "!**/*.html",
               "!<%= path.css %>**",
               "!<%= path.scss %>**",
               "!<%= path.js %>**",
-              "!<%= path.htmlComponents %>**",
-              "!_htaccess",
-              "!**/*.md"
+              "!<%= path.pages %>**",
+              "!**/*.md",
+              "!<%= path.dev %>checklist.html"
             ],
             dest: "<%= path.public %>"
           }
@@ -175,6 +179,20 @@ module.exports = function(grunt) {
             cwd: "<%= path.development %><%= path.icons %>",
             src: ["**"],
             dest: "<%= path.public %><%= path.icons %>"
+          }
+        ],
+        verbose: false, // Default: false
+        pretend: false, // Don't do any disk operations - just write log. Default: false
+        failOnError: false, // Fail the task when copying is not possible. Default: false
+        updateAndDelete: true, // Remove all files from dest that are not found in src. Default: false
+        compareUsing: "mtime" // compares via md5 hash of file contents, instead of file modification time. Default: "mtime"
+      },
+      pages: {
+        files: [
+          {
+            cwd: "<%= path.development %><%= path.pages %>",
+            src: ["**/*.{php,html}"],
+            dest: "<%= path.public %><%= path.pages %>"
           }
         ],
         verbose: false, // Default: false
@@ -231,7 +249,7 @@ module.exports = function(grunt) {
           src: [
             "<%= path.public %><%= path.css %>*.css",
             "<%= path.public %><%= path.js %>*.js",
-            "<%= path.public %>**/*.html"
+            "<%= path.public %><%= path.pages %>**/*.{html,php}"
           ]
         },
         options: {
@@ -355,7 +373,7 @@ module.exports = function(grunt) {
             expand: true,
             cwd: "<%= path.development %><%= path.icons %>",
             src: ["**/*.svg"],
-            dest: "<%= path.development %><%= path.icons %>"
+            dest: "<%= path.public %><%= path.icons %>"
           }
         ]
       }
@@ -364,17 +382,17 @@ module.exports = function(grunt) {
     // šablonování html
     preprocess: {
       options: {
+        srcDir: "<%= path.public %>",
         context: {
           DEBUG: true
           //version: grunt.file.read("version.properties")
         }
       },
-      all_from_dir: {
-        cwd: "<%= path.development %>",
-        src: ["**/*.html", "!<%= path.htmlComponents %>**", "!checklist.html"],
+      pages: {
+        cwd: "<%= path.public %><%= path.pages %>",
+        src: ["**/*.{html,php}", "!components/**"],
         dest: "<%= path.public %>",
-        expand: true,
-        ext: ".html"
+        expand: true
       }
     }
   });
@@ -387,9 +405,10 @@ module.exports = function(grunt) {
     tinyPngKey ? grunt.task.run("tinypng", "imagemin:no_jpg_png") : grunt.task.run("imagemin:all", "imagemin:icons")
   );
 
-  grunt.registerTask("update", ["clean:public", "sync:all", "javascript", "sass", "preprocess"]);
+  grunt.registerTask("update", ["clean:public", "sync:all", "javascript", "sass", "update_pages"]);
 
   grunt.registerTask("javascript", ["jshint", "concat", "babel"]);
+  grunt.registerTask("update_pages", ["sync:pages", "preprocess"]);
 
   grunt.registerTask("optimize", ["postcss", "uglify", "oimages"]);
 
