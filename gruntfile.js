@@ -14,14 +14,14 @@ module.exports = function(grunt) {
     //pr.: "dev/images"
     pages: "pages/",
     images: "images/",
-    icons: "icons/",
     assets: "assets/",
 
     //3. level folders
     //pr.: "dev/assets/css"
     scss: "sass/",
     css: "css/",
-    js: "js/"
+    js: "js/",
+    icons: "icons/"
   };
 
   require("load-grunt-tasks")(grunt);
@@ -52,7 +52,7 @@ module.exports = function(grunt) {
         tasks: grunt.cli.tasks[0] === "develop" ? ["update_images"] : ["update_images", "oimages"]
       },
       icons: {
-        files: ["<%= path.development %><%= path.icons %>**/*"],
+        files: ["<%= path.development %><%= path.assets %><%= path.icons %>**/*"],
         tasks: ["update_icons", "update_pages"]
       },
       assets: {
@@ -146,7 +146,14 @@ module.exports = function(grunt) {
         files: [
           {
             cwd: "<%= path.development %><%= path.assets %>",
-            src: ["**", "!<%= path.css %>**", "!<%= path.scss %>**", "!<%= path.js %>**", "!**/*.md"],
+            src: [
+              "**",
+              "!<%= path.css %>**",
+              "!<%= path.icons %>**",
+              "!<%= path.scss %>**",
+              "!<%= path.js %>**",
+              "!**/*.md"
+            ],
             dest: "<%= path.public %><%= path.assets %>"
           }
         ],
@@ -173,9 +180,9 @@ module.exports = function(grunt) {
       icons: {
         files: [
           {
-            cwd: "<%= path.development %><%= path.icons %>",
+            cwd: "<%= path.development %><%= path.assets %><%= path.icons %>",
             src: ["**"],
-            dest: "<%= path.public %><%= path.icons %>"
+            dest: "<%= path.public %><%= path.assets %><%= path.icons %>"
           }
         ],
         verbose: false, // Default: false
@@ -247,7 +254,7 @@ module.exports = function(grunt) {
             "<%= path.public %><%= path.assets %><%= path.css %>*.css",
             "<%= path.public %><%= path.assets %><%= path.js %>*.js",
             "<%= path.public %><%= path.pages %>**/*.{html,php}",
-            "<%= path.public %><%= path.icons %>**/*"
+            "<%= path.public %><%= path.assets %><%= path.icons %>**/*"
           ]
         },
         options: {
@@ -369,9 +376,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: "<%= path.development %><%= path.icons %>",
+            cwd: "<%= path.development %><%= path.assets %><%= path.icons %>",
             src: ["**/*.svg"],
-            dest: "<%= path.public %><%= path.icons %>"
+            dest: "<%= path.public %><%= path.assets %><%= path.icons %>"
           }
         ]
       }
