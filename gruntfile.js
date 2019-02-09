@@ -1,8 +1,6 @@
 "use strict";
 
 module.exports = function(grunt) {
-  const tinyPngKey = grunt.file.exists(".tinypng-key") && grunt.file.readJSON(".tinypng-key");
-  //grunt.log.write(tinyPngKey);
 
   const rootDestinations = {
     development: "dev/", //pouze pro vyvoj
@@ -279,28 +277,6 @@ module.exports = function(grunt) {
     },
 
     // komprese obrazku
-    tinypng: {
-      options: {
-        apiKey: tinyPngKey,
-        sigFile: ".tinypng.json",
-        checkSigs: true,
-        summarize: true,
-        showProgress: true,
-        stopOnImageError: true
-      },
-      compress: {
-        files: [
-          {
-            expand: true, // Enable dynamic expansion
-            cwd: `${path.public}${path.images}`, // Src matches are relative to this path
-            src: ["**/*.{png,jpg}"], // Actual patterns to match
-            dest: `${path.public}${path.images}` // Destination path prefix
-          }
-        ]
-      }
-    },
-
-    // komprese obrazku
     imagemin: {
       options: {
         use: [
@@ -341,16 +317,6 @@ module.exports = function(grunt) {
             expand: true,
             cwd: `${path.public}${path.images}`,
             src: ["**/*.{png,jpg,gif,svg}"],
-            dest: `${path.public}${path.images}`
-          }
-        ]
-      },
-      no_jpg_png: {
-        files: [
-          {
-            expand: true,
-            cwd: `${path.public}${path.images}`,
-            src: ["**/*.{gif,svg}"],
             dest: `${path.public}${path.images}`
           }
         ]
@@ -416,9 +382,6 @@ module.exports = function(grunt) {
   tasks
   */
 
-  grunt.registerTask("oimages", () =>
-    tinyPngKey ? grunt.task.run("tinypng", "imagemin:no_jpg_png") : grunt.task.run("imagemin:images")
-  );
 
   //update tasks
   grunt.registerTask("update_all", [
@@ -442,7 +405,7 @@ module.exports = function(grunt) {
   grunt.registerTask("optimize_javascript", ["uglify"]);
   grunt.registerTask("optimize_pages", ["clean:pages"]);
   grunt.registerTask("optimize_css", ["postcss"]);
-  grunt.registerTask("optimize_images", ["oimages"]);
+  grunt.registerTask("optimize_images", ["imagemin:images"]);
 
   //3 main tasks
   grunt.registerTask("build", ["update_all", "optimize_all", "compress"]);
