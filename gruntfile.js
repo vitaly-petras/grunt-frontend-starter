@@ -8,6 +8,9 @@ module.exports = function(grunt) {
     //main stacks
     development: "dev/",
     public: "public/",
+    //vsechny ostatni slozky jsou zavisle na development + public.
+    //po jejich zmene lze prenest cely projekt do jine libovolne hlouvky.
+    //hodi se napr pro wordpress implementaci.
 
     //assets
     scss: "assets/sass/",
@@ -33,11 +36,11 @@ module.exports = function(grunt) {
       },
       css: {
         files: "<%= path.development %><%= path.scss %>**/*.scss",
-        tasks: grunt.cli.tasks[0] === "develop" ? ["sass"] : ["sass", "postcss"]
+        tasks: grunt.cli.tasks[0] === "develop" ? ["update_css"] : ["update_css", "postcss"]
       },
       js: {
         files: ["<%= path.development %><%= path.js %>*.js"],
-        tasks: grunt.cli.tasks[0] === "develop" ? ["javascript"] : ["javascript", "uglify"]
+        tasks: grunt.cli.tasks[0] === "develop" ? ["update_javascript"] : ["update_javascript", "uglify"]
       },
       pages: {
         files: ["<%= path.development %><%= path.pages %>**/*.{php,html}"],
@@ -383,6 +386,7 @@ module.exports = function(grunt) {
     preprocess: {
       options: {
         srcDir: "<%= path.public %>",
+        type: "html",
         context: {
           DEBUG: true
           //version: grunt.file.read("version.properties")
@@ -405,10 +409,11 @@ module.exports = function(grunt) {
     tinyPngKey ? grunt.task.run("tinypng", "imagemin:no_jpg_png") : grunt.task.run("imagemin:all", "imagemin:icons")
   );
 
-  grunt.registerTask("update", ["clean:public", "sync:all", "javascript", "sass", "update_pages"]);
+  grunt.registerTask("update", ["clean:public", "sync:all", "update_javascript", "update_css", "update_pages"]);
 
-  grunt.registerTask("javascript", ["jshint", "concat", "babel"]);
+  grunt.registerTask("update_javascript", ["jshint", "concat", "babel"]);
   grunt.registerTask("update_pages", ["sync:pages", "preprocess"]);
+  grunt.registerTask("update_css", ["sass"]);
 
   grunt.registerTask("optimize", ["postcss", "uglify", "oimages"]);
 
