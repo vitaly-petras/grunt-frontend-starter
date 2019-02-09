@@ -48,11 +48,11 @@ module.exports = function(grunt) {
       },
       images: {
         files: ["<%= path.development %><%= path.images %>**/*"],
-        tasks: grunt.cli.tasks[0] === "develop" ? ["sync:images"] : ["sync:images", "oimages"]
+        tasks: grunt.cli.tasks[0] === "develop" ? ["update_images"] : ["update_images", "oimages"]
       },
       icons: {
         files: ["<%= path.development %><%= path.icons %>**/*"],
-        tasks: ["imagemin:icons", "sync:icons", "update_pages"]
+        tasks: ["update_icons", "update_pages"]
       },
       configFiles: {
         files: ["gruntfile.js", "package.json"],
@@ -149,8 +149,7 @@ module.exports = function(grunt) {
               "!<%= path.scss %>**",
               "!<%= path.js %>**",
               "!<%= path.pages %>**",
-              "!**/*.md",
-              "!<%= path.dev %>checklist.html"
+              "!**/*.md"
             ],
             dest: "<%= path.public %>"
           }
@@ -194,7 +193,7 @@ module.exports = function(grunt) {
         files: [
           {
             cwd: "<%= path.development %><%= path.pages %>",
-            src: ["**/*.{php,html}"],
+            src: ["**/*.{php,html}", "!checklist.html"],
             dest: "<%= path.public %><%= path.pages %>"
           }
         ],
@@ -414,6 +413,8 @@ module.exports = function(grunt) {
   grunt.registerTask("update_javascript", ["jshint", "concat", "babel"]);
   grunt.registerTask("update_pages", ["sync:pages", "preprocess"]);
   grunt.registerTask("update_css", ["sass"]);
+  grunt.registerTask("update_images", ["sync:images"]);
+  grunt.registerTask("update_icons", ["imagemin:icons", "sync:icons"]);
 
   grunt.registerTask("optimize", ["postcss", "uglify", "oimages"]);
 
