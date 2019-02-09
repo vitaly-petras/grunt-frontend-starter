@@ -53,7 +53,16 @@ module.exports = function(grunt) {
       },
       icons: {
         files: ["<%= path.development %><%= path.icons %>**/*"],
-        tasks: ["update_icons", "update_pages"],
+        tasks: ["update_icons", "update_pages"]
+      },
+      assets: {
+        files: [
+          "<%= path.development %><%= path.assets %>**/*",
+          "!<%= path.development %><%= path.assets %><%= path.scss %>**",
+          "!<%= path.development %><%= path.assets %><%= path.js %>**",
+          "!<%= path.development %><%= path.assets %>**/*.md"
+        ],
+        tasks: ["update_assets"]
       },
       configFiles: {
         files: ["gruntfile.js", "package.json"],
