@@ -28,13 +28,10 @@ module.exports = function(grunt) {
     ...mainDestinations,
     ...secondaryDestinations
   };
-  grunt.log.write(`!${path.development}${path.assets}**/*.md`);
 
   require("load-grunt-tasks")(grunt);
 
   grunt.initConfig({
-    path: path,
-
     //hlidani souboru
     watch: {
       options: {
@@ -42,31 +39,31 @@ module.exports = function(grunt) {
         spawn: false
       },
       css: {
-        files: "<%= path.development %><%= path.scss %>**/*.scss",
+        files: `${path.development}${path.scss}**/*.scss`,
         tasks: grunt.cli.tasks[0] === "develop" ? ["update_css"] : ["update_css", "postcss"]
       },
       js: {
-        files: ["<%= path.development %><%= path.js %>*.js"],
+        files: [`${path.development}${path.js}*.js`],
         tasks: grunt.cli.tasks[0] === "develop" ? ["update_javascript"] : ["update_javascript", "uglify"]
       },
       pages: {
-        files: ["<%= path.development %><%= path.pages %>**/*.{php,html}"],
+        files: [`${path.development}${path.pages}**/*.{php,html}`],
         tasks: ["update_pages"]
       },
       images: {
-        files: ["<%= path.development %><%= path.images %>**/*"],
-        tasks: grunt.cli.tasks[0] === "develop" ? ["update_images"] : ["update_images", "oimages"]
+        files: [`${path.development}${path.images}**/*`],
+        tasks: grunt.cli.tasks[0] === `develop` ? [`update_images`] : [`update_images`, `oimages`]
       },
       icons: {
-        files: ["<%= path.development %><%= path.icons %>**/*"],
+        files: [`${path.development}${path.icons}**/*`],
         tasks: ["update_icons", "update_pages"]
       },
       assets: {
         files: [
-          "<%= path.development %><%= path.assets %>**/*",
-          "!<%= path.development %><%= path.scss %>**",
-          "!<%= path.development %><%= path.js %>**",
-          "!<%= path.development %><%= path.assets %>**/*.md"
+          `${path.development}${path.assets}**/*`,
+          `!${path.development}${path.scss}**`,
+          `!${path.development}${path.js}**`,
+          `!${path.development}${path.assets}**/*.md`
         ],
         tasks: ["update_assets"]
       },
@@ -89,9 +86,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: "<%= path.development %><%= path.scss %>",
+            cwd: `${path.development}${path.scss}`,
             src: ["*.scss", "!_*"],
-            dest: "<%= path.public %><%= path.css %>",
+            dest: `${path.public}${path.css}`,
             ext: ".css"
           }
         ]
@@ -104,9 +101,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: "<%= path.public %><%= path.js %>",
+            cwd: `${path.public}${path.js}`,
             src: ["*.js", "!*.min.js"],
-            dest: "<%= path.public %><%= path.js %>"
+            dest: `${path.public}${path.js}`
           }
         ]
       }
@@ -117,19 +114,19 @@ module.exports = function(grunt) {
       target: {
         src: [
           //vstupni soubory
-          "node_modules/jquery/dist/jquery.js",
-          "node_modules/slick-carousel/slick/slick.js",
-          "node_modules/object-fit-images/dist/ofi.js",
-          "<%= path.development %><%= path.js %>*.js"
+          `node_modules/jquery/dist/jquery.js`,
+          `node_modules/slick-carousel/slick/slick.js`,
+          `node_modules/object-fit-images/dist/ofi.js`,
+          `${path.development}${path.js}*.js`
         ],
         //vystupni soubor
-        dest: "<%= path.public %><%= path.js %>all.js"
+        dest: `${path.public}${path.js}all.js`
       }
     },
 
     // validace js
     jshint: {
-      all: ["<%= path.development %><%= path.js %>**/*.js"]
+      all: [`${path.development}${path.js}**/*.js`]
     },
 
     // zapis javascriptu budoucnosti a jeho automatick0 polyfilly
@@ -139,9 +136,13 @@ module.exports = function(grunt) {
         presets: ["env"]
       },
       public: {
-        files: {
-          "<%= path.public %><%= path.js %>all.js": "<%= path.public %><%= path.js %>all.js"
-        }
+        files: [
+          {
+            cwd: `${path.public}${path.js}`,
+            src: ["*.js"],
+            dest: `${path.public}${path.js}`
+          }
+        ]
       }
     },
 
@@ -150,16 +151,16 @@ module.exports = function(grunt) {
       assets: {
         files: [
           {
-            cwd: "<%= path.development %><%= path.assets %>",
+            cwd: `${path.development}${path.assets}`,
             src: [
-              "**",
+              `**`,
               `!${path.css.split("/")[path.css.split("/").length - 2]}/**`,
               `!${path.icons.split("/")[path.icons.split("/").length - 2]}/**`,
               `!${path.scss.split("/")[path.scss.split("/").length - 2]}/**`,
               `!${path.js.split("/")[path.js.split("/").length - 2]}/**`,
-              "!**/*.md"
+              `!**/*.md`
             ],
-            dest: "<%= path.public %><%= path.assets %>"
+            dest: `${path.public}${path.assets}`
           }
         ],
         verbose: false, // Default: false
@@ -171,9 +172,9 @@ module.exports = function(grunt) {
       images: {
         files: [
           {
-            cwd: "<%= path.development %><%= path.images %>",
+            cwd: `${path.development}${path.images}`,
             src: ["**"],
-            dest: "<%= path.public %><%= path.images %>"
+            dest: `${path.public}${path.images}`
           }
         ],
         verbose: false, // Default: false
@@ -185,9 +186,9 @@ module.exports = function(grunt) {
       icons: {
         files: [
           {
-            cwd: "<%= path.development %><%= path.icons %>",
+            cwd: `${path.development}${path.icons}`,
             src: ["**"],
-            dest: "<%= path.public %><%= path.icons %>"
+            dest: `${path.public}${path.icons}`
           }
         ],
         verbose: false, // Default: false
@@ -199,9 +200,9 @@ module.exports = function(grunt) {
       pages: {
         files: [
           {
-            cwd: "<%= path.development %><%= path.pages %>",
-            src: ["**/*.{php,html}", "!checklist.html"],
-            dest: "<%= path.public %><%= path.pages %>"
+            cwd: `${path.development}${path.pages}`,
+            src: [`**/*.{php,html}`, `!checklist.html`],
+            dest: `${path.public}${path.pages}`
           }
         ],
         verbose: false, // Default: false
@@ -214,16 +215,16 @@ module.exports = function(grunt) {
 
     // mazani souboru
     clean: {
-      public: ["<%= path.public %>"]
+      public: [`${path.public}`]
     },
 
     // komprese
     compress: {
       public: {
         options: {
-          archive: "<%= path.public %>data.zip"
+          archive: `${path.public}data.zip`
         },
-        files: [{ expand: true, cwd: "<%= path.public %>", src: ["**"], dest: "project" }]
+        files: [{ expand: true, cwd: `${path.public}`, src: ["**"], dest: "project" }]
       }
     },
 
@@ -247,8 +248,8 @@ module.exports = function(grunt) {
             require("cssnano")()
           ]
         },
-        src: "<%= path.public %><%= path.css %>global.css",
-        dest: "<%= path.public %><%= path.css %>global.css"
+        src: `${path.public}${path.css}global.css`,
+        dest: `${path.public}${path.css}global.css`
       }
     },
 
@@ -256,10 +257,10 @@ module.exports = function(grunt) {
       target: {
         bsFiles: {
           src: [
-            "<%= path.public %><%= path.css %>*.css",
-            "<%= path.public %><%= path.js %>*.js",
-            "<%= path.public %><%= path.pages %>**/*.{html,php}",
-            "<%= path.public %><%= path.icons %>**/*"
+            `${path.public}${path.css}*.css`,
+            `${path.public}${path.js}*.js`,
+            `${path.public}${path.pages}**/*.{html,php}`,
+            `${path.public}${path.icons}**/*`
           ]
         },
         options: {
@@ -268,7 +269,7 @@ module.exports = function(grunt) {
           startPath: "rozcestnik.html",
           scrollProportionally: false,
           server: {
-            baseDir: "<%= path.public %>"
+            baseDir: `${path.public}`
           }
         }
       }
@@ -288,9 +289,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true, // Enable dynamic expansion
-            cwd: "<%= path.public %><%= path.images %>", // Src matches are relative to this path
+            cwd: `${path.public}${path.images}`, // Src matches are relative to this path
             src: ["**/*.{png,jpg}"], // Actual patterns to match
-            dest: "<%= path.public %><%= path.images %>" // Destination path prefix
+            dest: `${path.public}${path.images}` // Destination path prefix
           }
         ]
       }
@@ -335,9 +336,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: "<%= path.public %><%= path.images %>",
+            cwd: `${path.public}${path.images}`,
             src: ["**/*.{png,jpg,gif,svg}"],
-            dest: "<%= path.public %><%= path.images %>"
+            dest: `${path.public}${path.images}`
           }
         ]
       },
@@ -345,9 +346,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: "<%= path.public %><%= path.images %>",
+            cwd: `${path.public}${path.images}`,
             src: ["**/*.{gif,svg}"],
-            dest: "<%= path.public %><%= path.images %>"
+            dest: `${path.public}${path.images}`
           }
         ]
       },
@@ -381,9 +382,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: "<%= path.development %><%= path.icons %>",
+            cwd: `${path.development}${path.icons}`,
             src: ["**/*.svg"],
-            dest: "<%= path.public %><%= path.icons %>"
+            dest: `${path.public}${path.icons}`
           }
         ]
       }
@@ -392,7 +393,7 @@ module.exports = function(grunt) {
     // šablonování html
     preprocess: {
       options: {
-        srcDir: "<%= path.public %>",
+        srcDir: `${path.public}`,
         type: "html",
         context: {
           DEBUG: true
@@ -400,9 +401,9 @@ module.exports = function(grunt) {
         }
       },
       pages: {
-        cwd: "<%= path.public %><%= path.pages %>",
+        cwd: `${path.public}${path.pages}`,
         src: ["**/*.{html,php}", "!components/**"],
-        dest: "<%= path.public %>",
+        dest: `${path.public}`,
         expand: true
       }
     }
@@ -426,7 +427,7 @@ module.exports = function(grunt) {
     "update_images",
     "update_pages"
   ]);
-  grunt.registerTask("update_javascript", ["jshint", "concat", "babel"]);
+  grunt.registerTask("update_javascript", ["jshint", "concat"]);//, "babel"
   grunt.registerTask("update_pages", ["sync:pages", "preprocess"]);
   grunt.registerTask("update_css", ["sass"]);
   grunt.registerTask("update_images", ["sync:images"]);
