@@ -5,22 +5,23 @@ module.exports = function(grunt) {
   //grunt.log.write(tinyPngKey);
 
   const path = {
-    //main stacks
+    //1. level folders
+    //pr.: "dev/"
     development: "dev/",
     public: "public/",
-    //vsechny ostatni slozky jsou zavisle na development + public.
-    //po jejich zmene lze prenest cely projekt do jine libovolne hlouvky.
-    //hodi se napr pro wordpress implementaci.
 
-    //assets
-    scss: "assets/sass/",
+    //2. level folders
+    //pr.: "dev/images"
+    pages: "pages/",
     images: "images/",
     icons: "icons/",
-    css: "assets/css/",
-    js: "assets/js/",
+    assets: "assets/",
 
-    //pages
-    pages: "pages/"
+    //3. level folders
+    //pr.: "dev/assets/css"
+    scss: "sass/",
+    css: "css/",
+    js: "js/"
   };
 
   require("load-grunt-tasks")(grunt);
@@ -35,11 +36,11 @@ module.exports = function(grunt) {
         spawn: false
       },
       css: {
-        files: "<%= path.development %><%= path.scss %>**/*.scss",
+        files: "<%= path.development %><%= path.assets %><%= path.scss %>**/*.scss",
         tasks: grunt.cli.tasks[0] === "develop" ? ["update_css"] : ["update_css", "postcss"]
       },
       js: {
-        files: ["<%= path.development %><%= path.js %>*.js"],
+        files: ["<%= path.development %><%= path.assets %><%= path.js %>*.js"],
         tasks: grunt.cli.tasks[0] === "develop" ? ["update_javascript"] : ["update_javascript", "uglify"]
       },
       pages: {
@@ -52,7 +53,7 @@ module.exports = function(grunt) {
       },
       icons: {
         files: ["<%= path.development %><%= path.icons %>**/*"],
-        tasks: ["update_icons", "update_pages"]
+        tasks: ["update_icons", "update_pages"],
       },
       configFiles: {
         files: ["gruntfile.js", "package.json"],
@@ -73,9 +74,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: "<%= path.development %><%= path.scss %>",
+            cwd: "<%= path.development %><%= path.assets %><%= path.scss %>",
             src: ["*.scss", "!_*"],
-            dest: "<%= path.public %><%= path.css %>",
+            dest: "<%= path.public %><%= path.assets %><%= path.css %>",
             ext: ".css"
           }
         ]
@@ -88,9 +89,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: "<%= path.public %><%= path.js %>",
+            cwd: "<%= path.public %><%= path.assets %><%= path.js %>",
             src: ["*.js", "!*.min.js"],
-            dest: "<%= path.public %><%= path.js %>"
+            dest: "<%= path.public %><%= path.assets %><%= path.js %>"
           }
         ]
       }
@@ -104,16 +105,16 @@ module.exports = function(grunt) {
           "node_modules/jquery/dist/jquery.js",
           "node_modules/slick-carousel/slick/slick.js",
           "node_modules/object-fit-images/dist/ofi.js",
-          "<%= path.development %><%= path.js %>*.js"
+          "<%= path.development %><%= path.assets %><%= path.js %>*.js"
         ],
         //vystupni soubor
-        dest: "<%= path.public %><%= path.js %>all.js"
+        dest: "<%= path.public %><%= path.assets %><%= path.js %>all.js"
       }
     },
 
     // validace js
     jshint: {
-      all: ["<%= path.development %><%= path.js %>**/*.js"]
+      all: ["<%= path.development %><%= path.assets %><%= path.js %>**/*.js"]
     },
 
     // zapis javascriptu budoucnosti a jeho automatick0 polyfilly
@@ -124,7 +125,8 @@ module.exports = function(grunt) {
       },
       public: {
         files: {
-          "<%= path.public %><%= path.js %>all.js": "<%= path.public %><%= path.js %>all.js"
+          "<%= path.public %><%= path.assets %><%= path.js %>all.js":
+            "<%= path.public %><%= path.assets %><%= path.js %>all.js"
         }
       }
     },
@@ -139,25 +141,17 @@ module.exports = function(grunt) {
 
     // sznchronizuj slozky
     sync: {
-      all: {
+      assets: {
         files: [
           {
-            cwd: "<%= path.development %>",
-            src: [
-              "**",
-              "!<%= path.css %>**",
-              "!<%= path.scss %>**",
-              "!<%= path.js %>**",
-              "!<%= path.pages %>**",
-              "!**/*.md"
-            ],
-            dest: "<%= path.public %>"
+            cwd: "<%= path.development %><%= path.assets %>",
+            src: ["**", "!<%= path.css %>**", "!<%= path.scss %>**", "!<%= path.js %>**", "!**/*.md"],
+            dest: "<%= path.public %><%= path.assets %>"
           }
         ],
         verbose: false, // Default: false
         pretend: false, // Don't do any disk operations - just write log. Default: false
         failOnError: false, // Fail the task when copying is not possible. Default: false
-        ignoreInDest: ["**/*@*"],
         updateAndDelete: true, // Remove all files from dest that are not found in src. Default: false
         compareUsing: "mtime" // compares via md5 hash of file contents, instead of file modification time. Default: "mtime"
       },
@@ -240,8 +234,8 @@ module.exports = function(grunt) {
             require("cssnano")()
           ]
         },
-        src: "<%= path.public %><%= path.css %>global.css",
-        dest: "<%= path.public %><%= path.css %>global.css"
+        src: "<%= path.public %><%= path.assets %><%= path.css %>global.css",
+        dest: "<%= path.public %><%= path.assets %><%= path.css %>global.css"
       }
     },
 
@@ -249,9 +243,10 @@ module.exports = function(grunt) {
       target: {
         bsFiles: {
           src: [
-            "<%= path.public %><%= path.css %>*.css",
-            "<%= path.public %><%= path.js %>*.js",
-            "<%= path.public %><%= path.pages %>**/*.{html,php}"
+            "<%= path.public %><%= path.assets %><%= path.css %>*.css",
+            "<%= path.public %><%= path.assets %><%= path.js %>*.js",
+            "<%= path.public %><%= path.pages %>**/*.{html,php}",
+            "<%= path.public %><%= path.icons %>**/*"
           ]
         },
         options: {
@@ -408,13 +403,21 @@ module.exports = function(grunt) {
     tinyPngKey ? grunt.task.run("tinypng", "imagemin:no_jpg_png") : grunt.task.run("imagemin:all", "imagemin:icons")
   );
 
-  grunt.registerTask("update", ["clean:public", "sync:all", "update_javascript", "update_css", "update_pages"]);
+  grunt.registerTask("update", [
+    "clean:public",
+    "update_assets",
+    "update_javascript",
+    "update_icons",
+    "update_css",
+    "update_pages"
+  ]);
 
   grunt.registerTask("update_javascript", ["jshint", "concat", "babel"]);
   grunt.registerTask("update_pages", ["sync:pages", "preprocess"]);
   grunt.registerTask("update_css", ["sass"]);
   grunt.registerTask("update_images", ["sync:images"]);
   grunt.registerTask("update_icons", ["imagemin:icons", "sync:icons"]);
+  grunt.registerTask("update_assets", ["sync:assets"]);
 
   grunt.registerTask("optimize", ["postcss", "uglify", "oimages"]);
 
