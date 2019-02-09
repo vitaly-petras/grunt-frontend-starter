@@ -131,14 +131,6 @@ module.exports = function(grunt) {
       }
     },
 
-    // vlozime htaccess do public slouzky pro kešování
-    copy: {
-      htaccess: {
-        src: ["<%= path.development %>_htaccess"],
-        dest: "<%= path.public %>.htaccess"
-      }
-    },
-
     // sznchronizuj slozky
     sync: {
       assets: {
@@ -423,7 +415,7 @@ module.exports = function(grunt) {
   grunt.registerTask("optimize", ["postcss", "uglify", "oimages"]);
 
   //3 main tasks
-  grunt.registerTask("build", ["update_all", "copy:htaccess", "optimize", "compress"]);
+  grunt.registerTask("build", ["update_all", "optimize", "compress"]);
   grunt.registerTask("develop", ["update_all", "browserSync", "watch"]);
   grunt.registerTask("debug", ["update_all", "optimize", "browserSync", "watch"]);
 
