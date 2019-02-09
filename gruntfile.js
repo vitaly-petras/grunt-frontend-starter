@@ -40,11 +40,11 @@ module.exports = function(grunt) {
       },
       css: {
         files: `${path.development}${path.scss}**/*.scss`,
-        tasks: grunt.cli.tasks[0] === "develop" ? ["update_css"] : ["update_css", "postcss"]
+        tasks: grunt.cli.tasks[0] === "develop" ? ["update_css"] : ["update_css", "optimize_css"]
       },
       js: {
         files: [`${path.development}${path.js}*.js`],
-        tasks: grunt.cli.tasks[0] === "develop" ? ["update_javascript"] : ["update_javascript", "uglify"]
+        tasks: grunt.cli.tasks[0] === "develop" ? ["update_javascript"] : ["update_javascript", "optimize_javascript"]
       },
       pages: {
         files: [`${path.development}${path.pages}**/*.{php,html}`],
@@ -52,7 +52,7 @@ module.exports = function(grunt) {
       },
       images: {
         files: [`${path.development}${path.images}**/*`],
-        tasks: grunt.cli.tasks[0] === `develop` ? [`update_images`] : [`update_images`, `oimages`]
+        tasks: grunt.cli.tasks[0] === `develop` ? [`update_images`] : [`update_images`, `optimize_images`]
       },
       icons: {
         files: [`${path.development}${path.icons}**/*`],
@@ -217,7 +217,8 @@ module.exports = function(grunt) {
 
     // mazani souboru
     clean: {
-      public: [`${path.public}`]
+      public: [`${path.public}`],
+      pages: [`${path.public}${path.pages}`]
     },
 
     // komprese
@@ -334,7 +335,7 @@ module.exports = function(grunt) {
           })
         ]
       },
-      all: {
+      images: {
         files: [
           {
             expand: true,
@@ -416,7 +417,7 @@ module.exports = function(grunt) {
   */
 
   grunt.registerTask("oimages", () =>
-    tinyPngKey ? grunt.task.run("tinypng", "imagemin:no_jpg_png") : grunt.task.run("imagemin:all", "imagemin:icons")
+    tinyPngKey ? grunt.task.run("tinypng", "imagemin:no_jpg_png") : grunt.task.run("imagemin:images")
   );
 
   //update tasks
@@ -436,12 +437,17 @@ module.exports = function(grunt) {
   grunt.registerTask("update_icons", ["imagemin:icons", "sync:icons"]);
   grunt.registerTask("update_assets", ["sync:assets"]);
 
-  grunt.registerTask("optimize", ["postcss", "uglify", "oimages"]);
+  //optimize tasks
+  grunt.registerTask("optimize_all", ["optimize_css", "optimize_javascript", "optimize_images", "optimize_pages"]);
+  grunt.registerTask("optimize_javascript", ["uglify"]);
+  grunt.registerTask("optimize_pages", ["clean:pages"]);
+  grunt.registerTask("optimize_css", ["postcss"]);
+  grunt.registerTask("optimize_images", ["oimages"]);
 
   //3 main tasks
-  grunt.registerTask("build", ["update_all", "optimize", "compress"]);
+  grunt.registerTask("build", ["update_all", "optimize_all", "compress"]);
   grunt.registerTask("develop", ["update_all", "browserSync", "watch"]);
-  grunt.registerTask("debug", ["update_all", "optimize", "browserSync", "watch"]);
+  grunt.registerTask("debug", ["update_all", "optimize_all", "browserSync", "watch"]);
 
   grunt.registerTask("default", function() {
     grunt.log.writeln("\nVyberte prosím z dostupných příkazů:"["black"].bold);
