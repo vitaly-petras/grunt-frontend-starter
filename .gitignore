@@ -3,10 +3,6 @@
 .sass-cache
 node_modules
 public
-.ftppass
-.tinypng-key
-passwords.json
-.tinypng.json
 package-lock.json
 
 
