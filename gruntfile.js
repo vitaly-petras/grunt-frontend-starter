@@ -138,6 +138,7 @@ module.exports = function(grunt) {
       public: {
         files: [
           {
+            expand: true,
             cwd: `${path.public}${path.js}`,
             src: ["*.js"],
             dest: `${path.public}${path.js}`
@@ -427,7 +428,7 @@ module.exports = function(grunt) {
     "update_images",
     "update_pages"
   ]);
-  grunt.registerTask("update_javascript", ["jshint", "concat"]);//, "babel"
+  grunt.registerTask("update_javascript", ["jshint", "concat", "babel"]);
   grunt.registerTask("update_pages", ["sync:pages", "preprocess"]);
   grunt.registerTask("update_css", ["sass"]);
   grunt.registerTask("update_images", ["sync:images"]);
