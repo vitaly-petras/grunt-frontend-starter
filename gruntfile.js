@@ -403,15 +403,16 @@ module.exports = function(grunt) {
     tinyPngKey ? grunt.task.run("tinypng", "imagemin:no_jpg_png") : grunt.task.run("imagemin:all", "imagemin:icons")
   );
 
-  grunt.registerTask("update", [
+  //update tasks
+  grunt.registerTask("update_all", [
     "clean:public",
     "update_assets",
     "update_javascript",
     "update_icons",
     "update_css",
+    "update_images",
     "update_pages"
   ]);
-
   grunt.registerTask("update_javascript", ["jshint", "concat", "babel"]);
   grunt.registerTask("update_pages", ["sync:pages", "preprocess"]);
   grunt.registerTask("update_css", ["sass"]);
@@ -421,11 +422,10 @@ module.exports = function(grunt) {
 
   grunt.registerTask("optimize", ["postcss", "uglify", "oimages"]);
 
-  grunt.registerTask("build", ["update", "copy:htaccess", "optimize", "compress"]);
-
-  grunt.registerTask("develop", ["update", "browserSync", "watch"]);
-
-  grunt.registerTask("debug", ["update", "optimize", "browserSync", "watch"]);
+  //3 main tasks
+  grunt.registerTask("build", ["update_all", "copy:htaccess", "optimize", "compress"]);
+  grunt.registerTask("develop", ["update_all", "browserSync", "watch"]);
+  grunt.registerTask("debug", ["update_all", "optimize", "browserSync", "watch"]);
 
   grunt.registerTask("default", function() {
     grunt.log.writeln("\nVyberte prosím z dostupných příkazů:"["black"].bold);
