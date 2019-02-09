@@ -63,6 +63,7 @@ module.exports = function(grunt) {
           `${path.development}${path.assets}**/*`,
           `!${path.development}${path.scss}**`,
           `!${path.development}${path.js}**`,
+          `!${path.development}${path.icons}**`,
           `!${path.development}${path.assets}**/*.md`
         ],
         tasks: ["update_assets"]
