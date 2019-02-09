@@ -1,7 +1,6 @@
 "use strict";
 
 module.exports = function(grunt) {
-
   const rootDestinations = {
     development: "dev/", //pouze pro vyvoj
     public: "public/" //produkce
@@ -101,7 +100,7 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: `${path.public}${path.js}`,
-            src: ["*.js", "!*.min.js"],
+            src: ["**/*.js", "!*.min.js"],
             dest: `${path.public}${path.js}`
           }
         ]
@@ -116,7 +115,7 @@ module.exports = function(grunt) {
           `node_modules/jquery/dist/jquery.js`,
           `node_modules/slick-carousel/slick/slick.js`,
           `node_modules/object-fit-images/dist/ofi.js`,
-          `${path.development}${path.js}*.js`
+          `${path.development}${path.js}**/*.js`
         ],
         //vystupni soubor
         dest: `${path.public}${path.js}all.js`
@@ -125,7 +124,9 @@ module.exports = function(grunt) {
 
     // validace js
     jshint: {
-      all: [`${path.development}${path.js}**/*.js`]
+      all: {
+        src: `${path.development}${path.js}**/*.js`
+      }
     },
 
     // zapis javascriptu budoucnosti a jeho automatické polyfilly
@@ -382,7 +383,6 @@ module.exports = function(grunt) {
   tasks
   */
 
-
   //update tasks
   grunt.registerTask("update_all", [
     "clean:public",
@@ -393,19 +393,19 @@ module.exports = function(grunt) {
     "update_images",
     "update_pages"
   ]);
-  grunt.registerTask("update_javascript", ["jshint", "concat", "babel"]);
-  grunt.registerTask("update_pages", ["sync:pages", "preprocess"]);
+  grunt.registerTask("update_javascript", ["newer:jshint", "newer:concat", "babel"]);
+  grunt.registerTask("update_pages", ["sync:pages", "newer:preprocess"]);
   grunt.registerTask("update_css", ["sass"]);
   grunt.registerTask("update_images", ["sync:images"]);
-  grunt.registerTask("update_icons", ["imagemin:icons", "sync:icons"]);
+  grunt.registerTask("update_icons", ["newer:imagemin:icons", "sync:icons"]);
   grunt.registerTask("update_assets", ["sync:assets"]);
 
   //optimize tasks
   grunt.registerTask("optimize_all", ["optimize_css", "optimize_javascript", "optimize_images", "optimize_pages"]);
-  grunt.registerTask("optimize_javascript", ["uglify"]);
+  grunt.registerTask("optimize_javascript", ["newer:uglify"]);
   grunt.registerTask("optimize_pages", ["clean:pages"]);
-  grunt.registerTask("optimize_css", ["postcss"]);
-  grunt.registerTask("optimize_images", ["imagemin:images"]);
+  grunt.registerTask("optimize_css", ["newer:postcss"]);
+  grunt.registerTask("optimize_images", ["newer:imagemin:images"]);
 
   //3 main tasks
   grunt.registerTask("build", ["update_all", "optimize_all", "compress"]);
