@@ -8,6 +8,7 @@ module.exports = function(grunt) {
     development: "dev/",
     scss: "assets/sass/",
     images: "images/",
+    icons: "icons/",
     css: "assets/css/",
     js: "assets/js/",
     public: "public/",
@@ -40,6 +41,10 @@ module.exports = function(grunt) {
       images: {
         files: ["<%= path.development %><%= path.images %>**/*"],
         tasks: grunt.cli.tasks[0] === "develop" ? ["sync:images"] : ["sync:images", "oimages"]
+      },
+      icons: {
+        files: ["<%= path.development %><%= path.icons %>**/*"],
+        tasks: ["imagemin:icons", "sync:icons", "preprocess"]
       },
       configFiles: {
         files: ["gruntfile.js", "package.json"],
@@ -161,7 +166,20 @@ module.exports = function(grunt) {
         verbose: false, // Default: false
         pretend: false, // Don't do any disk operations - just write log. Default: false
         failOnError: false, // Fail the task when copying is not possible. Default: false
-        ignoreInDest: ["**/*@*"],
+        updateAndDelete: true, // Remove all files from dest that are not found in src. Default: false
+        compareUsing: "mtime" // compares via md5 hash of file contents, instead of file modification time. Default: "mtime"
+      },
+      icons: {
+        files: [
+          {
+            cwd: "<%= path.development %><%= path.icons %>",
+            src: ["**"],
+            dest: "<%= path.public %><%= path.icons %>"
+          }
+        ],
+        verbose: false, // Default: false
+        pretend: false, // Don't do any disk operations - just write log. Default: false
+        failOnError: false, // Fail the task when copying is not possible. Default: false
         updateAndDelete: true, // Remove all files from dest that are not found in src. Default: false
         compareUsing: "mtime" // compares via md5 hash of file contents, instead of file modification time. Default: "mtime"
       }
@@ -304,6 +322,42 @@ module.exports = function(grunt) {
             dest: "<%= path.public %><%= path.images %>"
           }
         ]
+      },
+      icons: {
+        options: {
+          use: [
+            //svg
+            require("imagemin-svgo")({
+              plugins: [
+                {
+                  removeViewBox: false
+                },
+                {
+                  convertColors: {
+                    currentColor: true
+                  }
+                },
+                {
+                  addAttributesToSVGElement: {
+                    attributes: [
+                      {
+                        fill: "currentColor"
+                      }
+                    ]
+                  }
+                }
+              ]
+            })
+          ]
+        },
+        files: [
+          {
+            expand: true,
+            cwd: "<%= path.development %><%= path.icons %>",
+            src: ["**/*.svg"],
+            dest: "<%= path.development %><%= path.icons %>"
+          }
+        ]
       }
     },
 
@@ -314,7 +368,6 @@ module.exports = function(grunt) {
           DEBUG: true
           //version: grunt.file.read("version.properties")
         }
-        //srcDir: "<%= path.development %>"
       },
       all_from_dir: {
         cwd: "<%= path.development %>",
@@ -331,7 +384,7 @@ module.exports = function(grunt) {
   */
 
   grunt.registerTask("oimages", () =>
-    tinyPngKey ? grunt.task.run("tinypng", "imagemin:no_jpg_png") : grunt.task.run("imagemin:all")
+    tinyPngKey ? grunt.task.run("tinypng", "imagemin:no_jpg_png") : grunt.task.run("imagemin:all", "imagemin:icons")
   );
 
   grunt.registerTask("update", ["clean:public", "sync:all", "javascript", "sass", "preprocess"]);
