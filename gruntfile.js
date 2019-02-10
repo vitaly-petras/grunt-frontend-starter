@@ -117,7 +117,7 @@ module.exports = function(grunt) {
           `${path.development}${path.js}**/*.js`
         ],
         //vystupni soubor
-        dest: `${path.public}${path.js}all.js`
+        dest: `${path.public}${path.js}custom.js`
       }
     },
 
