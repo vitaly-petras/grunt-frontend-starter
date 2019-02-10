@@ -4,7 +4,7 @@
 - [ke shlédnutí](https://htmlfactory-template-starter.netlify.com/)
 - [ke stažení](https://htmlfactory-template-starter.netlify.com/data.zip) - na tomto odkaze stáhnete produkční a optimalizované soubory (minifikované css, js, komprimováné obrázky apod)
 - projekt lze taky snadno stáhnout jako archiv. Stači kliknout na ikonku mráčku (download) vedle "Web IDE". Právě tato stažená verze, popřípadě verze nacházející se zde na gitlabu je vhodnější v případě jakýchkoliv dalších úprav a vývoje.
-- v případě jakýchkoliv připomínek k projektu, prosím otevřete [issue](../issues) v ticketovacím systému. Snadno tak všechno vyřešíme s přehledem.
+- v případě jakýchkoliv připomínek k projektu, prosím otevřete [issues](/issues) v ticketovacím systému. Snadno tak všechno vyřešíme s přehledem.
 
 
 ## 🎧 Pro vyvojáře
