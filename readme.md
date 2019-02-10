@@ -4,6 +4,7 @@
 - [ke shlédnutí](https://htmlfactory-template-starter.netlify.com/)
 - [ke stažení](https://htmlfactory-template-starter.netlify.com/data.zip) - na tomto odkaze stáhnete produkční a optimalizované soubory (minifikované css, js, komprimováné obrázky apod)
 - projekt lze taky snadno stáhnout jako archiv. Stači kliknout na ikonku mráčku (download) vedle "Web IDE". Právě tato stažená verze, popřípadě verze nacházející se zde na gitlabu je vhodnější v případě jakýchkoliv dalších úprav a vývoje.
+- v případě jakýchkoliv připomínek k projektu, prosím otevřete [issue](issues) v ticketovacím systému. Snadno tak všechno vyřešíme s přehledem.
 
 
 ## 🎧 Pro vyvojáře
@@ -58,7 +59,7 @@ Rychlý náhled na soubory , který uvidíte na projektu:
 
 9. **`gruntfile.js`**: soubor obsahujicí veškeré automatizace (hlídání souborů, minifikace, optimalizace). Pro pokročilé uživatele může být rozšiřitelným o další nástroje a automatizace.
 
-10. **`/podklady`**: tato složka je volitelná a jeji obsah je ignorován gitem. Dávám zde jakoukoliv dokumentaci (grafiku, texty apod)
+10. **`/podklady`**: tato složka je volitelná a jeji obsah je ignorován gitem. Dáváme zde jakoukoliv dokumentaci (grafiku, texty apod)
 
 
 ### ❗️ Struktura dev
@@ -66,29 +67,35 @@ Pojďme se blíže podívat na strukturu složky dev, protože v ni budeme tráv
 
 		.
 		└── dev
-			├── html-components
+			├── pages
+				└── components
 			├── images
-				└── svg
 			└── assets
+				├── icons
 				├── sass
 				├── js
 				├── fonts
 				└── favicons
 
-1. **[dev](./dev)**: v této složce pracujeme s .html soubory
-2. **[html-components](./dev/html-components)**: zde můžeme vytvářet znovupoužitelné html bloky, které potom importujeme
-3. **[images](./dev/images)**: zde patří veškeré obrázky použité na webu
-4. **[svg](./dev/images/svg)**: zde vkládáme svg soubory, které následně použijeme jako ikonky.
-5. **[assets](./dev/assets)**: patří sem soubory, které se vztahuji k vývoji. Jsou to css styly, javascript, lokální fonty, faviconky apod.
+1. **[dev](./dev)**: kořenový adresář
+2. **[dev/pages](./dev/pages)**: zde pracujeme s .html, popřípadě .php soubory
+3. **[dev/pages/components](./dev/pages/components)**: zde vytváříme znovupoužitelné html bloky,které potom importujeme
+4. **[dev/images](./dev/images)**: zde patří veškeré obrázky použité na webu. V budoucnu se tyto obrázky vloží přes použitý CMS admin
+5. **[dev/assets](./dev/assets)**: patří sem soubory, které se vztahuji k vývoji. Tyto soubory nelze ovlivnit skrz admin
+6. **[dev/assets/icons](./dev/assets/icons)**: svg ikonky, které jsou vloženy inline a mění svou barvu v závislosti na css vlastnosti color
+7. **[dev/assets/sass](./dev/assets/sass)**: css styly píšeme v preprocesoru sass
+8. **[dev/assets/js](./dev/assets/js)**: náš custom javscript
+9. **[dev/assets/fonts](./dev/assets/fonts)**: zde patří lokální fonty vložené přes font-face css vlastnost
+10. **[dev/assets/favicons](./dev/assets/favicons)**: vygenerujeme a vložíme zde výsledné faviconky na web
 
 Poznámka: v každé složce se nachází vlastní README.md soubor ve kterém najdeš příklad použití. Můžeš to proklikat v odkazech výše.
 
 
 ### Jak to všechno začíná?
 Pokud plánuješ začít nový projekt a využit tento project starter, pak doporučený postup je následující:
-- vytvoř si nový projekt v GITu ([gitlab](https://gitlab.com/))
-- cd cesta/do/noveho/projektu - ujisti se, že tvůj terminál (CMD pro windowsáky) se nachází ve správné složce
-- vlož do terminálu (cmd pro win) a stiskni ENTER. Tím se stáhne celý projekt a potom jsi připraven začít s vývojem.
+1. vytvoř si nový projekt v GITu ([gitlab](https://gitlab.com/))
+2. cd cesta/do/noveho/projektu - ujisti se, že tvůj terminál (CMD pro windowsáky) se nachází ve správné složce
+3. vlož do terminálu (cmd pro win) a stiskni ENTER. Tím se stáhne celý projekt a potom jsi připraven začít s vývojem.
 ```
 git clone git@gitlab.com:html-factory/project-template.git
 rm -rf project-template/.git
