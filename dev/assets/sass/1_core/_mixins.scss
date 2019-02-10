@@ -1,0 +1,76 @@
+// ************************************************************************************
+// MIXINS
+// ************************************************************************************
+@mixin align($direction: both, $position: 0) {
+  position: absolute;
+
+  @if $direction == both {
+    left: $position;
+    right: $position;
+    margin: auto;
+    bottom: $position;
+    top: $position;
+  }
+
+  @if $direction == horizontal {
+    left: $position;
+    right: $position;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @if $direction == vertical {
+    top: $position;
+    bottom: $position;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
+
+//mixin pro pocitani sirky elementu
+@mixin percentage-width($width, $container-width: $width-layout) {
+  width: percentage(remove-units($width) / remove-units($container-width));
+}
+
+// roztahnout obrazek na celou vysku / sirku a vycentrovat
+@mixin cover-image() {
+  display: block;
+  @include align();
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+// Zápis width a height - obdélník
+@mixin size($width, $height: $width) {
+  width: remove-units($width) + px;
+  height: remove-units($height) + px;
+}
+
+//odstrani jednotky (px, rem atd) a necha pouze cislo
+@function remove-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+// styly pro webkit prohlizece
+@mixin webkit {
+  // css rules for webkit (chrome and safari)
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    @content;
+  }
+}
+
+// letter spacing
+@mixin ls($value) {
+  letter-spacing: $value/1000 + em;
+}
+
+// Clearfix
+@mixin cfx() {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}

@@ -1,16 +1,8 @@
 .container {
-    display: inherit;
-    justify-content: inherit;
-    align-items: inherit;
-    flex-direction: inherit;
-    flex-wrap: inherit;
-
-    margin: 0 auto;
-    width: 100%;
-    max-width: $width-layout;
-    min-height: inherit;
-
-    @include query($query-last) {
-        padding: 0 $padding-layout;
-    }
+  display: inherit;
+  justify-content: inherit;
+  align-items: inherit;
+  flex-direction: inherit;
+  flex-wrap: inherit;
+  min-height: inherit;
 }

@@ -1,0 +1,17 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: $input-height;
+
+  vertical-align: middle;
+  font-family: inherit;
+
+  &-sm {
+    height: $input-height-sm;
+  }
+
+  &-lg {
+    height: $input-height-lg;
+  }
+}

@@ -14,34 +14,23 @@ Nikdy needitujte tento .css soubor!
 // ************************************************ //
 // 1. Core
 // ************************************************ //
-@import 						"1_core/1_variables";
-@import 						"1_core/2_mixins";
-@import 						"1_core/3_used-fonts";
-@import 						"1_core/4_reset";
-@import 						"1_core/5_typography";
-@import 						'1_core/keyframes';
-
-
-// ************************************************ //
-// 2. Libs
-// ************************************************ //
-//@import 						"2_libs/slick-with-flex";
-//@import 						"../../../node_modules/slick-carousel/slick/slick";
-
-
-
+@import "1_core/fonts";
+@import "1_core/variables";
+@import "1_core/bootstrap";
+@import "1_core/mixins";
+@import "1_core/type";
+@import "1_core/keyframes";
 
 // ************************************************ //
-// 3. Components
+// 2. Libs - externi knihovny
 // ************************************************ //
-//form elements
-@import 						"3_components/button";
-@import 						"3_components/button-colors";
-@import 						"3_components/inputs";//input, select, textarea
-//@import 						"3_components/select";//styled select
+//@import "2_libs/slick-with-flex";
+//@import "../../../node_modules/slick-carousel/slick/slick";
 
-//web elements
-@import 						"3_components/page";
-@import 						"3_components/hidesvg";
-@import 						"3_components/container";
-@import 						"3_components/text";
+// ************************************************ //
+// 3. Components - cely web skladame z komponent
+// ************************************************ //
+@import "3_components/btn";
+@import "3_components/container";
+@import "3_components/icon";
+@import "3_components/page";
