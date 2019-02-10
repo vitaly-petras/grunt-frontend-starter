@@ -113,7 +113,6 @@ module.exports = function(grunt) {
         src: [
           //vstupni soubory
           `node_modules/jquery/dist/jquery.js`,
-          `node_modules/slick-carousel/slick/slick.js`,
           `node_modules/object-fit-images/dist/ofi.js`,
           `${path.development}${path.js}**/*.js`
         ],
