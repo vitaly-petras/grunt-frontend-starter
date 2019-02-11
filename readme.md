@@ -120,14 +120,17 @@ Poznámka: v každé složce se nachází vlastní README.md soubor ve kterém n
 Pokud plánuješ začít nový projekt a využit tento project starter, pak doporučený postup je následující:
 1. vytvoř si nový projekt v GITu ([gitlab](https://gitlab.com/))
 2. cd cesta/do/noveho/projektu - ujisti se, že tvůj terminál (CMD pro windowsáky) se nachází ve správné složce
-3. vlož do terminálu (cmd pro win) a stiskni ENTER. Tím se stáhne celý projekt a potom jsi připraven začít s vývojem.
+3. vlož do terminálu (cmd pro win) a stiskni ENTER. Tím se starter template stáhne a nainstaluje.
 ```
 git clone git@gitlab.com:html-factory/starter-template.git
 rm -rf starter-template/.git
 rsync -vau starter-template/ ./
 rm -rf starter-template
 npm install
+git add .
+git commit -m "Added: Starter template installed"
 ```
+4. To je vše, jsi připraven začít kódovat nový projekt.
 
 
 ### 🌎 Hurá do světa
