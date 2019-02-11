@@ -9,6 +9,11 @@
 - [optimalizovaný archiv](https://starter-template.netlify.com/data.zip) - produkční a optimalizované soubory (minifikované css, js, komprimováné obrázky apod)
 - projekt lze taky snadno stáhnout jako archiv. Stači kliknout na ikonku mráčku (download) vedle "Web IDE". Tyto soubory pravděpodobně nepotřebujete! Nacházejí se zde vývojové soubory a tento způsob stažení budete potřebovat nejspíše pouze pro programátora, který neumí pracovat s GITem.
 
+%{project_path}
+%{project_id}
+%{default_branch}
+
+
 ### V případě dalších úprav na projektu
 
 V případě, že projekt se bude dále upravovat mimo mě (kodéra tohoto projektu), velmi vás prosím aby tyto změny byly provedené v mém vývojovém prostředí. Ideálně v GITu abych i já měl aktuální verzi projektu. V případě neodborného zásahu do kódu dále nenesu žádnou odpovědnost za funkčnost díla.
