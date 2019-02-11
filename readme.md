@@ -1,12 +1,12 @@
-# 🚀  HTMLFACTORY starter template
+# 🚀 starter template
 
 ## 👤 Pro klienty
 
 ### Demo
-- [ke shlédnutí](https://htmlfactory-template-starter.netlify.com/)
+- [ke shlédnutí](https://starter-template.netlify.com/)
 
 ### Způsoby stažení
-- [optimalizovaný archiv](https://htmlfactory-template-starter.netlify.com/data.zip) - produkční a optimalizované soubory (minifikované css, js, komprimováné obrázky apod)
+- [optimalizovaný archiv](https://starter-template.netlify.com/data.zip) - produkční a optimalizované soubory (minifikované css, js, komprimováné obrázky apod)
 - projekt lze taky snadno stáhnout jako archiv. Stači kliknout na ikonku mráčku (download) vedle "Web IDE". Tyto soubory pravděpodobně nepotřebujete! Nacházejí se zde vývojové soubory a tento způsob stažení budete potřebovat nejspíše pouze pro programátora, který neumí pracovat s GITem.
 
 ### V případě dalších úprav na projektu
@@ -72,7 +72,7 @@ Rychlý náhled na soubory , který uvidíte na projektu:
 
 3. **`.gitignore`**: soubor, který říká gitu, které soubory má ignorovat.
 
-4. **`LICENSE`**: HTMLFACTORY starter template je pod MIT licenci.
+4. **`LICENSE`**: Starter template je pod MIT licenci.
 
 5. **`package-lock.json`**: automatický generováný soubor, který obsahuje informace o použitých modulech (dependency). Do tohoto souboru nikdy nezasahujeme.
 
@@ -122,10 +122,10 @@ Pokud plánuješ začít nový projekt a využit tento project starter, pak dopo
 2. cd cesta/do/noveho/projektu - ujisti se, že tvůj terminál (CMD pro windowsáky) se nachází ve správné složce
 3. vlož do terminálu (cmd pro win) a stiskni ENTER. Tím se stáhne celý projekt a potom jsi připraven začít s vývojem.
 ```
-git clone git@gitlab.com:html-factory/project-template.git
-rm -rf project-template/.git
-rsync -vau project-template/ ./
-rm -rf project-template
+git clone git@gitlab.com:html-factory/starter-template.git
+rm -rf starter-template/.git
+rsync -vau starter-template/ ./
+rm -rf starter-template
 npm install
 ```
 
