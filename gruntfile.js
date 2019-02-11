@@ -343,6 +343,16 @@ module.exports = function(grunt) {
                       }
                     ]
                   }
+                },
+                {
+                  cleanupIDs: {
+                    prefix: {
+                      toString() {
+                        this.counter = this.counter || 0;
+                        return `icon-${this.counter++}`;
+                      }
+                    }
+                  }
                 }
               ]
             })
