@@ -12,7 +12,7 @@
 %{project_path}
 %{project_id}
 %{default_branch}
-
+https://example.gitlab.com/%{project_path}
 
 ### V případě dalších úprav na projektu
 
