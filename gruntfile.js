@@ -249,8 +249,14 @@ module.exports = function(grunt) {
             require("cssnano")()
           ]
         },
-        src: `${path.public}${path.css}global.css`,
-        dest: `${path.public}${path.css}global.css`
+        files: [
+          {
+            expand: true,
+            cwd: `${path.public}${path.css}`,
+            src: ["*.css"],
+            dest: `${path.public}${path.css}`,
+          }
+        ]
       }
     },
 
