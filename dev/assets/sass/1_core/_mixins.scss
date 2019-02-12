@@ -65,12 +65,3 @@
 @mixin ls($value) {
   letter-spacing: $value/1000 + em;
 }
-
-// Clearfix
-@mixin cfx() {
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-}
