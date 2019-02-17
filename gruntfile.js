@@ -385,8 +385,8 @@ module.exports = function(grunt) {
         type: "html",
         context: {
           task: grunt.cli.tasks[0],
-          BSversion: grunt.file.readJSON("./package.json").dependencies.bootstrap,
-          jQueryVersion: grunt.file.readJSON("./package.json").dependencies.jquery
+          BSversion: grunt.file.readJSON("./package.json").dependencies.bootstrap.substring(1),
+          jQueryVersion: grunt.file.readJSON("./package.json").dependencies.jquery.substring(1)
         }
       },
       components: {
