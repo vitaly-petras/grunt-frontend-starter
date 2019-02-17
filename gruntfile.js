@@ -44,8 +44,12 @@ module.exports = function(grunt) {
         tasks: grunt.cli.tasks[0] === "develop" ? ["update_javascript"] : ["update_javascript", "optimize_javascript"]
       },
       pages: {
-        files: [`${path.development}${path.pages}**/*.{php,html}`],
+        files: [`${path.development}${path.pages}**/*.{php,html}`, `${path.development}${path.pages}components/**`],
         tasks: ["update_pages"]
+      },
+      page_components: {
+        files: [`${path.development}${path.pages}components/**/*.{php,html}`],
+        tasks: ["update_page_components"]
       },
       images: {
         files: [`${path.development}${path.images}**/*`],
@@ -201,7 +205,7 @@ module.exports = function(grunt) {
         files: [
           {
             cwd: `${path.development}${path.pages}`,
-            src: [`**/*.{php,html}`, `!checklist.html`],
+            src: [`**/*.{php,html}`, `!checklist.html`, `!components/**`],
             dest: `${path.public}${path.pages}`
           }
         ],
@@ -254,7 +258,7 @@ module.exports = function(grunt) {
             expand: true,
             cwd: `${path.public}${path.css}`,
             src: ["*.css"],
-            dest: `${path.public}${path.css}`,
+            dest: `${path.public}${path.css}`
           }
         ]
       }
@@ -385,6 +389,12 @@ module.exports = function(grunt) {
           //version: grunt.file.read("version.properties")
         }
       },
+      components: {
+        cwd: `${path.development}${path.pages}components/`,
+        src: ["**/*.{html,php}"],
+        dest: `${path.public}${path.pages}components/`,
+        expand: true
+      },
       pages: {
         cwd: `${path.public}${path.pages}`,
         src: ["**/*.{html,php}", "!components/**"],
@@ -410,6 +420,7 @@ module.exports = function(grunt) {
   ]);
   grunt.registerTask("update_javascript", ["newer:jshint", "newer:concat", "babel"]);
   grunt.registerTask("update_pages", ["sync:pages", "newer:preprocess"]);
+  grunt.registerTask("update_page_components", ["newer:preprocess:components", "preprocess:pages"]);
   grunt.registerTask("update_css", ["sass"]);
   grunt.registerTask("update_images", ["sync:images"]);
   grunt.registerTask("update_icons", ["newer:imagemin:icons", "sync:icons"]);
