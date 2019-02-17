@@ -41,8 +41,8 @@
     "time-grunt": "^1.2.1"
   },
   "dependencies": {
-    "bootstrap": "^4.2.1",
-    "jquery": "^3.3.1",
+    "bootstrap": "4.2.1",
+    "jquery": "3.3.0",
     "object-fit-images": "^3.2.4"
   }
 }

@@ -116,7 +116,6 @@ module.exports = function(grunt) {
       target: {
         src: [
           //vstupni soubory
-          `node_modules/jquery/dist/jquery.js`,
           `node_modules/object-fit-images/dist/ofi.js`,
           `${path.development}${path.js}**/*.js`
         ],
@@ -385,8 +384,9 @@ module.exports = function(grunt) {
         srcDir: `${path.public}`,
         type: "html",
         context: {
-          task: grunt.cli.tasks[0]
-          //version: grunt.file.read("version.properties")
+          task: grunt.cli.tasks[0],
+          BSversion: grunt.file.readJSON("./package.json").dependencies.bootstrap,
+          jQueryVersion: grunt.file.readJSON("./package.json").dependencies.jquery
         }
       },
       components: {
