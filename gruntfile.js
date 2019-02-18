@@ -211,6 +211,7 @@ module.exports = function(grunt) {
         verbose: false, // Default: false
         pretend: false, // Don't do any disk operations - just write log. Default: false
         failOnError: false, // Fail the task when copying is not possible. Default: false
+        ignoreInDest: "components/**",
         updateAndDelete: true, // Remove all files from dest that are not found in src. Default: false
         compareUsing: "mtime" // compares via md5 hash of file contents, instead of file modification time. Default: "mtime"
       }
