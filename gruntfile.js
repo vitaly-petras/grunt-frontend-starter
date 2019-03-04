@@ -127,24 +127,6 @@ module.exports = function(grunt) {
       }
     },
 
-    // zapis javascriptu budoucnosti a jeho automatické polyfilly
-    babel: {
-      options: {
-        sourceMap: true,
-        presets: ["env"]
-      },
-      public: {
-        files: [
-          {
-            expand: true,
-            cwd: `${path.public}${path.js}`,
-            src: ["*.js"],
-            dest: `${path.public}${path.js}`
-          }
-        ]
-      }
-    },
-
     // synchronizuj slozky
     sync: {
       assets: {
@@ -407,7 +389,7 @@ module.exports = function(grunt) {
     "update_images",
     "update_pages"
   ]);
-  grunt.registerTask("update_javascript", ["newer:jshint", "newer:concat", "babel"]);
+  grunt.registerTask("update_javascript", ["newer:jshint", "newer:concat"]);
   grunt.registerTask("update_pages", ["sync:pages", "newer:preprocess"]);
   grunt.registerTask("update_css", ["sass"]);
   grunt.registerTask("update_images", ["sync:images"]);
