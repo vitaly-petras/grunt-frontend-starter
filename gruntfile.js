@@ -382,7 +382,7 @@ module.exports = function(grunt) {
     // šablonování html
     preprocess: {
       options: {
-        srcDir: `${path.public}`,
+        srcDir: `${path.public}${path.pages}`,
         type: "html",
         context: {
           task: grunt.cli.tasks[0],
