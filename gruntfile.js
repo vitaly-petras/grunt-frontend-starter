@@ -44,12 +44,8 @@ module.exports = function(grunt) {
         tasks: grunt.cli.tasks[0] === "develop" ? ["update_javascript"] : ["update_javascript", "optimize_javascript"]
       },
       pages: {
-        files: [`${path.development}${path.pages}**/*.{php,html}`, `${path.development}${path.pages}components/**`],
+        files: [`${path.development}${path.pages}**/*.{php,html}`],
         tasks: ["update_pages"]
-      },
-      page_components: {
-        files: [`${path.development}${path.pages}components/**/*.{php,html}`],
-        tasks: ["update_page_components"]
       },
       images: {
         files: [`${path.development}${path.images}**/*`],
@@ -57,7 +53,7 @@ module.exports = function(grunt) {
       },
       icons: {
         files: [`${path.development}${path.icons}**/*`],
-        tasks: ["update_icons", "update_pages"]
+        tasks: ["update_icons"]
       },
       assets: {
         files: [
@@ -204,14 +200,13 @@ module.exports = function(grunt) {
         files: [
           {
             cwd: `${path.development}${path.pages}`,
-            src: [`**/*.{php,html}`, `!checklist.html`, `!components/**`],
+            src: [`**/*.{php,html}`, `!checklist.html`],
             dest: `${path.public}${path.pages}`
           }
         ],
         verbose: false, // Default: false
         pretend: false, // Don't do any disk operations - just write log. Default: false
         failOnError: false, // Fail the task when copying is not possible. Default: false
-        ignoreInDest: "components/**",
         updateAndDelete: true, // Remove all files from dest that are not found in src. Default: false
         compareUsing: "mtime" // compares via md5 hash of file contents, instead of file modification time. Default: "mtime"
       }
@@ -220,7 +215,8 @@ module.exports = function(grunt) {
     // mazani souboru
     clean: {
       public: [`${path.public}`],
-      pages: [`${path.public}${path.pages}`]
+      pages: [`${path.public}${path.pages}`],
+      icons: [`${path.public}${path.icons}`]
     },
 
     // komprese
@@ -334,34 +330,19 @@ module.exports = function(grunt) {
       icons: {
         options: {
           use: [
-            //svg
             require("imagemin-svgo")({
               plugins: [
                 {
                   removeViewBox: false
                 },
                 {
-                  convertColors: {
-                    currentColor: true
+                  removeUselessStrokeAndFill: {
+                    removeNone: true
                   }
                 },
                 {
-                  addAttributesToSVGElement: {
-                    attributes: [
-                      {
-                        fill: "currentColor"
-                      }
-                    ]
-                  }
-                },
-                {
-                  cleanupIDs: {
-                    prefix: {
-                      toString() {
-                        this.counter = this.counter || 0;
-                        return `icon-${this.counter++}`;
-                      }
-                    }
+                  removeAttrs: {
+                    attrs: "(stroke.*|fill.*)" //remove all stroke and fill related attributes
                   }
                 }
               ]
@@ -379,6 +360,19 @@ module.exports = function(grunt) {
       }
     },
 
+    //svg icons
+    svgstore: {
+      options: {
+        cleanup: ["fill", "stroke"],
+        includedemo: true
+      },
+      all: {
+        files: {
+          [`${path.public}${path.assets}icons.svg`]: [`${path.public}${path.icons}*.svg`]
+        }
+      }
+    },
+
     // šablonování html
     preprocess: {
       options: {
@@ -389,12 +383,6 @@ module.exports = function(grunt) {
           BSversion: grunt.file.readJSON("./package.json").dependencies.bootstrap.substring(1),
           jQueryVersion: grunt.file.readJSON("./package.json").dependencies.jquery.substring(1)
         }
-      },
-      components: {
-        cwd: `${path.development}${path.pages}components/`,
-        src: ["**/*.{html,php}"],
-        dest: `${path.public}${path.pages}components/`,
-        expand: true
       },
       pages: {
         cwd: `${path.public}${path.pages}`,
@@ -421,18 +409,24 @@ module.exports = function(grunt) {
   ]);
   grunt.registerTask("update_javascript", ["newer:jshint", "newer:concat", "babel"]);
   grunt.registerTask("update_pages", ["sync:pages", "newer:preprocess"]);
-  grunt.registerTask("update_page_components", ["newer:preprocess:components", "preprocess:pages"]);
   grunt.registerTask("update_css", ["sass"]);
   grunt.registerTask("update_images", ["sync:images"]);
-  grunt.registerTask("update_icons", ["newer:imagemin:icons", "sync:icons"]);
+  grunt.registerTask("update_icons", ["newer:imagemin:icons", "sync:icons", "newer:svgstore"]);
   grunt.registerTask("update_assets", ["sync:assets"]);
 
   //optimize tasks
-  grunt.registerTask("optimize_all", ["optimize_css", "optimize_javascript", "optimize_images", "optimize_pages"]);
+  grunt.registerTask("optimize_all", [
+    "optimize_css",
+    "optimize_javascript",
+    "optimize_images",
+    "optimize_pages",
+    "optimize_icons"
+  ]);
   grunt.registerTask("optimize_javascript", ["newer:uglify"]);
   grunt.registerTask("optimize_pages", ["clean:pages"]);
   grunt.registerTask("optimize_css", ["newer:postcss"]);
   grunt.registerTask("optimize_images", ["newer:imagemin:images"]);
+  grunt.registerTask("optimize_icons", ["clean:icons"]);
 
   //3 main tasks
   grunt.registerTask("build", ["update_all", "optimize_all", "compress"]);
