@@ -273,6 +273,7 @@ module.exports = function(grunt) {
             speed: 1,
             quality: [0, 0.98] //lossy settings
           }),
+          //if netlify build errors with timeout, comment zopfli plugin
           require("imagemin-zopfli")({
             more: true
           }),
