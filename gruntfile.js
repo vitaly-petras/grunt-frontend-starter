@@ -44,8 +44,12 @@ module.exports = function(grunt) {
         tasks: grunt.cli.tasks[0] === "develop" ? ["update_javascript"] : ["update_javascript", "optimize_javascript"]
       },
       pages: {
-        files: [`${path.development}${path.pages}**/*.{php,html}`],
-        tasks: ["update_pages"]
+        files: [`${path.development}${path.pages}**/*.{php,html}`, `!${path.development}${path.pages}components/**`],
+        tasks: ["update_newer_pages"]
+      },
+      page_components: {
+        files: [`${path.development}${path.pages}components/**/*.{php,html}`],
+        tasks: ["update_all_pages"]
       },
       images: {
         files: [`${path.development}${path.images}**/*`],
@@ -388,10 +392,12 @@ module.exports = function(grunt) {
     "update_icons",
     "update_css",
     "update_images",
-    "update_pages"
+    "update_pages",
+    "update_all_pages"
   ]);
   grunt.registerTask("update_javascript", ["newer:jshint", "newer:concat"]);
-  grunt.registerTask("update_pages", ["sync:pages", "newer:preprocess"]);
+  grunt.registerTask("update_newer_pages", ["sync:pages", "newer:preprocess"]);
+  grunt.registerTask("update_all_pages", ["sync:pages", "preprocess"]);
   grunt.registerTask("update_css", ["sass"]);
   grunt.registerTask("update_images", ["sync:images"]);
   grunt.registerTask("update_icons", ["newer:imagemin:icons", "sync:icons", "newer:svgstore"]);
