@@ -100,6 +100,9 @@ module.exports = function(grunt) {
     // minifikace javascriptu
     uglify: {
       target: {
+        options: {
+          sourceMap: true
+        },
         files: [
           {
             expand: true,
@@ -113,6 +116,9 @@ module.exports = function(grunt) {
 
     // sjednoceni vsech .js souboru do jednoho
     concat: {
+      options: {
+        sourceMap: true
+      },
       target: {
         src: [
           //vstupni soubory
