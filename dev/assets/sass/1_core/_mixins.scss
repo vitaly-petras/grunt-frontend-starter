@@ -65,3 +65,9 @@
 @mixin ls($value) {
   letter-spacing: $value/1000 + em;
 }
+
+@mixin explorerOnly {
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    @content;
+  }
+}
