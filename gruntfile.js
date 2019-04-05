@@ -399,7 +399,6 @@ module.exports = function(grunt) {
     "update_icons",
     "update_css",
     "update_images",
-    "update_pages",
     "update_all_pages"
   ]);
   grunt.registerTask("update_javascript", ["newer:jshint", "newer:concat"]);
