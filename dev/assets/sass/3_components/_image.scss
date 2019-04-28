@@ -5,13 +5,17 @@
 
   &-contain {
     object-fit: contain;
-	}
+  }
 
-	&-absolute{
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-	}
+  &-absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &-scale-down {
+    object-fit: scale-down;
+  }
 }
