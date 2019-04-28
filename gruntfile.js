@@ -226,21 +226,24 @@ module.exports = function(grunt) {
       target: {
         options: {
           map: false,
-          processors: [
-            require("autoprefixer"),
-            require("postcss-flexbugs-fixes"),
-            require("postcss-object-fit-images"),
-            require(`postcss-pxtorem`)({
-              rootValue: 16,
-              unitPrecision: 5,
-              propList: ["*", "!border", "!border-left", "!border-top", "!border-bottom", "!border-right"],
-              selectorBlackList: [],
-              replace: true,
-              mediaQuery: true,
-              minPixelValue: 0
-            }),
-            require("cssnano")()
-          ]
+          processors:
+            grunt.cli.tasks[0] === "develop"
+              ? [require("autoprefixer")]
+              : [
+                  require("autoprefixer"),
+                  require("postcss-flexbugs-fixes"),
+                  require("postcss-object-fit-images"),
+                  require(`postcss-pxtorem`)({
+                    rootValue: 16,
+                    unitPrecision: 5,
+                    propList: ["*", "!border", "!border-left", "!border-top", "!border-bottom", "!border-right"],
+                    selectorBlackList: [],
+                    replace: true,
+                    mediaQuery: true,
+                    minPixelValue: 0
+                  }),
+                  require("cssnano")()
+                ]
         },
         files: [
           {
@@ -404,7 +407,7 @@ module.exports = function(grunt) {
   grunt.registerTask("update_javascript", ["newer:jshint", "newer:concat"]);
   grunt.registerTask("update_newer_pages", ["sync:pages", "newer:preprocess"]);
   grunt.registerTask("update_all_pages", ["sync:pages", "preprocess"]);
-  grunt.registerTask("update_css", ["sass"]);
+  grunt.registerTask("update_css", ["sass", "postcss"]);
   grunt.registerTask("update_images", ["sync:images"]);
   grunt.registerTask("update_icons", ["newer:imagemin:icons", "sync:icons", "newer:svgstore"]);
   grunt.registerTask("update_assets", ["sync:assets"]);
