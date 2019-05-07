@@ -242,7 +242,14 @@ module.exports = function(grunt) {
                     mediaQuery: true,
                     minPixelValue: 0
                   }),
-                  require("cssnano")()
+                  require("cssnano")({
+                    preset: [
+                      "default",
+                      {
+                        normalizePositions: false
+                      }
+                    ]
+                  })
                 ]
         },
         files: [
