@@ -239,7 +239,7 @@ module.exports = function(grunt) {
                     propList: ["*", "!border", "!border-left", "!border-top", "!border-bottom", "!border-right"],
                     selectorBlackList: [],
                     replace: true,
-                    mediaQuery: true,
+                    mediaQuery: false,
                     minPixelValue: 0
                   }),
                   require("cssnano")({
