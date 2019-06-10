@@ -381,7 +381,7 @@ module.exports = function(grunt) {
     preprocess: {
       options: {
         srcDir: `${path.public}${path.pages}`,
-        type: "html",
+        type: "html, php",
         context: {
           task: grunt.cli.tasks[0],
           BSversion: grunt.file.readJSON("./package.json").dependencies.bootstrap.substring(1),
