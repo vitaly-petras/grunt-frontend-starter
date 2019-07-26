@@ -1,12 +1,14 @@
-# 🚀 starter template
+# 🚀 Frontend starter template
 
 ## 👤 Pro klienty
 
 ### Demo
-- [ke shlédnutí](https://starter-template.netlify.com/)
+
+- [ke shlédnutí](https://frontend-starter.netlify.com/)
 
 ### Způsoby stažení
-- [optimalizovaný archiv](https://starter-template.netlify.com/data.zip) - produkční a optimalizované soubory (minifikované css, js, komprimováné obrázky apod)
+
+- [optimalizovaný archiv](https://frontend-starter.netlify.com/data.zip) - produkční a optimalizované soubory (minifikované css, js, komprimováné obrázky apod)
 - projekt lze taky snadno stáhnout jako archiv. Stači kliknout na ikonku mráčku (download) vedle "Web IDE". Tyto soubory pravděpodobně nepotřebujete! Nacházejí se zde vývojové soubory a tento způsob stažení budete potřebovat nejspíše pouze pro programátora, který neumí pracovat s GITem.
 
 ### V případě dalších úprav na projektu
@@ -20,6 +22,7 @@ Máte-li vyvojáře, který vám můj statický kód implementuje na redakční 
 Pokud k dílu máte jakékoliv připomínky, prosím otevřete `issue` v ticketovacím systému. Tento systém najdete v levém postranním panelu pod záložkou `issues`.
 
 Správně by 1 připomínka měla být v 1 samostatném issue s podrobným popisem. Pokud se jedna o chybu uveďte prosím tyto údaje:
+
 - váš operační systém
 - prohlížeč a jeho verze
 - [rozlišení obrázovky](https://whatismyresolution.com/) v sekci detailed information
@@ -28,11 +31,15 @@ Správně by 1 připomínka měla být v 1 samostatném issue s podrobným popis
 Tento způsob připomínkování nám ušetří mnoho času a snadno se v tom všichni zorientujeme. Děkuji!
 
 ---
+
 ---
+
 ---
+
 ---
 
 ## 🎧 Pro vyvojáře
+
 Níže najdeš informace jak s projektem zacházet.
 
 ### 💻 Dostupné příkazy
@@ -45,26 +52,25 @@ Spustí vyvojářský server. Hlídá soubory, kompiluje a aktualizuje prohlíž
 
 Prožene celý projekt různými optimalizacemi a vytvoří složku **public**, která je určená pro vložení do produkce (ostrého webu).
 
-
 **`grunt debug`**
 
 Vygeneruje public složku a spustí server optimalizovaného webu. Hodí se předevšim při testování a debugování prohlížečů a zařízení.
 
-
 ## 🧐 Co je uvnitř?
+
 Rychlý náhled na soubory , který uvidíte na projektu:
 
-		.
-		├── node_modules
-		├── dev
-		├── .gitignore
-		├── LICENSE
-		├── package-lock.json
-		├── package.json
-		├── README.md
-		├── public
-		├── gruntfile.js
-		└── podklady
+    	.
+    	├── node_modules
+    	├── dev
+    	├── .gitignore
+    	├── LICENSE
+    	├── package-lock.json
+    	├── package.json
+    	├── README.md
+    	├── public
+    	├── gruntfile.js
+    	└── podklady
 
 1. **`/node_modules`**: sloužka, kde se nacházejí všechny moduly a pluginy (npm packages), které používá projekt. Do této složky nikdy nezasahujeme a je generováná automatický.
 
@@ -86,21 +92,21 @@ Rychlý náhled na soubory , který uvidíte na projektu:
 
 10. **`/podklady`**: tato složka je volitelná a jeji obsah je ignorován gitem. Dáváme zde jakoukoliv dokumentaci (grafiku, texty apod)
 
-
 ### ❗️ Struktura dev
+
 Pojďme se blíže podívat na strukturu složky dev, protože v ni budeme trávit většinu času.
 
-		.
-		└── dev
-			├── pages
-				└── components
-			├── images
-			└── assets
-				├── icons
-				├── sass
-				├── js
-				├── fonts
-				└── favicons
+    	.
+    	└── dev
+    		├── pages
+    			└── components
+    		├── images
+    		└── assets
+    			├── icons
+    			├── sass
+    			├── js
+    			├── fonts
+    			└── favicons
 
 1. **[dev](./dev)**: kořenový adresář
 2. **[dev/pages](./dev/pages)**: zde pracujeme s .html, popřípadě .php soubory
@@ -115,34 +121,35 @@ Pojďme se blíže podívat na strukturu složky dev, protože v ni budeme tráv
 
 Poznámka: v každé složce se nachází vlastní README.md soubor ve kterém najdeš příklad použití. Můžeš to proklikat v odkazech výše.
 
-
 ### Jak to všechno začíná?
+
 Pokud plánuješ začít nový projekt a využit tento project starter, pak doporučený postup je následující:
+
 1. vytvoř si nový projekt v GITu ([gitlab](https://gitlab.com/))
 2. cd cesta/do/noveho/projektu - ujisti se, že tvůj terminál (CMD pro windowsáky) se nachází ve správné složce
 3. vlož do terminálu (cmd pro win) a stiskni ENTER. Tím se starter template stáhne a nainstaluje.
+
 ```
-git clone git@gitlab.com:html-factory/starter-template.git
-rm -rf starter-template/.git
-rsync -vau starter-template/ ./
-rm -rf starter-template
+git clone git@gitlab.com:html-factory/frontend-starter.git
+rm -rf frontend-starter/.git
+rsync -vau frontend-starter/ ./
+rm -rf frontend-starter
 npm install
 git add .
 git commit -m "Added: Starter template installed"
 ```
-4. To je vše, jsi připraven začít kódovat nový projekt.
 
+4. To je vše, jsi připraven začít kódovat nový projekt.
 
 ### 🌎 Hurá do světa
 
 Web doporučuji napojit na [Netlify](https://app.netlify.com/start/repos). Netlify je bezplatný hosting pro statické (html) stránky. Je to je dokonalý nástroj pro plně automatizovanou prezentaci tvé práce klientovi. Mezi přednosti této služby patří:
+
 - automatický deploy po pushnutí (= nulová údržba)
 - automatická podpora HTTPS & HTTP2
 - všechny soubory jsou hostováný na CDN (= je to rychlé)
 - je to zdarma! Dokud nepřekročíme určité limity, ale to ty nepřekročíš pokud nemáš několikatisícovou návštěvnost denně
 - velmi jednoduché nastavení služby na pár kliknutí
-
-
 
 ---
 
