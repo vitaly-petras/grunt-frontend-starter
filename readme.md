@@ -1,4 +1,4 @@
-# 🚀 Frontend starter template
+# 🚀 Frontend starter
 
 ## 👤 Pro klienty
 
@@ -78,7 +78,7 @@ Rychlý náhled na soubory , který uvidíte na projektu:
 
 3. **`.gitignore`**: soubor, který říká gitu, které soubory má ignorovat.
 
-4. **`LICENSE`**: Starter template je pod MIT licenci.
+4. **`LICENSE`**: Frontend starter je pod MIT licenci.
 
 5. **`package-lock.json`**: automatický generováný soubor, který obsahuje informace o použitých modulech (dependency). Do tohoto souboru nikdy nezasahujeme.
 
@@ -127,7 +127,7 @@ Pokud plánuješ začít nový projekt a využit tento project starter, pak dopo
 
 1. vytvoř si nový projekt v GITu ([gitlab](https://gitlab.com/))
 2. cd cesta/do/noveho/projektu - ujisti se, že tvůj terminál (CMD pro windowsáky) se nachází ve správné složce
-3. vlož do terminálu (cmd pro win) a stiskni ENTER. Tím se starter template stáhne a nainstaluje.
+3. vlož do terminálu (cmd pro win) a stiskni ENTER. Tím se frontend starter stáhne a nainstaluje.
 
 ```
 git clone git@gitlab.com:html-factory/frontend-starter.git
@@ -136,7 +136,7 @@ rsync -vau frontend-starter/ ./
 rm -rf frontend-starter
 npm install
 git add .
-git commit -m "Added: Starter template installed"
+git commit -m "Added: Frontend starter installed"
 ```
 
 4. To je vše, jsi připraven začít kódovat nový projekt.
