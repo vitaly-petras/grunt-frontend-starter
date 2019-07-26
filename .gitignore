@@ -13,9 +13,12 @@ podklady
 
 #wordpress
 ######################
-wordpress/wp-content/uploads
-wordpress/wp-content/cache
-wordpress/wp-content/aiowps_backups
+wordpress/*
+!wp-content/
+wordpress/wp-content/*
+!themes/
+wordpress/wp-content/themes/*
+!dev
 
 
 # development files
