@@ -2,36 +2,13 @@
   display: inline-block;
   flex-shrink: 0;
   fill: currentColor;
+  width: 1em;
+  height: 1em;
 
   svg {
     display: block;
     width: 100%;
     height: 100%;
     fill: inherit;
-  }
-
-  &-xs {
-    width: 10px;
-    height: 10px;
-  }
-
-  &-sm {
-    width: 15px;
-    height: 15px;
-  }
-
-  &-md {
-    width: 20px;
-    height: 20px;
-  }
-
-  &-lg {
-    width: 25px;
-    height: 25px;
-  }
-
-  &-xl {
-    width: 30px;
-    height: 30px;
   }
 }
