@@ -50,11 +50,11 @@ Spustí vyvojářský server. Hlídá soubory, kompiluje a aktualizuje prohlíž
 
 **`grunt build`**
 
-Prožene celý projekt různými optimalizacemi a vytvoří složku **public**, která je určená pro vložení do produkce (ostrého webu).
+Prožene celý projekt různými optimalizacemi a vytvoří složku **dist**, která je určená pro vložení do produkce (ostrého webu).
 
 **`grunt debug`**
 
-Vygeneruje public složku a spustí server optimalizovaného webu. Hodí se předevšim při testování a debugování prohlížečů a zařízení.
+Vygeneruje dist složku a spustí server optimalizovaného webu. Hodí se předevšim při testování a debugování prohlížečů a zařízení.
 
 ## 🧐 Co je uvnitř?
 
@@ -68,7 +68,7 @@ Rychlý náhled na soubory , který uvidíte na projektu:
     	├── package-lock.json
     	├── package.json
     	├── README.md
-    	├── public
+    	├── dist
     	├── gruntfile.js
     	└── podklady
 
@@ -86,7 +86,7 @@ Rychlý náhled na soubory , který uvidíte na projektu:
 
 7. **`README.md`**: soubor, který najdeš skoro v každém adresáři. Obsahuje užitečné informace a doporučení.
 
-8. **`/public`**: tato složka je generováná automatický. Obsahuje naše soubory ze složky dev v optimalizované podobě. Automatické spuštění serveru (browsersync) se spouští z této složky. Do této složky bys ručně neměl zasahovat - uprav složku dev, aby se to propsalo do public.
+8. **`/dist`**: tato složka je generováná automatický. Obsahuje naše soubory ze složky dev v optimalizované podobě. Automatické spuštění serveru (browsersync) se spouští z této složky. Do této složky bys ručně neměl zasahovat - uprav složku dev, aby se to propsalo do dist.
 
 9. **`gruntfile.js`**: soubor obsahujicí veškeré automatizace (hlídání souborů, minifikace, optimalizace). Pro pokročilé uživatele může být rozšiřitelným o další nástroje a automatizace.
 
