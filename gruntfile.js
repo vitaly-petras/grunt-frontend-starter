@@ -123,6 +123,22 @@ module.exports = function(grunt) {
       options: {
         sourceMap: true
       },
+      jquery: {
+        src: [
+          //vstupni soubory
+          `node_modules/jquery/dist/jquery.js`
+        ],
+        //vystupni soubor
+        dest: `${path.public}${path.js}jquery.js`
+      },
+      bootstrap: {
+        src: [
+          //vstupni soubory
+          `node_modules/bootstrap/dist/js/bootstrap.bundle.js`
+        ],
+        //vystupni soubor
+        dest: `${path.public}${path.js}bootstrap.js`
+      },
       custom: {
         src: [
           //vstupni soubory
@@ -402,8 +418,6 @@ module.exports = function(grunt) {
         type: "html, php",
         context: {
           task: grunt.cli.tasks[0],
-          BSversion: grunt.file.readJSON("./package.json").dependencies.bootstrap.substring(1),
-          jQueryVersion: grunt.file.readJSON("./package.json").dependencies.jquery.substring(1)
         }
       },
       pages: {
