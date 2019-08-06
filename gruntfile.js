@@ -40,7 +40,7 @@ module.exports = function(grunt) {
         tasks: grunt.cli.tasks[0] === "develop" ? ["update_css"] : ["update_css", "optimize_css"]
       },
       js: {
-        files: [`${path.development}${path.js}*.js`],
+        files: [`${path.development}${path.js}**/*.js`],
         tasks: grunt.cli.tasks[0] === "develop" ? ["update_javascript"] : ["update_javascript", "optimize_javascript"]
       },
       pages: {
@@ -123,12 +123,12 @@ module.exports = function(grunt) {
       options: {
         sourceMap: true
       },
-      target: {
+      custom: {
         src: [
           //vstupni soubory
           `node_modules/object-fit-images/dist/ofi.js`,
           `node_modules/svg4everybody/dist/svg4everybody.js`,
-          `${path.development}${path.js}**/*.js`
+          `${path.development}${path.js}custom/*.js`
         ],
         //vystupni soubor
         dest: `${path.public}${path.js}custom.js`
