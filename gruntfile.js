@@ -3,7 +3,7 @@
 module.exports = function(grunt) {
   const rootDestinations = {
     development: "dev/", //pouze pro vyvoj
-    public: "public/" //produkce
+    public: "dist/" //produkce
   };
 
   const mainDestinations = {
@@ -417,7 +417,7 @@ module.exports = function(grunt) {
         srcDir: `${path.public}${path.pages}`,
         type: "html, php",
         context: {
-          task: grunt.cli.tasks[0],
+          task: grunt.cli.tasks[0]
         }
       },
       pages: {
