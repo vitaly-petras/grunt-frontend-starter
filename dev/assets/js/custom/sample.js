@@ -1,5 +1,5 @@
 (function($) {
   $(function() {
-    svg4everybody();
+    //code here
   });
 })(jQuery);
