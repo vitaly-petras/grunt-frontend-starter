@@ -143,6 +143,7 @@ module.exports = function(grunt) {
         src: [
           //vstupni soubory
           `node_modules/object-fit-images/dist/ofi.js`,
+          `node_modules/default-passive-events/dist/index.js`,
           `node_modules/svg4everybody/dist/svg4everybody.js`,
           `${path.development}${path.js}custom/*.js`
         ],
