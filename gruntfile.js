@@ -77,7 +77,8 @@ module.exports = function(grunt) {
         files: ["gruntfile.js", "package.json"],
         options: {
           reload: true
-        }
+        },
+        tasks: ['update_all']
       }
     },
 
