@@ -15,7 +15,7 @@
   # CSP settings
   Header set Content-Security-Policy: "upgrade-insecure-requests;"
   # Content-Security-Policy Header
-  Header set Content-Security-Policy "default-src 'self';"
+  #Header set Content-Security-Policy "default-src 'self';" - tady stim velmi opatrne, muze zpusobit velke potize pri nacteni externich zdroju
 </IfModule>
 
 
