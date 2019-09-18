@@ -78,7 +78,7 @@ module.exports = function(grunt) {
         options: {
           reload: true
         },
-        tasks: ['update_all']
+        tasks: ["update_all"]
       }
     },
 
@@ -367,6 +367,10 @@ module.exports = function(grunt) {
           //jpg very light lossy, use vs jpegtran
           require("imagemin-mozjpeg")({
             quality: 90
+          }),
+          //webp
+          require("imagemin-webp")({
+            quality: 90
           })
         ]
       },
@@ -375,7 +379,7 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: `${path.public}${path.images}`,
-            src: ["**/*.{png,jpg,gif,svg}"],
+            src: ["**/*.{png,jpg,gif,svg,webp}"],
             dest: `${path.public}${path.images}`
           }
         ]
