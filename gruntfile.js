@@ -367,10 +367,6 @@ module.exports = function(grunt) {
           //jpg very light lossy, use vs jpegtran
           require("imagemin-mozjpeg")({
             quality: 90
-          }),
-          //webp
-          require("imagemin-webp")({
-            quality: 90
           })
         ]
       },
@@ -379,7 +375,25 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: `${path.public}${path.images}`,
-            src: ["**/*.{png,jpg,gif,svg,webp}"],
+            src: ["**/*.{png,jpg,gif,svg}"],
+            dest: `${path.public}${path.images}`
+          }
+        ]
+      },
+      webpimages: {
+        options: {
+          use: [
+            //webp
+            require("imagemin-webp")({
+              quality: 90
+            })
+          ]
+        },
+        files: [
+          {
+            expand: true,
+            cwd: `${path.public}${path.images}`,
+            src: ["**/*.{webp}"],
             dest: `${path.public}${path.images}`
           }
         ]
@@ -483,7 +497,7 @@ module.exports = function(grunt) {
   grunt.registerTask("optimize_javascript", ["newer:uglify"]);
   grunt.registerTask("optimize_pages", ["clean:pages"]);
   grunt.registerTask("optimize_css", ["newer:postcss"]);
-  grunt.registerTask("optimize_images", ["newer:imagemin:images"]);
+  grunt.registerTask("optimize_images", ["newer:imagemin:images", "newer:imagemin:webpimages"]);
   grunt.registerTask("optimize_icons", ["clean:icons"]);
 
   //3 main tasks
