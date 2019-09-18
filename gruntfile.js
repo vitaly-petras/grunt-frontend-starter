@@ -134,8 +134,21 @@ module.exports = function(grunt) {
       },
       bootstrap: {
         src: [
-          //vstupni soubory
-          `node_modules/bootstrap/dist/js/bootstrap.bundle.js`
+          //`node_modules/popper.js/dist/umd/popper.js`, //vkladame pouze pokud pouzivame komponentu vyžadující popper.js
+          `node_modules/bootstrap/js/dist/index.js`,
+          `node_modules/bootstrap/js/dist/util.js`, //musi být úplně nahoře, hned pod index.js
+          //nasleduji js komponenty
+          //`node_modules/bootstrap/js/dist/alert.js`,
+          //`node_modules/bootstrap/js/dist/button.js`,
+          //`node_modules/bootstrap/js/dist/carousel.js`,
+          `node_modules/bootstrap/js/dist/collapse.js`,
+          //`node_modules/bootstrap/js/dist/dropdown.js`, //vyžaduje popper.js
+          `node_modules/bootstrap/js/dist/modal.js`
+          //`node_modules/bootstrap/js/dist/scrollspy.js`,
+          //`node_modules/bootstrap/js/dist/tab.js`,
+          //`node_modules/bootstrap/js/dist/toast.js`,
+          //`node_modules/bootstrap/js/dist/tooltip.js`, //vyžaduje popper.js
+          //`node_modules/bootstrap/js/dist/popover.js` //vyžaduje popper.js // popover musí být za tooltipem, jinak řve chybu
         ],
         //vystupni soubor
         dest: `${path.public}${path.js}bootstrap.js`
