@@ -11,4 +11,8 @@
   &-lg {
     height: $input-height-lg;
   }
+
+  &:not(.link){
+    text-decoration: none;
+  }
 }
