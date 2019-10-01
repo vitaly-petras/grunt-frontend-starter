@@ -25,7 +25,7 @@ $(function() {
 
     var setupFancybox = function() {
       $("[data-fancybox]").fancybox({
-        backFocus: false
+        //backFocus: false
       });
     };
 
