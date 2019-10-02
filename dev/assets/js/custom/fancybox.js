@@ -2,7 +2,7 @@ $(function() {
   var fancyboxIsLoaded = false;
   var fancyboxISloading = false;
 
-  $("[data-fancybox]").one("click mouseenter", function(event) {
+  function doFancyboxFunctions(event) {
     var loadFancybox = function() {
       //load css
       var head = document.getElementsByTagName("head")[0];
@@ -25,7 +25,7 @@ $(function() {
 
     var setupFancybox = function() {
       $("[data-fancybox]").fancybox({
-        //backFocus: false
+        backFocus: false
       });
     };
 
@@ -38,14 +38,14 @@ $(function() {
 
       //nepokracuj pokud css nebo js neni nacteny
       setupFancybox();
-      if (event.type === "click") {
+      if (event && event.type === "click") {
         $(event.target).click();
         $(window).resize();
       }
       return true;
     };
 
-    if (event.type === "click" && isFancyboxLoaded() === false) event.preventDefault();
+    if (event && event.type === "click" && isFancyboxLoaded() === false) event.preventDefault();
 
     if (isFancyboxLoaded() === false) {
       loadFancybox();
@@ -59,5 +59,13 @@ $(function() {
         if (isFancyboxLoaded()) startFancybox();
       });
     }
+  }
+
+  $("[data-fancybox]").one("click mouseenter", function(event) {
+    doFancyboxFunctions(event);
   });
+
+  if (window.location.hash) {
+    doFancyboxFunctions();
+  }
 });
