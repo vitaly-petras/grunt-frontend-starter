@@ -148,7 +148,7 @@ module.exports = function(grunt) {
           //`node_modules/bootstrap/js/dist/tab.js`,
           //`node_modules/bootstrap/js/dist/toast.js`,
           //`node_modules/bootstrap/js/dist/tooltip.js`, //vyžaduje popper.js
-          //`node_modules/bootstrap/js/dist/popover.js` //vyžaduje popper.js // popover musí být za tooltipem, jinak řve chybu
+          //`node_modules/bootstrap/js/dist/popover.js` //vyžaduje popper.js // popover musí být za tooltipem a zároveň vyžaduje tooltip, jinak řve chybu
         ],
         //vystupni soubor
         dest: `${path.public}${path.js}bootstrap.js`
