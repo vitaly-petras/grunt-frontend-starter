@@ -11,4 +11,12 @@
     height: inherit;
     fill: inherit;
   }
+
+  [data-toggle="collapse"] & {
+    transition: transform $transition-duration;
+  }
+
+  [aria-expanded="true"] & {
+    transform: rotate(180deg);
+  }
 }
