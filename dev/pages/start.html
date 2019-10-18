@@ -25,6 +25,14 @@
             </a>
           </li>
         </ul>
+
+        <!-- @if task='develop' -->
+        <p class="p-3 mb-0 rounded bg-light">
+          <strong class="text-uppercase d-block text-info">TIP:</strong>
+          Zde vkládej všechny statické stránky, které jsi připravil.
+          <small class="d-block text-muted">Tento TIP vidíš jen ty, v buildu již nebude vidět.</small>
+        </p>
+        <!-- @endif -->
       </div>
     </section>
     <hr />
@@ -48,6 +56,14 @@
           obsahuje: minifikované css a js soubory, zkomprimované obrázky apod.
           <span class="text-danger">Tento způsob stažení nejspíš nepotřebujete</span>, raději pracujte s GitLab prostředím.
         </p>
+
+        <!-- @if task='develop' -->
+        <p class="p-3 mb-0 rounded bg-light">
+          <strong class="text-uppercase d-block text-info">TIP:</strong>
+          Poslední odstavec můžeš zakomentovat a odkomentovat až budeš mít zapalceno nebo dokončeno.
+          <small class="d-block text-muted">Tento TIP vidíš jen ty, v buildu již nebude vidět.</small>
+        </p>
+        <!-- @endif -->
       </div>
     </section>
     <hr />
@@ -69,13 +85,28 @@
           <li>váš operační systém</li>
           <li>prohlížeč a jeho verze</li>
           <li><a href="https://whatismyresolution.com/">rozlišení obrázovky</a> v sekci detailed information</li>
-          <li>pokud je to možné přiložte i fotku</li>
+          <li>pokud je to možné přiložte i fotku nebo printscreen</li>
         </ul>
 
         <p>Tento způsob připomínkování nám ušetří mnoho času a snadno se v tom všichni zorientujeme. Děkuji!</p>
+
+        <!-- @if task='develop' -->
+        <p class="p-3 mb-0 rounded bg-light">
+          <strong class="text-uppercase d-block text-info">TIP:</strong>
+          Všude kde jsou odkazy na GitLab vlož link přímo do projektu. Například <em>Frontend starter</em> má
+          <a href="https://gitlab.com/html-factory/frontend-starter">tento link</a>.
+          <small class="d-block text-muted">Tento TIP vidíš jen ty, v buildu již nebude vidět.</small>
+        </p>
+        <!-- @endif -->
       </div>
     </section>
   </main>
+
+  <footer class="py-5 border-top">
+    <div class="container">
+      <a href="https://www.html-factory.cz/produkty/frontend-starter/">© Frontend starter</a>
+    </div>
+  </footer>
 </div>
 
 <!-- @include components/page-start.html -->

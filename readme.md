@@ -113,4 +113,4 @@ Web doporučuji napojit na [Netlify](https://app.netlify.com/start/repos). Netli
 
 ---
 
-Vitalij Petráš @ [HTMLFACTORY](http://www.html-factory.cz/) © 2018
+[© Frontend starter](https://www.html-factory.cz/produkty/frontend-starter/)
