@@ -1,45 +1,5 @@
 # 🚀 Frontend starter
 
-## 👤 Pro klienty
-
-### Demo
-
-- [ke shlédnutí](https://frontend-starter.netlify.com/)
-
-### Způsoby stažení
-
-- [optimalizovaný archiv](https://frontend-starter.netlify.com/data.zip) - produkční a optimalizované soubory (minifikované css, js, komprimováné obrázky apod)
-- projekt lze taky snadno stáhnout jako archiv. Stači kliknout na ikonku mráčku (download) vedle "Web IDE". Tyto soubory pravděpodobně nepotřebujete! Nacházejí se zde vývojové soubory a tento způsob stažení budete potřebovat nejspíše pouze pro programátora, který neumí pracovat s GITem.
-
-### V případě dalších úprav na projektu
-
-V případě, že projekt se bude dále upravovat mimo mě (kodéra tohoto projektu), velmi vás prosím aby tyto změny byly provedené v mém vývojovém prostředí. Ideálně v GITu abych i já měl aktuální verzi projektu. V případě neodborného zásahu do kódu dále nenesu žádnou odpovědnost za funkčnost díla.
-
-Máte-li vyvojáře, který vám můj statický kód implementuje na redakční systém, tlačte na něj aby pracoval s GITem.
-
-### Případné připomínky
-
-Pokud k dílu máte jakékoliv připomínky, prosím otevřete `issue` v ticketovacím systému. Tento systém najdete v levém postranním panelu pod záložkou `issues`.
-
-Správně by 1 připomínka měla být v 1 samostatném issue s podrobným popisem. Pokud se jedna o chybu uveďte prosím tyto údaje:
-
-- váš operační systém
-- prohlížeč a jeho verze
-- [rozlišení obrázovky](https://whatismyresolution.com/) v sekci detailed information
-- pokud je to možné přiložte i fotku
-
-Tento způsob připomínkování nám ušetří mnoho času a snadno se v tom všichni zorientujeme. Děkuji!
-
----
-
----
-
----
-
----
-
-## 🎧 Pro vyvojáře
-
 Níže najdeš informace jak s projektem zacházet.
 
 ### 💻 Dostupné příkazy
