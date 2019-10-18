@@ -100,6 +100,7 @@ git commit -m "Added: Frontend starter installed"
 ```
 
 4. To je vše, jsi připraven začít kódovat nový projekt.
+5. Použij jeden z [dostupných příkazů](https://gitlab.com/html-factory/frontend-starter#-dostupn%C3%A9-p%C5%99%C3%ADkazy)
 
 ### 🌎 Hurá do světa
 
