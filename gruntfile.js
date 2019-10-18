@@ -325,7 +325,7 @@ module.exports = function(grunt) {
         options: {
           open: true,
           watchTask: true,
-          startPath: "rozcestnik.html",
+          startPath: "start.html",
           scrollProportionally: false,
           server: {
             baseDir: `${path.public}`
