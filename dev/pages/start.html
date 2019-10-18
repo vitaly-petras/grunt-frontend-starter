@@ -29,12 +29,60 @@
         <!-- @if task='develop' -->
         <p class="p-3 mb-0 rounded bg-light">
           <strong class="text-uppercase d-block text-info">TIP:</strong>
-          Zde vkládej všechny statické stránky, které jsi připravil.
+          Zde vkládej všechny statické stránky, které jsi vytvořil.
           <small class="d-block text-muted">Tento TIP vidíš jen ty, v buildu již nebude vidět.</small>
         </p>
         <!-- @endif -->
       </div>
     </section>
+    <!-- @if task='develop' -->
+    <hr />
+    <section class="py-5">
+      <div class="container">
+        <h2 class="mb-3">Checklist</h2>
+        <p>Před odevzdáním projektu bychom měli každou stránku podrobit testování z následujících bodů:</p>
+
+        <ul>
+          <li>Porovnat stránky se screenem (pixel perfect)</li>
+          <li>Ověřit <a href="https://validator.w3.org/#validate_by_input">W3C validitu</a></li>
+          <li>Osnova dokumentu (h1 - h2 - h3 apod. tak aby dávala smysl)</li>
+          <li>Propojít všechny stránky mezi sebou (které lze a které dávají smysl)</li>
+          <li>Zahrnout všechny stránky zde do startu. Názvy stránek by měly odpovídat grafickým navrhům.</li>
+          <li>Vygenerovat <a href="https://realfavicongenerator.net/">favicon ikonky</a></li>
+          <li>Ověřit SEO attributy metatagy a title</li>
+          <li>
+            Pokud je to možné, vložit obrázek pro sociální sítě (1200x630).
+            <a href="https://realfavicongenerator.net/social/#.XanaTOczbUY">může být nápomocné</a> - url vkládat relativní,
+            tzn "/".
+          </li>
+          <li>Potahat oknem prohlížeče aby se neobjevovali horizontální skrollbary</li>
+          <li>
+            Při překlikávání stránek mezi sebou, by nemělo docházet k žadnému skoku. (např. stránka načte a potom se něco byť
+            o par pixelů posune - nepůsobí to dobře)
+          </li>
+          <li>
+            Všechny elementy musí počítat s různorodým obsahem. Tzn. že obsah v jednotlivých polích může být větší, ale i
+            menší. Stejně tak s různými počty položek, vyzkoušet přidat nebo odebrat pár položek. Web se přitom nesmí
+            rozpadnout.
+          </li>
+          <li>
+            Obrázky nachazející se v elementech, které jsou skryté a objevují se až po hoveru, nebo kliku by měly být
+            načítáný lazyloadingem. (jsou to např. okna, taby, submenu apod)
+          </li>
+          <li>Nezapomínáme na hovery a focusy, v ideálním případě na všechny tlačítka používáme btn komponentu.</li>
+          <li>Nepoužíváme PNG ikonky!</li>
+          <li>tiskové styly</li>
+          <li>zkontrolovat lighthouse a dosáhnout vždy zelených čísel ve všech aspektech na každé stránce</li>
+          <li>zkontrolovat zobrazení ve všech prohlížečích: Safari, Opera, Firefox, Chrome, Internet Explorer 11</li>
+        </ul>
+
+        <p class="p-3 mb-0 rounded bg-light">
+          <strong class="text-uppercase d-block text-info">TIP:</strong>
+          Tato sekce je vidítelná pouze pro vyvojáře v <em>develop</em> módu.
+        </p>
+      </div>
+    </section>
+    <!-- @endif -->
     <hr />
     <section class="py-5">
       <div class="container">

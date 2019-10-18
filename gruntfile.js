@@ -228,7 +228,7 @@ module.exports = function(grunt) {
         files: [
           {
             cwd: `${path.development}${path.pages}`,
-            src: [`**/*.{php,html}`, `!checklist.html`],
+            src: [`**/*.{php,html}`],
             dest: `${path.public}${path.pages}`
           }
         ],
