@@ -1,21 +1,81 @@
-<!DOCTYPE html>
-<html lang="cs">
-	<head>
-		<meta charset="UTF-8">
+<!-- @include components/page-start.html -->
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-		<title>Přehled stránek</title>
+<div class="d-flex flex-column min-vh-100">
+  <main role="main" class="flex-grow-1" id="main">
+    <section class="py-5">
+      <div class="container">
+        <h1 class="mb-3">Mapa stránek</h1>
 
-	</head>
-	<body>
+        <ul class="list-unstyled border-bottom">
+          <li class="border-top">
+            <a
+              target="_blank"
+              class="btn btn-outline-dark w-100 p-4 border-0 rounded-0 text-left justify-content-start"
+              href="index.html"
+              >Homepage</a
+            >
+          </li>
+          <li class="border-top">
+            <a
+              target="_blank"
+              class="btn btn-outline-dark w-100 p-4 border-0 rounded-0 text-left justify-content-start"
+              href="start.html"
+            >
+              Other pages
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <hr />
+    <section class="py-5">
+      <div class="container">
+        <h2 class="mb-3">Zdrojové soubory</h2>
 
-		<div class="wrap" style="max-width:960px;margin:0 auto;padding-top:50px;line-height:2.5;">
+        <p>
+          Projekt žije a je ke stažení v systému <a href="https://gitlab.com/">GitLab</a>. Projekt je privátní a pokud jsem
+          vám ještě neposlal přístupy, kontaktujte mě prosím.
+        </p>
 
-				<h1>Přehled stránek</h1>
-				<ul>
-					<li><a target="_blank" href="index.html">Homepage</a></li>
-				</ul>
-		</div>
+        <p>
+          <strong>Ve chvíli kdy zasáhnete do kódu, nenesu žádnou odpovědnost za funkčnost díla.</strong> Proto se prosím
+          raději obraťte na mě, rád vám pomůžu s opravami nebo úpravami v rámci víceprací.
+        </p>
 
-	</body>
-</html>
+        <p>
+          Projekt taky můžete stáhnout z <a href="data.zip">tohoto odkazu</a>. Na uvedeném odkaze stáhnete celý projekt a
+          všechny jeho soubory. Nachází se zde <em>vybuildované soubory</em> projektu, to znamená, že web je optimalizován a
+          obsahuje: minifikované css a js soubory, zkomprimované obrázky apod.
+          <span class="text-danger">Tento způsob stažení nejspíš nepotřebujete</span>, raději pracujte s GitLab prostředím.
+        </p>
+      </div>
+    </section>
+    <hr />
+    <section class="py-5">
+      <div class="container">
+        <h2 class="mb-3">Případné připomínky</h2>
+
+        <p>
+          Pokud k dílu máte jakékoliv připomínky, prosím otevřete <strong>issue</strong> v ticketovacím systému
+          <a href="https://gitlab.com/">GitLab</a>. <strong>Issues</strong> najdete v levém postranním panelu.
+        </p>
+
+        <p>
+          Správně by 1 připomínka měla být v 1 samostatném issue s podrobným popisem. Pokud se jedna o chybu uveďte prosím
+          tyto údaje:
+        </p>
+
+        <ul>
+          <li>váš operační systém</li>
+          <li>prohlížeč a jeho verze</li>
+          <li><a href="https://whatismyresolution.com/">rozlišení obrázovky</a> v sekci detailed information</li>
+          <li>pokud je to možné přiložte i fotku</li>
+        </ul>
+
+        <p>Tento způsob připomínkování nám ušetří mnoho času a snadno se v tom všichni zorientujeme. Děkuji!</p>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- @include components/page-start.html -->
