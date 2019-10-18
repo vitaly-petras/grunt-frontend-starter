@@ -114,4 +114,4 @@ Web doporučuji napojit na [Netlify](https://app.netlify.com/start/repos). Netli
 
 ---
 
-[© Frontend starter](https://www.html-factory.cz/produkty/frontend-starter/)
+[© Frontend starter](https://www.html-factory.cz/produkty/frontend-starter/?referrer=produkt-readme)
