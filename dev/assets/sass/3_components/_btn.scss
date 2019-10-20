@@ -1,3 +1,4 @@
+// tato komponenta upravuje BS btn komponentu, můžete ji smazat pokud vám toto chování nevyhovuje
 .btn {
   display: inline-flex;
   align-items: center;
@@ -12,7 +13,7 @@
     height: $input-height-lg;
   }
 
-  &:not(.btn-link){
+  &:not(.btn-link) {
     text-decoration: none;
   }
 }
