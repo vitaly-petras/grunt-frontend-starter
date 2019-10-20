@@ -86,8 +86,9 @@ Poznámka: v každé složce se nachází vlastní README.md soubor ve kterém n
 Pokud plánuješ začít nový projekt a využit tento Frontend starter, pak doporučený postup je následující:
 
 1. vytvoř si nový projekt v GITu ([gitlab](https://gitlab.com/))
-2. cd cesta/do/noveho/projektu - ujisti se, že tvůj terminál (CMD pro windowsáky) se nachází ve správné složce
-3. vlož do terminálu (cmd pro win) a stiskni ENTER. Tím se Frontend starter stáhne a nainstaluje.
+2. zkopíruj projekt na svůj PC (clone to sourcetree)
+3. cd cesta/do/noveho/projektu - ujisti se, že tvůj terminál (CMD pro windowsáky) se nachází ve správné složce
+4. vlož do terminálu (cmd pro win) a stiskni ENTER. Tím se Frontend starter stáhne a nainstaluje.
 
 ```
 git clone git@gitlab.com:html-factory/frontend-starter.git
@@ -99,8 +100,8 @@ git add .
 git commit -m "Added: Frontend starter installed"
 ```
 
-4. To je vše, jsi připraven začít kódovat nový projekt.
-5. Použij jeden z [dostupných příkazů](https://gitlab.com/html-factory/frontend-starter#-dostupn%C3%A9-p%C5%99%C3%ADkazy)
+5. To je vše, jsi připraven začít kódovat nový projekt.
+6. Použij jeden z [dostupných příkazů](https://gitlab.com/html-factory/frontend-starter#-dostupn%C3%A9-p%C5%99%C3%ADkazy)
 
 ### 🌎 Hurá do světa
 
