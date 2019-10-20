@@ -10,11 +10,11 @@ $selectric-text-color:      $input-color;
 
 .selectric{
   font-size: $selectric-font-size;
-  
+
   border-color: $input-border;
   border-radius: $radius;
   transition: border-color 150ms;
-  
+
   button{
     display: block;
       position: absolute;
@@ -31,10 +31,10 @@ $selectric-text-color:      $input-color;
       &::after{
         display:block;
         content: '';
-        @include align();
+        position: absolute;
         width: 0;
         height: 0;
-      
+
         color: inherit;
         border-style: solid;
         border-width: 6px 6px 0 6px;
