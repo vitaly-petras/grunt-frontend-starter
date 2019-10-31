@@ -491,14 +491,12 @@ module.exports = function(grunt) {
     "optimize_css",
     "optimize_javascript",
     "optimize_images",
-    "optimize_pages",
-    "optimize_icons"
+    "optimize_pages"
   ]);
   grunt.registerTask("optimize_javascript", ["newer:uglify"]);
   grunt.registerTask("optimize_pages", ["clean:pages"]);
   grunt.registerTask("optimize_css", ["newer:postcss"]);
   grunt.registerTask("optimize_images", ["newer:imagemin:images", "newer:imagemin:webpimages"]);
-  grunt.registerTask("optimize_icons", ["clean:icons"]);
 
   //3 main tasks
   grunt.registerTask("build", ["update_all", "optimize_all", "compress"]);
