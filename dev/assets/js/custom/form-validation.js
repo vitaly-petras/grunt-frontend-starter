@@ -13,7 +13,10 @@
             if (form.checkValidity() === false) {
               event.preventDefault();
               event.stopPropagation();
-              $(form).find(':invalid').first().focus();//focus first invalid field
+              $(form)
+                .find(":invalid:not(fieldset)")
+                .first()
+                .focus(); //focus first invalid field
             }
             form.classList.add("was-validated");
           },
