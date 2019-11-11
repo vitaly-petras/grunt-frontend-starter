@@ -6,7 +6,7 @@
   height: 1em;
   vertical-align: middle;
 
-  svg {
+  svg:not(.icon) {
     display: block;
     width: inherit;
     height: inherit;
