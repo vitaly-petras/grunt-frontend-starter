@@ -44,15 +44,11 @@ module.exports = function(grunt) {
         tasks: grunt.cli.tasks[0] === "develop" ? ["update_javascript"] : ["update_javascript", "optimize_javascript"]
       },
       pages: {
-        files: [`${path.development}${path.pages}**/*.{php,html}`, `!${path.development}${path.pages}components/**`],
+        files: [`${path.development}${path.pages}**`, `!${path.development}${path.pages}components/**`],
         tasks: ["update_newer_pages"]
       },
-      rootfiles: {
-        files: [`${path.development}${path.pages}**/*`, `!${path.development}${path.pages}**/.{php,html}`],
-        tasks: ["update_rootfiles"]
-      },
       page_components: {
-        files: [`${path.development}${path.pages}components/**/*.{php,html}`],
+        files: [`${path.development}${path.pages}components/**`],
         tasks: ["update_all_pages"]
       },
       images: {
@@ -228,29 +224,10 @@ module.exports = function(grunt) {
         files: [
           {
             cwd: `${path.development}${path.pages}`,
-            src: [`**/*.{php,html}`],
-            dest: `${path.public}${path.pages}`
-          }
-        ],
-        verbose: false, // Default: false
-        pretend: false, // Don't do any disk operations - just write log. Default: false
-        failOnError: false, // Fail the task when copying is not possible. Default: false
-        updateAndDelete: true, // Remove all files from dest that are not found in src. Default: false
-        compareUsing: "mtime" // compares via md5 hash of file contents, instead of file modification time. Default: "mtime"
-      },
-      rootfiles: {
-        files: [
-          {
-            cwd: `${path.development}${path.pages}`,
-            src: [`*`, `components/**`, `!**/*.{html}`],
+            src: [`**`],
             dest: `${path.public}`
           }
         ],
-        verbose: false, // Default: false
-        pretend: false, // Don't do any disk operations - just write log. Default: false
-        failOnError: false, // Fail the task when copying is not possible. Default: false
-        updateAndDelete: false, // Remove all files from dest that are not found in src. Default: false
-        compareUsing: "mtime" // compares via md5 hash of file contents, instead of file modification time. Default: "mtime"
       }
     },
 
@@ -447,14 +424,14 @@ module.exports = function(grunt) {
     // šablonování html
     preprocess: {
       options: {
-        srcDir: `${path.public}${path.pages}`,
+        srcDir: `${path.public}`,
         type: "html, php",
         context: {
           task: grunt.cli.tasks[0]
         }
       },
       pages: {
-        cwd: `${path.public}${path.pages}`,
+        cwd: `${path.public}`,
         src: ["**/*.{html,php}", "!components/**"],
         dest: `${path.public}`,
         expand: true
@@ -474,8 +451,7 @@ module.exports = function(grunt) {
     "update_icons",
     "update_css",
     "update_images",
-    "update_all_pages",
-    "update_rootfiles"
+    "update_all_pages"
   ]);
   grunt.registerTask("update_javascript", ["newer:jshint", "newer:concat"]);
   grunt.registerTask("update_newer_pages", ["sync:pages", "newer:preprocess"]);
@@ -484,7 +460,6 @@ module.exports = function(grunt) {
   grunt.registerTask("update_images", ["sync:images"]);
   grunt.registerTask("update_icons", ["newer:imagemin:icons", "sync:icons", "newer:svgstore"]);
   grunt.registerTask("update_assets", ["sync:assets"]);
-  grunt.registerTask("update_rootfiles", ["sync:rootfiles"]);
 
   //optimize tasks
   grunt.registerTask("optimize_all", [
