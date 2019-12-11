@@ -234,7 +234,7 @@ module.exports = function(grunt) {
     // mazani souboru
     clean: {
       public: [`${path.public}`],
-      pages: [`${path.public}${path.pages}`],
+      pages: [`${path.public}*.{html,php}`],
       icons: [`${path.public}${path.icons}`]
     },
 
@@ -455,7 +455,7 @@ module.exports = function(grunt) {
   ]);
   grunt.registerTask("update_javascript", ["newer:jshint", "newer:concat"]);
   grunt.registerTask("update_newer_pages", ["sync:pages", "newer:preprocess"]);
-  grunt.registerTask("update_all_pages", ["sync:pages", "preprocess"]);
+  grunt.registerTask("update_all_pages", ["clean:pages", "sync:pages", "preprocess"]);
   grunt.registerTask("update_css", ["sass", "postcss"]);
   grunt.registerTask("update_images", ["sync:images"]);
   grunt.registerTask("update_icons", ["newer:imagemin:icons", "sync:icons", "newer:svgstore"]);
@@ -465,11 +465,9 @@ module.exports = function(grunt) {
   grunt.registerTask("optimize_all", [
     "optimize_css",
     "optimize_javascript",
-    "optimize_images",
-    "optimize_pages"
+    "optimize_images"
   ]);
   grunt.registerTask("optimize_javascript", ["newer:uglify"]);
-  grunt.registerTask("optimize_pages", ["clean:pages"]);
   grunt.registerTask("optimize_css", ["newer:postcss"]);
   grunt.registerTask("optimize_images", ["newer:imagemin:images", "newer:imagemin:webpimages"]);
 
