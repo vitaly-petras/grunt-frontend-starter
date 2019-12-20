@@ -427,7 +427,8 @@ module.exports = function(grunt) {
         srcDir: `${path.public}`,
         type: "html, php",
         context: {
-          task: grunt.cli.tasks[0]
+          task: grunt.cli.tasks[0],
+          version: Date.now()
         }
       },
       pages: {
