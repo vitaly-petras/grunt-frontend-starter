@@ -37,11 +37,11 @@ module.exports = function(grunt) {
       },
       css: {
         files: `${path.development}${path.scss}**/*.scss`,
-        tasks: grunt.cli.tasks[0] === "develop" ? ["update_css"] : ["update_css", "optimize_css"]
+        tasks: ["update_css", "optimize_css"]
       },
       js: {
         files: [`${path.development}${path.js}**/*.js`],
-        tasks: grunt.cli.tasks[0] === "develop" ? ["update_javascript"] : ["update_javascript", "optimize_javascript"]
+        tasks: ["update_javascript", "optimize_javascript"]
       },
       pages: {
         files: [`${path.development}${path.pages}**`, `!${path.development}${path.pages}components/**`],
@@ -83,8 +83,7 @@ module.exports = function(grunt) {
         options: {
           implementation: require("node-sass"),
           outputStyle: "expanded",
-          sourcemap: true,
-          sourceMapEmbed: true
+          sourcemap: false
         },
         files: [
           {
@@ -117,9 +116,6 @@ module.exports = function(grunt) {
 
     // sjednoceni vsech .js souboru do jednoho
     concat: {
-      options: {
-        sourceMap: true
-      },
       jquery: {
         src: [
           //vstupni soubory
@@ -452,25 +448,25 @@ module.exports = function(grunt) {
   grunt.registerTask("update_all", [
     "clean:public",
     "update_assets",
-    "update_javascript",
+    "update_javascript", "optimize_javascript",
     "update_icons",
-    "update_css",
+    "update_css", "optimize_css",
     "update_images",
     "update_all_pages"
   ]);
   grunt.registerTask("update_javascript", ["newer:jshint", "newer:concat"]);
   grunt.registerTask("update_newer_pages", ["sync:pages", "newer:preprocess"]);
   grunt.registerTask("update_all_pages", ["clean:pages", "sync:pages", "preprocess"]);
-  grunt.registerTask("update_css", ["sass", "postcss"]);
+  grunt.registerTask("update_css", ["sass"]);
   grunt.registerTask("update_images", ["sync:images"]);
   grunt.registerTask("update_icons", ["newer:imagemin:icons", "sync:icons", "newer:svgstore"]);
   grunt.registerTask("update_assets", ["sync:assets"]);
 
   //optimize tasks
   grunt.registerTask("optimize_all", [
-    "optimize_css",
-    "optimize_javascript",
-    "optimize_images"
+    //"optimize_css",
+    //"optimize_javascript",
+    "optimize_pages"
   ]);
   grunt.registerTask("optimize_javascript", ["newer:uglify"]);
   grunt.registerTask("optimize_css", ["newer:postcss"]);
