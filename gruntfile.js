@@ -250,41 +250,46 @@ module.exports = function(grunt) {
     postcss: {
       target: {
         options: {
-          map: false,
-          processors:
-            grunt.cli.tasks[0] === "develop"
-              ? [require("autoprefixer")]
-              : [
-                  require("autoprefixer"),
-                  require("postcss-flexbugs-fixes"),
-                  require("postcss-object-fit-images"),
-                  require(`postcss-pxtorem`)({
-                    rootValue: 16,
-                    unitPrecision: 5,
-                    propList: ["*", "!border", "!border-left", "!border-top", "!border-bottom", "!border-right"],
-                    selectorBlackList: [],
-                    replace: true,
-                    mediaQuery: false,
-                    minPixelValue: 0
-                  }),
-                  require("cssnano")({
-                    preset: [
-                      "default",
-                      {
-                        normalizePositions: false
-                      }
-                    ]
-                  })
-                ]
+          map: {
+            inline: false,
+            annotation: `${path.public}${path.css}`
+          },
+          processors: [
+            require("autoprefixer"),
+            require("postcss-flexbugs-fixes"),
+            require("postcss-object-fit-images"),
+            require(`postcss-pxtorem`)({
+              rootValue: 16,
+              unitPrecision: 5,
+              propList: [
+                "*",
+                "!border",
+                "!border-left",
+                "!border-top",
+                "!border-bottom",
+                "!border-right"
+              ],
+              selectorBlackList: [],
+              replace: true,
+              mediaQuery: false,
+              minPixelValue: 2
+            }),
+            require("cssnano")({
+              preset: [
+                "default",
+                {
+                  normalizePositions: false
+                }
+              ]
+            })
+          ]
         },
-        files: [
-          {
-            expand: true,
-            cwd: `${path.public}${path.css}`,
-            src: ["*.css"],
-            dest: `${path.public}${path.css}`
-          }
-        ]
+        files: [{
+          expand: true,
+          cwd: `${path.public}${path.css}`,
+          src: ["*.css"],
+          dest: `${path.public}${path.css}`
+        }]
       }
     },
 
