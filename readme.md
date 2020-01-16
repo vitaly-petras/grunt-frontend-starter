@@ -12,10 +12,6 @@ Spustí vyvojářský server. Hlídá soubory, kompiluje a aktualizuje prohlíž
 
 Prožene celý projekt různými optimalizacemi a vytvoří složku **dist**, která je určená pro vložení do produkce (ostrého webu).
 
-**`grunt debug`**
-
-Vygeneruje dist složku a spustí server optimalizovaného webu. Hodí se předevšim při testování a debugování prohlížečů a zařízení.
-
 ## 🧐 Co je uvnitř?
 
 Rychlý náhled na soubory , který uvidíte na projektu:

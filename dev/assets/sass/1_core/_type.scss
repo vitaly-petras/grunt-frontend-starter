@@ -1,6 +1,6 @@
 // k dispozici máme .h1 až .h6, .display-1 až .display-4, lead, small. Jejich velikosti nastavujeme ve variables
 html {
-  //pokud je rozliseni mensi nez 360px pak vsechno scaluj jako by bylo 360 (funguje pouze v produkci a debug tasku)
+  //pokud je rozliseni mensi nez 360px pak vsechno scaluj jako by bylo 360
   @media (max-width: 359px) {
     font-size: 16 * 100 / 360 * 1vw;
   }

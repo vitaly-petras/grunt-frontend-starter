@@ -475,10 +475,9 @@ module.exports = function(grunt) {
   //3 main tasks
   grunt.registerTask("build", ["update_all", "optimize_all", "compress"]);
   grunt.registerTask("develop", ["update_all", "browserSync", "watch"]);
-  grunt.registerTask("debug", ["update_all", "optimize_all", "browserSync", "watch"]);
 
   grunt.registerTask("default", function() {
     grunt.log.writeln("\nVyberte prosím z dostupných příkazů:"["black"].bold);
-    grunt.log.writeln(` - grunt develop\n - grunt build\n - grunt debug`);
+    grunt.log.writeln(` - grunt develop\n - grunt build`);
   });
 };
