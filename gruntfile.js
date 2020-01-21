@@ -37,11 +37,11 @@ module.exports = function(grunt) {
       },
       css: {
         files: `${path.development}${path.scss}**/*.scss`,
-        tasks: ["update_css", "optimize_css"]
+        tasks: ["update_css"]
       },
       js: {
         files: [`${path.development}${path.js}**/*.js`],
-        tasks: ["update_javascript", "optimize_javascript"]
+        tasks: ["update_javascript"]
       },
       pages: {
         files: [`${path.development}${path.pages}**`, `!${path.development}${path.pages}components/**`],
@@ -116,6 +116,9 @@ module.exports = function(grunt) {
 
     // sjednoceni vsech .js souboru do jednoho
     concat: {
+      options: {
+        sourceMap: true
+      },
       jquery: {
         src: [
           //vstupni soubory
@@ -244,7 +247,7 @@ module.exports = function(grunt) {
     },
 
     postcss: {
-      target: {
+      update: {
         options: {
           map: {
             inline: false,
@@ -268,8 +271,32 @@ module.exports = function(grunt) {
               selectorBlackList: [],
               replace: true,
               mediaQuery: false,
-              minPixelValue: 2
+              minPixelValue: 0
             }),
+            require("cssnano")({
+              preset: [
+                "default",
+                {
+                  normalizePositions: false
+                }
+              ]
+            })
+          ]
+        },
+        files: [{
+          expand: true,
+          cwd: `${path.public}${path.css}`,
+          src: ["*.css"],
+          dest: `${path.public}${path.css}`
+        }]
+      },
+      minify: {
+        options: {
+          map: {
+            inline: false,
+            annotation: `${path.public}${path.css}`
+          },
+          processors: [
             require("cssnano")({
               preset: [
                 "default",
@@ -448,28 +475,28 @@ module.exports = function(grunt) {
   grunt.registerTask("update_all", [
     "clean:public",
     "update_assets",
-    "update_javascript", "optimize_javascript",
+    "update_javascript",
     "update_icons",
-    "update_css", "optimize_css",
+    "update_css",
     "update_images",
     "update_all_pages"
   ]);
   grunt.registerTask("update_javascript", ["newer:jshint", "newer:concat"]);
   grunt.registerTask("update_newer_pages", ["sync:pages", "newer:preprocess"]);
   grunt.registerTask("update_all_pages", ["clean:pages", "sync:pages", "preprocess"]);
-  grunt.registerTask("update_css", ["sass"]);
+  grunt.registerTask("update_css", ["newer:sass", "newer:postcss:update"]);
   grunt.registerTask("update_images", ["sync:images"]);
   grunt.registerTask("update_icons", ["newer:imagemin:icons", "sync:icons", "newer:svgstore"]);
   grunt.registerTask("update_assets", ["sync:assets"]);
 
   //optimize tasks
   grunt.registerTask("optimize_all", [
-    //"optimize_css",
-    //"optimize_javascript",
-    //"optimize_pages"
+    "optimize_css",
+    "optimize_javascript",
+    "optimize_pages"
   ]);
   grunt.registerTask("optimize_javascript", ["newer:uglify"]);
-  grunt.registerTask("optimize_css", ["newer:postcss"]);
+  grunt.registerTask("optimize_css", ["newer:postcss:minify"]);
   grunt.registerTask("optimize_pages", ["clean:pages"]);
   grunt.registerTask("optimize_images", ["newer:imagemin:images", "newer:imagemin:webpimages"]);
 
