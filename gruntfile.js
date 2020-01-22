@@ -484,7 +484,7 @@ module.exports = function(grunt) {
   grunt.registerTask("update_javascript", ["newer:jshint", "newer:concat"]);
   grunt.registerTask("update_newer_pages", ["sync:pages", "newer:preprocess"]);
   grunt.registerTask("update_all_pages", ["clean:pages", "sync:pages", "preprocess"]);
-  grunt.registerTask("update_css", ["newer:sass", "newer:postcss:update"]);
+  grunt.registerTask("update_css", ["sass", "newer:postcss:update"]);
   grunt.registerTask("update_images", ["sync:images"]);
   grunt.registerTask("update_icons", ["newer:imagemin:icons", "sync:icons", "newer:svgstore"]);
   grunt.registerTask("update_assets", ["sync:assets"]);
