@@ -271,7 +271,7 @@ module.exports = function(grunt) {
               selectorBlackList: [],
               replace: true,
               mediaQuery: false,
-              minPixelValue: 0
+              minPixelValue: 2
             }),
             require("cssnano")({
               preset: [
