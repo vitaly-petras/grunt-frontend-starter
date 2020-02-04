@@ -493,7 +493,8 @@ module.exports = function(grunt) {
   grunt.registerTask("optimize_all", [
     "optimize_css",
     "optimize_javascript",
-    //"optimize_pages"
+    //"optimize_pages",
+    "optimize_images"
   ]);
   grunt.registerTask("optimize_javascript", ["newer:uglify"]);
   grunt.registerTask("optimize_css", ["newer:postcss:minify"]);
