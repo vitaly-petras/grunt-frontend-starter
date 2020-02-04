@@ -1,5 +1,6 @@
 stages:
   - build
+  - deploy
 
 build:
   stage: build
@@ -17,3 +18,13 @@ build:
     paths:
       - dist
     expire_in: 1 hour
+
+deploy:
+  stage: deploy
+  before_script:
+    - apt-get update -qq
+    - apt-get install -y -qq lftp
+  script:
+    - lftp -e "open $FTP_HOST; user $FTP_USERNAME $FTP_PASSWORD; mkdir -f $CI_PROJECT_NAME; mirror -R dist --verbose; mv $CI_PROJECT_NAME $CI_JOB_ID; mv dist $CI_PROJECT_NAME; rm -r $CI_JOB_ID; bye"
+  only:
+    - master
