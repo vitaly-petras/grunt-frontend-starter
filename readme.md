@@ -99,15 +99,9 @@ git commit -m "Added: Frontend starter installed"
 5. To je vše, jsi připraven začít kódovat nový projekt.
 6. Použij jeden z [dostupných příkazů](https://gitlab.com/htmlfactory.cz/frontend-starter#-dostupn%C3%A9-p%C5%99%C3%ADkazy)
 
-### 🌎 Hurá do světa
+### 🌎 Pouze pro odebíratele
 
-Web doporučuji napojit na [Netlify](https://app.netlify.com/start/repos). Netlify je bezplatný hosting pro statické (html) stránky. Je to je dokonalý nástroj pro plně automatizovanou prezentaci tvé práce klientovi. Mezi přednosti této služby patří:
-
-- automatický deploy po pushnutí (= nulová údržba)
-- automatická podpora HTTPS & HTTP2
-- všechny soubory jsou hostováný na CDN (= je to rychlé)
-- je to zdarma! Dokud nepřekročíme určité limity, ale to ty nepřekročíš pokud nemáš několikatisícovou návštěvnost denně
-- velmi jednoduché nastavení služby na pár kliknutí
+Tento framework by měli používat pouze odebíratele [www.html-factory.cz](https://www.html-factory.cz/produkty/frontend-starter/?referrer=produkt-readme). Pokud ještě nejste jednim z nich, přihlášte se prosím k odběru novinek.
 
 ---
 
