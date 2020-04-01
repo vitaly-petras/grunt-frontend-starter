@@ -87,7 +87,7 @@ Pokud plánuješ začít nový projekt a využit tento Frontend starter, pak dop
 4. vlož do terminálu (cmd pro win) a stiskni ENTER. Tím se Frontend starter stáhne a nainstaluje.
 
 ```
-git clone git@gitlab.com:html-factory/frontend-starter.git
+git clone git@gitlab.com:htmlfactory.cz/frontend-starter.git
 rm -rf frontend-starter/.git
 rsync -vau frontend-starter/ ./
 rm -rf frontend-starter
@@ -97,7 +97,7 @@ git commit -m "Added: Frontend starter installed"
 ```
 
 5. To je vše, jsi připraven začít kódovat nový projekt.
-6. Použij jeden z [dostupných příkazů](https://gitlab.com/html-factory/frontend-starter#-dostupn%C3%A9-p%C5%99%C3%ADkazy)
+6. Použij jeden z [dostupných příkazů](https://gitlab.com/htmlfactory.cz/frontend-starter#-dostupn%C3%A9-p%C5%99%C3%ADkazy)
 
 ### 🌎 Hurá do světa
 
