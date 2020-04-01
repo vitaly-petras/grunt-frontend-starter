@@ -16,7 +16,7 @@ Všechny svg ikonky v této složce jsou komprimovány specifickým nastavením 
 
 ```
 <svg class="icon">
-	<use xlink:href="#nazev-souboru"></use>
+	<use xlink:href="assets/icons.svg#nazev-souboru"></use>
 </svg>
 ```
 
