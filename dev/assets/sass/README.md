@@ -1,0 +1,1 @@
+Do této složky vkládáme CSS kód. Soubory nachazející se zde - v kořenovém adresáři a bez _ na začátku generuji další css soubory. V tuto chvíli všechny css styly jsou spojováný do global.css, pokud chcete vytvořit vlastní styly vytvořte `custom.scss` v této složce.
