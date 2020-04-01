@@ -7,7 +7,7 @@ module.exports = function(grunt) {
   };
 
   const mainDestinations = {
-    pages: "pages/", //pro html a php soubory
+    pages: "src/", //pro html a php soubory
     images: "images/", //obrazky (vkladane pres admin)
     assets: "assets/" //doplnujici soubory, ke kterym uzivatel nema pristup (css, js, icons)
   };
