@@ -1,30 +1,14 @@
 stages:
   - build
-  - deploy
 
 build:
   stage: build
   image: node
   before_script:
     - apt-get update
-    - apt-get install -y graphicsmagick
     - npm install --save-dev grunt-cli
     - npm install
   only:
     - master
   script:
     - npm run build
-  artifacts:
-    paths:
-      - dist
-    expire_in: 1 hour
-
-deploy:
-  stage: deploy
-  before_script:
-    - apt-get update -qq
-    - apt-get install -y -qq lftp
-  script:
-    - lftp -e "set ssl:verify-certificate false; open $FTP_HOST; user $FTP_USERNAME $FTP_PASSWORD; mkdir -f $CI_PROJECT_NAME; mirror -R dist --verbose; mv $CI_PROJECT_NAME $CI_JOB_ID; mv dist $CI_PROJECT_NAME; rm -r $CI_JOB_ID; bye"
-  only:
-    - master
