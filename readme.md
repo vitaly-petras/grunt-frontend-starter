@@ -83,7 +83,7 @@ Pokud vám něco nefunguje vytvořte prosím [issue](https://gitlab.com/htmlfact
 
 ### Pouze pro odběratele
 
-Tento framework by měli používat pouze odběratele [www.html-factory.cz](https://www.html-factory.cz/produkty/frontend-starter/?referrer=produkt-readme). Pokud ještě nejste jednim z nich, [přihláste se prosím k odběru novinek](https://www.html-factory.cz/produkty/frontend-starter/?referrer=produkt-readme).
+Tento framework by měli používat pouze odběratele [www.html-factory.cz](https://www.html-factory.cz/produkty/frontend-starter/?referrer=produkt-readme). Pokud ještě nejste jednim z nich, [přihláste se prosím k odběru novinek](https://www.html-factory.cz/produkty/frontend-starter#odebirat).
 
 ---
 
