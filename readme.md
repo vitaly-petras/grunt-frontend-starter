@@ -79,7 +79,7 @@ Poznámka: v každé složce se nachází vlastní README.md soubor ve kterém n
 
 ### V případě nalezení chyby vytvořte issue
 
-Pokud vám něco nefunguje vytvořte prosím [issue](https://gitlab.com/htmlfactory.cz/frontend-starter/-/issues issue).
+Pokud vám něco nefunguje vytvořte prosím [issue](https://gitlab.com/htmlfactory.cz/frontend-starter/-/issues).
 
 ### Pouze pro odběratele
 
