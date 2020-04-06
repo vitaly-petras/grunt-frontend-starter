@@ -77,9 +77,13 @@ Pojďme se blíže podívat na strukturu složky dev, protože v ni budeme tráv
 
 Poznámka: v každé složce se nachází vlastní README.md soubor ve kterém najdeš příklad použití. Můžeš to proklikat v odkazech výše.
 
+### V případě nalezení chyby vytvořte issue
+
+Pokud vám něco nefunguje vytvořte prosím [issue](https://gitlab.com/htmlfactory.cz/frontend-starter/-/issues issue).
+
 ### Pouze pro odběratele
 
-Tento framework by měli používat pouze odběratele [www.html-factory.cz](https://www.html-factory.cz/produkty/frontend-starter/?referrer=produkt-readme). Pokud ještě nejste jednim z nich, přihláste se prosím k odběru novinek.
+Tento framework by měli používat pouze odběratele [www.html-factory.cz](https://www.html-factory.cz/produkty/frontend-starter/?referrer=produkt-readme). Pokud ještě nejste jednim z nich, [přihláste se prosím k odběru novinek](https://www.html-factory.cz/produkty/frontend-starter/?referrer=produkt-readme).
 
 ---
 
