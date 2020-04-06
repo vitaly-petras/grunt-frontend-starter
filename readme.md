@@ -77,31 +77,9 @@ Pojďme se blíže podívat na strukturu složky dev, protože v ni budeme tráv
 
 Poznámka: v každé složce se nachází vlastní README.md soubor ve kterém najdeš příklad použití. Můžeš to proklikat v odkazech výše.
 
-### Jak to všechno začíná?
+### Pouze pro odběratele
 
-Pokud plánuješ začít nový projekt a využit tento Frontend starter, pak doporučený postup je následující:
-
-1. vytvoř si nový projekt v GITu ([gitlab](https://gitlab.com/))
-2. zkopíruj projekt na svůj PC (clone to sourcetree)
-3. cd cesta/do/noveho/projektu - ujisti se, že tvůj terminál (CMD pro windowsáky) se nachází ve správné složce
-4. vlož do terminálu (cmd pro win) a stiskni ENTER. Tím se Frontend starter stáhne a nainstaluje.
-
-```
-git clone git@gitlab.com:htmlfactory.cz/frontend-starter.git
-rm -rf frontend-starter/.git
-rsync -vau frontend-starter/ ./
-rm -rf frontend-starter
-npm install
-git add .
-git commit -m "Added: Frontend starter installed"
-```
-
-5. To je vše, jsi připraven začít kódovat nový projekt.
-6. Použij jeden z [dostupných příkazů](https://gitlab.com/htmlfactory.cz/frontend-starter#-dostupn%C3%A9-p%C5%99%C3%ADkazy)
-
-### 🌎 Pouze pro odebíratele
-
-Tento framework by měli používat pouze odebíratele [www.html-factory.cz](https://www.html-factory.cz/produkty/frontend-starter/?referrer=produkt-readme). Pokud ještě nejste jednim z nich, přihlášte se prosím k odběru novinek.
+Tento framework by měli používat pouze odběratele [www.html-factory.cz](https://www.html-factory.cz/produkty/frontend-starter/?referrer=produkt-readme). Pokud ještě nejste jednim z nich, přihláste se prosím k odběru novinek.
 
 ---
 
