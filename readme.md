@@ -54,7 +54,7 @@ Pojďme se blíže podívat na strukturu složky dev, protože v ni budeme tráv
 
     	.
     	└── dev
-    		├── src
+    		├── pages
     			└── components
     		├── images
     		└── assets
@@ -65,8 +65,8 @@ Pojďme se blíže podívat na strukturu složky dev, protože v ni budeme tráv
     			└── favicons
 
 1. **[dev](./dev)**: kořenový adresář
-2. **[dev/src](./dev/src)**: zde pracujeme s .html, popřípadě .php soubory
-3. **[dev/src/components](./dev/src/components)**: zde vytváříme znovupoužitelné html bloky,které potom importujeme
+2. **[dev/pages](./dev/pages)**: zde pracujeme s .html, popřípadě .php soubory
+3. **[dev/pages/components](./dev/pages/components)**: zde vytváříme znovupoužitelné html bloky,které potom importujeme
 4. **[dev/images](./dev/images)**: zde patří veškeré obrázky použité na webu. V budoucnu se tyto obrázky vloží přes použitý CMS admin
 5. **[dev/assets](./dev/assets)**: patří sem soubory, které se vztahuji k vývoji. Tyto soubory nelze ovlivnit skrz admin
 6. **[dev/assets/icons](./dev/assets/icons)**: svg ikonky, které jsou vloženy inline a mění svou barvu v závislosti na css vlastnosti color
