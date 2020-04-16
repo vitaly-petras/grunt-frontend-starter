@@ -40,11 +40,11 @@
     "time-grunt": "^1.2.1"
   },
   "dependencies": {
-    "bootstrap": "^4.4.1",
-    "imagemin-webp": "^5.1.0",
-    "jquery": "^3.4.1",
-    "object-fit-images": "^3.2.4",
-    "popper.js": "^1.16.0",
-    "svg4everybody": "^2.1.9"
+    "bootstrap": "~4.4.1",
+    "imagemin-webp": "~5.1.0",
+    "jquery": "~3.4.1",
+    "object-fit-images": "~3.2.4",
+    "popper.js": "~1.16.0",
+    "svg4everybody": "~2.1.9"
   }
 }
