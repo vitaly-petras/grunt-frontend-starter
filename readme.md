@@ -52,7 +52,7 @@ Prožene celý projekt různými optimalizacemi a vytvoří složku **dist**, kt
 
 3. **`.gitignore`**: soubor, který říká gitu, které soubory má ignorovat.
 
-4. **`LICENSE`**: Frontend starter je pod MIT licenci.
+4. **`LICENSE`**: Grunt frontend starter je pod MIT licenci.
 
 5. **`package-lock.json`**: automatický generováný soubor, který obsahuje informace o použitých modulech (dependency). Do tohoto souboru nikdy nezasahujeme.
 
