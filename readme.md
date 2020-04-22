@@ -1,7 +1,3 @@
-# 🚀 Frontend starter
-
-Níže najdeš informace jak s projektem zacházet.
-
 ### 🚀 Rychlý start
 
 - zkopírujte tento repozitář (nejsnadnější je stáhnout všechno v zip pomoci tlačítka "clone or download")
