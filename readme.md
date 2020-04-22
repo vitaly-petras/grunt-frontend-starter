@@ -93,7 +93,7 @@ A protože ve složce `dev` budeme trávit nejvíce času. podíváme se na ni p
 9. **[dev/assets/fonts](./dev/assets/fonts)**: zde patří lokální fonty vložené přes font-face css vlastnost
 10. **[dev/assets/favicons](./dev/assets/favicons)**: vygenerujeme a vložíme zde výsledné faviconky na web
 
-❗️Poznámka: v každé složce se nachází vlastní README.md soubor ve kterém najdeš příklad použití. Doporučuji složky proklikat a o každém si něco přečíst.
+❗️Poznámka: v každé složce se nachází vlastní README.md soubor ve kterém najdete příklad použití. Doporučuji složky proklikat a o každém si něco přečíst.
 
 ---
 
