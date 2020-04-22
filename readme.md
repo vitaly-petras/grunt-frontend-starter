@@ -1,4 +1,4 @@
-# 🚀💻 Frontend starter
+# 🚀 Frontend starter
 
 Níže najdeš informace jak s projektem zacházet.
 
@@ -16,11 +16,9 @@ Spustí vyvojářský server. Hlídá soubory, kompiluje a aktualizuje prohlíž
 
 **`grunt build`**
 
-Prožene celý projekt různými optimalizacemi a vytvoří složku **dist**, která je určená pro vložení do produkce (ostrého webu).
+Prožene celý projekt různými optimalizacemi a vytvoří složku **dist**, která je určená pro vložení do produkce (ostrý web).
 
 ## 🧐 Struktura projektu
-
-Rychlý náhled na soubory , který uvidíte v projektu:
 
     	.
     	├── node_modules
@@ -54,7 +52,7 @@ Rychlý náhled na soubory , který uvidíte v projektu:
 
 10. **`/podklady`**: tato složka je volitelná a jeji obsah je ignorován gitem. Dáváme zde jakoukoliv dokumentaci (grafiku, texty apod)
 
-### ❗️ Struktura dev
+### 💻 Struktura dev
 
 Vývoj probíhá výhradně ve složce `dev`, proto se na tuto složku podíváme podrobně.
 
@@ -81,7 +79,7 @@ Vývoj probíhá výhradně ve složce `dev`, proto se na tuto složku podívám
 9. **[dev/assets/fonts](./dev/assets/fonts)**: zde patří lokální fonty vložené přes font-face css vlastnost
 10. **[dev/assets/favicons](./dev/assets/favicons)**: vygenerujeme a vložíme zde výsledné faviconky na web
 
-Poznámka: v každé složce se nachází vlastní README.md soubor ve kterém najdeš příklad použití. Doporučuji složky proklikat a o každém si něco přečíst.
+❗️Poznámka: v každé složce se nachází vlastní README.md soubor ve kterém najdeš příklad použití. Doporučuji složky proklikat a o každém si něco přečíst.
 
 ---
 
