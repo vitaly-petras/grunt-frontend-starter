@@ -1,3 +1,14 @@
+### Základní informace a vlastnosti
+
+- SCSS
+- integrovaný bootstrap
+- html a php podpora
+- automatické optimalice obrázků a všech textových souborů
+- jQuery
+- Browsersync
+- svgstore
+- produkční build
+
 ### ❗️ Požadavky
 
 - [Node.js](https://nodejs.org/en/)
