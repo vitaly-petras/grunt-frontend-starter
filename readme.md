@@ -66,7 +66,9 @@ Prožene celý projekt různými optimalizacemi a vytvoří složku **dist**, kt
 
 ### 💻 Struktura dev
 
-Vývoj probíhá výhradně ve složce `dev`, proto se na tuto složku podíváme podrobně.
+Hlavní myšlenka je taková, že vývoj probíhá výhradně ve složce `dev`. Všechno co chcete dostat do produkce by mělo existovat v `dev` složce. Do složky `dist` byste nikdy zasahovat neměli. `dev` složka by vždy měla zůstat v kořenovém adresáři, naopak `dist` složku můžeme změnit na jakoukoliv jinou, například na `wordpress/wp-content/themes/dist/` pokud web pak implementujete na wordpress.
+
+A protože ve složce `dev` budeme trávit nejvíce času. podíváme se na ni pod drobnohledem.
 
     	.
     	└── dev
