@@ -1,0 +1,36 @@
+/*!
+==============================================================
+
+----------------------------------------
+---------------- POZOR! ----------------
+----------------------------------------
+
+Stylopis byl vygenerovan pomoci CSS preprocesoru.
+Nikdy needitujte tento .css soubor!
+
+==============================================================
+*/
+
+// ************************************************ //
+// 1. Core
+// ************************************************ //
+@import "1_core/fonts";
+@import "1_core/bootstrap";
+@import "1_core/mixins";
+@import "1_core/type";
+@import "1_core/keyframes";
+
+// ************************************************ //
+// 2. Libs - externi knihovny
+// ************************************************ //
+//pr. nejcasteji pouzivanymi pluginy pro me jsou: slick-carousel, selectric, datepicker, fancybox
+//@import "2_libs/slick-with-flex";
+//@import "../../../node_modules/slick-carousel/slick/slick.scss";
+
+// ************************************************ //
+// 3. Components - cely web skladame z komponent
+// ************************************************ //
+@import "3_components/btn";
+@import "3_components/icon";
+@import "3_components/image";
+@import "3_components/skip-to-main";

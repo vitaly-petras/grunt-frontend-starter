@@ -1,0 +1,9 @@
+.skip-to-main {
+  top: 10px;
+  left: 10px;
+  transform: translateX(-9999px);
+
+  &:focus {
+    transform: translateX(0);
+  }
+}

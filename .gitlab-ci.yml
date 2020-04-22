@@ -1,0 +1,14 @@
+stages:
+  - build
+
+build:
+  stage: build
+  image: node
+  before_script:
+    - apt-get update
+    - npm install --save-dev grunt-cli
+    - npm install
+  only:
+    - master
+  script:
+    - npm run build

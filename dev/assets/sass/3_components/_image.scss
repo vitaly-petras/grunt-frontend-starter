@@ -1,0 +1,13 @@
+.image {
+  &-cover {
+    object-fit: cover;
+  }
+
+  &-contain {
+    object-fit: contain;
+  }
+
+  &-scale-down {
+    object-fit: scale-down;
+  }
+}

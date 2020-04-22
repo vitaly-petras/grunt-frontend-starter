@@ -1,0 +1,117 @@
+$selectric-main-color:      $input-border;
+$selectric-bg-color:      $input-bg;
+$selectric-btn-bg-color:    transparent;
+$selectric-height:        $input-height;
+$selectric-border-width:    $input-border-width;
+$selectric-font-size:     $input-font-size;
+$selectric-text-color:      $input-color;
+
+@import             "../../../../node_modules/selectric/src/selectric";
+
+.selectric{
+  font-size: $selectric-font-size;
+
+  border-color: $input-border;
+  border-radius: $radius;
+  transition: border-color 150ms;
+
+  button{
+    display: block;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: $selectric-inner-height;
+      height: $selectric-inner-height;
+
+      border:0;
+      background:none;
+      outline: none;
+      transition: transform 150ms;
+
+      &::after{
+        display:block;
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+
+        color: inherit;
+        border-style: solid;
+        border-width: 6px 6px 0 6px;
+        border-color: currentColor transparent transparent transparent;
+      }
+  }
+
+  .label{
+    font-size: inherit;
+    margin-left: $input-padding-x;
+  }
+
+  &:hover{
+    border-color: darken($color-border, 10%);
+  }
+
+  &--sm{
+    .label{
+      margin-right: $input-height-sm;
+      line-height: $input-height-sm - ($input-border-width*2);
+      height: $input-height-sm - ($input-border-width*2);
+    }
+
+    button{
+      width: $input-height-sm - ($input-border-width*2);
+      height: $input-height-sm - ($input-border-width*2);
+    }
+  }
+
+  &-select--lg{
+    @include font-size-18;
+
+    .label{
+      margin-right: $input-height-lg;
+      line-height: $input-height-lg - ($input-border-width*2);
+      height: $input-height-lg - ($input-border-width*2);
+    }
+
+    button{
+      width: $input-height-lg - ($input-border-width*2);
+      height: $input-height-lg - ($input-border-width*2);
+    }
+  }
+}
+
+.selectric-items {
+  ul,li{
+    min-height: 1px;
+    line-height: inherit;
+  }
+
+  li {
+      color: inherit;
+      transition: background-color 150ms, color 150ms;
+
+      &:hover {
+        background: darken($selectric-bg-color, 10%);
+        color: inherit;
+    }
+
+      &.selected, &.highlighted {
+          background: $color-link;
+          color: white;
+      }
+  }
+}
+
+.selectric-open button{
+  transform: rotate(180deg);
+}
+
+/*
+$(function(){
+  $('.select').selectric({
+    responsive: true,
+    maxHeight: 245,
+    arrowButtonMarkup: '<button></button>'
+  });
+});
+*/

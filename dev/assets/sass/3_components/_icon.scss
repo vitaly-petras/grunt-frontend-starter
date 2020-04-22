@@ -1,0 +1,18 @@
+// ************************************************ //
+// TIP: komponenta pro ikonky, lze kombinovat s h1-h6
+// ************************************************ //
+
+.icon {
+  display: inline-block;
+  flex-shrink: 0;
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+
+  svg:not(.icon) {
+    display: block;
+    width: inherit;
+    height: inherit;
+    fill: inherit;
+  }
+}

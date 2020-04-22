@@ -1,0 +1,162 @@
+<!-- @include components/page-start.html -->
+
+<div class="d-flex flex-column min-vh-100">
+  <main role="main" class="flex-grow-1" id="main">
+    <section class="py-5">
+      <div class="container">
+        <h1 class="mb-3">Mapa stránek</h1>
+
+        <ul class="list-unstyled border-bottom">
+          <li class="border-top">
+            <a target="_blank" class="btn btn-outline-dark w-100 p-4 border-0 rounded-0 text-left justify-content-start"
+               href="index.html">Homepage</a>
+          </li>
+          <li class="border-top">
+            <a target="_blank" class="btn btn-outline-dark w-100 p-4 border-0 rounded-0 text-left justify-content-start"
+               href="start.html">
+              Other pages
+            </a>
+          </li>
+        </ul>
+
+        <!-- @if task='develop' -->
+        <p class="p-3 mb-0 rounded bg-light">
+          <strong class="text-uppercase d-block text-info">TIP:</strong>
+          Zde vkládej všechny statické stránky, které jsi vytvořil.
+          <small class="d-block text-muted">Tento TIP vidíš jen ty, v buildu již nebude vidět.</small>
+        </p>
+        <!-- @endif -->
+      </div>
+    </section>
+    <!-- @if task='develop' -->
+    <hr />
+    <section class="py-5">
+      <div class="container">
+        <h2 class="mb-3">Checklist</h2>
+        <p>Před odevzdáním projektu bychom měli každou stránku podrobit testování z následujících bodů:</p>
+
+        <ul>
+          <li>Porovnat stránky se screenem (pixel perfect)</li>
+          <li>Ověřit <a href="https://validator.w3.org/#validate_by_input">W3C validitu</a></li>
+          <li>Osnova dokumentu (h1 - h2 - h3 apod. tak aby dávala smysl)</li>
+          <li>Propojít všechny stránky mezi sebou (které lze a které dávají smysl)</li>
+          <li>Zahrnout všechny stránky zde do startu. Názvy stránek by měly odpovídat grafickým navrhům.</li>
+          <li>Vygenerovat <a href="https://realfavicongenerator.net/">favicon ikonky</a></li>
+          <li>Ověřit SEO attributy metatagy a title</li>
+          <li>
+            Pokud je to možné, vložit obrázek pro sociální sítě (1200x630).
+            <a href="https://realfavicongenerator.net/social/#.XanaTOczbUY">může být nápomocné</a> - url vkládat
+            relativní,
+            tzn "/".
+          </li>
+          <li>Potahat oknem prohlížeče aby se neobjevovali horizontální skrollbary</li>
+          <li>
+            Při překlikávání stránek mezi sebou, by nemělo docházet k žadnému skoku. (např. stránka načte a potom se
+            něco byť
+            o par pixelů posune - nepůsobí to dobře)
+          </li>
+          <li>
+            Všechny elementy musí počítat s různorodým obsahem. Tzn. že obsah v jednotlivých polích může být větší, ale
+            i
+            menší. Stejně tak s různými počty položek, vyzkoušet přidat nebo odebrat pár položek. Web se přitom nesmí
+            rozpadnout.
+          </li>
+          <li>
+            Obrázky nachazející se v elementech, které jsou skryté a objevují se až po hoveru, nebo kliku by měly být
+            načítáný lazyloadingem. (jsou to např. okna, taby, submenu apod)
+          </li>
+          <li>Nezapomínáme na hovery a focusy, v ideálním případě na všechny tlačítka používáme btn komponentu.</li>
+          <li>Nepoužíváme PNG ikonky!</li>
+          <li>tiskové styly</li>
+          <li>zkontrolovat lighthouse a dosáhnout vždy zelených čísel ve všech aspektech na každé stránce</li>
+          <li>zkontrolovat zobrazení ve všech prohlížečích: Safari, Opera, Firefox, Chrome, Internet Explorer 11</li>
+        </ul>
+
+        <p class="p-3 mb-0 rounded bg-light">
+          <strong class="text-uppercase d-block text-info">TIP:</strong>
+          Tato sekce je vidítelná pouze pro vyvojáře v <em>develop</em> módu.
+        </p>
+      </div>
+    </section>
+    <!-- @endif -->
+    <hr />
+    <section class="py-5">
+      <div class="container">
+        <h2 class="mb-3">Zdrojové soubory</h2>
+
+        <p>
+          Projekt žije a je ke stažení v systému <a href="https://gitlab.com/">GitLab</a>. Projekt je privátní a pokud
+          jsem
+          vám ještě neposlal přístupy, kontaktujte mě prosím.
+        </p>
+
+        <p>
+          <strong>Ve chvíli kdy zasáhnete do kódu, nenesu žádnou odpovědnost za funkčnost díla.</strong> Proto se prosím
+          raději obraťte na mě, rád vám pomůžu s opravami nebo úpravami v rámci víceprací.
+        </p>
+
+        <p>
+          Projekt taky můžete stáhnout z <a href="data.zip">tohoto odkazu</a>. Na uvedeném odkaze stáhnete celý projekt
+          a
+          všechny jeho soubory. Nachází se zde <em>vybuildované soubory</em> projektu, to znamená, že web je
+          optimalizován a
+          obsahuje: minifikované css a js soubory, zkomprimované obrázky apod.
+          <span class="text-danger">Tento způsob stažení nejspíš nepotřebujete</span>, raději pracujte s GitLab
+          prostředím.
+        </p>
+
+        <!-- @if task='develop' -->
+        <p class="p-3 mb-0 rounded bg-light">
+          <strong class="text-uppercase d-block text-info">TIP:</strong>
+          Poslední odstavec můžeš zakomentovat a odkomentovat až budeš mít zapalceno nebo dokončeno.
+          <small class="d-block text-muted">Tento TIP vidíš jen ty, v buildu již nebude vidět.</small>
+        </p>
+        <!-- @endif -->
+      </div>
+    </section>
+    <hr />
+    <section class="py-5">
+      <div class="container">
+        <h2 class="mb-3">Případné připomínky</h2>
+
+        <p>
+          Pokud k dílu máte jakékoliv připomínky, prosím otevřete <strong>issue</strong> v ticketovacím systému
+          <a href="https://gitlab.com/">GitLab</a>. <strong>Issues</strong> najdete v levém postranním panelu.
+        </p>
+
+        <p>
+          Správně by 1 připomínka měla být v 1 samostatném issue s podrobným popisem. Pokud se jedna o chybu uveďte
+          prosím
+          tyto údaje:
+        </p>
+
+        <ul>
+          <li>váš operační systém</li>
+          <li>prohlížeč a jeho verze</li>
+          <li><a href="https://whatismyresolution.com/">rozlišení obrázovky</a> v sekci detailed information</li>
+          <li>pokud je to možné přiložte i fotku nebo printscreen</li>
+        </ul>
+
+        <p>Tento způsob připomínkování nám ušetří mnoho času a snadno se v tom všichni zorientujeme. Děkuji!</p>
+
+        <!-- @if task='develop' -->
+        <p class="p-3 mb-0 rounded bg-light">
+          <strong class="text-uppercase d-block text-info">TIP:</strong>
+          Všude kde jsou odkazy na GitLab vlož link přímo do projektu. Například <em>Frontend starter</em> má
+          <a href="https://gitlab.com/htmlfactory.cz/frontend-starter">tento link</a>.
+          <small class="d-block text-muted">Tento TIP vidíš jen ty, v buildu již nebude vidět.</small>
+        </p>
+        <!-- @endif -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-5 border-top">
+    <div class="container">
+      <a href="https://www.html-factory.cz/produkty/frontend-starter/?referrer=produkt-start-page">© Frontend
+        starter</a>
+    </div>
+  </footer>
+</div>
+
+<!-- @include components/page-end.html -->

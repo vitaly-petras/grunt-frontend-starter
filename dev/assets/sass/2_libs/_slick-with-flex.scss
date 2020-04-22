@@ -1,0 +1,22 @@
+//@import "../../../node_modules/slick-carousel/slick/slick";
+.slick-slider--withflex{
+  .slick-list,.slick-track,.slick-slide,.slick-slide>div{
+    display: flex;
+    flex-grow: 1;
+    height: auto;
+  }
+
+  .slick-track{
+    &::before,&::after{
+      content:none;
+    }
+  }
+
+  .slick-list{
+    flex: 0 1 100%;
+  }
+
+  .slick-slide{
+    flex: 1 0 auto;
+  }
+}
