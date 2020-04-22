@@ -1,10 +1,11 @@
 {
-  "name": "frontend-starter",
+  "name": "grunt-frontend-starter",
   "version": "1.0.0",
   "description": "no desc",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "develop": "grunt develop",
     "build": "grunt build"
   },
   "author": "www.htmlfactory.cz",
