@@ -1,8 +1,14 @@
-# 🚀 Frontend starter
+# 🚀💻 Frontend starter
 
 Níže najdeš informace jak s projektem zacházet.
 
-### 💻 Dostupné příkazy
+### 🚀 Rychlý start
+
+- zkopírujte tento repozitář (nejsnadnější je stáhnout všechno v zip pomoci tlačítka "clone or download")
+- spustit konzoli a najít cestu k projektu (cd + přetáhnout adresář projektu)
+- `npm install` - nainstaluje všechny potřebné balíčky
+
+Tím se projekt nainstaluje a je připraven k použití. Budete potřebovat jen 2 příkazy:
 
 **`grunt develop`**
 
