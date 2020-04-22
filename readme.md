@@ -1,3 +1,5 @@
+Přednastavené vývojářské prostředí pro pohodlný a efektivní vývoj webů. Je vhodný pro frontend kodéry, kteří potřebuji dokonalou souhru html, css a js. Nevyžaduje konfiguraci a je připraven k použití „na dva příkazy“
+
 ### Základní informace a vlastnosti
 
 - SCSS
