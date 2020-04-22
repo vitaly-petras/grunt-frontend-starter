@@ -12,9 +12,9 @@ Spustí vyvojářský server. Hlídá soubory, kompiluje a aktualizuje prohlíž
 
 Prožene celý projekt různými optimalizacemi a vytvoří složku **dist**, která je určená pro vložení do produkce (ostrého webu).
 
-## 🧐 Co je uvnitř?
+## 🧐 Struktura projektu
 
-Rychlý náhled na soubory , který uvidíte na projektu:
+Rychlý náhled na soubory , který uvidíte v projektu:
 
     	.
     	├── node_modules
@@ -50,7 +50,7 @@ Rychlý náhled na soubory , který uvidíte na projektu:
 
 ### ❗️ Struktura dev
 
-Pojďme se blíže podívat na strukturu složky dev, protože v ni budeme trávit většinu času.
+Vývoj probíhá výhradně ve složce `dev`, proto se na tuto složku podíváme podrobně.
 
     	.
     	└── dev
@@ -75,16 +75,8 @@ Pojďme se blíže podívat na strukturu složky dev, protože v ni budeme tráv
 9. **[dev/assets/fonts](./dev/assets/fonts)**: zde patří lokální fonty vložené přes font-face css vlastnost
 10. **[dev/assets/favicons](./dev/assets/favicons)**: vygenerujeme a vložíme zde výsledné faviconky na web
 
-Poznámka: v každé složce se nachází vlastní README.md soubor ve kterém najdeš příklad použití. Můžeš to proklikat v odkazech výše.
-
-### V případě nalezení chyby vytvořte issue
-
-Pokud vám něco nefunguje vytvořte prosím [issue](https://gitlab.com/htmlfactory.cz/frontend-starter/-/issues).
-
-### Pouze pro odběratele
-
-Tento framework by měli používat pouze odběratele [www.html-factory.cz](https://www.html-factory.cz/produkty/frontend-starter/?referrer=produkt-readme). Pokud ještě nejste jednim z nich, [přihláste se prosím k odběru novinek](https://www.html-factory.cz/produkty/frontend-starter#odebirat).
+Poznámka: v každé složce se nachází vlastní README.md soubor ve kterém najdeš příklad použití. Doporučuji složky proklikat a o každém si něco přečíst.
 
 ---
 
-[© Frontend starter](https://www.html-factory.cz/produkty/frontend-starter/?referrer=produkt-readme)
+[© Grunt frontend starter](https://www.html-factory.cz/produkty/frontend-starter/?referrer=produkt-readme)
