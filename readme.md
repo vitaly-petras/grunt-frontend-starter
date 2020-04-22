@@ -1,3 +1,8 @@
+### ❗️ Požadavky
+
+- [Node.js](https://nodejs.org/en/)
+- [Grunt](https://gruntjs.com/getting-started)
+
 ### 🚀 Rychlý start
 
 - zkopírujte tento repozitář (nejsnadnější je stáhnout všechno v zip pomoci tlačítka "clone or download")
