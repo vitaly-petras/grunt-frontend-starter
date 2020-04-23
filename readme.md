@@ -18,9 +18,9 @@ Přednastavené vývojářské prostředí pro pohodlný a efektivní vývoj web
 
 ### 🚀 Rychlý start
 
-- zkopírujte tento repozitář (nejsnadnější je stáhnout všechno v zip pomoci tlačítka "clone or download")
-- spustit konzoli a najít cestu k projektu (cd + přetáhnout adresář projektu)
-- `npm install` - nainstaluje všechny potřebné balíčky
+- zkopírujte tento repozitář <small>(nejsnadnější je stáhnout všechno v zip pomoci tlačítka "clone or download")</small>
+- spustit konzoli <small>(cmd pro windows a terminal pro osx)</small> a najít cestu k projektu <small>(cd + přetáhnout adresář projektu)</small>
+- `npm install` - nainstaluje všechny potřebné balíčky <small>(trvá od 2min do 30min v závislosti na výkonnosti vašeho pc a rychlosti internetu)</small>
 
 Tím se projekt nainstaluje a je připraven k použití. Budete potřebovat jen 2 příkazy:
 
