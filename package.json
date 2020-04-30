@@ -45,7 +45,7 @@
     "@htmlfactory.cz/grunt-frontend-starter": "^1.0.1",
     "bootstrap": "~4.4.1",
     "imagemin-webp": "~5.1.0",
-    "jquery": "~3.4.1",
+    "jquery": "~3.5.0",
     "object-fit-images": "~3.2.4",
     "popper.js": "~1.16.0",
     "svg4everybody": "~2.1.9"
