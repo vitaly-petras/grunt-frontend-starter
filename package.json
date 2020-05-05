@@ -41,7 +41,6 @@
     "time-grunt": "^1.2.1"
   },
   "dependencies": {
-    "@htmlfactory.cz/grunt-frontend-starter": "^1.0.1",
     "bootstrap": "~4.4.1",
     "imagemin-webp": "~5.1.0",
     "jquery": "~3.4.1",
