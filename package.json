@@ -29,7 +29,6 @@
     "grunt-sass": "^2.1.0",
     "grunt-svgstore": "^2.0.0",
     "grunt-sync": "^0.8.0",
-    "imagemin-giflossy": "^5.1.10",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-pngquant": "^7.0.0",
     "imagemin-zopfli": "^6.0.0",

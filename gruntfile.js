@@ -351,11 +351,6 @@ module.exports = function(grunt) {
           require("imagemin-zopfli")({
             more: true
           }),
-          require("imagemin-giflossy")({
-            optimizationLevel: 3,
-            optimize: 3, //keep-empty: Preserve empty transparent frames
-            lossy: 2
-          }),
           //svg
           require("imagemin-svgo")({
             plugins: [
