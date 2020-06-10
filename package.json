@@ -38,14 +38,14 @@
     "postcss-flexbugs-fixes": "^4.1.0",
     "postcss-object-fit-images": "^1.1.2",
     "postcss-pxtorem": "^4.0.1",
-    "time-grunt": "^1.2.1"
+    "time-grunt": "^1.2.1",
+    "imagemin-webp": "^5.1.0"
   },
   "dependencies": {
-    "bootstrap": "~4.4.1",
-    "imagemin-webp": "~5.1.0",
-    "jquery": "~3.4.1",
+    "bootstrap": "~4.5.0",
+    "jquery": "~3.5.1",
     "object-fit-images": "~3.2.4",
-    "popper.js": "~1.16.0",
+    "popper.js": "~1.16.1",
     "svg4everybody": "~2.1.9"
   }
 }
