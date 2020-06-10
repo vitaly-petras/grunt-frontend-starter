@@ -11,26 +11,133 @@ Nikdy needitujte tento .css soubor!
 ==============================================================
 */
 
-// ************************************************ //
-// 1. Core
-// ************************************************ //
-@import "1_core/fonts";
-@import "1_core/bootstrap";
-@import "1_core/mixins";
-@import "1_core/type";
-@import "1_core/keyframes";
+// Rozdělení css dle specificity podle pravidel ITCSS (https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/)
 
 // ************************************************ //
-// 2. Libs - externi knihovny
+// 0. Functions - Funkce, které jsou nutné pro funkčnost bootstrap variables
 // ************************************************ //
-//pr. nejcasteji pouzivanymi pluginy pro me jsou: slick-carousel, selectric, datepicker, fancybox
-//@import "2_libs/slick-with-flex";
+@import "../../../node_modules/bootstrap/scss/functions";
+
+
+
+// ************************************************ //
+// 1. Settings - Proměnné (př. $primary, $secondary, $grid-gap,...)
+// ************************************************ //
+@import "1_settings/variables"; //custom variables, které přepisuji defaultní Bootstrap proměnné
+@import "../../../node_modules/bootstrap/scss/variables";
+
+
+
+// ************************************************ //
+// 2. Tools - Mixiny a funkce (př. @mixin breakpoint-up() {})
+// ************************************************ //
+@import "../../../node_modules/bootstrap/scss/mixins";
+@import "2_tools/mixins";
+
+
+
+// ************************************************ //
+// 3. Generic - Generické styly (př. reset, normalize)
+// ************************************************ //
+//@import "../../../node_modules/bootstrap/scss/root";
+@import "../../../node_modules/bootstrap/scss/reboot";
+
+
+
+// ************************************************ //
+// 4. Elements - základní vzhled html elementů, bez css selectorů (př. h1, p, ul, img, table,..)
+// ************************************************ //
+@import "../../../node_modules/bootstrap/scss/type";
+@import "4_elements/a+button";
+@import "4_elements/html";
+@import "4_elements/type";
+@import "4_elements/ul+ol";
+//@import "../../../node_modules/bootstrap/scss/code";
+
+
+
+// ************************************************ //
+// 5. Objects - nepatří sem vzhled nebo dekorace (př. .container, .section, .media, .grid,...)
+// ************************************************ //
+@import "../../../node_modules/bootstrap/scss/grid";
+@import "5_objects/keyframes";
+
+
+
+// ************************************************ //
+// 6. Components - cely web skladame z komponent a většinu kódu píšeme v této vrstvě (př. .button, .card, .alert,..)
+// ************************************************ //
+
+// 6.1 Bootstrap komponenty - nepoužíté ponechte zakomentované
+//@import "../../../node_modules/bootstrap/scss/images";
+//@import "../../../node_modules/bootstrap/scss/tables";
+//@import "../../../node_modules/bootstrap/scss/forms";
+@import "../../../node_modules/bootstrap/scss/buttons";
+@import "../../../node_modules/bootstrap/scss/transitions";
+//@import "../../../node_modules/bootstrap/scss/dropdown";
+//@import "../../../node_modules/bootstrap/scss/button-group";
+//@import "../../../node_modules/bootstrap/scss/input-group";
+//@import "../../../node_modules/bootstrap/scss/custom-forms";
+//@import "../../../node_modules/bootstrap/scss/nav";
+//@import "../../../node_modules/bootstrap/scss/navbar";
+//@import "../../../node_modules/bootstrap/scss/card";
+//@import "../../../node_modules/bootstrap/scss/breadcrumb";
+//@import "../../../node_modules/bootstrap/scss/pagination";
+//@import "../../../node_modules/bootstrap/scss/badge";
+//@import "../../../node_modules/bootstrap/scss/jumbotron";
+//@import "../../../node_modules/bootstrap/scss/alert";
+//@import "../../../node_modules/bootstrap/scss/progress";
+//@import "../../../node_modules/bootstrap/scss/media";
+//@import "../../../node_modules/bootstrap/scss/list-group";
+//@import "../../../node_modules/bootstrap/scss/close";
+//@import "../../../node_modules/bootstrap/scss/toasts";
+//@import "../../../node_modules/bootstrap/scss/modal";
+//@import "../../../node_modules/bootstrap/scss/tooltip";
+//@import "../../../node_modules/bootstrap/scss/popover";
+//@import "../../../node_modules/bootstrap/scss/carousel";
+//@import "../../../node_modules/bootstrap/scss/spinners";
+
+// 6.2. Vlastní komponenty - skládáme podle abecedy pod sebou
+@import "6_components/btn";
+@import "6_components/icon";
+@import "6_components/image";
+@import "6_components/skip-to-main";
+
+
+
+// ************************************************ //
+// 7. Libraries - externi knihovny
+// Externí knihovny (př. slick, selectric, datepicker, fancybox,..)
+// ************************************************ //
+//@import "7_libraries/slick-with-flex";
 //@import "../../../node_modules/slick-carousel/slick/slick.scss";
 
+
+
 // ************************************************ //
-// 3. Components - cely web skladame z komponent
+// 8. Utilities - pomocné utility komponenty, které obvykle definuji pouze 1 css vlastnost (př. mb-3, .text-center,...)
 // ************************************************ //
-@import "3_components/btn";
-@import "3_components/icon";
-@import "3_components/image";
-@import "3_components/skip-to-main";
+//@import "../../../node_modules/bootstrap/scss/utilities/align";
+@import "../../../node_modules/bootstrap/scss/utilities/background";
+@import "../../../node_modules/bootstrap/scss/utilities/borders";
+//@import "../../../node_modules/bootstrap/scss/utilities/clearfix";
+@import "../../../node_modules/bootstrap/scss/utilities/display";
+//@import "../../../node_modules/bootstrap/scss/utilities/embed";
+@import "../../../node_modules/bootstrap/scss/utilities/flex";
+//@import "../../../node_modules/bootstrap/scss/utilities/float";
+//@import "../../../node_modules/bootstrap/scss/utilities/overflow";
+@import "../../../node_modules/bootstrap/scss/utilities/position";
+@import "../../../node_modules/bootstrap/scss/utilities/screenreaders";
+//@import "../../../node_modules/bootstrap/scss/utilities/shadows";
+@import "../../../node_modules/bootstrap/scss/utilities/sizing";
+@import "../../../node_modules/bootstrap/scss/utilities/stretched-link";
+@import "../../../node_modules/bootstrap/scss/utilities/spacing";
+@import "../../../node_modules/bootstrap/scss/utilities/text";
+//@import "../../../node_modules/bootstrap/scss/utilities/visibility";
+
+
+
+// ************************************************ //
+// 9. Print - tiskové styly
+// ************************************************ //
+@import "../../../node_modules/bootstrap/scss/print";

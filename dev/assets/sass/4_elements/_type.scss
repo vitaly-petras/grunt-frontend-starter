@@ -1,22 +1,5 @@
-// k dispozici máme .h1 až .h6, .display-1 až .display-4, lead, small. Jejich velikosti nastavujeme ve variables
-html {
-  //pokud je rozliseni mensi nez 360px pak vsechno scaluj jako by bylo 360
-  @media (max-width: 359px) {
-    font-size: 16 * 100 / 360 * 1vw;
-  }
-}
-
-a,
-button {
-  transition: $btn-transition;
-}
-
-ul,
-ol {
-  padding-left: 1.1em;
-}
-
 /*
+// k dispozici máme .h1 až .h6, .display-1 až .display-4, lead, small. Jejich velikosti nastavujeme ve variables
 priklad mozne responzivity typografie, ale lepsi je pouziti $enable-responsive-font-sizes: true;
 
 @include media-breakpoint-down(sm) {
