@@ -25,6 +25,7 @@ Nikdy needitujte tento .css soubor!
 // ************************************************ //
 @import "1_settings/variables"; //custom variables, které přepisuji defaultní Bootstrap proměnné
 @import "../../../node_modules/bootstrap/scss/variables";
+@import "1_settings/enable-grid-offset";
 
 
 
@@ -32,6 +33,7 @@ Nikdy needitujte tento .css soubor!
 // 2. Tools - Mixiny a funkce (př. @mixin breakpoint-up() {})
 // ************************************************ //
 @import "../../../node_modules/bootstrap/scss/mixins";
+@import "2_tools/make-col-offset";
 @import "2_tools/mixins";
 
 
