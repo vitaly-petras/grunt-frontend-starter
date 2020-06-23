@@ -231,7 +231,7 @@ module.exports = function(grunt) {
 
     // mazani souboru
     clean: {
-      public: [`${path.public}`],
+      all_public_files_but_not_images: [`${path.public}**/*`, `!${path.public}${path.images}**`],
       pages: [`${path.public}*.{html,php}`],
       icons: [`${path.public}${path.icons}`]
     },
@@ -468,7 +468,7 @@ module.exports = function(grunt) {
 
   //update tasks
   grunt.registerTask("update_all", [
-    "clean:public",
+    "clean:all_public_files_but_not_images",
     "update_assets",
     "update_javascript",
     "update_icons",
