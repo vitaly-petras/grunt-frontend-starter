@@ -18,9 +18,20 @@ Přednastavené vývojářské prostředí pro pohodlný a efektivní vývoj web
 
 ### 🚀 Rychlý start
 
-- zkopírujte tento repozitář <small>(nejsnadnější je stáhnout všechno v zip pomoci tlačítka "clone or download")</small>
-- spustit konzoli <small>(cmd pro windows a terminal pro osx)</small> a najít cestu k projektu <small>(cd + přetáhnout adresář projektu)</small>
-- `npm install` - nainstaluje všechny potřebné balíčky <small>(trvá od 2min do 30min v závislosti na výkonnosti vašeho pc a rychlosti internetu)</small>
+Pokud plánuješ začít nový projekt a využit tento Frontend starter, pak doporučený postup je následující:
+
+1. Vytvoř prázdnou složku a ujisti se, že tvůj terminál se nachází ve správné složce (`cd cesta/do/nove/prazdne/slozky`)
+2. Vlož do terminálu (cmd pro win) a stiskni ENTER
+
+```
+git clone git@github.com:htmlfactorycz/grunt-frontend-starter.git
+rm -rf grunt-frontend-starter/.git
+rsync -vau grunt-frontend-starter/ ./
+rm -rf grunt-frontend-starter
+npm install
+git add .
+git commit -m "Added: Grunt Frontend starter installed"
+```
 
 Tím se projekt nainstaluje a je připraven k použití. Budete potřebovat jen 2 příkazy:
 
