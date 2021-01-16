@@ -6,7 +6,7 @@ build:
   image: node
   before_script:
     - apt-get update
-    - npm install --save-dev grunt-cli
+    - npm install --save-dev grunt-cli --legacy-peer-deps
     - npm install
   only:
     - master
