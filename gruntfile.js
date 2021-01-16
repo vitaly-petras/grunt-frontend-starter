@@ -464,6 +464,7 @@ module.exports = function(grunt) {
     img_to_inlinesvg: {
       options: {
         svgFileLimit: 10,
+        assetsDir: "dist",
       },
       all: {
         cwd: `${path.public}`,
