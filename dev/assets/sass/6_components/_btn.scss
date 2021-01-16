@@ -4,15 +4,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: $input-height;
-
-  &-sm {
-    height: $input-height-sm;
-  }
-
-  &-lg {
-    height: $input-height-lg;
-  }
 
   &:not(.btn-link) {
     text-decoration: none;
