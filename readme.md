@@ -18,19 +18,12 @@ Přednastavené vývojářské prostředí pro pohodlný a efektivní vývoj web
 
 ### 🚀 Rychlý start
 
-Pokud plánuješ začít nový projekt a využit tento Frontend starter, pak doporučený postup je následující:
-
-1. Vytvoř prázdnou složku a ujisti se, že tvůj terminál se nachází ve správné složce (`cd cesta/do/nove/prazdne/slozky`)
-2. Vlož do terminálu (cmd pro win) a stiskni ENTER
-
 ```
-git clone git@github.com:htmlfactorycz/grunt-frontend-starter.git
-rm -rf grunt-frontend-starter/.git
-rsync -vau grunt-frontend-starter/ ./
-rm -rf grunt-frontend-starter
+git clone https://github.com/htmlfactorycz/grunt-frontend-starter
+
+cd grunt-frontend-starte
+
 npm install
-git add .
-git commit -m "Added: Grunt Frontend starter installed"
 ```
 
 Tím se projekt nainstaluje a je připraven k použití. Budete potřebovat jen 2 příkazy:
