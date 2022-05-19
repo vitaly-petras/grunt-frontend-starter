@@ -21,7 +21,7 @@ Přednastavené vývojářské prostředí pro pohodlný a efektivní vývoj web
 ```
 git clone https://github.com/htmlfactorycz/grunt-frontend-starter
 
-cd grunt-frontend-starte
+cd grunt-frontend-starter
 
 npm install
 ```
