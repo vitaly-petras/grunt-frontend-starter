@@ -1,6 +1,6 @@
 {
   "name": "@htmlfactory.cz/grunt-frontend-starter",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "Přednastavené vývojářské prostředí v Gruntu pro pohodlný a efektivní vývoj webů",
   "main": "index.js",
   "repository": "htmlfactorycz/grunt-frontend-starter",
