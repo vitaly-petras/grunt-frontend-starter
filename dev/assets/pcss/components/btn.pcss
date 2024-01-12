@@ -1,0 +1,68 @@
+.btn {
+  @apply inline-flex items-center justify-center py-2.5 px-4;
+  @apply transition border rounded-md outline-none;
+
+  &:not([disabled]) {
+    @apply focus-visible:ring-2 focus-visible:!ring-opacity-50;
+  }
+}
+
+.btn--primary {
+  @apply bg-primary border-primary text-white;
+
+  &:not([disabled]) {
+    @apply hover:bg-primary-hover hover:border-primary-hover;
+    @apply focus-visible:ring-primary focus-visible:bg-primary-hover;
+  }
+}
+
+.btn--outline-primary {
+  @apply bg-white border-primary text-primary;
+
+  &:not([disabled]) {
+    @apply hover:bg-primary hover:border-primary hover:text-white;
+    @apply focus-visible:ring-primary focus-visible:bg-primary focus-visible:text-white;
+  }
+}
+
+.btn--secondary {
+  @apply bg-secondary border-secondary text-white;
+
+  &:not([disabled]) {
+    @apply hover:bg-secondary-hover hover:border-secondary-hover;
+    @apply focus-visible:ring-secondary focus-visible:bg-secondary-hover;
+  }
+}
+
+.btn--light {
+  @apply bg-gray-50 border-gray-50;
+
+  &:not([disabled]) {
+    @apply hover:bg-gray-100 hover:border-gray-100;
+    @apply focus-visible:ring-gray-50 focus-visible:bg-gray-100;
+  }
+}
+
+/*
+.btn--light {
+  @apply bg-gray-50 border-gray-50 text-gray-900;
+  @apply hover:bg-gray-90 hover:border-gray-90 focus-visible:ring-gray-150;
+  @apply focus-visible:bg-gray-150;
+}
+
+.btn--primary-light {
+  @apply bg-primary-light border-primary-light text-primary-dark;
+  @apply hover:bg-primary-dark/25 focus-visible:ring-primary;
+  @apply focus-visible:bg-primary/25;
+}
+
+.btn--white {
+  @apply bg-white border-white text-primary;
+  @apply hover:bg-gray-50 hover:border-gray-50;
+}
+
+.btn--dark {
+  @apply bg-gray-900 border-gray-900 text-white;
+  @apply hover:bg-black hover:border-black;
+}
+*/

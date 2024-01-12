@@ -1,0 +1,31 @@
+.icon {
+  @apply inline-block shrink-0 align-middle fill-current;
+
+  &--fontsize {
+    width: 1em;
+    height: 1em;
+  }
+
+  &--switch {
+    > use {
+      @apply transition-opacity;
+    }
+
+    > use:last-child {
+      opacity: 0;
+    }
+
+    [aria-expanded="true"] &,
+    [aria-describedby] &,
+    [aria-pressed="true"] &,
+    &.switch {
+      > use:first-child {
+        opacity: 0;
+      }
+
+      > use:last-child {
+        opacity: 1;
+      }
+    }
+  }
+}

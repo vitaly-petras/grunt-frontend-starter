@@ -1,6 +1,0 @@
-//pokud je rozliseni mensi nez 360px pak vsechno scaluj jako by bylo 360
-html {
-  @media (max-width: 359px) {
-    font-size: 16 * 100 / 360 * 1vw;
-  }
-}

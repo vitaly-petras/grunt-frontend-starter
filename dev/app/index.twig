@@ -1,0 +1,31 @@
+{% include 'components/_page-start.twig' %}
+
+<div class="flex flex-col min-h-screen">
+  {% include 'components/_navbar.twig' %}
+
+  <!-- hlavni obsah webu, sekce, text, obrazky -->
+  <main role="main" class="grow py-4 bg-gray-100" id="main">
+    <div class="container py-10">
+      <div class="max-w-[600px] mx-auto prose">
+        <p>
+          Celá tato stránka je vyskládáná pomoci Bootstrapu a nevytváří žádné
+          css styly. Smažte nehodící se kusy kódu a začněte vytvářet váš web.
+          Doporučuji dodržet základni kostru, zde definovanou, ale není to
+          nutnost a začít můžete tím, že všechno smažete a začnete "na zelené
+          louce".
+        </p>
+        <p>
+          Pokud jste tady poprvé velmi doporučuji přečíst <a href="https://github.com/htmlfactorycz/grunt-frontend-starter">
+            dokumentaci
+          </a> tohoto frameworku. Je taky nezbytné proklikat jednotlivé adresáře
+          a přečíst readme.txt každého z nich. Mnohem lépe a rychleji se do toho
+          dostanete.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  {% include 'components/_footer.twig' %}
+</div>
+
+{% include 'components/_page-end.twig' %}

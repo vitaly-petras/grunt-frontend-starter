@@ -1,0 +1,24 @@
+@import "../../../../node_modules/swiper/swiper.scss";
+@import "../../../../node_modules/swiper/modules/effect-fade/effect-fade.scss";
+
+.swiper-slide {
+  @apply h-auto;
+}
+
+.swiper-fade {
+  .swiper-slide {
+    transition-property: opacity, visibility;
+  }
+
+  .swiper-slide:not(.swiper-slide-visible) {
+    @apply invisible !transform-none;
+  }
+}
+
+.swiper-wrapper--center {
+  &::before, &::after {
+    display: block;
+    content: '';
+    flex: auto;
+  }
+}
