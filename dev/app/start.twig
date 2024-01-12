@@ -1,0 +1,179 @@
+{% include 'components/_page-start.twig' %}
+
+<div class="flex flex-col min-h-screen">
+  <main role="main" class="grid divide-y" id="main">
+    <section class="py-10 md:py-15">
+      <div class="container grid gap-10">
+        <h1 class="mb-3 font-bold text-30px">
+          Mapa stránek
+        </h1>
+
+        <article>
+          <ul class="grid divide-y">
+            <li class="flex space-x-3 pr-3 bg-gray-50">
+              <a target="_blank"
+                class="btn btn--light block grow text-left"
+                href="index.html">
+                Úvod
+              </a>
+            </li>
+          </ul>
+        </article>
+
+        {% if task == 'develop' %}
+          <p class="mt-4 p-3 rounded bg-gray-50">
+            <strong class="uppercase block text-primary">TIP:</strong>
+            Zde vkládej všechny statické stránky, které jsi vytvořil.
+            <small class="block text-gray-400">
+              Tento TIP vidíš jen ty, v buildu již nebude vidět.
+            </small>
+          </p>
+        {% endif %}
+      </div>
+    </section>
+    {% if task == 'develop' %}
+      <section class="py-10 md:py-15">
+        <div class="container">
+          <h2 class="text-20px font-bold mb-7">
+            Checklist
+          </h2>
+
+          <div class="prose">
+            <p>
+              Před odevzdáním projektu bychom měli každou stránku podrobit
+              testování z následujících bodů:
+            </p>
+
+            <ul>
+              <li>
+                <strong>Porovnat stránky se screenem</strong> (pixel perfect)
+              </li>
+              <li>
+                Ověřit
+                <a href="https://validator.w3.org/#validate_by_input">
+                  <strong>W3C validitu</strong>
+                </a>
+              </li>
+              <li>
+                <strong>Osnova dokumentu</strong> (h1 - h2 - h3 apod. tak aby dávala
+                smysl)
+              </li>
+              <li>
+                <strong>Propojít všechny stránky mezi sebou</strong> (které lze a
+                které dávají smysl)
+              </li>
+              <li>
+                <strong>Zahrnout všechny stránky zde do startu</strong>. Názvy
+                stránek by měly odpovídat grafickým navrhům.
+              </li>
+              <li>
+                Vygenerovat
+                <a href="https://realfavicongenerator.net/">favicon ikonky</a>
+              </li>
+              <li>Ověřit SEO attributy metatagy a title</li>
+              <li>
+                Pokud je to možné, vložit obrázek pro sociální sítě (1200x630).
+                <a href="https://realfavicongenerator.net/social/#.XanaTOczbUY">
+                  může být nápomocné
+                </a>
+                - url vkládat relativní, tzn "/".
+              </li>
+              <li>
+                <strong>Potahat oknem prohlížeče</strong> aby se neobjevovali horizontální
+                skrollbary
+              </li>
+              <li>
+                Při překlikávání stránek mezi sebou, by nemělo docházet k
+                žadnému skoku. (např. stránka načte a potom se něco byť o par
+                pixelů posune - nepůsobí to dobře)
+              </li>
+              <li>
+                Všechny elementy musí počítat s <strong>
+                  různorodým obsahem
+                </strong>. Tzn. že obsah v jednotlivých polích může být větší,
+                ale i menší. Stejně tak s různými počty položek, vyzkoušet
+                přidat nebo odebrat pár položek. Web se přitom nesmí rozpadnout.
+              </li>
+              <li>
+                Obrázky nachazející se v elementech, které jsou skryté a
+                objevují se až po hoveru, nebo kliku by měly být načítáný <strong>
+                  lazyloadingem
+                </strong>. (jsou to např. okna, taby, submenu apod)
+              </li>
+              <li>
+                Ověřit zda všechny obrázky mají attribut <strong>
+                  loading="lazy"
+                </strong>
+                <small class="d-block">
+                  Ověřit tak, že dáme zobrazit zdrojový kód, najdeme počet <strong>
+                    &lt;img
+                  </strong>
+                  a tento počet musí sedět s počtem <strong>loading=</strong>
+                </small>
+              </li>
+              <li>
+                <strong>Nezapomínáme na hovery a focusy</strong>, v ideálním
+                případě na všechny tlačítka používáme btn komponentu.
+              </li>
+              <li>Nepoužíváme PNG ikonky!</li>
+              <li><strong>tiskové styly</strong></li>
+              <li>
+                zkontrolovat lighthouse a dosáhnout vždy zelených čísel ve všech
+                aspektech na každé stránce
+              </li>
+              <li>
+                zkontrolovat zobrazení ve všech prohlížečích: Safari, Opera,
+                Firefox, Chrome, Internet Explorer 11
+              </li>
+            </ul>
+          </div>
+
+          <p class="mt-4 p-3 rounded bg-gray-50">
+            <strong class="uppercase block text-primary">TIP:</strong>
+            Tato sekce je vidítelná pouze pro vyvojáře v <em>develop</em> módu.
+          </p>
+        </div>
+      </section>
+    {% endif %}
+    <section class="py-10 md:py-15">
+      <div class="container">
+        <h2 class="text-20px font-bold mb-7">
+          Zdrojové soubory
+        </h2>
+
+        <div class="prose">
+          <p>
+            Projekt žije a je ke stažení v systému
+            <a href="https://gitlab.com">GitLab</a>.
+            Projekt je privátní a pokud jsem vám ještě neposlal přístupy,
+            kontaktujte mě prosím.
+          </p>
+
+          <p>
+            Projekt taky můžete stáhnout z <a href="data.zip">tohoto odkazu</a>.
+            Na uvedeném odkaze stáhnete celý projekt a všechny jeho soubory.
+            Nachází se zde <em>vybuildované soubory</em> projektu, to znamená, že
+            web je optimalizován a obsahuje: minifikované css a js soubory, zkomprimované
+            obrázky apod.
+            <span class="text-red-500">
+              Tento způsob stažení nejspíš nepotřebujete
+            </span>, raději pracujte s GitLab prostředím.
+          </p>
+        </div>
+
+        {% if task == 'develop' %}
+          <p class="mt-4 p-3 rounded bg-gray-50">
+            <strong class="uppercase block text-primary">TIP:</strong>
+            Já všechny své projekty vytvářím v gitlabu - privátní projekt. Pokud
+            to děláte jinak pak celou tuto sekci smažte.
+            <small class="block text-gray-400">
+              Tento TIP vidíš jen ty, v buildu již nebude vidět.
+            </small>
+          </p>
+        {% endif %}
+      </div>
+    </section>
+  </main>
+</div>
+
+{% include 'components/_page-end.twig' %}

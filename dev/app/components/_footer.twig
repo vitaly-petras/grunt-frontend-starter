@@ -1,0 +1,15 @@
+<footer class="mt-auto border-t py-3">
+  <div class="container">
+    <div class="flex items-center">
+      <div class="grow">
+        Patička
+      </div>
+      {% if task == 'develop' %}
+        <div class="shink-0">
+          Aktuální task:
+          <strong>{{ task }}</strong>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</footer>

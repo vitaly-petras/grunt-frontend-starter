@@ -1,0 +1,61 @@
+/* @import "../../../../node_modules/tippy.js/dist/tippy.css"; */
+
+/*
+[data-tippy-root] {
+  max-width: calc(100vw - 10px);
+}
+*/
+
+.tippy-box {
+  --bg-color: theme("colors.primary.DEFAULT");
+  --text-color: theme("colors.white");
+
+  --arrow-width: 8px;
+  --arrow-height: 8px;
+  --content-padding: theme("padding.5");
+
+  position: relative;
+  font-size: 15px;
+  white-space: normal;
+  outline: 0;
+
+  transition-property: transform, visibility, opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  color: var(--text-color);
+  background-color: var(--bg-color);
+
+  & > .tippy-svg-arrow {
+    fill: var(--bg-color);
+  }
+
+  & > .tippy-backdrop {
+    background-color: var(--bg-color);
+  }
+}
+
+.tippy-arrow {
+  width: calc(var(--arrow-width) * 2);
+  height: calc(var(--arrow-height) * 2);
+  color: var(--bg-color);
+
+  &::before {
+    content: "";
+    position: absolute;
+    border-color: transparent;
+    border-style: solid;
+  }
+}
+
+.tippy-content {
+  position: relative;
+  z-index: 1;
+  padding: var(--content-padding);
+}
+
+/*
+.tippy-box[data-theme~="submenu"] {
+  --bg-color: theme("colors.white");
+  --text-color: theme("colors.gray.800");
+  --content-padding: theme("padding[7.5]");
+}
+*/

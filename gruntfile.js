@@ -14,7 +14,7 @@ module.exports = function(grunt) {
 
   const secondaryDestinations = {
     //tyto soubory doporucuji nechat jak jsou a menit rootDestinations nebo mainDestinations v pripade potreby
-    scss: `${mainDestinations.assets}sass/`,
+    scss: `${mainDestinations.assets}pcss/`,
     css: `${mainDestinations.assets}css/`,
     js: `${mainDestinations.assets}js/`,
     icons: `${mainDestinations.assets}icons/`
@@ -36,7 +36,7 @@ module.exports = function(grunt) {
         spawn: false
       },
       css: {
-        files: `${path.development}${path.scss}**/*.scss`,
+        files: `${path.development}${path.scss}**/*.pcss`,
         tasks: ["update_css"]
       },
       js: {
@@ -47,8 +47,8 @@ module.exports = function(grunt) {
         files: [`${path.development}${path.pages}**`, `!${path.development}${path.pages}components/**`],
         tasks: ["update_newer_pages"]
       },
-      page_components: {
-        files: [`${path.development}${path.pages}components/**`],
+      page_partials: {
+        files: [`${path.development}${path.pages}**/_*.twig`, `${path.development}${path.pages}twig-all-data.json`],
         tasks: ["update_all_pages"]
       },
       images: {
@@ -75,25 +75,10 @@ module.exports = function(grunt) {
           reload: true
         },
         tasks: ["update_all"]
-      }
-    },
-
-    sass: {
-      target: {
-        options: {
-          implementation: require("node-sass"),
-          outputStyle: "expanded",
-          sourcemap: false
-        },
-        files: [
-          {
-            expand: true,
-            cwd: `${path.development}${path.scss}`,
-            src: ["*.scss", "!_*"],
-            dest: `${path.public}${path.css}`,
-            ext: ".css"
-          }
-        ]
+      },
+      tailwindConfig: {
+        files: ["tailwind.config.js"],
+        tasks: ["update_css"]
       }
     },
 
@@ -114,56 +99,24 @@ module.exports = function(grunt) {
       }
     },
 
-    // sjednoceni vsech .js souboru do jednoho
-    concat: {
-      options: {
-        sourceMap: true
-      },
-      jquery: {
-        src: [
-          //vstupni soubory
-          `node_modules/jquery/dist/jquery.js`
+    browserify: {
+      dist: {
+        files: [
+          {
+            expand: true,
+            cwd: `${path.development}${path.js}`,
+            src: ["*.js"],
+            dest: `${path.public}${path.js}`,
+            ext: ".js"
+          }
         ],
-        //vystupni soubor
-        dest: `${path.public}${path.js}jquery.js`
-      },
-      bootstrap: {
-        src: [
-          //`node_modules/popper.js/dist/umd/popper.js`, //vkladame pouze pokud pouzivame komponentu vyžadující popper.js
-          `node_modules/bootstrap/js/dist/index.js`,
-          `node_modules/bootstrap/js/dist/util.js`, //musi být úplně nahoře, hned pod index.js
-          //nasleduji js komponenty
-          //`node_modules/bootstrap/js/dist/alert.js`,
-          //`node_modules/bootstrap/js/dist/button.js`,
-          //`node_modules/bootstrap/js/dist/carousel.js`,
-          `node_modules/bootstrap/js/dist/collapse.js`,
-          //`node_modules/bootstrap/js/dist/dropdown.js`, //vyžaduje popper.js
-          `node_modules/bootstrap/js/dist/modal.js`
-          //`node_modules/bootstrap/js/dist/scrollspy.js`,
-          //`node_modules/bootstrap/js/dist/tab.js`,
-          //`node_modules/bootstrap/js/dist/toast.js`,
-          //`node_modules/bootstrap/js/dist/tooltip.js`, //vyžaduje popper.js
-          //`node_modules/bootstrap/js/dist/popover.js` //vyžaduje popper.js // popover musí být za tooltipem a zároveň vyžaduje tooltip, jinak řve chybu
-        ],
-        //vystupni soubor
-        dest: `${path.public}${path.js}bootstrap.js`
-      },
-      custom: {
-        src: [
-          //vstupni soubory
-          `node_modules/object-fit-images/dist/ofi.js`,
-          `node_modules/svg4everybody/dist/svg4everybody.js`,
-          `${path.development}${path.js}custom/*.js`
-        ],
-        //vystupni soubor
-        dest: `${path.public}${path.js}custom.js`
-      }
-    },
-
-    // validace js
-    jshint: {
-      all: {
-        src: `${path.development}${path.js}**/*.js`
+        options: {
+          transform: [['babelify', { presets: ["@babel/preset-env"] }]],
+          plugin: ['esmify'],
+          browserifyOptions: {
+            debug: grunt.cli.tasks[0] !== `build`
+          }
+        }
       }
     },
 
@@ -222,7 +175,7 @@ module.exports = function(grunt) {
         files: [
           {
             cwd: `${path.development}${path.pages}`,
-            src: [`**`],
+            src: [`**`, '!**/*.{php,twig}'],
             dest: `${path.public}`
           }
         ],
@@ -247,55 +200,42 @@ module.exports = function(grunt) {
     },
 
     postcss: {
+      options: {
+        map: {
+          inline: false,
+          annotation: `${path.public}${path.css}`
+        },
+      },
       update: {
         options: {
-          map: {
-            inline: false,
-            annotation: `${path.public}${path.css}`
-          },
           processors: [
-            require("autoprefixer"),
-            require("postcss-flexbugs-fixes"),
-            require("postcss-object-fit-images"),
+            require("postcss-import")(),
+            require('tailwindcss/nesting')(),
+            require("tailwindcss")(),
+            require("autoprefixer")(),
             require(`postcss-pxtorem`)({
               rootValue: 16,
               unitPrecision: 5,
-              propList: [
-                "*",
-                "!border",
-                "!border-left",
-                "!border-top",
-                "!border-bottom",
-                "!border-right"
-              ],
+              propList: ["*"],
               selectorBlackList: [],
               replace: true,
               mediaQuery: false,
               minPixelValue: 2
             }),
-            require("cssnano")({
-              preset: [
-                "default",
-                {
-                  normalizePositions: false
-                }
-              ]
-            })
-          ]
+            require("postcss-flexbugs-fixes")(),
+            require('postcss-inset')()
+          ],
         },
         files: [{
           expand: true,
-          cwd: `${path.public}${path.css}`,
-          src: ["*.css"],
-          dest: `${path.public}${path.css}`
+          cwd: `${path.development}${path.scss}`,
+          src: ["*.pcss", "!_*"],
+          dest: `${path.public}${path.css}`,
+          ext: ".css"
         }]
       },
       minify: {
         options: {
-          map: {
-            inline: false,
-            annotation: `${path.public}${path.css}`
-          },
           processors: [
             require("cssnano")({
               preset: [
@@ -322,7 +262,7 @@ module.exports = function(grunt) {
           src: [
             `${path.public}${path.css}*.css`,
             `${path.public}${path.js}*.js`,
-            `${path.public}**/*.{html,php}`,
+            `${path.public}**/*.{html,php,twig}`,
             `${path.public}${path.icons}**/*`
           ]
         },
@@ -443,35 +383,56 @@ module.exports = function(grunt) {
       }
     },
 
-    // šablonování html
-    preprocess: {
+    // https://www.npmjs.com/package/grunt-twig-render
+    twigRender: {
       options: {
-        srcDir: `${path.public}`,
-        type: "html, php",
-        context: {
-          task: grunt.cli.tasks[0],
-          version: Date.now()
+        functions: {
+          html_class: function(classes) {
+            let resultArrayOfClasses = [];
+
+            function processString(string) {
+              resultArrayOfClasses.push(...string.split(" "));
+            }
+          
+            function processArray(array) {
+              array.map(item => processAll(item));
+            }
+          
+            function processObject(object) {
+              Object.keys(object).map(key => {
+                if (!!object[key]) processAll(key);
+              });
+            }
+          
+            function processAll(instance) {
+              if (typeof instance === "string") processString(instance);
+              else if (Array.isArray(instance)) processArray(instance);
+              else if (typeof instance === "object") processObject(instance);
+            }
+          
+            processAll(classes);
+          
+            return resultArrayOfClasses.join(" ");
+          }
         }
       },
       pages: {
-        cwd: `${path.public}`,
-        src: ["**/*.{html,php}", "!components/**"],
+        data: [
+          {
+            task: grunt.cli.tasks[0],
+            version: Date.now(),
+          },
+          `${path.development}${path.pages}twig-all-data.json`
+        ],
+        expand: true,
+        cwd: `${path.development}${path.pages}`,
+        src: ['**/*.{twig,html,php}', 'style.css', '!**/_*.{twig,html}'],
         dest: `${path.public}`,
-        expand: true
-      }
-    },
-
-    img_to_inlinesvg: {
-      options: {
-        svgFileLimit: 10,
-        assetsDir: "dist",
+        // ext: '.html',
+        rename: function (dest, src) {
+          return dest + src.replace('.twig', '.html');
+        }
       },
-      all: {
-        cwd: `${path.public}`,
-        src: ["**/*.{html,php}", "!components/**"],
-        dest: `${path.public}`,
-        expand: true
-      }
     },
   });
 
@@ -489,10 +450,10 @@ module.exports = function(grunt) {
     "update_images",
     "update_all_pages"
   ]);
-  grunt.registerTask("update_javascript", ["newer:jshint", "newer:concat"]);
-  grunt.registerTask("update_newer_pages", ["sync:pages", "newer:preprocess", "newer:img_to_inlinesvg"]);
-  grunt.registerTask("update_all_pages", ["clean:pages", "sync:pages", "preprocess", "img_to_inlinesvg"]);
-  grunt.registerTask("update_css", ["sass", "newer:postcss:update"]);
+  grunt.registerTask("update_javascript", ["browserify"]);
+  grunt.registerTask("update_newer_pages", ["sync:pages", "newer:twigRender", "update_css"]);
+  grunt.registerTask("update_all_pages", ["clean:pages", "sync:pages", "twigRender", "update_css"]);
+  grunt.registerTask("update_css", ["postcss:update"]);
   grunt.registerTask("update_images", ["sync:images"]);
   grunt.registerTask("update_icons", ["newer:imagemin:icons", "sync:icons", "newer:svgstore"]);
   grunt.registerTask("update_assets", ["sync:assets"]);
@@ -505,7 +466,7 @@ module.exports = function(grunt) {
     "optimize_images"
   ]);
   grunt.registerTask("optimize_javascript", ["newer:uglify"]);
-  grunt.registerTask("optimize_css", ["newer:postcss:minify"]);
+  grunt.registerTask("optimize_css", ["postcss:minify"]);
   grunt.registerTask("optimize_pages", ["clean:pages"]);
   grunt.registerTask("optimize_images", ["newer:imagemin:images", "newer:imagemin:webpimages"]);
 
@@ -513,7 +474,7 @@ module.exports = function(grunt) {
   grunt.registerTask("build", ["update_all", "optimize_all", "compress"]);
   grunt.registerTask("develop", ["update_all", "browserSync", "watch"]);
 
-  grunt.registerTask("default", function() {
+  grunt.registerTask("default", function () {
     grunt.log.writeln("\nVyberte prosím z dostupných příkazů:"["black"].bold);
     grunt.log.writeln(` - grunt develop\n - grunt build`);
   });

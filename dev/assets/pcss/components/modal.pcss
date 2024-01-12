@@ -1,0 +1,78 @@
+/*
+.modal-open      - body class for killing the scroll
+.modal           - container to scroll within
+.modal-dialog    - positioning shell for the actual modal
+.modal-content   - actual modal w/ bg and corners and stuff - set width here
+*/
+
+.modal {
+  @apply hidden fixed inset-0 w-full h-full overflow-x-hidden outline-none z-modal;
+}
+
+.modal-dialog {
+  @apply relative w-full min-h-screen flex flex-col;
+  @apply p-5 pointer-events-none;
+
+  /* When trying to close, animate focus to scale */
+  .modal.modal-static & {
+    @apply scale-[1.02];
+  }
+}
+
+.modal-content {
+  /* must have styling */
+  @apply relative w-full m-auto;
+  @apply pointer-events-auto bg-clip-padding outline-none;
+
+  /* default modal sizes */
+  @apply sm:max-w-[500px];
+
+  /* When fading in the modal, animate it to slide down */
+  .modal.fade & {
+    @apply transition-modal duration-300;
+  }
+
+  .modal.fade:not(.show) & {
+    @apply -translate-y-12;
+  }
+
+  /* custom styling */
+  @apply text-gray-800 bg-white;
+  @apply shadow-lg;
+}
+
+.fade {
+  @apply transition-opacity ease-linear duration-300;
+
+  &:not(.show) {
+    @apply opacity-0;
+  }
+}
+
+.modal-backdrop {
+  /* must have styling */
+  @apply fixed inset-0 w-full h-full z-backdrop;
+
+  /* custom styling */
+  @apply bg-black/20 backdrop-blur-sm;
+}
+
+/*
+.modal--menu {
+  .modal-content {
+    @apply ml-0 min-h-screen;
+  }
+
+  .modal-dialog {
+    @apply p-0;
+  }
+
+  &.fade:not(.show) {
+    @apply opacity-100;
+
+    .modal-content {
+      @apply -translate-x-full translate-y-0 opacity-100;
+    }
+  }
+}
+*/
